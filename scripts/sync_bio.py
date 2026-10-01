@@ -117,6 +117,10 @@ def fetch_hot_products() -> list[dict]:
                 continue
             seen.add(pid)
             picked.append({
+                "id": f"p{pid}",
+                "section": "hot",
+                "orders": orders,
+                "rating": rating,
                 "title": p.get("product_title", "Produs")[:90],
                 "cur": "EUR",
                 "amount": float(p.get("target_sale_price") or p.get("sale_price") or 0),
@@ -127,6 +131,44 @@ def fetch_hot_products() -> list[dict]:
             if len(picked) >= MAX_HOT_PRODUCTS:
                 return picked
     return picked
+
+
+def fetch_orders(days: int = 30) -> dict:
+    """Comenzile facute prin linkurile tale (daca aplicatia are permisiune)."""
+    pst = timezone(timedelta(hours=-8))  # AliExpress cere ora Pacificului
+    end = datetime.now(pst)
+    start = end - timedelta(days=days)
+    orders, error = [], None
+    for status in ("Payment Completed", "Buyer Confirmed Receipt"):
+        try:
+            data = call_api("aliexpress.affiliate.order.list", {
+                "start_time": start.strftime("%Y-%m-%d %H:%M:%S"),
+                "end_time": end.strftime("%Y-%m-%d %H:%M:%S"),
+                "status": status,
+                "page_no": 1,
+                "page_size": 50,
+            })
+        except Exception as exc:
+            error = "fără permisiune" if "InsufficientPermission" in str(exc) else str(exc)[:200]
+            log(f"[warn] comenzi ({status}): {error}")
+            continue
+        resp = data.get("aliexpress_affiliate_order_list_response", {}).get("resp_result", {})
+        if str(resp.get("resp_code")) not in ("200", "None") and resp.get("resp_code") is not None:
+            log(f"[info] comenzi ({status}): {resp.get('resp_code')} {resp.get('resp_msg')}")
+            continue
+        items = ((resp.get("result") or {}).get("orders") or {}).get("order", []) or []
+        for o in items:
+            orders.append({
+                "title": str(o.get("product_title", ""))[:120],
+                "product_id": o.get("product_id"),
+                "paid": o.get("paid_amount") or o.get("finished_amount"),
+                "commission": o.get("estimated_paid_commission") or o.get("estimated_finished_commission"),
+                "status": o.get("order_status") or status,
+                "time": o.get("paid_time") or o.get("created_time"),
+                "count": o.get("product_count"),
+            })
+        log(f"[info] comenzi ({status}): {len(items)} in ultimele {days} zile")
+    return {"days": days, "items": orders, "error": error if not orders else None}
 
 
 FALLBACK_RATES = {"EUR": 1.0, "RON": 4.97}
@@ -147,6 +189,8 @@ def get_rates() -> dict:
 
 def normalize_price(p: dict) -> dict:
     """Produsele fixe au pretul ca text ("RON 386.51") -> moneda + suma."""
+    p.setdefault("id", str(p.get("link", "")).rstrip("/").rsplit("/", 1)[-1][:40] or p.get("title", "")[:20])
+    p.setdefault("section", "featured")
     if "cur" not in p:
         cur, _, amt = str(p.get("price", "")).partition(" ")
         p["cur"] = cur or "RON"
@@ -166,7 +210,7 @@ def card_html(p: dict, rates: dict) -> str:
     e = html.escape
     meta = f'<p class="meta">{e(p["meta"])}</p>' if p.get("meta") else ""
     return f"""
-  <a class="card" href="{e(p['link'])}" target="_blank" rel="noopener">
+  <a class="card" href="{e(p['link'])}" target="_blank" rel="noopener" data-id="{e(p.get('id', ''))}" data-s="{e(p.get('section', ''))}" data-title="{e(p['title'][:120])}">
     <img class="thumb" src="{e(p['image'])}" alt="" loading="lazy">
     <div class="info">
       <p class="title">{e(p['title'])}</p>
@@ -190,6 +234,7 @@ def render(featured: list[dict], hot: list[dict], rates: dict) -> str:
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>@trendixeu — Oferte zilnice / Daily deals</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<script src="/track.js" defer></script>
 <style>
 :root{{--bg:#121016;--bg2:#221a2c;--card:#1e1c26;--text:#f5f3f0;--muted:#a9a5b3;--hot:#ff5a3c;--gold:#ffd166;}}
 *{{box-sizing:border-box;margin:0;padding:0;}}
@@ -287,6 +332,11 @@ def main() -> None:
     started = datetime.now(timezone.utc)
     featured = [normalize_price(p) for p in json.loads(FEATURED_PATH.read_text(encoding="utf-8"))]
     rates = get_rates()
+    orders = {"days": 30, "items": [], "error": None}
+    try:
+        orders = fetch_orders()
+    except Exception as exc:
+        log(f"[warn] nu am putut citi comenzile: {exc}")
     hot = []
     try:
         hot = fetch_hot_products()
@@ -299,6 +349,8 @@ def main() -> None:
     if IMG_DIR.exists():
         shutil.copytree(IMG_DIR, OUT_DIR / "img")
     (OUT_DIR / "index.html").write_text(render(featured, hot, rates), encoding="utf-8")
+    if (ROOT / "site" / "track.js").exists():
+        shutil.copy(ROOT / "site" / "track.js", OUT_DIR / "track.js")
     console_src = ROOT / "site" / "console.html"
     if console_src.exists():
         (OUT_DIR / "console").mkdir()
@@ -313,8 +365,9 @@ def main() -> None:
         "rates": {k: rates[k] for k in ("RON", "USD", "GBP", "PLN") if k in rates},
         "filters": {"min_rating_percent": MIN_RATING_PERCENT, "min_orders": MIN_ORDERS,
                     "max_hot": MAX_HOT_PRODUCTS, "ship_to": SHIP_TO, "keywords": KEYWORDS},
-        "featured_items": [{k: p.get(k) for k in ("title", "cur", "amount", "link", "image")} for p in featured],
-        "hot_items": [{k: p.get(k) for k in ("title", "cur", "amount", "link", "image", "meta")} for p in hot],
+        "featured_items": [{k: p.get(k) for k in ("id", "title", "cur", "amount", "link", "image")} for p in featured],
+        "hot_items": [{k: p.get(k) for k in ("id", "title", "cur", "amount", "link", "image", "meta", "orders", "rating")} for p in hot],
+        "orders": orders,
         "log": LOG,
     }, ensure_ascii=False, indent=1)
     (OUT_DIR / "status.json").write_text(status, encoding="utf-8")

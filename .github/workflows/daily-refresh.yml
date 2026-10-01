@@ -27,15 +27,21 @@ jobs:
           ALI_TRACKING_ID: ${{ secrets.ALI_TRACKING_ID }}
         run: python scripts/sync_bio.py
 
-      - name: Publica pe Netlify
-        uses: nwtgck/actions-netlify@v3
+      - uses: actions/setup-node@v4
         with:
-          publish-dir: "./public"
-          production-deploy: true
-          deploy-message: "Refresh automat ${{ github.run_number }}"
+          node-version: "20"
+
+      - name: Instaleaza dependintele contorului de click-uri
+        run: npm install --no-audit --no-fund
+
+      - name: Publica pe Netlify
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        run: >
+          npx --yes netlify-cli@latest deploy --prod
+          --dir=public --functions=netlify/functions
+          --message "Refresh automat ${{ github.run_number }}"
 
       - name: Pastreaza programarea activa
         # GitHub opreste singur programarile zilnice dupa 60 de zile fara activitate in repo.

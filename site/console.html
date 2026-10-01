@@ -100,17 +100,41 @@ tr:last-child td{border-bottom:none}
 .prod .pm{font-size:11px;color:var(--dim)}
 .empty{padding:22px 14px;color:var(--muted);font-size:13px}
 
+.seg{display:flex;gap:4px;background:var(--bg);border:1px solid var(--line);border-radius:9px;padding:3px}
+.seg button{font:inherit;font-size:12px;background:none;border:0;color:var(--muted);padding:4px 10px;border-radius:6px;cursor:pointer;white-space:nowrap}
+.seg button[aria-pressed="true"]{background:var(--panel-2);color:var(--text)}
+.statrow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;padding:14px 14px 4px}
+.mini{background:var(--panel-2);border:1px solid var(--line);border-radius:10px;padding:10px 12px;min-width:0}
+.mini .label{font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted)}
+.mini .value{font-size:20px;font-weight:600;font-variant-numeric:tabular-nums}
+.rank{list-style:none;padding:8px 14px 14px;display:flex;flex-direction:column;gap:8px}
+.rank li{display:grid;grid-template-columns:22px 40px minmax(0,1fr) auto;gap:10px;align-items:center}
+.rank .pos{font-family:var(--mono);font-size:12px;color:var(--dim);text-align:right}
+.rank img{width:40px;height:40px;border-radius:7px;object-fit:cover;background:#2a2533}
+.rank .name{font-size:12.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rank .name a{text-decoration:none}
+.rank .name a:hover{text-decoration:underline}
+.rank .bar{height:6px;border-radius:999px;background:var(--line);margin-top:5px;overflow:hidden}
+.rank .bar i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--accent),var(--gold))}
+.rank .bar.alt i{background:var(--ok)}
+.rank .num{font-family:var(--mono);font-size:12.5px;text-align:right;white-space:nowrap}
+.rank .num small{display:block;color:var(--dim);font-size:11px}
+.tag{font-size:10.5px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:0 6px;margin-left:6px;vertical-align:1px}
+.cols.even{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
 .actions{display:flex;gap:8px;flex-wrap:wrap}
 .notice{font-size:12.5px;color:var(--warn);padding:10px 14px;border:1px dashed var(--warn);border-radius:10px}
 .foot{font-size:12px;color:var(--dim)}
 
 @media (max-width:900px){
   .kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .cols{grid-template-columns:minmax(0,1fr)}
+  .cols,.cols.even{grid-template-columns:minmax(0,1fr)}
   .pipe{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:14px}
   .stage:nth-child(2)::after{display:none}
 }
 @media (max-width:480px){
+  .statrow{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .rank li{grid-template-columns:18px 34px minmax(0,1fr) auto;gap:8px}
+  .rank img{width:34px;height:34px}
   .pipe{grid-template-columns:minmax(0,1fr)}
   .stage::after{display:none}
   .feed li{grid-template-columns:52px 12px minmax(0,1fr)}
@@ -177,6 +201,44 @@ tr:last-child td{border-bottom:none}
     </div>
   </section>
 
+  <section class="panel" aria-label="Interesul vizitatorilor">
+    <div class="panel-head">
+      <h2>Ce îi interesează pe vizitatorii tăi</h2>
+      <div class="seg" role="group" aria-label="Perioada">
+        <button type="button" data-days="1" aria-pressed="false">Azi</button>
+        <button type="button" data-days="7" aria-pressed="true">7 zile</button>
+        <button type="button" data-days="30" aria-pressed="false">30 zile</button>
+        <button type="button" data-days="0" aria-pressed="false">Tot</button>
+      </div>
+    </div>
+    <div class="statrow">
+      <div class="mini"><div class="label">Vizite pe pagină</div><div class="value" id="sViews">—</div></div>
+      <div class="mini"><div class="label">Click-uri pe produse</div><div class="value" id="sClicks">—</div></div>
+      <div class="mini"><div class="label">Rată de click</div><div class="value" id="sCtr">—</div></div>
+    </div>
+    <ol class="rank" id="clickRank"></ol>
+    <p class="empty" id="clickEmpty" hidden></p>
+    <p class="foot" style="padding:0 14px 14px">Numărăm o vizită pe sesiune și un click per produs per vizită. Roboții sunt ignorați, nu se salvează date personale.</p>
+  </section>
+
+  <section class="cols even">
+    <div class="panel">
+      <div class="panel-head"><h2>Cele mai cumpărate pe AliExpress</h2><span class="muted" style="font-size:12px">comenzi totale</span></div>
+      <ol class="rank" id="boughtRank"></ol>
+      <p class="empty" id="boughtEmpty" hidden></p>
+      <p class="foot" style="padding:0 14px 14px">Dintre produsele noi de pe pagina ta. AliExpress nu publică volumul căutărilor, așa că numărul de comenzi e cel mai bun indicator al cererii.</p>
+    </div>
+    <div class="panel">
+      <div class="panel-head"><h2>Comenzi prin linkurile tale</h2><span class="muted" style="font-size:12px" id="ordersPeriod"></span></div>
+      <div class="statrow" style="grid-template-columns:repeat(2,minmax(0,1fr))">
+        <div class="mini"><div class="label">Comenzi</div><div class="value" id="oCount">—</div></div>
+        <div class="mini"><div class="label">Comision estimat</div><div class="value" id="oComm">—</div></div>
+      </div>
+      <ol class="rank" id="ordersList"></ol>
+      <p class="empty" id="ordersEmpty" hidden></p>
+    </div>
+  </section>
+
   <section class="panel">
     <div class="panel-head">
       <h2>Produse publicate acum</h2>
@@ -207,9 +269,9 @@ tr:last-child td{border-bottom:none}
   var STEP_GROUPS = [
     ["Set up job", "Run actions/checkout@v4", "Run actions/setup-python@v5", "Instaleaza dependinte"],
     ["Genereaza pagina de bio"],
-    ["Publica pe Netlify"]
+    ["Run actions/setup-node@v4", "Instaleaza dependintele contorului de click-uri", "Publica pe Netlify"]
   ];
-  var state = { runs: [], jobs: null, jobsRunId: null, status: null, lastFetch: null, rateLimitedUntil: 0, tab: "hot" };
+  var state = { runs: [], jobs: null, jobsRunId: null, status: null, stats: null, lastFetch: null, rateLimitedUntil: 0, tab: "hot", days: 7 };
   var timer = null;
 
   function $(id) { return document.getElementById(id); }
@@ -265,6 +327,9 @@ tr:last-child td{border-bottom:none}
     try {
       state.status = await getJSON("/status.json?t=" + Date.now());
     } catch (e) { notice.push("Nu am putut citi datele publicate pe site."); }
+    try {
+      state.stats = await getJSON("/api/stats?t=" + Date.now());
+    } catch (e) { state.stats = state.stats || null; }
 
     if (Date.now() >= state.rateLimitedUntil) {
       try {
@@ -377,7 +442,88 @@ tr:last-child td{border-bottom:none}
       $("kSuccessSub").textContent = "din ultimele " + done.length + " rulări";
     }
 
-    renderFeed(); renderHistory(); renderProducts();
+    renderFeed(); renderHistory(); renderProducts(); renderInterest(); renderBought(); renderOrders();
+  }
+
+  function itemIndex() {
+    var idx = {}, st = state.status;
+    if (!st) return idx;
+    (st.featured_items || []).forEach(function (p) { idx[p.id] = { p: p, s: "featured" }; });
+    (st.hot_items || []).forEach(function (p) { idx[p.id] = { p: p, s: "hot" }; });
+    return idx;
+  }
+  function imgSrc(p) { return p && p.image ? (p.image.indexOf("http") === 0 ? p.image : "/" + p.image) : ""; }
+  function dayKey(offset) { return new Date(Date.now() - offset * 864e5).toISOString().slice(0, 10); }
+  function sumDays(map, days) {
+    if (!map) return 0;
+    if (!days) return Object.keys(map).reduce(function (a, k) { return a + (map[k] || 0); }, 0);
+    var t = 0; for (var i = 0; i < days; i++) t += map[dayKey(i)] || 0; return t;
+  }
+
+  function renderInterest() {
+    var st = state.stats, days = state.days;
+    if (!st) {
+      $("sViews").textContent = "—"; $("sClicks").textContent = "—"; $("sCtr").textContent = "—";
+      $("clickRank").innerHTML = ""; $("clickEmpty").hidden = false;
+      $("clickEmpty").textContent = "Contorul pornește după următoarea publicare. Primele cifre apar când cineva deschide pagina de bio.";
+      return;
+    }
+    var views = sumDays(st.views, days);
+    var idx = itemIndex();
+    var rows = (st.clicks || []).map(function (c) {
+      return { c: c, n: days ? sumDays(c.days, days) : c.total, cur: idx[c.id] };
+    }).filter(function (r) { return r.n > 0; }).sort(function (a, b) { return b.n - a.n; });
+    var clicks = rows.reduce(function (a, r) { return a + r.n; }, 0);
+    $("sViews").textContent = views; $("sClicks").textContent = clicks;
+    $("sCtr").textContent = views ? Math.round(clicks / views * 100) + "%" : "—";
+    var max = rows.length ? rows[0].n : 1;
+    $("clickRank").innerHTML = rows.slice(0, 10).map(function (r, i) {
+      var p = r.cur ? r.cur.p : null, sec = r.cur ? r.cur.s : r.c.section;
+      var title = (p && p.title) || r.c.title || r.c.id;
+      var tag = sec === "featured" ? "din clipuri" : sec === "hot" ? "automat" : "";
+      var gone = r.cur ? "" : '<span class="tag">nu mai e pe pagină</span>';
+      return '<li><span class="pos">' + (i + 1) + '</span><img src="' + esc(imgSrc(p)) + '" alt="" loading="lazy"><div style="min-width:0"><div class="name">' +
+        (p ? '<a href="' + esc(p.link) + '" target="_blank" rel="noopener">' + esc(title) + "</a>" : esc(title)) +
+        (tag ? '<span class="tag">' + tag + "</span>" : "") + gone + '</div><div class="bar"><i style="width:' + Math.max(4, Math.round(r.n / max * 100)) + '%"></i></div></div><div class="num">' +
+        r.n + "<small>" + (clicks ? Math.round(r.n / clicks * 100) : 0) + "%</small></div></li>";
+    }).join("");
+    $("clickEmpty").hidden = rows.length > 0;
+    $("clickEmpty").textContent = "Niciun click în perioada aleasă. Când cineva apasă pe un produs din pagina de bio, apare aici în cel mult un minut.";
+  }
+
+  function renderBought() {
+    var st = state.status, list = st ? (st.hot_items || []).filter(function (p) { return p.orders; }).slice() : [];
+    list.sort(function (a, b) { return b.orders - a.orders; });
+    var max = list.length ? list[0].orders : 1;
+    $("boughtRank").innerHTML = list.slice(0, 10).map(function (p, i) {
+      return '<li><span class="pos">' + (i + 1) + '</span><img src="' + esc(imgSrc(p)) + '" alt="" loading="lazy"><div style="min-width:0"><div class="name"><a href="' + esc(p.link) + '" target="_blank" rel="noopener">' + esc(p.title) +
+        '</a></div><div class="bar alt"><i style="width:' + Math.max(4, Math.round(p.orders / max * 100)) + '%"></i></div></div><div class="num">' +
+        Number(p.orders).toLocaleString("ro-RO") + "<small>" + (p.rating ? Math.round(p.rating) + "% pozitive" : "") + "</small></div></li>";
+    }).join("");
+    $("boughtEmpty").hidden = list.length > 0;
+    $("boughtEmpty").textContent = st ? "Datele de comenzi apar după următoarea rulare." : "Se încarcă…";
+  }
+
+  function renderOrders() {
+    var st = state.status, o = st && st.orders;
+    if (!o) {
+      $("oCount").textContent = "—"; $("oComm").textContent = "—"; $("ordersList").innerHTML = "";
+      $("ordersEmpty").hidden = false; $("ordersEmpty").textContent = "Apar după următoarea rulare.";
+      $("ordersPeriod").textContent = ""; return;
+    }
+    $("ordersPeriod").textContent = "ultimele " + o.days + " zile";
+    var items = o.items || [];
+    var comm = items.reduce(function (a, x) { return a + (parseFloat(x.commission) || 0); }, 0);
+    $("oCount").textContent = items.length;
+    $("oComm").textContent = items.length ? money("USD", comm) : "—";
+    $("ordersList").innerHTML = items.slice(0, 10).map(function (x, i) {
+      return '<li><span class="pos">' + (i + 1) + '</span><span></span><div style="min-width:0"><div class="name">' + esc(x.title || ("Produs " + x.product_id)) + '</div><div class="foot">' + esc(x.status || "") + (x.time ? " · " + esc(x.time) : "") +
+        '</div></div><div class="num">' + esc(x.paid || "") + "<small>" + (x.commission ? "comision " + esc(x.commission) : "") + "</small></div></li>";
+    }).join("");
+    $("ordersEmpty").hidden = items.length > 0;
+    $("ordersEmpty").textContent = o.error
+      ? "AliExpress nu dă acces aplicației tale la raportul de comenzi (" + o.error + "). Comenzile le vezi în portals.aliexpress.com → Reports."
+      : "Nicio comandă prin linkurile tale în ultimele " + o.days + " zile. Raportul AliExpress poate întârzia 1-2 zile.";
   }
 
   function renderFeed() {
@@ -437,6 +583,13 @@ tr:last-child td{border-bottom:none}
       state.tab = b.getAttribute("data-tab");
       document.querySelectorAll(".tab").forEach(function (x) { x.setAttribute("aria-selected", x === b ? "true" : "false"); });
       renderProducts();
+    });
+  });
+  document.querySelectorAll(".seg button").forEach(function (b) {
+    b.addEventListener("click", function () {
+      state.days = parseInt(b.getAttribute("data-days"), 10);
+      document.querySelectorAll(".seg button").forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+      renderInterest();
     });
   });
   $("refreshBtn").addEventListener("click", function () { state.rateLimitedUntil = Math.min(state.rateLimitedUntil, Date.now()); load(); });
