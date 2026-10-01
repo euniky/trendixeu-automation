@@ -1,9 +1,9 @@
 import { getStore } from "@netlify/blobs";
 
-export const config = { path: "/api/stats" };
+export const config = { path: ["/api/stats", "/api/stats/*"] };
 
 export default async (req) => {
-  const store = getStore("trendixeu-stats");
+  const store = getStore({ name: "trendixeu-stats", consistency: "strong" });
   const includeTest = new URL(req.url).searchParams.has("test");
 
   const { blobs: clickKeys } = await store.list({ prefix: "clicks/" });

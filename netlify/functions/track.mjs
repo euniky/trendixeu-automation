@@ -27,7 +27,7 @@ export default async (req) => {
 
   const day = new Date().toISOString().slice(0, 10);
   const cutoff = new Date(Date.now() - 90 * 864e5).toISOString().slice(0, 10);
-  const store = getStore("trendixeu-stats");
+  const store = getStore({ name: "trendixeu-stats", consistency: "strong" });
 
   if (type === "view") {
     const key = `views/${day}`;
