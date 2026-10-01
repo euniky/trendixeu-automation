@@ -64,6 +64,14 @@ jobs:
           path: public/clips/*.mp4
           retention-days: 7
 
+      - name: Previzualizari ale clipurilor (pentru verificare)
+        if: hashFiles('public/clips/sheet-*.jpg') != ''
+        run: |
+          mkdir -p /tmp/prev && cp public/clips/sheet-*.jpg /tmp/prev/
+          cd /tmp/prev && git init -q -b previews && git add . \
+            && git -c user.name=trendixeu-bot -c user.email=trendixeu-bot@users.noreply.github.com commit -qm "Previzualizari rularea ${{ github.run_number }}" \
+            && git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" previews || echo "Previzualizarile nu au putut fi salvate"
+
       - name: Salveaza jurnalul clipurilor si pastreaza programarea activa
         # GitHub opreste singur programarile zilnice dupa 60 de zile fara activitate in repo.
         run: |

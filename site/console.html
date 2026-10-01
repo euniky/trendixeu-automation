@@ -473,8 +473,9 @@ tr:last-child td{border-bottom:none}
     clipsKey = key;
     $("clipsInfo").textContent = list.length ? list.length + " clipuri · generate " + fmtDate(new Date(st.updated)) : "";
     $("clips").innerHTML = list.map(function (c, i) {
-      return '<article class="clip"><video src="/' + esc(c.file) + '" controls playsinline preload="metadata" poster=""></video><div class="body">' +
+      return '<article class="clip"><video src="/' + esc(c.file) + '" controls playsinline preload="none" poster="' + (c.poster ? "/" + esc(c.poster) : "") + '"></video><div class="body">' +
         '<h3><span class="n">#' + c.num + '</span><span>' + esc(c.title_ro) + "</span></h3>" +
+        '<div class="foot">' + (c.duration ? c.duration + " s · " : "") + (c.used_seller_video ? "filmarea vânzătorului" : "poze animate") + (c.voiced === false ? " · fără voce" : " · cu voce") + "</div>" +
         '<div class="row2"><a class="btn primary" href="/' + esc(c.file) + '" download>⬇ Descarcă</a>' +
         '<button class="btn" type="button" data-copy="ro" data-i="' + i + '">Copiază descrierea</button>' +
         '<button class="btn" type="button" data-copy="en" data-i="' + i + '">Copy (EN)</button>' +

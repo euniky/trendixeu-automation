@@ -484,7 +484,11 @@ def make_daily_clips(hot: list[dict], featured: list[dict], rates: dict, video_l
         return []
     done = {v["id"] for v in video_log}
     next_num = max([v.get("num", 0) for v in video_log] + [p.get("num", 0) for p in featured] + [0]) + 1
-    todo = [p for p in sorted(hot, key=lambda x: -(x.get("orders") or 0)) if p["id"] not in done][:CLIPS_PER_DAY]
+    # produsele cu filmare de la vanzator dau clipuri mult mai bune: au prioritate
+    fresh = [p for p in hot if p["id"] not in done]
+    with_video = sum(1 for p in fresh if p.get("video"))
+    log(f"[info] clipuri: {len(fresh)} produse noi, {with_video} cu filmare de la vanzator")
+    todo = sorted(fresh, key=lambda x: (not x.get("video"), -(x.get("orders") or 0)))[:CLIPS_PER_DAY]
     clips_dir = OUT_DIR / "clips"
     clips_dir.mkdir(parents=True, exist_ok=True)
     made = []
@@ -494,16 +498,20 @@ def make_daily_clips(hot: list[dict], featured: list[dict], rates: dict, video_l
         fname = f"trendixeu-{num}.mp4"
         try:
             t0 = time.time()
-            copy = make_clips.render_clip(p, num, to_lei(p, rates), clips_dir / fname)
+            copy = make_clips.render_clip(p, num, to_lei(p, rates), clips_dir / fname,
+                                          sheet_path=clips_dir / f"sheet-{num}.jpg",
+                                          poster_path=clips_dir / f"trendixeu-{num}.jpg")
             next_num += 1
             entry = {k: p.get(k) for k in ("id", "title", "titles", "cur", "amount", "link", "image",
                                            "orders", "rating", "kw")}
             entry.update({"num": num, "created": today, "section": "clip"})
             video_log.append(entry)
-            made.append({**copy, "num": num, "file": f"clips/{fname}", "id": p["id"], "link": p["link"],
+            made.append({**copy, "num": num, "file": f"clips/{fname}", "poster": f"clips/trendixeu-{num}.jpg",
+                         "id": p["id"], "link": p["link"],
                          "image": p["image"], "title_ro": (p.get("titles") or {}).get("ro") or p["title"]})
-            log(f"[info] clip #{num} gata in {time.time() - t0:.0f}s"
-                + (" (cu clipul vanzatorului)" if copy.get("used_seller_video") else ""))
+            log(f"[info] clip #{num} gata in {time.time() - t0:.0f}s, {copy.get('duration')}s"
+                + (", cu filmarea vanzatorului" if copy.get("used_seller_video") else ", din poze animate")
+                + (", cu voce" if copy.get("voiced") else ", FARA voce"))
         except Exception as exc:
             log(f"[warn] clip pentru {p['id']} esuat: {str(exc)[:200]}")
     if not todo:
