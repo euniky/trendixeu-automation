@@ -441,15 +441,17 @@ def proof_widget(rating: float, orders_shown: int, fill_frac: float, f) -> Image
 class Captions:
     """Subtitrari in grupuri de pana la 3 cuvinte; cuvantul rostit e galben."""
 
-    def __init__(self, words: list[tuple[float, float, str]]):
-        self.groups, cur = [], []
-        for w in words:
-            cur.append(w)
-            if len(cur) == 3 or re.search(r"[.,!?]$", w[2]):
+    def __init__(self, sentences: list[list[tuple[float, float, str]]]):
+        self.groups = []
+        for words in sentences:          # un grup nu trece niciodata dintr-o propozitie in alta
+            cur = []
+            for w in words:
+                cur.append(w)
+                if len(cur) == 3 or re.search(r"[.,!?]$", w[2]):
+                    self.groups.append(cur)
+                    cur = []
+            if cur:
                 self.groups.append(cur)
-                cur = []
-        if cur:
-            self.groups.append(cur)
         self.cache: dict = {}
 
     def render(self, gi: int, wi: int) -> Image.Image:
@@ -545,7 +547,7 @@ def render_clip(p: dict, num: int, lei: float, out_path: Path, local_images: lis
         voice = make_voice(copy["sentences"], tmp)
         scenes, total = voice["scenes"], voice["total"]
         sc = {s["kind"]: s for s in scenes}
-        caps = Captions([w for s in scenes if s["kind"] in ("name", "features", "proof") for w in s["words"]])
+        caps = Captions([s["words"] for s in scenes if s["kind"] in ("name", "features", "proof")])
 
         # ---- straturi
         hook_layer = text_box(copy["hook"], font("Bold", 96), (225, 38, 30, 240))
