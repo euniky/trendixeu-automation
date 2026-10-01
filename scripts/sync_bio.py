@@ -203,10 +203,14 @@ def main() -> None:
     if IMG_DIR.exists():
         shutil.copytree(IMG_DIR, OUT_DIR / "img")
     (OUT_DIR / "index.html").write_text(render(featured, hot), encoding="utf-8")
-    (OUT_DIR / "status.json").write_text(json.dumps({
+    status = json.dumps({
         "updated": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "featured": len(featured), "hot": len(hot), "log": LOG,
-    }, ensure_ascii=False, indent=1), encoding="utf-8")
+    }, ensure_ascii=False, indent=1)
+    (OUT_DIR / "status.json").write_text(status, encoding="utf-8")
+    run = os.environ.get("GITHUB_RUN_NUMBER")
+    if run:
+        (OUT_DIR / f"status-{run}.json").write_text(status, encoding="utf-8")
     print(f"OK — {len(featured)} produse fixe + {len(hot)} produse hot")
 
 
