@@ -2,3 +2,4 @@ public/
 __pycache__/
 node_modules/
 .netlify/
+data/.cache/

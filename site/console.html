@@ -172,7 +172,7 @@ tr:last-child td{border-bottom:none}
 
   <section class="pipe" aria-label="Etapele automatizării">
     <div class="stage" id="st1"><div class="head"><span class="dot"></span><span class="num">01</span></div><h3>Pornire GitHub Actions</h3><p class="detail">—</p></div>
-    <div class="stage" id="st2"><div class="head"><span class="dot"></span><span class="num">02</span></div><h3>AliExpress + curs valutar</h3><p class="detail">—</p></div>
+    <div class="stage" id="st2"><div class="head"><span class="dot"></span><span class="num">02</span></div><h3>AliExpress, curs și traduceri</h3><p class="detail">—</p></div>
     <div class="stage" id="st3"><div class="head"><span class="dot"></span><span class="num">03</span></div><h3>Publicare pe Netlify</h3><p class="detail">—</p></div>
     <div class="stage" id="st4"><div class="head"><span class="dot"></span><span class="num">04</span></div><h3>Pagina de bio live</h3><p class="detail">—</p></div>
   </section>
@@ -268,7 +268,7 @@ tr:last-child td{border-bottom:none}
   var API = "https://api.github.com/repos/" + REPO;
   var STEP_GROUPS = [
     ["Set up job", "Run actions/checkout@v4", "Run actions/setup-python@v5", "Instaleaza dependinte"],
-    ["Genereaza pagina de bio"],
+    ["Memoria traducerilor", "Genereaza pagina de bio"],
     ["Run actions/setup-node@v4", "Instaleaza dependintele contorului de click-uri", "Publica pe Netlify"]
   ];
   var state = { runs: [], jobs: null, jobsRunId: null, status: null, stats: null, lastFetch: null, rateLimitedUntil: 0, tab: "hot", days: 7 };
@@ -452,6 +452,7 @@ tr:last-child td{border-bottom:none}
     (st.hot_items || []).forEach(function (p) { idx[p.id] = { p: p, s: "hot" }; });
     return idx;
   }
+  function roTitle(p) { return p ? ((p.titles && p.titles.ro) || p.title || "") : ""; }
   function imgSrc(p) { return p && p.image ? (p.image.indexOf("http") === 0 ? p.image : "/" + p.image) : ""; }
   function dayKey(offset) { return new Date(Date.now() - offset * 864e5).toISOString().slice(0, 10); }
   function sumDays(map, days) {
@@ -479,7 +480,7 @@ tr:last-child td{border-bottom:none}
     var max = rows.length ? rows[0].n : 1;
     $("clickRank").innerHTML = rows.slice(0, 10).map(function (r, i) {
       var p = r.cur ? r.cur.p : null, sec = r.cur ? r.cur.s : r.c.section;
-      var title = (p && p.title) || r.c.title || r.c.id;
+      var title = roTitle(p) || r.c.title || r.c.id;
       var tag = sec === "featured" ? "din clipuri" : sec === "hot" ? "automat" : "";
       var gone = r.cur ? "" : '<span class="tag">nu mai e pe pagină</span>';
       return '<li><span class="pos">' + (i + 1) + '</span><img src="' + esc(imgSrc(p)) + '" alt="" loading="lazy"><div style="min-width:0"><div class="name">' +
@@ -496,7 +497,7 @@ tr:last-child td{border-bottom:none}
     list.sort(function (a, b) { return b.orders - a.orders; });
     var max = list.length ? list[0].orders : 1;
     $("boughtRank").innerHTML = list.slice(0, 10).map(function (p, i) {
-      return '<li><span class="pos">' + (i + 1) + '</span><img src="' + esc(imgSrc(p)) + '" alt="" loading="lazy"><div style="min-width:0"><div class="name"><a href="' + esc(p.link) + '" target="_blank" rel="noopener">' + esc(p.title) +
+      return '<li><span class="pos">' + (i + 1) + '</span><img src="' + esc(imgSrc(p)) + '" alt="" loading="lazy"><div style="min-width:0"><div class="name"><a href="' + esc(p.link) + '" target="_blank" rel="noopener" title="' + esc(p.title) + '">' + esc(roTitle(p)) +
         '</a></div><div class="bar alt"><i style="width:' + Math.max(4, Math.round(p.orders / max * 100)) + '%"></i></div></div><div class="num">' +
         Number(p.orders).toLocaleString("ro-RO") + "<small>" + (p.rating ? Math.round(p.rating) + "% pozitive" : "") + "</small></div></li>";
     }).join("");
@@ -568,7 +569,7 @@ tr:last-child td{border-bottom:none}
     $("tabFeatured").textContent = "Din clipuri" + (st ? " (" + st.featured + ")" : "");
     $("products").innerHTML = list.map(function (p) {
       var img = p.image && p.image.indexOf("http") !== 0 ? "/" + p.image : p.image;
-      return '<a class="prod" href="' + esc(p.link) + '" target="_blank" rel="noopener"><img src="' + esc(img) + '" alt="" loading="lazy"><div style="min-width:0"><div class="pt">' + esc(p.title) + '</div><div class="pp">' + esc(money(p.cur, p.amount)) + "</div>" + (p.meta ? '<div class="pm">' + esc(p.meta) + "</div>" : "") + "</div></a>";
+      return '<a class="prod" href="' + esc(p.link) + '" target="_blank" rel="noopener"><img src="' + esc(img) + '" alt="" loading="lazy"><div style="min-width:0"><div class="pt" title="' + esc(p.title) + '">' + esc(roTitle(p)) + '</div><div class="pp">' + esc(money(p.cur, p.amount)) + "</div>" + (p.meta ? '<div class="pm">' + esc(p.meta) + "</div>" : "") + "</div></a>";
     }).join("");
     $("productsEmpty").hidden = list.length > 0;
     $("productsEmpty").textContent = st ? "Niciun produs în această categorie la ultima rulare." : "Se încarcă produsele…";

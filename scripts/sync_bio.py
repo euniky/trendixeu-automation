@@ -174,6 +174,78 @@ def fetch_orders(days: int = 30) -> dict:
     return {"days": days, "items": orders, "error": error if not orders else None}
 
 
+LANGS = ["ro", "en", "it", "de", "fr", "es"]
+CACHE_PATH = ROOT / "data" / ".cache" / "translations.json"
+TRANSLATE_BUDGET = 4500  # caractere/zi (limita gratuita MyMemory e ~5000)
+_tr_cache: dict = {}
+_tr_used = 0
+_tr_stats = {"cache": 0, "new": 0, "failed": 0, "skipped": 0}
+
+
+def load_tr_cache() -> None:
+    global _tr_cache
+    try:
+        _tr_cache = json.loads(CACHE_PATH.read_text(encoding="utf-8"))
+    except Exception:
+        _tr_cache = {}
+
+
+def save_tr_cache() -> None:
+    CACHE_PATH.parent.mkdir(parents=True, exist_ok=True)
+    CACHE_PATH.write_text(json.dumps(_tr_cache, ensure_ascii=False), encoding="utf-8")
+
+
+def short_title(t: str) -> str:
+    """Titlurile AliExpress sunt pline de cuvinte-cheie: pastram partea principala."""
+    t = " ".join(str(t).split())
+    head = t.split(",")[0].strip()
+    if len(head) < 18:
+        head = t
+    if len(head) > 70:
+        head = head[:70].rsplit(" ", 1)[0]
+    return head
+
+
+def translate(text: str, src: str, tgt: str) -> str | None:
+    global _tr_used
+    if src == tgt or not text:
+        return text
+    key = f"{src}|{tgt}|{text}"
+    if key in _tr_cache:
+        _tr_stats["cache"] += 1
+        return _tr_cache[key]
+    if _tr_used + len(text) > TRANSLATE_BUDGET:
+        _tr_stats["skipped"] += 1
+        return None
+    try:
+        r = requests.get("https://api.mymemory.translated.net/get",
+                         params={"q": text, "langpair": f"{src}|{tgt}"}, timeout=20)
+        _tr_used += len(text)
+        data = r.json()
+        out = ((data.get("responseData") or {}).get("translatedText") or "").strip()
+        if str(data.get("responseStatus")) != "200" or not out or "MYMEMORY WARNING" in out.upper():
+            _tr_stats["failed"] += 1
+            return None
+        out = html.unescape(out)
+        out = out[:1].upper() + out[1:]
+        _tr_cache[key] = out
+        _tr_stats["new"] += 1
+        return out
+    except Exception:
+        _tr_stats["failed"] += 1
+        return None
+
+
+def localize(items: list[dict], src: str) -> None:
+    for p in items:
+        base = short_title(p["title"]) if src == "en" else p["title"]
+        titles = {src: base}
+        for lang in LANGS:
+            if lang != src:
+                titles[lang] = translate(base, src, lang) or (titles.get("en") or base)
+        p["titles"] = titles
+
+
 FALLBACK_RATES = {"EUR": 1.0, "RON": 4.97}
 
 
@@ -211,24 +283,30 @@ def lei_text(p: dict, rates: dict) -> str:
 
 def card_html(p: dict, rates: dict) -> str:
     e = html.escape
-    meta = f'<p class="meta">{e(p["meta"])}</p>' if p.get("meta") else ""
+    t = p.get("titles") or {}
+    title_ro = t.get("ro") or p["title"]
+    meta = ""
+    if p.get("orders"):
+        meta = (f'<p class="meta" data-r="{p.get("rating", 0):.0f}" data-o="{p["orders"]}">'
+                f'{p.get("rating", 0):.0f}% recenzii pozitive · {p["orders"]}+ comenzi</p>')
     return f"""
-  <a class="card" href="{e(p['link'])}" target="_blank" rel="noopener" data-id="{e(p.get('id', ''))}" data-s="{e(p.get('section', ''))}" data-title="{e(p['title'][:120])}">
+  <a class="card" href="{e(p['link'])}" target="_blank" rel="noopener" data-id="{e(p.get('id', ''))}" data-s="{e(p.get('section', ''))}" data-title="{e(title_ro[:120])}">
     <img class="thumb" src="{e(p['image'])}" alt="" loading="lazy">
     <div class="info">
-      <p class="title">{e(p['title'])}</p>
+      <p class="title" data-tid="{e(p.get('id', ''))}">{e(title_ro)}</p>
       {meta}
-      <div class="row"><span class="price" data-cur="{p['cur']}" data-amount="{p['amount']}">{lei_text(p, rates)}</span><span class="buy">Cumpără · Buy</span></div>
+      <div class="row"><span class="price" data-cur="{p['cur']}" data-amount="{p['amount']}">{lei_text(p, rates)}</span><span class="buy" data-i18n="buy">Cumpără</span></div>
     </div>
   </a>"""
 
 
 def render(featured: list[dict], hot: list[dict], rates: dict) -> str:
+    titles_json = json.dumps({p.get("id"): p.get("titles", {}) for p in featured + hot}, ensure_ascii=False).replace("</", "<\\/")
     now = datetime.now(timezone(timedelta(hours=3))).strftime("%d.%m.%Y")
     hot_section = ""
     if hot:
         hot_section = f"""
-  <h2 class="section-title">Hot deals · actualizat {now}</h2>
+  <h2 class="section-title" data-i18n="hot" data-date="{datetime.now(timezone.utc).date().isoformat()}">Oferte noi · actualizat {now}</h2>
   {''.join(card_html(p, rates) for p in hot)}"""
     return f"""<!DOCTYPE html>
 <html lang="ro">
@@ -238,6 +316,7 @@ def render(featured: list[dict], hot: list[dict], rates: dict) -> str:
 <title>@trendixeu — Oferte zilnice / Daily deals</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 <script src="/track.js" defer></script>
+<script src="/i18n.js" defer></script>
 <style>
 :root{{--bg:#121016;--bg2:#221a2c;--card:#1e1c26;--text:#f5f3f0;--muted:#a9a5b3;--hot:#ff5a3c;--gold:#ffd166;}}
 *{{box-sizing:border-box;margin:0;padding:0;}}
@@ -261,11 +340,14 @@ h1{{font-family:'Space Grotesk',sans-serif;font-size:22px;text-align:center;marg
 <div class="wrap">
   <div class="avatar">TX</div>
   <h1>@trendixeu</h1>
-  <p class="tag">Oferte zilnice · Daily deals</p>
-  <h2 class="section-title">Din clipurile mele</h2>
+  <p class="tag" data-i18n="tag">Oferte zilnice</p>
+  <h2 class="section-title" data-i18n="featured">Din clipurile mele</h2>
   {''.join(card_html(p, rates) for p in featured)}
   {hot_section}
 </div>
+<script>
+window.TX_TITLES = {titles_json};
+</script>
 <script>
 window.RATES = {json.dumps(rates)};
 (function () {{
@@ -346,14 +428,25 @@ def main() -> None:
     except Exception as exc:  # nu opri publicarea produselor fixe daca API-ul pica
         log(f"[warn] nu am putut lua produsele hot: {exc}")
 
+    load_tr_cache()
+    localize(featured, "ro")
+    localize(hot, "en")
+    save_tr_cache()
+    st = _tr_stats
+    level = "warn" if st["failed"] or st["skipped"] else "info"
+    log(f"[{level}] traduceri: {st['new']} noi, {st['cache']} din memorie"
+        + (f", {st['failed']} esuate" if st["failed"] else "")
+        + (f", {st['skipped']} amanate (limita zilnica)" if st["skipped"] else ""))
+
     if OUT_DIR.exists():
         shutil.rmtree(OUT_DIR)
     OUT_DIR.mkdir()
     if IMG_DIR.exists():
         shutil.copytree(IMG_DIR, OUT_DIR / "img")
     (OUT_DIR / "index.html").write_text(render(featured, hot, rates), encoding="utf-8")
-    if (ROOT / "site" / "track.js").exists():
-        shutil.copy(ROOT / "site" / "track.js", OUT_DIR / "track.js")
+    for static in ("track.js", "i18n.js"):
+        if (ROOT / "site" / static).exists():
+            shutil.copy(ROOT / "site" / static, OUT_DIR / static)
     console_src = ROOT / "site" / "console.html"
     if console_src.exists():
         (OUT_DIR / "console").mkdir()
@@ -368,8 +461,8 @@ def main() -> None:
         "rates": {k: rates[k] for k in ("RON", "USD", "GBP", "PLN") if k in rates},
         "filters": {"min_rating_percent": MIN_RATING_PERCENT, "min_orders": MIN_ORDERS,
                     "max_hot": MAX_HOT_PRODUCTS, "ship_to": SHIP_TO, "keywords": KEYWORDS},
-        "featured_items": [{k: p.get(k) for k in ("id", "title", "cur", "amount", "link", "image")} for p in featured],
-        "hot_items": [{k: p.get(k) for k in ("id", "title", "cur", "amount", "link", "image", "meta", "orders", "rating")} for p in hot],
+        "featured_items": [{k: p.get(k) for k in ("id", "title", "titles", "cur", "amount", "link", "image")} for p in featured],
+        "hot_items": [{k: p.get(k) for k in ("id", "title", "titles", "cur", "amount", "link", "image", "meta", "orders", "rating")} for p in hot],
         "orders": orders,
         "log": LOG,
     }, ensure_ascii=False, indent=1)
