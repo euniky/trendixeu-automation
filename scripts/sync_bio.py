@@ -24,6 +24,12 @@ IMG_DIR = ROOT / "data" / "img"
 OUT_DIR = ROOT / "public"
 
 API_URL = "https://api-sg.aliexpress.com/sync"
+LOG: list[str] = []
+
+
+def log(msg: str) -> None:
+    print(msg, file=sys.stderr)
+    LOG.append(msg)
 
 # ---- reguli de filtrare pentru produsele "hot" ----
 MIN_RATING_PERCENT = 90   # evaluate_rate minim (ex. "95.2%")
@@ -74,11 +80,13 @@ def fetch_hot_products() -> list[dict]:
             "tracking_id": tracking_id,
         })
         resp = data.get("aliexpress_affiliate_hotproduct_query_response", {}).get("resp_result", {})
+        if not resp:
+            log(f"[warn] raspuns neasteptat: {str(data)[:300]}")
         if str(resp.get("resp_code")) != "200":
-            print(f"[warn] '{kw}': {resp.get('resp_msg')}", file=sys.stderr)
+            log(f"[warn] '{kw}': {resp.get('resp_code')} {resp.get('resp_msg')}")
             continue
         products = (resp.get("result") or {}).get("products", {}).get("product", []) or []
-        print(f"[info] '{kw}': {len(products)} produse primite")
+        log(f"[info] '{kw}': {len(products)} produse primite")
         for p in products:
             pid = p.get("product_id")
             if pid in seen or not p.get("promotion_link"):
@@ -167,7 +175,7 @@ def main() -> None:
     try:
         hot = fetch_hot_products()
     except Exception as exc:  # nu opri publicarea produselor fixe daca API-ul pica
-        print(f"[warn] nu am putut lua produsele hot: {exc}", file=sys.stderr)
+        log(f"[warn] nu am putut lua produsele hot: {exc}")
 
     if OUT_DIR.exists():
         shutil.rmtree(OUT_DIR)
@@ -175,6 +183,10 @@ def main() -> None:
     if IMG_DIR.exists():
         shutil.copytree(IMG_DIR, OUT_DIR / "img")
     (OUT_DIR / "index.html").write_text(render(featured, hot), encoding="utf-8")
+    (OUT_DIR / "status.json").write_text(json.dumps({
+        "updated": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "featured": len(featured), "hot": len(hot), "log": LOG,
+    }, ensure_ascii=False, indent=1), encoding="utf-8")
     print(f"OK — {len(featured)} produse fixe + {len(hot)} produse hot")
 
 
