@@ -98,7 +98,7 @@ def build_copy(p: dict, num: int, lei: float) -> dict:
     name_en = titles.get("en") or p["title"]
     lei_txt = f"{lei:.0f}" if lei >= 10 else f"{lei:.2f}".replace(".", ",")
 
-    if lei < 40:
+    if round(lei) < 40:
         hook_ro, hook_en = f"Doar {lei_txt} lei?!", f"Only {lei_txt} lei?!"
     elif orders >= 5000:
         hook_ro, hook_en = f"{fmt_int(orders)}+ oameni l-au comandat", f"{fmt_int(orders)}+ people ordered this"

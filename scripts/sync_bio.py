@@ -137,8 +137,6 @@ def fetch_hot_products() -> list[dict]:
                 "id": f"p{pid}",
                 "section": "hot",
                 "orders": orders,
-        "clips": clips,
-        "clip_products": [{k: v.get(k) for k in ("num", "id", "title", "titles", "created", "link", "image")} for v in clip_items],
                 "rating": rating,
                 "title": p.get("product_title", "Produs")[:90],
                 "cur": "EUR",
