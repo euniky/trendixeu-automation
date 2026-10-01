@@ -15,6 +15,7 @@ jobs:
     timeout-minutes: 30
     permissions:
       contents: write
+      actions: read
     steps:
       - uses: actions/checkout@v4
 
@@ -42,6 +43,7 @@ jobs:
           ALI_APP_SECRET: ${{ secrets.ALI_APP_SECRET }}
           ALI_TRACKING_ID: ${{ secrets.ALI_TRACKING_ID }}
           CLIPS_PER_DAY: ${{ github.event.inputs.clips || '3' }}
+          GH_TOKEN: ${{ github.token }}
         run: python scripts/sync_bio.py
 
       - uses: actions/setup-node@v4

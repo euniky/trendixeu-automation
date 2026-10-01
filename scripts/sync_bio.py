@@ -12,6 +12,7 @@ import json
 import os
 import re
 import shutil
+import subprocess
 import sys
 import tempfile
 import time
@@ -517,75 +518,122 @@ def recover_clips(video_log: list[dict]) -> None:
         log(f"[info] clipuri: am recuperat {fixed} fișiere/descrieri de pe site")
 
 
+def recover_from_artifacts(missing: set[int]) -> int:
+    """Descarca clipurile lipsa din copiile de rezerva GitHub (ultimele 7 zile)."""
+    token, repo = os.environ.get("GH_TOKEN"), os.environ.get("GITHUB_REPOSITORY")
+    if not (token and repo and missing):
+        return 0
+    import io
+    import zipfile
+    hdr = {"Authorization": f"Bearer {token}", "Accept": "application/vnd.github+json"}
+    got = 0
+    try:
+        arts = requests.get(f"https://api.github.com/repos/{repo}/actions/artifacts?per_page=50", headers=hdr, timeout=30).json()
+        for a in arts.get("artifacts", []):
+            if not missing or a.get("expired") or not a["name"].startswith("clipuri-"):
+                continue
+            z = requests.get(a["archive_download_url"], headers=hdr, timeout=120)
+            if not z.ok:
+                continue
+            with zipfile.ZipFile(io.BytesIO(z.content)) as zf:
+                for name in zf.namelist():
+                    m = re.match(r"(?:.*/)?trendixeu-(\d+)\.mp4$", name)
+                    if m and int(m.group(1)) in missing:
+                        (CLIP_CACHE / f"trendixeu-{m.group(1)}.mp4").write_bytes(zf.read(name))
+                        missing.discard(int(m.group(1)))
+                        got += 1
+    except Exception as exc:
+        log(f"[warn] recuperare din copiile de rezerva: {str(exc)[:120]}")
+    return got
+
+
 def make_daily_clips(hot: list[dict], featured: list[dict], rates: dict, video_log: list[dict]) -> list[dict]:
-    """Alege produse noi (fara clip pana acum), randeaza clipurile, le trece in jurnal."""
-    if CLIPS_PER_DAY <= 0 or not shutil.which("ffmpeg"):
-        log("[warn] clipuri: ffmpeg lipseste sau generarea e oprita")
-        return []
+    """Recupereaza clipurile recente, randeaza clipuri noi, intoarce lista pentru consola."""
+    clips_dir = OUT_DIR / "clips"
+    clips_dir.mkdir(parents=True, exist_ok=True)
+    CLIP_CACHE.mkdir(parents=True, exist_ok=True)
+    today = datetime.now(timezone.utc).date().isoformat()
+    keep_from = (datetime.now(timezone.utc) - timedelta(days=CLIP_FILES_DAYS)).date().isoformat()
+
     try:
         import make_clips
     except Exception as exc:
         log(f"[warn] clipuri: nu pot incarca generatorul ({exc})")
-        return []
+        make_clips = None
+
+    # --- 1. recuperare: clipurile din ultimele zile trebuie sa ramana in consola
     recover_clips(video_log)
+    missing = {v["num"] for v in video_log if v.get("created", "") >= keep_from
+               and not (CLIP_CACHE / f"trendixeu-{v['num']}.mp4").exists()}
+    if missing and recover_from_artifacts(missing):
+        log("[info] clipuri: recuperate din copiile de rezerva GitHub")
+    for v in video_log:
+        if v.get("created", "") < keep_from:
+            continue
+        mp4, jpg = CLIP_CACHE / f"trendixeu-{v['num']}.mp4", CLIP_CACHE / f"trendixeu-{v['num']}.jpg"
+        if mp4.exists() and not jpg.exists():
+            subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", "3", "-i", str(mp4), "-frames:v", "1",
+                            "-vf", "scale=540:960", str(jpg)], capture_output=True)
+        if not v.get("clip") and make_clips is not None and mp4.exists():
+            info = make_clips.build_copy(v, v["num"], to_lei(normalize_price(dict(v)), rates))
+            info.pop("sentences", None)
+            v["clip"] = {**info, "num": v["num"], "file": f"clips/trendixeu-{v['num']}.mp4",
+                         "poster": f"clips/trendixeu-{v['num']}.jpg", "created": v.get("created"),
+                         "id": v["id"], "link": v["link"], "image": v.get("image"),
+                         "title_ro": (v.get("titles") or {}).get("ro") or v["title"]}
+
+    # --- 2. clipuri noi
     check_voice()
-    done = {v["id"] for v in video_log}
-    next_num = max([v.get("num", 0) for v in video_log] + [p.get("num", 0) for p in featured] + [0]) + 1
-    # produsele cu filmare de la vanzator dau clipuri mult mai bune: au prioritate
-    fresh = [p for p in hot if p["id"] not in done]
-    with_video = sum(1 for p in fresh if p.get("video"))
-    log(f"[info] clipuri: {len(fresh)} produse noi, {with_video} cu filmare de la vanzator")
-    todo = sorted(fresh, key=lambda x: (not x.get("video"), -(x.get("orders") or 0)))[:CLIPS_PER_DAY]
-    clips_dir = OUT_DIR / "clips"
-    clips_dir.mkdir(parents=True, exist_ok=True)
-    made = []
-    today = datetime.now(timezone.utc).date().isoformat()
-    for p in todo:
-        num = next_num
-        fname = f"trendixeu-{num}.mp4"
-        try:
-            t0 = time.time()
-            copy = make_clips.render_clip(p, num, to_lei(p, rates), clips_dir / fname,
-                                          sheet_path=clips_dir / f"sheet-{num}.jpg",
-                                          poster_path=clips_dir / f"trendixeu-{num}.jpg")
-            next_num += 1
-            entry = {k: p.get(k) for k in ("id", "title", "titles", "cur", "amount", "link", "image",
-                                           "orders", "rating", "kw")}
-            entry.update({"num": num, "created": today, "section": "clip"})
-            clip_info = {**copy, "num": num, "file": f"clips/{fname}", "poster": f"clips/trendixeu-{num}.jpg",
-                         "created": today, "id": p["id"], "link": p["link"],
-                         "image": p["image"], "title_ro": (p.get("titles") or {}).get("ro") or p["title"]}
-            entry["clip"] = clip_info
-            video_log.append(entry)
-            made.append(clip_info)
-            CLIP_CACHE.mkdir(parents=True, exist_ok=True)
-            for f in (fname, f"trendixeu-{num}.jpg"):
-                if (clips_dir / f).exists():
-                    shutil.copy(clips_dir / f, CLIP_CACHE / f)
-            log(f"[info] clip #{num} gata in {time.time() - t0:.0f}s, {copy.get('duration')}s"
-                + (", cu filmarea vanzatorului" if copy.get("used_seller_video") else ", din poze animate")
-                + (", cu voce" if copy.get("voiced") else ", FARA voce"))
-        except Exception as exc:
-            log(f"[warn] clip pentru {p['id']} esuat: {str(exc)[:200]}")
-    if not todo:
-        log("[info] clipuri: niciun produs nou azi (toate au deja clip)")
-    # clipurile din ultimele zile raman disponibile in consola
-    keep_from = (datetime.now(timezone.utc) - timedelta(days=CLIP_FILES_DAYS)).date().isoformat()
+    if make_clips is not None and CLIPS_PER_DAY > 0 and shutil.which("ffmpeg"):
+        done = {v["id"] for v in video_log}
+        next_num = max([v.get("num", 0) for v in video_log] + [p.get("num", 0) for p in featured] + [0]) + 1
+        fresh = [p for p in hot if p["id"] not in done]
+        with_video = sum(1 for p in fresh if p.get("video"))
+        log(f"[info] clipuri: {len(fresh)} produse noi, {with_video} cu filmare de la vanzator")
+        todo = sorted(fresh, key=lambda x: (not x.get("video"), -(x.get("orders") or 0)))[:CLIPS_PER_DAY]
+        for p in todo:
+            num = next_num
+            fname = f"trendixeu-{num}.mp4"
+            try:
+                t0 = time.time()
+                copy = make_clips.render_clip(p, num, to_lei(p, rates), clips_dir / fname,
+                                              sheet_path=clips_dir / f"sheet-{num}.jpg",
+                                              poster_path=clips_dir / f"trendixeu-{num}.jpg")
+                next_num += 1
+                entry = {k: p.get(k) for k in ("id", "title", "titles", "cur", "amount", "link", "image",
+                                               "orders", "rating", "kw")}
+                entry.update({"num": num, "created": today, "section": "clip"})
+                entry["clip"] = {**copy, "num": num, "file": f"clips/{fname}", "poster": f"clips/trendixeu-{num}.jpg",
+                                 "created": today, "id": p["id"], "link": p["link"], "image": p["image"],
+                                 "title_ro": (p.get("titles") or {}).get("ro") or p["title"]}
+                video_log.append(entry)
+                for f in (fname, f"trendixeu-{num}.jpg"):
+                    if (clips_dir / f).exists():
+                        shutil.copy(clips_dir / f, CLIP_CACHE / f)
+                log(f"[info] clip #{num} gata in {time.time() - t0:.0f}s, {copy.get('duration')}s"
+                    + (", cu filmarea vanzatorului" if copy.get("used_seller_video") else ", din poze animate")
+                    + (", cu voce" if copy.get("voiced") else ", FARA voce"))
+            except Exception as exc:
+                log(f"[warn] clip pentru {p['id']} esuat: {str(exc)[:200]}")
+        if not todo:
+            log("[info] clipuri: niciun produs nou azi (toate au deja clip)")
+    elif CLIPS_PER_DAY > 0:
+        log("[warn] clipuri: ffmpeg lipseste")
+
+    # --- 3. publicare: clipurile din ultimele 7 zile
     keep = {v["num"] for v in video_log if v.get("created", "") >= keep_from}
-    if CLIP_CACHE.exists():
-        for f in CLIP_CACHE.iterdir():
-            m = re.match(r"trendixeu-(\d+)\.(mp4|jpg)$", f.name)
-            if not m:
-                continue
-            if int(m.group(1)) in keep:
-                if not (clips_dir / f.name).exists():
-                    shutil.copy(f, clips_dir / f.name)
-            else:
-                f.unlink()
+    for f in CLIP_CACHE.iterdir():
+        m = re.match(r"trendixeu-(\d+)\.(mp4|jpg)$", f.name)
+        if not m:
+            continue
+        if int(m.group(1)) in keep:
+            if not (clips_dir / f.name).exists():
+                shutil.copy(f, clips_dir / f.name)
+        else:
+            f.unlink()
     VIDEO_LOG_PATH.write_text(json.dumps(video_log, ensure_ascii=False, indent=1), encoding="utf-8")
-    recent = [v["clip"] for v in reversed(video_log)
-              if v.get("clip") and v["num"] in keep and (clips_dir / f"trendixeu-{v['num']}.mp4").exists()]
-    return recent
+    return [v["clip"] for v in reversed(video_log)
+            if v.get("clip") and v["num"] in keep and (clips_dir / f"trendixeu-{v['num']}.mp4").exists()]
 
 
 def main() -> None:
