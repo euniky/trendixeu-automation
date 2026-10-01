@@ -118,7 +118,8 @@ def fetch_hot_products() -> list[dict]:
             seen.add(pid)
             picked.append({
                 "title": p.get("product_title", "Produs")[:90],
-                "price": f"€ {p.get('target_sale_price') or p.get('sale_price', '?')}",
+                "cur": "EUR",
+                "amount": float(p.get("target_sale_price") or p.get("sale_price") or 0),
                 "link": p["promotion_link"],
                 "image": p.get("product_main_image_url", ""),
                 "meta": f"{rating:.0f}% recenzii pozitive · {orders}+ comenzi",
@@ -128,7 +129,40 @@ def fetch_hot_products() -> list[dict]:
     return picked
 
 
-def card_html(p: dict) -> str:
+FALLBACK_RATES = {"EUR": 1.0, "RON": 4.97}
+
+
+def get_rates() -> dict:
+    """Cursuri BCE, baza EUR (ex. {"RON": 4.97, "USD": 1.08, ...})."""
+    try:
+        r = requests.get("https://api.frankfurter.app/latest", params={"from": "EUR"}, timeout=20)
+        r.raise_for_status()
+        rates = {"EUR": 1.0, **r.json()["rates"]}
+        log(f"[info] curs BCE: 1 EUR = {rates.get('RON')} RON")
+        return rates
+    except Exception as exc:
+        log(f"[warn] nu am putut lua cursul valutar, folosesc rezerva: {exc}")
+        return dict(FALLBACK_RATES)
+
+
+def normalize_price(p: dict) -> dict:
+    """Produsele fixe au pretul ca text ("RON 386.51") -> moneda + suma."""
+    if "cur" not in p:
+        cur, _, amt = str(p.get("price", "")).partition(" ")
+        p["cur"] = cur or "RON"
+        p["amount"] = float(amt.replace(",", ".") or 0)
+    return p
+
+
+def lei_text(p: dict, rates: dict) -> str:
+    """Textul afisat fara JavaScript: in lei."""
+    if p["cur"] == "RON":
+        return f"{p['amount']:.2f}".replace(".", ",") + " lei"
+    ron = p["amount"] / rates.get(p["cur"], 1) * rates.get("RON", 4.97)
+    return "≈ " + f"{ron:.2f}".replace(".", ",") + " lei"
+
+
+def card_html(p: dict, rates: dict) -> str:
     e = html.escape
     meta = f'<p class="meta">{e(p["meta"])}</p>' if p.get("meta") else ""
     return f"""
@@ -137,18 +171,18 @@ def card_html(p: dict) -> str:
     <div class="info">
       <p class="title">{e(p['title'])}</p>
       {meta}
-      <div class="row"><span class="price">{e(p['price'])}</span><span class="buy">Cumpără · Buy</span></div>
+      <div class="row"><span class="price" data-cur="{p['cur']}" data-amount="{p['amount']}">{lei_text(p, rates)}</span><span class="buy">Cumpără · Buy</span></div>
     </div>
   </a>"""
 
 
-def render(featured: list[dict], hot: list[dict]) -> str:
+def render(featured: list[dict], hot: list[dict], rates: dict) -> str:
     now = datetime.now(timezone(timedelta(hours=3))).strftime("%d.%m.%Y")
     hot_section = ""
     if hot:
         hot_section = f"""
   <h2 class="section-title">Hot deals · actualizat {now}</h2>
-  {''.join(card_html(p) for p in hot)}"""
+  {''.join(card_html(p, rates) for p in hot)}"""
     return f"""<!DOCTYPE html>
 <html lang="ro">
 <head>
@@ -181,16 +215,77 @@ h1{{font-family:'Space Grotesk',sans-serif;font-size:22px;text-align:center;marg
   <h1>@trendixeu</h1>
   <p class="tag">Oferte zilnice · Daily deals</p>
   <h2 class="section-title">Din clipurile mele</h2>
-  {''.join(card_html(p) for p in featured)}
+  {''.join(card_html(p, rates) for p in featured)}
   {hot_section}
 </div>
+<script>
+window.RATES = {json.dumps(rates)};
+(function () {{
+  var TZ = {{
+    "Europe/Bucharest": "RON", "Europe/London": "GBP", "Europe/Dublin": "EUR",
+    "Europe/Warsaw": "PLN", "Europe/Budapest": "HUF", "Europe/Prague": "CZK",
+    "Europe/Zurich": "CHF", "Europe/Stockholm": "SEK", "Europe/Copenhagen": "DKK",
+    "Europe/Oslo": "NOK", "Europe/Istanbul": "TRY", "Asia/Tokyo": "JPY",
+    "America/Toronto": "CAD", "America/Vancouver": "CAD", "America/Montreal": "CAD"
+  }};
+  var REGION = {{
+    RO: "RON", GB: "GBP", US: "USD", PL: "PLN", HU: "HUF", CZ: "CZK", CH: "CHF",
+    SE: "SEK", DK: "DKK", NO: "NOK", TR: "TRY", CA: "CAD", AU: "AUD", JP: "JPY",
+    IN: "INR", BR: "BRL", MX: "MXN", NZ: "NZD", IL: "ILS", KR: "KRW", ZA: "ZAR"
+  }};
+  function fromTimezone() {{
+    try {{
+      var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || "";
+      if (TZ[tz]) return TZ[tz];
+      if (tz.indexOf("Australia/") === 0) return "AUD";
+      if (tz.indexOf("America/") === 0 && tz.indexOf("America/Argentina") !== 0 && tz.indexOf("America/Sao_Paulo") !== 0 && tz.indexOf("America/Mexico") !== 0) return "USD";
+      if (tz.indexOf("Europe/") === 0) return "EUR";
+    }} catch (e) {{}}
+    return null;
+  }}
+  function fromLanguage() {{
+    var langs = navigator.languages || [navigator.language || ""];
+    for (var i = 0; i < langs.length; i++) {{
+      var l = String(langs[i]);
+      var m = l.match(/[-_]([A-Za-z]{{2}})$/);
+      if (m && REGION[m[1].toUpperCase()]) return REGION[m[1].toUpperCase()];
+      if (l.toLowerCase().indexOf("ro") === 0) return "RON";
+    }}
+    return null;
+  }}
+  var cur = fromTimezone() || fromLanguage() || "EUR";
+  var R = window.RATES || {{}};
+  if (!R[cur]) cur = "EUR";
+  var locale = (navigator.languages && navigator.languages[0]) || navigator.language || "ro-RO";
+  if (/^(ar|he|fa|ur)/i.test(locale)) locale = "en-GB";
+  var fmt;
+  if (cur === "RON") {{
+    var nf = new Intl.NumberFormat("ro-RO", {{ minimumFractionDigits: 2, maximumFractionDigits: 2 }});
+    fmt = {{ format: function (v) {{ return nf.format(v) + " lei"; }} }};
+  }} else {{
+    try {{ fmt = new Intl.NumberFormat(locale, {{ style: "currency", currency: cur, currencyDisplay: "narrowSymbol" }}); }}
+    catch (e) {{
+      try {{ fmt = new Intl.NumberFormat(locale, {{ style: "currency", currency: cur }}); }}
+      catch (e2) {{ fmt = {{ format: function (v) {{ return v.toFixed(2) + " " + cur; }} }}; }}
+    }}
+  }}
+  var els = document.querySelectorAll(".price[data-cur]");
+  for (var i = 0; i < els.length; i++) {{
+    var el = els[i], src = el.getAttribute("data-cur"), amt = parseFloat(el.getAttribute("data-amount"));
+    if (!R[src] || isNaN(amt)) continue;
+    var v = src === cur ? amt : amt / R[src] * R[cur];
+    el.textContent = (src === cur ? "" : "≈ ") + fmt.format(v);
+  }}
+}})();
+</script>
 </body>
 </html>
 """
 
 
 def main() -> None:
-    featured = json.loads(FEATURED_PATH.read_text(encoding="utf-8"))
+    featured = [normalize_price(p) for p in json.loads(FEATURED_PATH.read_text(encoding="utf-8"))]
+    rates = get_rates()
     hot = []
     try:
         hot = fetch_hot_products()
@@ -202,7 +297,7 @@ def main() -> None:
     OUT_DIR.mkdir()
     if IMG_DIR.exists():
         shutil.copytree(IMG_DIR, OUT_DIR / "img")
-    (OUT_DIR / "index.html").write_text(render(featured, hot), encoding="utf-8")
+    (OUT_DIR / "index.html").write_text(render(featured, hot, rates), encoding="utf-8")
     status = json.dumps({
         "updated": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "featured": len(featured), "hot": len(hot), "log": LOG,
