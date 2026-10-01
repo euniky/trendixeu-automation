@@ -62,12 +62,12 @@ FEATURES = [
     (r"multi[- ]?function", "Multifuncțional", "Multi-functional"),
 ]
 
-HASHTAGS_BASE = ["aliexpressfinds", "tiktokmademebuyit", "oferte", "reduceri", "romania", "gadgets", "fyp"]
+HASHTAGS_BASE = ["aliexpressfinds", "tiktokmademebuyit", "oferte", "reduceri", "romania", "fyp"]
 HASHTAGS_BY_KW = {
     "cleaning": ["cleantok", "curatenie", "cleaninghacks"],
     "kitchen": ["bucatarie", "kitchengadgets", "kitchenhacks"],
-    "home gadget": ["homegadgets", "casa", "homehacks"],
-    "phone accessories": ["telefon", "techtok", "accesoriitelefon"],
+    "home gadget": ["gadgets", "homegadgets", "casa", "homehacks"],
+    "phone accessories": ["gadgets", "telefon", "techtok", "accesoriitelefon"],
     "car accessories": ["masina", "caraccessories", "cartok"],
     "beauty tools": ["beautytok", "frumusete", "beautyhacks"],
     "pet supplies": ["pettok", "animalutze", "petproducts"],
