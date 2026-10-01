@@ -19,9 +19,11 @@ jobs:
           python-version: "3.11"
 
       - name: Instaleaza dependinte
-        run: |
-          pip install -r requirements.txt
-          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg > /dev/null
+        run: pip install -r requirements.txt
+
+      - name: Instaleaza ffmpeg
+        uses: FedericoCarboni/setup-ffmpeg@v3
+        timeout-minutes: 5
 
       - name: Memoria traducerilor
         uses: actions/cache@v4
