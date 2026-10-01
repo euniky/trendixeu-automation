@@ -66,28 +66,48 @@ def call_api(method: str, app_params: dict) -> dict:
     return data
 
 
+METHODS = [
+    ("aliexpress.affiliate.hotproduct.query", "aliexpress_affiliate_hotproduct_query_response"),
+    ("aliexpress.affiliate.product.query", "aliexpress_affiliate_product_query_response"),
+]
+
+
+def query_products(kw: str, tracking_id: str) -> list[dict]:
+    """Incearca intai API-ul de hot products, apoi cautarea standard daca nu avem permisiune."""
+    for method, resp_key in METHODS:
+        try:
+            data = call_api(method, {
+                "keywords": kw,
+                "page_size": 50,
+                "sort": "LAST_VOLUME_DESC",
+                "ship_to_country": SHIP_TO,
+                "target_currency": CURRENCY,
+                "target_language": "EN",
+                "tracking_id": tracking_id,
+            })
+        except RuntimeError as exc:
+            if "InsufficientPermission" in str(exc):
+                continue
+            raise
+        resp = data.get(resp_key, {}).get("resp_result", {})
+        if not resp:
+            log(f"[warn] raspuns neasteptat ({method}): {str(data)[:300]}")
+            return []
+        if str(resp.get("resp_code")) != "200":
+            log(f"[warn] '{kw}' ({method}): {resp.get('resp_code')} {resp.get('resp_msg')}")
+            return []
+        products = (resp.get("result") or {}).get("products", {}).get("product", []) or []
+        log(f"[info] '{kw}' via {method.split('.')[-2]}: {len(products)} produse primite")
+        return products
+    log("[warn] aplicatia nu are permisiune nici la hotproduct, nici la product.query")
+    return []
+
+
 def fetch_hot_products() -> list[dict]:
     tracking_id = os.environ["ALI_TRACKING_ID"].strip()
     seen, picked = set(), []
     for kw in KEYWORDS:
-        data = call_api("aliexpress.affiliate.hotproduct.query", {
-            "keywords": kw,
-            "page_size": 50,
-            "sort": "LAST_VOLUME_DESC",
-            "ship_to_country": SHIP_TO,
-            "target_currency": CURRENCY,
-            "target_language": "EN",
-            "tracking_id": tracking_id,
-        })
-        resp = data.get("aliexpress_affiliate_hotproduct_query_response", {}).get("resp_result", {})
-        if not resp:
-            log(f"[warn] raspuns neasteptat: {str(data)[:300]}")
-        if str(resp.get("resp_code")) != "200":
-            log(f"[warn] '{kw}': {resp.get('resp_code')} {resp.get('resp_msg')}")
-            continue
-        products = (resp.get("result") or {}).get("products", {}).get("product", []) or []
-        log(f"[info] '{kw}': {len(products)} produse primite")
-        for p in products:
+        for p in query_products(kw, tracking_id):
             pid = p.get("product_id")
             if pid in seen or not p.get("promotion_link"):
                 continue
