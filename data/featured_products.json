@@ -3,48 +3,112 @@
     "title": "Robot curățat geamuri PuRuiKai, cu telecomandă",
     "price": "RON 386.51",
     "link": "https://s.click.aliexpress.com/e/_c3LpgmjT",
-    "image": "img/1.jpg"
+    "image": "img/1.jpg",
+    "titles": {
+      "ro": "Robot curățat geamuri PuRuiKai, cu telecomandă",
+      "en": "PuRuiKai window cleaning robot with remote control",
+      "it": "Robot lavavetri PuRuiKai con telecomando",
+      "de": "PuRuiKai Fensterputzroboter mit Fernbedienung",
+      "fr": "Robot laveur de vitres PuRuiKai avec télécommande",
+      "es": "Robot limpiacristales PuRuiKai con mando a distancia"
+    }
   },
   {
     "title": "Aparat spălat covoare Lubluelu V8, apă caldă 60°C",
     "price": "RON 395.86",
     "link": "https://s.click.aliexpress.com/e/_c3YrxXEV",
-    "image": "img/2.jpg"
+    "image": "img/2.jpg",
+    "titles": {
+      "ro": "Aparat spălat covoare Lubluelu V8, apă caldă 60°C",
+      "en": "Lubluelu V8 carpet cleaner, 60°C hot water",
+      "it": "Lavatappeti Lubluelu V8, acqua calda a 60°C",
+      "de": "Lubluelu V8 Teppichreiniger, 60°C heißes Wasser",
+      "fr": "Nettoyeur de tapis Lubluelu V8, eau chaude 60°C",
+      "es": "Limpiador de alfombras Lubluelu V8, agua caliente a 60°C"
+    }
   },
   {
     "title": "Aspirator fără fir Laresar V7, 50.000Pa",
     "price": "RON 615.21",
     "link": "https://s.click.aliexpress.com/e/_c3SRksGz",
-    "image": "img/3.jpg"
+    "image": "img/3.jpg",
+    "titles": {
+      "ro": "Aspirator fără fir Laresar V7, 50.000Pa",
+      "en": "Laresar V7 cordless vacuum cleaner, 50,000 Pa",
+      "it": "Aspirapolvere senza filo Laresar V7, 50.000 Pa",
+      "de": "Laresar V7 Akku-Staubsauger, 50.000 Pa",
+      "fr": "Aspirateur sans fil Laresar V7, 50 000 Pa",
+      "es": "Aspiradora inalámbrica Laresar V7, 50.000 Pa"
+    }
   },
   {
     "title": "Folie sticlă Joyroom iPhone 15–18 Pro Max",
     "price": "RON 44.47",
     "link": "https://s.click.aliexpress.com/e/_c4r4L1Mh",
-    "image": "img/4.jpg"
+    "image": "img/4.jpg",
+    "titles": {
+      "ro": "Folie sticlă Joyroom iPhone 15–18 Pro Max",
+      "en": "Joyroom tempered glass, iPhone 15–18 Pro Max",
+      "it": "Vetro temperato Joyroom per iPhone 15–18 Pro Max",
+      "de": "Joyroom Panzerglas für iPhone 15–18 Pro Max",
+      "fr": "Verre trempé Joyroom pour iPhone 15–18 Pro Max",
+      "es": "Cristal templado Joyroom para iPhone 15–18 Pro Max"
+    }
   },
   {
     "title": "Încărcător rapid 65W GaN, USB-C + USB-A",
     "price": "RON 23.20",
     "link": "https://s.click.aliexpress.com/e/_c4oBGiev",
-    "image": "img/5.jpg"
+    "image": "img/5.jpg",
+    "titles": {
+      "ro": "Încărcător rapid 65W GaN, USB-C + USB-A",
+      "en": "65W GaN fast charger, USB-C + USB-A",
+      "it": "Caricatore rapido GaN 65W, USB-C + USB-A",
+      "de": "65W GaN Schnellladegerät, USB-C + USB-A",
+      "fr": "Chargeur rapide GaN 65W, USB-C + USB-A",
+      "es": "Cargador rápido GaN 65W, USB-C + USB-A"
+    }
   },
   {
     "title": "Lampă solară cu senzor de mișcare, impermeabilă",
     "price": "RON 32.77",
     "link": "https://s.click.aliexpress.com/e/_c3XsG9WN",
-    "image": "img/6.jpg"
+    "image": "img/6.jpg",
+    "titles": {
+      "ro": "Lampă solară cu senzor de mișcare, impermeabilă",
+      "en": "Waterproof solar light with motion sensor",
+      "it": "Lampada solare impermeabile con sensore di movimento",
+      "de": "Wasserdichte Solarlampe mit Bewegungsmelder",
+      "fr": "Lampe solaire étanche avec détecteur de mouvement",
+      "es": "Lámpara solar impermeable con sensor de movimiento"
+    }
   },
   {
     "title": "Mănuși nitril rezistente, grip texturat",
     "price": "RON 26.28",
     "link": "https://s.click.aliexpress.com/e/_c4433IYV",
-    "image": "img/7.jpg"
+    "image": "img/7.jpg",
+    "titles": {
+      "ro": "Mănuși nitril rezistente, grip texturat",
+      "en": "Durable nitrile gloves with textured grip",
+      "it": "Guanti in nitrile resistenti con presa ruvida",
+      "de": "Robuste Nitrilhandschuhe mit strukturiertem Griff",
+      "fr": "Gants en nitrile résistants à prise texturée",
+      "es": "Guantes de nitrilo resistentes con agarre texturizado"
+    }
   },
   {
     "title": "Sac spălat încălțăminte în mașina de spălat",
     "price": "RON 46.95",
     "link": "https://s.click.aliexpress.com/e/_c3Ax29Rf",
-    "image": "img/8.jpg"
+    "image": "img/8.jpg",
+    "titles": {
+      "ro": "Sac spălat încălțăminte în mașina de spălat",
+      "en": "Shoe washing bag for the washing machine",
+      "it": "Sacchetto per lavare le scarpe in lavatrice",
+      "de": "Schuhwaschbeutel für die Waschmaschine",
+      "fr": "Sac de lavage pour chaussures en machine",
+      "es": "Bolsa para lavar zapatillas en la lavadora"
+    }
   }
 ]

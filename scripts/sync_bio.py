@@ -239,9 +239,10 @@ def translate(text: str, src: str, tgt: str) -> str | None:
 def localize(items: list[dict], src: str) -> None:
     for p in items:
         base = short_title(p["title"]) if src == "en" else p["title"]
-        titles = {src: base}
+        titles = dict(p.get("titles") or {})  # traducerile scrise manual au prioritate
+        titles.setdefault(src, base)
         for lang in LANGS:
-            if lang != src:
+            if lang not in titles:
                 titles[lang] = translate(base, src, lang) or (titles.get("en") or base)
         p["titles"] = titles
 
