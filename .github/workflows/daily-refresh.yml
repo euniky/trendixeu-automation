@@ -1,0 +1,37 @@
+yaml
+name: Refresh bio page
+
+on:
+  schedule:
+    - cron: "0 6 * * *"   # 09:00 ora Romaniei (UTC+3), in fiecare zi
+  workflow_dispatch: {}     # buton "Run workflow" manual, pentru testare
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Instaleaza dependinte
+        run: pip install -r requirements.txt
+
+      - name: Genereaza pagina de bio
+        env:
+          ALI_APP_KEY: ${{ secrets.ALI_APP_KEY }}
+          ALI_APP_SECRET: ${{ secrets.ALI_APP_SECRET }}
+          ALI_TRACKING_ID: ${{ secrets.ALI_TRACKING_ID }}
+        run: python scripts/sync_bio.py
+
+      - name: Publica pe Netlify
+        uses: nwtgck/actions-netlify@v3
+        with:
+          publish-dir: "./public"
+          production-deploy: true
+          deploy-message: "Refresh automat ${{ github.run_number }}"
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
