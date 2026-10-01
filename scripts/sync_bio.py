@@ -153,6 +153,9 @@ def fetch_orders(days: int = 30) -> dict:
             log(f"[warn] comenzi ({status}): {error}")
             continue
         resp = data.get("aliexpress_affiliate_order_list_response", {}).get("resp_result", {})
+        if str(resp.get("resp_code")) == "405":
+            log(f"[info] comenzi ({status}): nicio comanda in ultimele {days} zile")
+            continue
         if str(resp.get("resp_code")) not in ("200", "None") and resp.get("resp_code") is not None:
             log(f"[info] comenzi ({status}): {resp.get('resp_code')} {resp.get('resp_msg')}")
             continue
