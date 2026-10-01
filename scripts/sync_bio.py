@@ -284,6 +284,7 @@ window.RATES = {json.dumps(rates)};
 
 
 def main() -> None:
+    started = datetime.now(timezone.utc)
     featured = [normalize_price(p) for p in json.loads(FEATURED_PATH.read_text(encoding="utf-8"))]
     rates = get_rates()
     hot = []
@@ -298,9 +299,23 @@ def main() -> None:
     if IMG_DIR.exists():
         shutil.copytree(IMG_DIR, OUT_DIR / "img")
     (OUT_DIR / "index.html").write_text(render(featured, hot, rates), encoding="utf-8")
+    console_src = ROOT / "site" / "console.html"
+    if console_src.exists():
+        (OUT_DIR / "console").mkdir()
+        shutil.copy(console_src, OUT_DIR / "console" / "index.html")
     status = json.dumps({
         "updated": datetime.now(timezone.utc).isoformat(timespec="seconds"),
-        "featured": len(featured), "hot": len(hot), "log": LOG,
+        "started": started.isoformat(timespec="seconds"),
+        "run_number": os.environ.get("GITHUB_RUN_NUMBER"),
+        "run_id": os.environ.get("GITHUB_RUN_ID"),
+        "commit": (os.environ.get("GITHUB_SHA") or "")[:7],
+        "featured": len(featured), "hot": len(hot),
+        "rates": {k: rates[k] for k in ("RON", "USD", "GBP", "PLN") if k in rates},
+        "filters": {"min_rating_percent": MIN_RATING_PERCENT, "min_orders": MIN_ORDERS,
+                    "max_hot": MAX_HOT_PRODUCTS, "ship_to": SHIP_TO, "keywords": KEYWORDS},
+        "featured_items": [{k: p.get(k) for k in ("title", "cur", "amount", "link", "image")} for p in featured],
+        "hot_items": [{k: p.get(k) for k in ("title", "cur", "amount", "link", "image", "meta")} for p in hot],
+        "log": LOG,
     }, ensure_ascii=False, indent=1)
     (OUT_DIR / "status.json").write_text(status, encoding="utf-8")
     run = os.environ.get("GITHUB_RUN_NUMBER")

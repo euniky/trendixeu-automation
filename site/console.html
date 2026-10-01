@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Consola trendixeu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* layout: banda de stare sus, lantul de etape pe orizontala, apoi cifre, jurnal + istoric pe doua coloane, produse jos */
+:root{
+  --bg:#0f0d13; --panel:#17141d; --panel-2:#1e1a26; --line:#2b2635;
+  --text:#efecf3; --muted:#9a94a7; --dim:#6c6678;
+  --accent:#ff5a3c; --gold:#ffc35a;
+  --ok:#3fd68a; --warn:#ffb23f; --bad:#ff5d6c; --run:#5aa8ff;
+  --sans:'IBM Plex Sans',system-ui,sans-serif; --mono:'IBM Plex Mono',ui-monospace,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--text)}
+body{font-family:var(--sans);font-size:14px;line-height:1.45;padding-inline:16px;padding-block:20px 48px}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+.mono{font-family:var(--mono)}
+.muted{color:var(--muted)}
+
+/* header */
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--gold));display:grid;place-items:center;font-weight:700;color:#14110f;font-size:15px}
+.brand h1{font-size:17px;font-weight:600;letter-spacing:.01em}
+.brand p{font-size:12px;color:var(--muted)}
+.live{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--muted);flex-wrap:wrap}
+.pulse{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 0 rgba(63,214,138,.6);animation:pulse 2s infinite}
+.pulse.off{background:var(--dim);animation:none}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(63,214,138,.55)}70%{box-shadow:0 0 0 9px rgba(63,214,138,0)}100%{box-shadow:0 0 0 0 rgba(63,214,138,0)}}
+.btn{font:inherit;font-size:12.5px;background:var(--panel-2);border:1px solid var(--line);color:var(--text);border-radius:8px;padding:6px 11px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.btn:hover{border-color:var(--muted)}
+.btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+
+/* health banner */
+.health{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:12px;background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--dim)}
+.health.ok{border-left-color:var(--ok)} .health.warn{border-left-color:var(--warn)} .health.bad{border-left-color:var(--bad)} .health.run{border-left-color:var(--run)}
+.health .icon{font-size:20px;width:26px;text-align:center}
+.health h2{font-size:15px;font-weight:600}
+.health p{font-size:13px;color:var(--muted)}
+
+/* pipeline */
+.pipe{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 8px}
+.stage{position:relative;padding:4px 12px;min-width:0}
+.stage:not(:last-child)::after{content:"";position:absolute;top:10px;right:-6px;width:12px;height:2px;background:var(--line)}
+.stage .head{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.dot{width:12px;height:12px;border-radius:50%;background:var(--dim);flex-shrink:0;position:relative}
+.dot.ok{background:var(--ok)} .dot.warn{background:var(--warn)} .dot.bad{background:var(--bad)}
+.dot.run{background:var(--run)} .dot.run::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:2px solid var(--run);border-top-color:transparent;animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.stage .num{font-family:var(--mono);font-size:11px;color:var(--dim)}
+.stage h3{font-size:13.5px;font-weight:600}
+.stage .detail{font-size:12.5px;color:var(--muted);overflow-wrap:anywhere}
+
+/* kpis */
+.kpis{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 14px;min-width:0}
+.kpi .label{font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted)}
+.kpi .value{font-size:22px;font-weight:600;font-variant-numeric:tabular-nums;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kpi .sub{font-size:12px;color:var(--dim)}
+
+/* panels */
+.cols{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:14px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;min-width:0;display:flex;flex-direction:column}
+.panel-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;padding:12px 14px;border-bottom:1px solid var(--line)}
+.panel-head h2{font-size:13px;font-weight:600;letter-spacing:.02em}
+.feed{list-style:none;max-height:380px;overflow:auto;padding:6px 0}
+.feed li{display:grid;grid-template-columns:64px 14px minmax(0,1fr);gap:8px;padding:6px 14px;font-size:12.5px;align-items:baseline}
+.feed li:hover{background:var(--panel-2)}
+.feed .t{font-family:var(--mono);color:var(--dim);font-size:11.5px;font-variant-numeric:tabular-nums}
+.feed .k{font-family:var(--mono);font-size:11px;text-align:center}
+.k.ok{color:var(--ok)} .k.warn{color:var(--warn)} .k.bad{color:var(--bad)} .k.run{color:var(--run)} .k.info{color:var(--muted)}
+.feed .m{overflow-wrap:anywhere}
+.tablewrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th{text-align:left;font-weight:500;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.06em;padding:8px 14px;border-bottom:1px solid var(--line)}
+td{padding:8px 14px;border-bottom:1px solid var(--line);white-space:nowrap;font-variant-numeric:tabular-nums}
+tr:last-child td{border-bottom:none}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;padding:2px 8px;border-radius:999px;background:var(--panel-2);border:1px solid var(--line)}
+.chip .dot{width:7px;height:7px}
+
+/* products */
+.tabs{display:flex;gap:6px}
+.tab{white-space:nowrap;font:inherit;font-size:12.5px;background:none;border:1px solid transparent;color:var(--muted);border-radius:8px;padding:5px 10px;cursor:pointer}
+.tab[aria-selected="true"]{background:var(--panel-2);border-color:var(--line);color:var(--text)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;padding:14px}
+.prod{display:flex;gap:10px;align-items:center;background:var(--panel-2);border:1px solid var(--line);border-radius:10px;padding:8px;text-decoration:none;min-width:0}
+.prod:hover{border-color:var(--muted)}
+.prod img{width:52px;height:52px;border-radius:8px;object-fit:cover;background:#2a2533;flex-shrink:0}
+.prod .pt{font-size:12.5px;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.prod .pp{font-size:12.5px;color:var(--gold);font-weight:600;margin-top:2px}
+.prod .pm{font-size:11px;color:var(--dim)}
+.empty{padding:22px 14px;color:var(--muted);font-size:13px}
+
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.notice{font-size:12.5px;color:var(--warn);padding:10px 14px;border:1px dashed var(--warn);border-radius:10px}
+.foot{font-size:12px;color:var(--dim)}
+
+@media (max-width:900px){
+  .kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cols{grid-template-columns:minmax(0,1fr)}
+  .pipe{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:14px}
+  .stage:nth-child(2)::after{display:none}
+}
+@media (max-width:480px){
+  .pipe{grid-template-columns:minmax(0,1fr)}
+  .stage::after{display:none}
+  .feed li{grid-template-columns:52px 12px minmax(0,1fr)}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <div class="brand">
+      <div class="logo">TX</div>
+      <div>
+        <h1>Consola trendixeu</h1>
+        <p>Lanțul AliExpress → GitHub → Netlify, urmărit live</p>
+      </div>
+    </div>
+    <div class="live">
+      <span class="pulse" id="pulse"></span>
+      <span id="liveText">Se conectează…</span>
+      <button class="btn" id="refreshBtn" type="button">Reîmprospătează</button>
+    </div>
+  </header>
+
+  <section class="health" id="health">
+    <div class="icon" id="healthIcon">…</div>
+    <div>
+      <h2 id="healthTitle">Se încarcă starea automatizării</h2>
+      <p id="healthText">Citesc ultimele rulări din GitHub și datele publicate pe site.</p>
+    </div>
+  </section>
+
+  <div class="notice" id="notice" hidden></div>
+
+  <section class="pipe" aria-label="Etapele automatizării">
+    <div class="stage" id="st1"><div class="head"><span class="dot"></span><span class="num">01</span></div><h3>Pornire GitHub Actions</h3><p class="detail">—</p></div>
+    <div class="stage" id="st2"><div class="head"><span class="dot"></span><span class="num">02</span></div><h3>AliExpress + curs valutar</h3><p class="detail">—</p></div>
+    <div class="stage" id="st3"><div class="head"><span class="dot"></span><span class="num">03</span></div><h3>Publicare pe Netlify</h3><p class="detail">—</p></div>
+    <div class="stage" id="st4"><div class="head"><span class="dot"></span><span class="num">04</span></div><h3>Pagina de bio live</h3><p class="detail">—</p></div>
+  </section>
+
+  <section class="kpis">
+    <div class="kpi"><div class="label">Produse pe pagină</div><div class="value" id="kProducts">—</div><div class="sub" id="kProductsSub">&nbsp;</div></div>
+    <div class="kpi"><div class="label">Ultima actualizare</div><div class="value" id="kUpdated">—</div><div class="sub" id="kUpdatedSub">&nbsp;</div></div>
+    <div class="kpi"><div class="label">Următoarea rulare</div><div class="value mono" id="kNext">—</div><div class="sub" id="kNextSub">&nbsp;</div></div>
+    <div class="kpi"><div class="label">Curs EUR → RON</div><div class="value" id="kRate">—</div><div class="sub">Banca Centrală Europeană</div></div>
+    <div class="kpi"><div class="label">Rulări reușite</div><div class="value" id="kSuccess">—</div><div class="sub" id="kSuccessSub">din ultimele rulări</div></div>
+  </section>
+
+  <section class="cols">
+    <div class="panel">
+      <div class="panel-head"><h2>Jurnal de evenimente</h2><span class="muted" style="font-size:12px" id="feedCount"></span></div>
+      <ul class="feed" id="feed"><li><span class="t">--:--</span><span class="k info">·</span><span class="m muted">Se încarcă…</span></li></ul>
+    </div>
+    <div class="panel">
+      <div class="panel-head"><h2>Istoric rulări</h2><a class="btn" href="https://github.com/euniky/trendixeu-automation/actions" target="_blank" rel="noopener">GitHub ↗</a></div>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>#</th><th>Pornit de</th><th>Rezultat</th><th>Durată</th><th>Când</th></tr></thead>
+          <tbody id="history"><tr><td colspan="5" class="muted">Se încarcă…</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="panel-head">
+      <h2>Produse publicate acum</h2>
+      <div class="tabs" role="tablist">
+        <button class="tab" role="tab" aria-selected="true" data-tab="hot" id="tabHot" type="button">Noi, automate</button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="featured" id="tabFeatured" type="button">Din clipuri</button>
+      </div>
+    </div>
+    <div class="grid" id="products"></div>
+    <p class="empty" id="productsEmpty" hidden></p>
+    <p class="foot" id="filters" style="padding:0 14px 14px"></p>
+  </section>
+
+  <section class="actions" aria-label="Acțiuni rapide">
+    <a class="btn primary" href="https://github.com/euniky/trendixeu-automation/actions/workflows/daily-refresh.yml" target="_blank" rel="noopener">▶ Rulează acum</a>
+    <a class="btn" href="https://trendixeu.netlify.app/" target="_blank" rel="noopener">Pagina de bio ↗</a>
+    <a class="btn" href="https://github.com/euniky/trendixeu-automation/edit/main/data/featured_products.json" target="_blank" rel="noopener">Editează produsele din clipuri ↗</a>
+    <a class="btn" href="https://github.com/euniky/trendixeu-automation/settings/secrets/actions" target="_blank" rel="noopener">Chei și secrete ↗</a>
+  </section>
+
+  <p class="foot">Se actualizează singură la fiecare minut (la 10 secunde cât timp o rulare e în curs). „▶ Rulează acum” deschide GitHub: apeși „Run workflow”, iar progresul apare aici în câteva secunde.</p>
+</div>
+
+<script>
+(function () {
+  var REPO = "euniky/trendixeu-automation";
+  var API = "https://api.github.com/repos/" + REPO;
+  var STEP_GROUPS = [
+    ["Set up job", "Run actions/checkout@v4", "Run actions/setup-python@v5", "Instaleaza dependinte"],
+    ["Genereaza pagina de bio"],
+    ["Publica pe Netlify"]
+  ];
+  var state = { runs: [], jobs: null, jobsRunId: null, status: null, lastFetch: null, rateLimitedUntil: 0, tab: "hot" };
+  var timer = null;
+
+  function $(id) { return document.getElementById(id); }
+  function esc(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
+  function fmtTime(d) { return d.toLocaleTimeString("ro-RO", { hour: "2-digit", minute: "2-digit" }); }
+  function fmtDate(d) {
+    var today = new Date(); var y = new Date(Date.now() - 864e5);
+    if (d.toDateString() === today.toDateString()) return "azi " + fmtTime(d);
+    if (d.toDateString() === y.toDateString()) return "ieri " + fmtTime(d);
+    return d.toLocaleDateString("ro-RO", { day: "2-digit", month: "short" }) + " " + fmtTime(d);
+  }
+  function ago(d) {
+    var s = Math.max(0, Math.round((Date.now() - d.getTime()) / 1000));
+    if (s < 60) return "acum " + s + " s";
+    var m = Math.round(s / 60); if (m < 60) return "acum " + m + " min";
+    var h = Math.round(m / 60); if (h < 48) return "acum " + h + " h";
+    return "acum " + Math.round(h / 24) + " zile";
+  }
+  function dur(a, b) {
+    var s = Math.max(0, Math.round((new Date(b) - new Date(a)) / 1000));
+    return s < 60 ? s + " s" : Math.floor(s / 60) + " min " + (s % 60) + " s";
+  }
+  function trig(ev) { return { schedule: "Programat", workflow_dispatch: "Manual", push: "Modificare cod" }[ev] || ev; }
+  function runState(r) {
+    if (!r) return "idle";
+    if (r.status !== "completed") return "run";
+    return r.conclusion === "success" ? "ok" : (r.conclusion === "cancelled" ? "warn" : "bad");
+  }
+  function money(cur, amt) {
+    try {
+      if (cur === "RON") return new Intl.NumberFormat("ro-RO", { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(amt) + " lei";
+      return new Intl.NumberFormat("ro-RO", { style: "currency", currency: cur, currencyDisplay: "narrowSymbol" }).format(amt);
+    } catch (e) { return amt + " " + cur; }
+  }
+  function nextRun() {
+    var n = new Date(); n.setUTCHours(6, 0, 0, 0);
+    if (n.getTime() <= Date.now()) n.setUTCDate(n.getUTCDate() + 1);
+    return n;
+  }
+
+  async function getJSON(url) {
+    var r = await fetch(url, { cache: "no-store", headers: url.indexOf(API) === 0 ? { Accept: "application/vnd.github+json" } : {} });
+    if (r.status === 403 || r.status === 429) {
+      var reset = parseInt(r.headers.get("x-ratelimit-reset") || "0", 10) * 1000;
+      var e = new Error("rate"); e.reset = reset || Date.now() + 5 * 60e3; throw e;
+    }
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    return r.json();
+  }
+
+  async function load() {
+    var notice = [];
+    try {
+      state.status = await getJSON("/status.json?t=" + Date.now());
+    } catch (e) { notice.push("Nu am putut citi datele publicate pe site."); }
+
+    if (Date.now() >= state.rateLimitedUntil) {
+      try {
+        var runs = await getJSON(API + "/actions/runs?per_page=12");
+        state.runs = runs.workflow_runs || [];
+        var latest = state.runs[0];
+        if (latest && (latest.status !== "completed" || state.jobsRunId !== latest.id)) {
+          var j = await getJSON(API + "/actions/runs/" + latest.id + "/jobs");
+          state.jobs = (j.jobs && j.jobs[0]) || null; state.jobsRunId = latest.id;
+        }
+      } catch (e) {
+        if (e.message === "rate") {
+          state.rateLimitedUntil = e.reset;
+          notice.push("GitHub limitează câte verificări poate face o rețea pe oră. Reiau verificarea live la " + fmtTime(new Date(e.reset)) + "; până atunci văd doar datele de pe site.");
+        } else notice.push("Nu am putut citi rulările din GitHub (" + e.message + ").");
+      }
+    } else {
+      notice.push("GitHub limitează temporar verificările. Reiau la " + fmtTime(new Date(state.rateLimitedUntil)) + ".");
+    }
+    state.lastFetch = new Date();
+    $("notice").hidden = notice.length === 0;
+    $("notice").textContent = notice.join(" ");
+    render();
+    schedule();
+  }
+
+  function schedule() {
+    clearTimeout(timer);
+    var running = state.runs[0] && state.runs[0].status !== "completed";
+    timer = setTimeout(load, running ? 10e3 : 60e3);
+  }
+
+  function setStage(id, cls, detail) {
+    var el = $(id);
+    el.querySelector(".dot").className = "dot " + (cls || "");
+    el.querySelector(".detail").textContent = detail;
+  }
+
+  function stepGroupState(names) {
+    if (!state.jobs || !state.jobs.steps) return null;
+    var steps = state.jobs.steps.filter(function (s) { return names.indexOf(s.name) !== -1; });
+    if (!steps.length) return null;
+    if (steps.some(function (s) { return s.conclusion === "failure"; })) return { cls: "bad", steps: steps };
+    if (steps.some(function (s) { return s.status === "in_progress"; })) return { cls: "run", steps: steps };
+    if (steps.every(function (s) { return s.status === "completed" && (s.conclusion === "success" || s.conclusion === "skipped"); })) return { cls: "ok", steps: steps };
+    if (steps.every(function (s) { return s.status === "queued" || s.status === "pending"; })) return { cls: "", steps: steps };
+    return { cls: "run", steps: steps };
+  }
+  function groupDur(g) {
+    if (!g) return "";
+    var a = g.steps[0].started_at, b = g.steps[g.steps.length - 1].completed_at;
+    return a && b ? dur(a, b) : "";
+  }
+
+  function render() {
+    var st = state.status, runs = state.runs, latest = runs[0];
+    var lastOk = runs.filter(function (r) { return r.conclusion === "success"; })[0];
+    var rs = runState(latest);
+    var hasWarn = st && st.log && st.log.some(function (l) { return l.indexOf("[warn]") === 0; });
+
+    // live indicator
+    $("pulse").className = "pulse" + (state.lastFetch ? "" : " off");
+    $("liveText").textContent = state.lastFetch ? "Live · verificat " + ago(state.lastFetch) : "Se conectează…";
+
+    // health
+    var h = $("health"), cls = "", icon = "…", title = "", text = "";
+    if (rs === "run") { cls = "run"; icon = "⟳"; title = "Rulează acum (#" + latest.run_number + ")"; text = "Pornită " + ago(new Date(latest.run_started_at || latest.created_at)) + " · " + trig(latest.event) + ". Etapele se actualizează la fiecare 10 secunde."; }
+    else if (rs === "bad") { cls = "bad"; icon = "✕"; title = "Ultima rulare a eșuat (#" + latest.run_number + ")"; text = "Pagina de bio rămâne la ultima versiune bună" + (lastOk ? " (" + fmtDate(new Date(lastOk.updated_at)) + ")" : "") + ". Trimite-i lui Claude o captură cu acest ecran."; }
+    else if (st && (st.hot === 0 || hasWarn)) { cls = "warn"; icon = "!"; title = "Merge, cu un avertisment"; text = st.hot === 0 ? "Ultima rulare n-a adus produse noi de la AliExpress. Detaliile sunt în jurnal." : "Ultima rulare a raportat un avertisment. Detaliile sunt în jurnal."; }
+    else if (rs === "ok" || st) { cls = "ok"; icon = "✓"; title = "Totul funcționează"; text = "Pagina de bio e la zi" + (st ? " cu " + (st.featured + st.hot) + " produse" : "") + ". Următoarea actualizare automată: " + fmtDate(nextRun()) + "."; }
+    h.className = "health " + cls; $("healthIcon").textContent = icon; $("healthTitle").textContent = title; $("healthText").textContent = text;
+
+    // pipeline
+    var g1 = stepGroupState(STEP_GROUPS[0]), g2 = stepGroupState(STEP_GROUPS[1]), g3 = stepGroupState(STEP_GROUPS[2]);
+    if (latest) {
+      setStage("st1", g1 ? g1.cls : (rs === "run" ? "run" : rs), g1 ? (g1.cls === "run" ? "Pregătește mediul…" : "Rulare #" + latest.run_number + " · " + trig(latest.event) + (groupDur(g1) ? " · " + groupDur(g1) : "")) : "Rulare #" + latest.run_number);
+      var d2 = "În așteptare";
+      if (g2 && g2.cls === "run") d2 = "Caută produse și preia cursul…";
+      else if (g2 && g2.cls === "bad") d2 = "Scriptul a eșuat";
+      else if (g2 && g2.cls === "ok" && st) d2 = st.hot + " produse noi · 1 EUR = " + (st.rates && st.rates.RON ? st.rates.RON.toFixed(3) : "?") + " lei" + (groupDur(g2) ? " · " + groupDur(g2) : "");
+      setStage("st2", g2 ? (g2.cls === "ok" && st && (st.hot === 0 || hasWarn) ? "warn" : g2.cls) : "", d2);
+      var d3 = "În așteptare";
+      if (g3 && g3.cls === "run") d3 = "Publică pe trendixeu.netlify.app…";
+      else if (g3 && g3.cls === "bad") d3 = "Publicarea a eșuat";
+      else if (g3 && g3.cls === "ok") d3 = "Publicat" + (groupDur(g3) ? " în " + groupDur(g3) : "");
+      setStage("st3", g3 ? g3.cls : "", d3);
+    } else {
+      setStage("st1", "", "Nicio rulare găsită"); setStage("st2", "", "—"); setStage("st3", "", "—");
+    }
+    if (st) {
+      var liveDetail = "Versiunea rulării #" + (st.run_number || "?") + " · " + fmtDate(new Date(st.updated));
+      setStage("st4", rs === "bad" ? "warn" : "ok", liveDetail);
+    } else setStage("st4", "", "Nu am putut citi pagina");
+
+    // kpis
+    if (st) {
+      $("kProducts").textContent = st.featured + st.hot;
+      $("kProductsSub").textContent = st.featured + " din clipuri · " + st.hot + " noi";
+      $("kUpdated").textContent = ago(new Date(st.updated));
+      $("kUpdatedSub").textContent = fmtDate(new Date(st.updated));
+      $("kRate").textContent = st.rates && st.rates.RON ? st.rates.RON.toFixed(3) + " lei" : "—";
+    }
+    var nr = nextRun(), left = Math.max(0, nr - Date.now());
+    $("kNext").textContent = String(Math.floor(left / 36e5)).padStart(2, "0") + ":" + String(Math.floor(left / 6e4) % 60).padStart(2, "0") + ":" + String(Math.floor(left / 1e3) % 60).padStart(2, "0");
+    $("kNextSub").textContent = fmtDate(nr) + " · GitHub poate întârzia câteva minute";
+    var done = runs.filter(function (r) { return r.status === "completed"; });
+    if (done.length) {
+      var okN = done.filter(function (r) { return r.conclusion === "success"; }).length;
+      $("kSuccess").textContent = okN + " / " + done.length;
+      $("kSuccessSub").textContent = "din ultimele " + done.length + " rulări";
+    }
+
+    renderFeed(); renderHistory(); renderProducts();
+  }
+
+  function renderFeed() {
+    var ev = [], st = state.status;
+    state.runs.forEach(function (r) {
+      var start = new Date(r.run_started_at || r.created_at);
+      ev.push({ t: start, k: "run", s: "▸", m: "Rularea #" + r.run_number + " a pornit · " + trig(r.event) });
+      if (r.status === "completed") {
+        var ok = r.conclusion === "success";
+        ev.push({ t: new Date(r.updated_at), k: ok ? "ok" : "bad", s: ok ? "✓" : "✕", m: "Rularea #" + r.run_number + (ok ? " a reușit" : " a eșuat (" + r.conclusion + ")") + " în " + dur(start, r.updated_at) });
+      }
+    });
+    if (st && st.log) {
+      var t = new Date(st.updated);
+      st.log.forEach(function (l, i) {
+        var warn = l.indexOf("[warn]") === 0;
+        ev.push({ t: new Date(t.getTime() - (st.log.length - i)), k: warn ? "warn" : "info", s: warn ? "!" : "·", m: l.replace(/^\[(info|warn)\]\s*/, "").replace(/'(.+?)' via (\w+)/, "Căutarea „$1”") });
+      });
+      ev.push({ t: t, k: "ok", s: "✓", m: "Pagina publicată: " + st.featured + " produse din clipuri + " + st.hot + " noi" });
+    }
+    ev.sort(function (a, b) { return b.t - a.t; });
+    $("feed").innerHTML = ev.slice(0, 60).map(function (e) {
+      return '<li><span class="t">' + esc(fmtTime(e.t)) + '</span><span class="k ' + e.k + '">' + e.s + '</span><span class="m">' + esc(e.m) + "</span></li>";
+    }).join("") || '<li><span class="t">--:--</span><span class="k info">·</span><span class="m muted">Niciun eveniment încă</span></li>';
+    $("feedCount").textContent = ev.length ? ev.length + " evenimente" : "";
+  }
+
+  function renderHistory() {
+    if (!state.runs.length) { $("history").innerHTML = '<tr><td colspan="5" class="muted">Nicio rulare încă</td></tr>'; return; }
+    $("history").innerHTML = state.runs.slice(0, 10).map(function (r) {
+      var s = runState(r), label = { ok: "Reușită", bad: "Eșuată", warn: "Anulată", run: "În curs" }[s];
+      var start = r.run_started_at || r.created_at;
+      return "<tr><td class=\"mono\"><a href=\"" + esc(r.html_url) + "\" target=\"_blank\" rel=\"noopener\">#" + r.run_number + "</a></td><td>" + esc(trig(r.event)) +
+        '</td><td><span class="chip"><span class="dot ' + s + '"></span>' + label + "</span></td><td>" + (r.status === "completed" ? dur(start, r.updated_at) : "…") +
+        "</td><td>" + esc(fmtDate(new Date(start))) + "</td></tr>";
+    }).join("");
+  }
+
+  function renderProducts() {
+    var st = state.status, list = st ? (state.tab === "hot" ? st.hot_items : st.featured_items) || [] : [];
+    $("tabHot").textContent = "Noi, automate" + (st ? " (" + st.hot + ")" : "");
+    $("tabFeatured").textContent = "Din clipuri" + (st ? " (" + st.featured + ")" : "");
+    $("products").innerHTML = list.map(function (p) {
+      var img = p.image && p.image.indexOf("http") !== 0 ? "/" + p.image : p.image;
+      return '<a class="prod" href="' + esc(p.link) + '" target="_blank" rel="noopener"><img src="' + esc(img) + '" alt="" loading="lazy"><div style="min-width:0"><div class="pt">' + esc(p.title) + '</div><div class="pp">' + esc(money(p.cur, p.amount)) + "</div>" + (p.meta ? '<div class="pm">' + esc(p.meta) + "</div>" : "") + "</div></a>";
+    }).join("");
+    $("productsEmpty").hidden = list.length > 0;
+    $("productsEmpty").textContent = st ? "Niciun produs în această categorie la ultima rulare." : "Se încarcă produsele…";
+    if (st && st.filters) {
+      var f = st.filters;
+      $("filters").textContent = "Reguli pentru produsele noi: minim " + f.min_rating_percent + "% recenzii pozitive, minim " + f.min_orders + " comenzi, livrare în " + f.ship_to + ", maxim " + f.max_hot + " produse · căutări: " + f.keywords.join(", ");
+    }
+  }
+
+  document.querySelectorAll(".tab").forEach(function (b) {
+    b.addEventListener("click", function () {
+      state.tab = b.getAttribute("data-tab");
+      document.querySelectorAll(".tab").forEach(function (x) { x.setAttribute("aria-selected", x === b ? "true" : "false"); });
+      renderProducts();
+    });
+  });
+  $("refreshBtn").addEventListener("click", function () { state.rateLimitedUntil = Math.min(state.rateLimitedUntil, Date.now()); load(); });
+  document.addEventListener("visibilitychange", function () { if (!document.hidden) load(); });
+  function tick() {
+    if (!state.lastFetch) return;
+    $("liveText").textContent = "Live · verificat " + ago(state.lastFetch);
+    if (state.status) $("kUpdated").textContent = ago(new Date(state.status.updated));
+    var left = Math.max(0, nextRun() - Date.now());
+    $("kNext").textContent = String(Math.floor(left / 36e5)).padStart(2, "0") + ":" + String(Math.floor(left / 6e4) % 60).padStart(2, "0") + ":" + String(Math.floor(left / 1e3) % 60).padStart(2, "0");
+  }
+  setInterval(tick, 1000);
+  load();
+})();
+</script>
+</body>
+</html>

@@ -8,6 +8,8 @@ on:
 jobs:
   refresh:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
 
@@ -34,3 +36,16 @@ jobs:
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+
+      - name: Pastreaza programarea activa
+        # GitHub opreste singur programarile zilnice dupa 60 de zile fara activitate in repo.
+        run: |
+          last=$(git log -1 --format=%ct)
+          days=$(( ( $(date +%s) - last ) / 86400 ))
+          echo "Zile de la ultima activitate: $days"
+          if [ "$days" -ge 45 ]; then
+            git config user.name "trendixeu-bot"
+            git config user.email "trendixeu-bot@users.noreply.github.com"
+            git commit --allow-empty -m "keepalive: mentine programarea zilnica activa"
+            git push
+          fi
