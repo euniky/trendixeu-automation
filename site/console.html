@@ -121,6 +121,19 @@ tr:last-child td{border-bottom:none}
 .rank .num small{display:block;color:var(--dim);font-size:11px}
 .tag{font-size:10.5px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:0 6px;margin-left:6px;vertical-align:1px}
 .cols.even{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.clips{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;padding:14px}
+.clip{background:var(--panel-2);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;min-width:0}
+.clip video{width:100%;aspect-ratio:9/16;max-height:520px;background:#000;display:block;object-fit:contain}
+.clip .body{padding:12px;display:flex;flex-direction:column;gap:10px}
+.clip h3{font-size:14px;font-weight:600;display:flex;gap:8px;align-items:baseline}
+.clip h3 .n{font-family:var(--mono);color:var(--accent)}
+.clip pre{font-family:var(--sans);font-size:12.5px;white-space:pre-wrap;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:10px;max-height:160px;overflow:auto;margin:0}
+.clip .row2{display:flex;gap:6px;flex-wrap:wrap}
+.tags{display:flex;gap:6px;flex-wrap:wrap}
+.tags button{font:inherit;font-family:var(--mono);font-size:12px;background:var(--bg);border:1px solid var(--line);color:var(--text);border-radius:999px;padding:3px 9px;cursor:pointer}
+.tags button.done{border-color:var(--ok);color:var(--ok)}
+.steps{font-size:12.5px;color:var(--muted);padding:0 14px 14px;line-height:1.6}
+.steps b{color:var(--text)}
 .actions{display:flex;gap:8px;flex-wrap:wrap}
 .notice{font-size:12.5px;color:var(--warn);padding:10px 14px;border:1px dashed var(--warn);border-radius:10px}
 .foot{font-size:12px;color:var(--dim)}
@@ -170,9 +183,16 @@ tr:last-child td{border-bottom:none}
 
   <div class="notice" id="notice" hidden></div>
 
+  <section class="panel" aria-label="Clipuri TikTok de azi">
+    <div class="panel-head"><h2>Clipuri TikTok gata de postat</h2><span class="muted" style="font-size:12px" id="clipsInfo"></span></div>
+    <div class="clips" id="clips"></div>
+    <p class="empty" id="clipsEmpty" hidden></p>
+    <p class="steps"><b>Cum postezi:</b> 1. Descarcă clipul. 2. În TikTok: + → Încarcă → alege clipul. 3. Adaugă un sunet în trend. 4. Lipește descrierea, apoi scrie fiecare cuvânt de mai jos cu # și alege-l din lista TikTok. 5. Dacă ai opțiunea, pune stickerul „Link” spre pagina de bio.</p>
+  </section>
+
   <section class="pipe" aria-label="Etapele automatizării">
     <div class="stage" id="st1"><div class="head"><span class="dot"></span><span class="num">01</span></div><h3>Pornire GitHub Actions</h3><p class="detail">—</p></div>
-    <div class="stage" id="st2"><div class="head"><span class="dot"></span><span class="num">02</span></div><h3>AliExpress, curs și traduceri</h3><p class="detail">—</p></div>
+    <div class="stage" id="st2"><div class="head"><span class="dot"></span><span class="num">02</span></div><h3>Produse, traduceri și clipuri</h3><p class="detail">—</p></div>
     <div class="stage" id="st3"><div class="head"><span class="dot"></span><span class="num">03</span></div><h3>Publicare pe Netlify</h3><p class="detail">—</p></div>
     <div class="stage" id="st4"><div class="head"><span class="dot"></span><span class="num">04</span></div><h3>Pagina de bio live</h3><p class="detail">—</p></div>
   </section>
@@ -409,7 +429,7 @@ tr:last-child td{border-bottom:none}
       var d2 = "În așteptare";
       if (g2 && g2.cls === "run") d2 = "Caută produse și preia cursul…";
       else if (g2 && g2.cls === "bad") d2 = "Scriptul a eșuat";
-      else if (g2 && g2.cls === "ok" && st) d2 = st.hot + " produse noi · 1 EUR = " + (st.rates && st.rates.RON ? st.rates.RON.toFixed(3) : "?") + " lei" + (groupDur(g2) ? " · " + groupDur(g2) : "");
+      else if (g2 && g2.cls === "ok" && st) d2 = st.hot + " produse noi · " + ((st.clips || []).length) + " clipuri · 1 EUR = " + (st.rates && st.rates.RON ? st.rates.RON.toFixed(3) : "?") + " lei" + (groupDur(g2) ? " · " + groupDur(g2) : "");
       setStage("st2", g2 ? (g2.cls === "ok" && st && (st.hot === 0 || hasWarn) ? "warn" : g2.cls) : "", d2);
       var d3 = "În așteptare";
       if (g3 && g3.cls === "run") d3 = "Publică pe trendixeu.netlify.app…";
@@ -442,8 +462,49 @@ tr:last-child td{border-bottom:none}
       $("kSuccessSub").textContent = "din ultimele " + done.length + " rulări";
     }
 
-    renderFeed(); renderHistory(); renderProducts(); renderInterest(); renderBought(); renderOrders();
+    renderFeed(); renderHistory(); renderProducts(); renderInterest(); renderBought(); renderOrders(); renderClips();
   }
+
+  var clipsKey = "";
+  function renderClips() {
+    var st = state.status, list = (st && st.clips) || [];
+    var key = (st ? st.run_number : "") + ":" + list.length;
+    if (key === clipsKey) return; // nu reconstrui playerele la fiecare verificare
+    clipsKey = key;
+    $("clipsInfo").textContent = list.length ? list.length + " clipuri · generate " + fmtDate(new Date(st.updated)) : "";
+    $("clips").innerHTML = list.map(function (c, i) {
+      return '<article class="clip"><video src="/' + esc(c.file) + '" controls playsinline preload="metadata" poster=""></video><div class="body">' +
+        '<h3><span class="n">#' + c.num + '</span><span>' + esc(c.title_ro) + "</span></h3>" +
+        '<div class="row2"><a class="btn primary" href="/' + esc(c.file) + '" download>⬇ Descarcă</a>' +
+        '<button class="btn" type="button" data-copy="ro" data-i="' + i + '">Copiază descrierea</button>' +
+        '<button class="btn" type="button" data-copy="en" data-i="' + i + '">Copy (EN)</button>' +
+        '<a class="btn" href="' + esc(c.link) + '" target="_blank" rel="noopener">Produs ↗</a></div>' +
+        "<pre>" + esc(c.description_ro) + "</pre>" +
+        '<div class="tags">' + (c.hashtags || []).map(function (t) { return '<button type="button" data-tag="' + esc(t) + '">' + esc(t) + "</button>"; }).join("") + "</div>" +
+        "</div></article>";
+    }).join("");
+    $("clipsEmpty").hidden = list.length > 0;
+    $("clipsEmpty").textContent = st ? "Niciun clip nou la ultima rulare. Clipurile apar aici în fiecare dimineață, după actualizarea automată." : "Se încarcă…";
+  }
+
+  function copyText(text, btn) {
+    function ok() { var o = btn.textContent; btn.textContent = "Copiat ✓"; setTimeout(function () { btn.textContent = o; }, 1500); }
+    if (navigator.clipboard) navigator.clipboard.writeText(text).then(ok, function () { fallback(); });
+    else fallback();
+    function fallback() { var ta = document.createElement("textarea"); ta.value = text; document.body.appendChild(ta); ta.select(); try { document.execCommand("copy"); ok(); } catch (e) {} ta.remove(); }
+  }
+  document.addEventListener("click", function (ev) {
+    var b = ev.target.closest && ev.target.closest("[data-copy],[data-tag]");
+    if (!b) return;
+    var list = (state.status && state.status.clips) || [];
+    if (b.hasAttribute("data-copy")) {
+      var c = list[+b.getAttribute("data-i")];
+      if (c) copyText(b.getAttribute("data-copy") === "en" ? c.description_en : c.description_ro, b);
+    } else {
+      copyText(b.getAttribute("data-tag"), b);
+      b.classList.add("done");
+    }
+  });
 
   function itemIndex() {
     var idx = {}, st = state.status;

@@ -11,7 +11,8 @@
       "de": "PuRuiKai Fensterputzroboter mit Fernbedienung",
       "fr": "Robot laveur de vitres PuRuiKai avec télécommande",
       "es": "Robot limpiacristales PuRuiKai con mando a distancia"
-    }
+    },
+    "num": 1
   },
   {
     "title": "Aparat spălat covoare Lubluelu V8, apă caldă 60°C",
@@ -25,7 +26,8 @@
       "de": "Lubluelu V8 Teppichreiniger, 60°C heißes Wasser",
       "fr": "Nettoyeur de tapis Lubluelu V8, eau chaude 60°C",
       "es": "Limpiador de alfombras Lubluelu V8, agua caliente a 60°C"
-    }
+    },
+    "num": 2
   },
   {
     "title": "Aspirator fără fir Laresar V7, 50.000Pa",
@@ -39,7 +41,8 @@
       "de": "Laresar V7 Akku-Staubsauger, 50.000 Pa",
       "fr": "Aspirateur sans fil Laresar V7, 50 000 Pa",
       "es": "Aspiradora inalámbrica Laresar V7, 50.000 Pa"
-    }
+    },
+    "num": 3
   },
   {
     "title": "Folie sticlă Joyroom iPhone 15–18 Pro Max",
@@ -53,7 +56,8 @@
       "de": "Joyroom Panzerglas für iPhone 15–18 Pro Max",
       "fr": "Verre trempé Joyroom pour iPhone 15–18 Pro Max",
       "es": "Cristal templado Joyroom para iPhone 15–18 Pro Max"
-    }
+    },
+    "num": 4
   },
   {
     "title": "Încărcător rapid 65W GaN, USB-C + USB-A",
@@ -67,7 +71,8 @@
       "de": "65W GaN Schnellladegerät, USB-C + USB-A",
       "fr": "Chargeur rapide GaN 65W, USB-C + USB-A",
       "es": "Cargador rápido GaN 65W, USB-C + USB-A"
-    }
+    },
+    "num": 5
   },
   {
     "title": "Lampă solară cu senzor de mișcare, impermeabilă",
@@ -81,7 +86,8 @@
       "de": "Wasserdichte Solarlampe mit Bewegungsmelder",
       "fr": "Lampe solaire étanche avec détecteur de mouvement",
       "es": "Lámpara solar impermeable con sensor de movimiento"
-    }
+    },
+    "num": 6
   },
   {
     "title": "Mănuși nitril rezistente, grip texturat",
@@ -95,7 +101,8 @@
       "de": "Robuste Nitrilhandschuhe mit strukturiertem Griff",
       "fr": "Gants en nitrile résistants à prise texturée",
       "es": "Guantes de nitrilo resistentes con agarre texturizado"
-    }
+    },
+    "num": 7
   },
   {
     "title": "Sac spălat încălțăminte în mașina de spălat",
@@ -109,6 +116,7 @@
       "de": "Schuhwaschbeutel für die Waschmaschine",
       "fr": "Sac de lavage pour chaussures en machine",
       "es": "Bolsa para lavar zapatillas en la lavadora"
-    }
+    },
+    "num": 8
   }
 ]

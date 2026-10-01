@@ -8,6 +8,7 @@ on:
 jobs:
   refresh:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     permissions:
       contents: write
     steps:
@@ -18,7 +19,9 @@ jobs:
           python-version: "3.11"
 
       - name: Instaleaza dependinte
-        run: pip install -r requirements.txt
+        run: |
+          pip install -r requirements.txt
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg > /dev/null
 
       - name: Memoria traducerilor
         uses: actions/cache@v4
@@ -32,6 +35,7 @@ jobs:
           ALI_APP_KEY: ${{ secrets.ALI_APP_KEY }}
           ALI_APP_SECRET: ${{ secrets.ALI_APP_SECRET }}
           ALI_TRACKING_ID: ${{ secrets.ALI_TRACKING_ID }}
+          CLIPS_PER_DAY: "3"
         run: python scripts/sync_bio.py
 
       - uses: actions/setup-node@v4
@@ -50,15 +54,25 @@ jobs:
           --dir=public --functions=netlify/functions
           --message "Refresh automat ${{ github.run_number }}"
 
-      - name: Pastreaza programarea activa
+      - name: Copie de rezerva a clipurilor (7 zile)
+        if: hashFiles('public/clips/*.mp4') != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: clipuri-${{ github.run_number }}
+          path: public/clips/*.mp4
+          retention-days: 7
+
+      - name: Salveaza jurnalul clipurilor si pastreaza programarea activa
         # GitHub opreste singur programarile zilnice dupa 60 de zile fara activitate in repo.
         run: |
-          last=$(git log -1 --format=%ct)
-          days=$(( ( $(date +%s) - last ) / 86400 ))
-          echo "Zile de la ultima activitate: $days"
-          if [ "$days" -ge 45 ]; then
-            git config user.name "trendixeu-bot"
-            git config user.email "trendixeu-bot@users.noreply.github.com"
-            git commit --allow-empty -m "keepalive: mentine programarea zilnica activa"
-            git push
+          git config user.name "trendixeu-bot"
+          git config user.email "trendixeu-bot@users.noreply.github.com"
+          if ! git diff --quiet -- data/video_log.json 2>/dev/null || [ -n "$(git ls-files --others --exclude-standard data/video_log.json)" ]; then
+            git add data/video_log.json
+            git commit -m "Clipuri noi: rularea ${{ github.run_number }}"
+          else
+            days=$(( ( $(date +%s) - $(git log -1 --format=%ct) ) / 86400 ))
+            echo "Zile de la ultima activitate: $days"
+            if [ "$days" -ge 45 ]; then git commit --allow-empty -m "keepalive: mentine programarea zilnica activa"; fi
           fi
+          git pull --rebase -q origin main && git push -q origin HEAD:main || echo "Nimic de trimis"

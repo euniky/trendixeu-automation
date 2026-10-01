@@ -37,7 +37,12 @@ MIN_ORDERS = 300          # comenzi minime
 MAX_HOT_PRODUCTS = 10     # cate produse hot afisam sub cele fixe
 SHIP_TO = "RO"            # doar produse livrabile in Romania
 CURRENCY = "EUR"          # API-ul nu suporta RON
-KEYWORDS = ["home gadget", "cleaning", "kitchen", "phone accessories"]  # cautari, pe rand
+KEYWORDS = ["home gadget", "cleaning", "kitchen", "phone accessories",
+            "car accessories", "beauty tools", "pet supplies"]  # se rotesc zilnic, pentru varietate
+PER_KEYWORD = 3                                       # max produse din aceeasi categorie
+VIDEO_LOG_PATH = ROOT / "data" / "video_log.json"     # produsele care au primit clip (salvat in repo)
+CLIPS_PER_DAY = int(os.environ.get("CLIPS_PER_DAY", "3"))
+CLIP_PRODUCTS_DAYS = 30                               # cat timp raman pe pagina produsele din clipuri
 
 
 def sign(secret: str, params: dict) -> str:
@@ -106,8 +111,13 @@ def query_products(kw: str, tracking_id: str) -> list[dict]:
 def fetch_hot_products() -> list[dict]:
     tracking_id = os.environ["ALI_TRACKING_ID"].strip()
     seen, picked = set(), []
-    for kw in KEYWORDS:
+    day = datetime.now(timezone.utc).toordinal()
+    order = KEYWORDS[day % len(KEYWORDS):] + KEYWORDS[:day % len(KEYWORDS)]
+    for kw in order:
+        taken = 0
         for p in query_products(kw, tracking_id):
+            if taken >= PER_KEYWORD:
+                break
             pid = p.get("product_id")
             if pid in seen or not p.get("promotion_link"):
                 continue
@@ -116,10 +126,19 @@ def fetch_hot_products() -> list[dict]:
             if rating < MIN_RATING_PERCENT or orders < MIN_ORDERS:
                 continue
             seen.add(pid)
+            taken += 1
+            smalls = p.get("product_small_image_urls") or []
+            if isinstance(smalls, dict):
+                smalls = smalls.get("string") or []
             picked.append({
+                "kw": kw,
+                "images": [u for u in smalls if isinstance(u, str)][:5],
+                "video": p.get("product_video_url") or "",
                 "id": f"p{pid}",
                 "section": "hot",
                 "orders": orders,
+        "clips": clips,
+        "clip_products": [{k: v.get(k) for k in ("num", "id", "title", "titles", "created", "link", "image")} for v in clip_items],
                 "rating": rating,
                 "title": p.get("product_title", "Produs")[:90],
                 "cur": "EUR",
@@ -291,8 +310,8 @@ def card_html(p: dict, rates: dict) -> str:
         meta = (f'<p class="meta" data-r="{p.get("rating", 0):.0f}" data-o="{p["orders"]}">'
                 f'{p.get("rating", 0):.0f}% recenzii pozitive · {p["orders"]}+ comenzi</p>')
     return f"""
-  <a class="card" href="{e(p['link'])}" target="_blank" rel="noopener" data-id="{e(p.get('id', ''))}" data-s="{e(p.get('section', ''))}" data-title="{e(title_ro[:120])}">
-    <img class="thumb" src="{e(p['image'])}" alt="" loading="lazy">
+  <a class="card" href="{e(p['link'])}" target="_blank" rel="noopener" data-id="{e(p.get('id', ''))}" data-s="{e(p.get('section', ''))}" data-title="{e(title_ro[:120])}" data-num="{p.get('num', '')}">
+    <div class="thumbwrap"><img class="thumb" src="{e(p['image'])}" alt="" loading="lazy">{f'<span class="num">#{p["num"]}</span>' if p.get("num") else ""}</div>
     <div class="info">
       <p class="title" data-tid="{e(p.get('id', ''))}">{e(title_ro)}</p>
       {meta}
@@ -301,8 +320,14 @@ def card_html(p: dict, rates: dict) -> str:
   </a>"""
 
 
-def render(featured: list[dict], hot: list[dict], rates: dict) -> str:
-    titles_json = json.dumps({p.get("id"): p.get("titles", {}) for p in featured + hot}, ensure_ascii=False).replace("</", "<\\/")
+def render(featured: list[dict], hot: list[dict], rates: dict, clip_items: list[dict] | None = None) -> str:
+    clip_items = clip_items or []
+    titles_json = json.dumps({p.get("id"): p.get("titles", {}) for p in clip_items + featured + hot}, ensure_ascii=False).replace("</", "<\\/")
+    clips_section = ""
+    if clip_items:
+        clips_section = f"""
+  <h2 class="section-title" data-i18n="clips">Din clipurile TikTok</h2>
+  {''.join(card_html(p, rates) for p in clip_items)}"""
     now = datetime.now(timezone(timedelta(hours=3))).strftime("%d.%m.%Y")
     hot_section = ""
     if hot:
@@ -328,7 +353,13 @@ h1{{font-family:'Space Grotesk',sans-serif;font-size:22px;text-align:center;marg
 .tag{{text-align:center;color:var(--muted);font-size:14px;margin-bottom:22px;}}
 .section-title{{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:28px 0 12px;}}
 .card{{display:flex;gap:14px;background:var(--card);border-radius:16px;padding:12px;margin-bottom:12px;text-decoration:none;color:var(--text);align-items:center;}}
-.thumb{{width:96px;height:96px;object-fit:cover;border-radius:12px;flex-shrink:0;background:#333;}}
+.thumbwrap{{position:relative;flex-shrink:0;}}
+.thumb{{width:96px;height:96px;object-fit:cover;border-radius:12px;display:block;background:#333;}}
+.num{{position:absolute;top:-8px;left:-8px;min-width:36px;height:36px;padding:0 8px;border-radius:999px;background:var(--hot);color:#fff;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.4);}}
+.find{{display:flex;gap:8px;margin:0 0 18px;}}
+.find input{{flex:1;min-width:0;background:var(--card);border:1px solid #3a3446;border-radius:12px;padding:10px 12px;color:var(--text);font:inherit;font-size:15px;}}
+.find button{{background:var(--hot);color:#fff;border:0;border-radius:12px;padding:0 16px;font:inherit;font-weight:600;}}
+.card.flash{{outline:3px solid var(--gold);}}
 .info{{flex:1;min-width:0;}}
 .title{{font-size:14px;line-height:1.3;margin-bottom:6px;}}
 .meta{{font-size:12px;color:var(--muted);margin-bottom:6px;}}
@@ -342,10 +373,26 @@ h1{{font-family:'Space Grotesk',sans-serif;font-size:22px;text-align:center;marg
   <div class="avatar">TX</div>
   <h1>@trendixeu</h1>
   <p class="tag" data-i18n="tag">Oferte zilnice</p>
+  <form class="find" id="find"><input id="findNum" inputmode="numeric" placeholder="Ai văzut un număr în clip? Ex: 12" data-i18n-ph="find" aria-label="Numărul produsului"><button type="submit" data-i18n="go">Caută</button></form>
+  {clips_section}
   <h2 class="section-title" data-i18n="featured">Din clipurile mele</h2>
   {''.join(card_html(p, rates) for p in featured)}
   {hot_section}
 </div>
+<script>
+document.getElementById("find").addEventListener("submit", function (ev) {{
+  ev.preventDefault();
+  var n = String(document.getElementById("findNum").value).replace(/[^0-9]/g, "");
+  var el = n && document.querySelector('.card[data-num="' + n + '"]');
+  if (!el) {{ document.getElementById("findNum").value = ""; return; }}
+  el.scrollIntoView({{ behavior: "smooth", block: "center" }});
+  el.classList.add("flash"); setTimeout(function () {{ el.classList.remove("flash"); }}, 2200);
+}});
+if (/^#\d+$/.test(location.hash)) {{
+  var el0 = document.querySelector('.card[data-num="' + location.hash.slice(1) + '"]');
+  if (el0) setTimeout(function () {{ el0.scrollIntoView({{ block: "center" }}); el0.classList.add("flash"); }}, 300);
+}}
+</script>
 <script>
 window.TX_TITLES = {titles_json};
 </script>
@@ -414,6 +461,59 @@ window.RATES = {json.dumps(rates)};
 """
 
 
+def load_video_log() -> list[dict]:
+    try:
+        return json.loads(VIDEO_LOG_PATH.read_text(encoding="utf-8"))
+    except Exception:
+        return []
+
+
+def to_lei(p: dict, rates: dict) -> float:
+    if p["cur"] == "RON":
+        return p["amount"]
+    return p["amount"] / rates.get(p["cur"], 1) * rates.get("RON", 4.97)
+
+
+def make_daily_clips(hot: list[dict], featured: list[dict], rates: dict, video_log: list[dict]) -> list[dict]:
+    """Alege produse noi (fara clip pana acum), randeaza clipurile, le trece in jurnal."""
+    if CLIPS_PER_DAY <= 0 or not shutil.which("ffmpeg"):
+        log("[warn] clipuri: ffmpeg lipseste sau generarea e oprita")
+        return []
+    try:
+        import make_clips
+    except Exception as exc:
+        log(f"[warn] clipuri: nu pot incarca generatorul ({exc})")
+        return []
+    done = {v["id"] for v in video_log}
+    next_num = max([v.get("num", 0) for v in video_log] + [p.get("num", 0) for p in featured] + [0]) + 1
+    todo = [p for p in sorted(hot, key=lambda x: -(x.get("orders") or 0)) if p["id"] not in done][:CLIPS_PER_DAY]
+    clips_dir = OUT_DIR / "clips"
+    clips_dir.mkdir(parents=True, exist_ok=True)
+    made = []
+    today = datetime.now(timezone.utc).date().isoformat()
+    for p in todo:
+        num = next_num
+        fname = f"trendixeu-{num}.mp4"
+        try:
+            t0 = time.time()
+            copy = make_clips.render_clip(p, num, to_lei(p, rates), clips_dir / fname)
+            next_num += 1
+            entry = {k: p.get(k) for k in ("id", "title", "titles", "cur", "amount", "link", "image",
+                                           "orders", "rating", "kw")}
+            entry.update({"num": num, "created": today, "section": "clip"})
+            video_log.append(entry)
+            made.append({**copy, "num": num, "file": f"clips/{fname}", "id": p["id"], "link": p["link"],
+                         "image": p["image"], "title_ro": (p.get("titles") or {}).get("ro") or p["title"]})
+            log(f"[info] clip #{num} gata in {time.time() - t0:.0f}s"
+                + (" (cu clipul vanzatorului)" if copy.get("used_seller_video") else ""))
+        except Exception as exc:
+            log(f"[warn] clip pentru {p['id']} esuat: {str(exc)[:200]}")
+    if not todo:
+        log("[info] clipuri: niciun produs nou azi (toate au deja clip)")
+    VIDEO_LOG_PATH.write_text(json.dumps(video_log, ensure_ascii=False, indent=1), encoding="utf-8")
+    return made
+
+
 def main() -> None:
     started = datetime.now(timezone.utc)
     featured = [normalize_price(p) for p in json.loads(FEATURED_PATH.read_text(encoding="utf-8"))]
@@ -444,7 +544,14 @@ def main() -> None:
     OUT_DIR.mkdir()
     if IMG_DIR.exists():
         shutil.copytree(IMG_DIR, OUT_DIR / "img")
-    (OUT_DIR / "index.html").write_text(render(featured, hot, rates), encoding="utf-8")
+
+    video_log = load_video_log()
+    clips = make_daily_clips(hot, featured, rates, video_log)
+    cutoff = (datetime.now(timezone.utc) - timedelta(days=CLIP_PRODUCTS_DAYS)).date().isoformat()
+    clip_items = [normalize_price(dict(v)) for v in reversed(video_log) if v.get("created", "") >= cutoff]
+    clip_ids = {v["id"] for v in clip_items}
+    hot_rest = [p for p in hot if p["id"] not in clip_ids]
+    (OUT_DIR / "index.html").write_text(render(featured, hot_rest, rates, clip_items), encoding="utf-8")
     for static in ("track.js", "i18n.js"):
         if (ROOT / "site" / static).exists():
             shutil.copy(ROOT / "site" / static, OUT_DIR / static)
@@ -465,6 +572,8 @@ def main() -> None:
         "featured_items": [{k: p.get(k) for k in ("id", "title", "titles", "cur", "amount", "link", "image")} for p in featured],
         "hot_items": [{k: p.get(k) for k in ("id", "title", "titles", "cur", "amount", "link", "image", "meta", "orders", "rating")} for p in hot],
         "orders": orders,
+        "clips": clips,
+        "clip_products": [{k: v.get(k) for k in ("num", "id", "title", "titles", "created", "link", "image")} for v in clip_items],
         "log": LOG,
     }, ensure_ascii=False, indent=1)
     (OUT_DIR / "status.json").write_text(status, encoding="utf-8")

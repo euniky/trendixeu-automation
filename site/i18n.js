@@ -11,12 +11,12 @@
     "America/Argentina/Buenos_Aires": "es", "America/Lima": "es", "America/Santiago": "es"
   };
   var TEXT = {
-    ro: { tag: "Oferte zilnice", featured: "Din clipurile mele", hot: "Oferte noi · actualizat {d}", buy: "Cumpără", meta: "{r}% recenzii pozitive · {o}+ comenzi", title: "@trendixeu — Oferte zilnice" },
-    en: { tag: "Daily deals", featured: "From my videos", hot: "New deals · updated {d}", buy: "Buy now", meta: "{r}% positive reviews · {o}+ orders", title: "@trendixeu — Daily deals" },
-    it: { tag: "Offerte del giorno", featured: "Dai miei video", hot: "Nuove offerte · aggiornato {d}", buy: "Acquista", meta: "{r}% recensioni positive · {o}+ ordini", title: "@trendixeu — Offerte del giorno" },
-    de: { tag: "Tägliche Angebote", featured: "Aus meinen Videos", hot: "Neue Angebote · aktualisiert {d}", buy: "Kaufen", meta: "{r}% positive Bewertungen · {o}+ Bestellungen", title: "@trendixeu — Tägliche Angebote" },
-    fr: { tag: "Bons plans du jour", featured: "De mes vidéos", hot: "Nouvelles offres · mis à jour le {d}", buy: "Acheter", meta: "{r}% d'avis positifs · {o}+ commandes", title: "@trendixeu — Bons plans du jour" },
-    es: { tag: "Ofertas diarias", featured: "De mis vídeos", hot: "Nuevas ofertas · actualizado {d}", buy: "Comprar", meta: "{r}% reseñas positivas · {o}+ pedidos", title: "@trendixeu — Ofertas diarias" }
+    ro: { clips: "Din clipurile TikTok", find: "Ai văzut un număr în clip? Ex: 12", go: "Caută", tag: "Oferte zilnice", featured: "Din clipurile mele", hot: "Oferte noi · actualizat {d}", buy: "Cumpără", meta: "{r}% recenzii pozitive · {o}+ comenzi", title: "@trendixeu — Oferte zilnice" },
+    en: { clips: "From my TikTok videos", find: "Saw a number in a video? E.g. 12", go: "Find", tag: "Daily deals", featured: "From my videos", hot: "New deals · updated {d}", buy: "Buy now", meta: "{r}% positive reviews · {o}+ orders", title: "@trendixeu — Daily deals" },
+    it: { clips: "Dai miei video TikTok", find: "Hai visto un numero nel video? Es. 12", go: "Cerca", tag: "Offerte del giorno", featured: "Dai miei video", hot: "Nuove offerte · aggiornato {d}", buy: "Acquista", meta: "{r}% recensioni positive · {o}+ ordini", title: "@trendixeu — Offerte del giorno" },
+    de: { clips: "Aus meinen TikTok-Videos", find: "Nummer im Video gesehen? Z. B. 12", go: "Suchen", tag: "Tägliche Angebote", featured: "Aus meinen Videos", hot: "Neue Angebote · aktualisiert {d}", buy: "Kaufen", meta: "{r}% positive Bewertungen · {o}+ Bestellungen", title: "@trendixeu — Tägliche Angebote" },
+    fr: { clips: "De mes vidéos TikTok", find: "Un numéro vu dans la vidéo ? Ex. 12", go: "Chercher", tag: "Bons plans du jour", featured: "De mes vidéos", hot: "Nouvelles offres · mis à jour le {d}", buy: "Acheter", meta: "{r}% d'avis positifs · {o}+ commandes", title: "@trendixeu — Bons plans du jour" },
+    es: { clips: "De mis vídeos de TikTok", find: "¿Viste un número en el vídeo? Ej. 12", go: "Buscar", tag: "Ofertas diarias", featured: "De mis vídeos", hot: "Nuevas ofertas · actualizado {d}", buy: "Comprar", meta: "{r}% reseñas positivas · {o}+ pedidos", title: "@trendixeu — Ofertas diarias" }
   };
 
   function pickLang() {
@@ -50,6 +50,12 @@
       txt = txt.replace("{d}", shown);
     }
     el.textContent = txt;
+  }
+
+  var ph = document.querySelectorAll("[data-i18n-ph]");
+  for (var q = 0; q < ph.length; q++) {
+    var key = ph[q].getAttribute("data-i18n-ph");
+    if (T[key]) ph[q].setAttribute("placeholder", T[key]);
   }
 
   var tnodes = document.querySelectorAll("[data-tid]");
