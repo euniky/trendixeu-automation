@@ -1,0 +1,208 @@
+<title>Panou Trendixeu</title>
+<style>
+:root{
+  /* layout: status live sus (auto-verificat), apoi ce-i mai ramas de facut manual, apoi produse */
+  --bg:#121016; --bg2:#1a1620; --card:#1e1c26; --card-hi:#262330;
+  --text:#f5f3f0; --muted:#a9a5b3; --line:#332f3d;
+  --accent:#ff5a3c; --gold:#ffd166; --ok:#3ddc84; --ok-bg:#12321f; --bad:#ff6b6b; --bad-bg:#3a1a1a;
+}
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]){
+    --bg:#f6f5f3; --bg2:#ffffff; --card:#ffffff; --card-hi:#f0eef2;
+    --text:#1c1a22; --muted:#635d70; --line:#e3e0e8;
+    --accent:#e0432a; --gold:#b3820a; --ok:#1e9a5a; --ok-bg:#e3f7ea; --bad:#c62828; --bad-bg:#fbe4e4;
+    color-scheme:light;
+  }
+}
+:root[data-theme="light"]{
+  --bg:#f6f5f3; --bg2:#ffffff; --card:#ffffff; --card-hi:#f0eef2;
+  --text:#1c1a22; --muted:#635d70; --line:#e3e0e8;
+  --accent:#e0432a; --gold:#b3820a; --ok:#1e9a5a; --ok-bg:#e3f7ea; --bad:#c62828; --bad-bg:#fbe4e4;
+  color-scheme:light;
+}
+:root[data-theme="dark"]{ color-scheme:dark; }
+
+*{box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;margin:0;padding-inline:18px;padding-block:28px 60px;}
+.wrap{max-width:640px;margin:0 auto;}
+h1{font-family:'Space Grotesk','Inter',sans-serif;font-size:24px;margin:0 0 4px;text-wrap:balance;}
+.sub{color:var(--muted);font-size:14px;margin:0 0 22px;}
+.section-title{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:30px 0 12px;}
+
+.status-card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;margin-bottom:10px;}
+.status-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);}
+.status-row:last-child{border-bottom:none;}
+.dot{width:11px;height:11px;border-radius:50%;flex-shrink:0;background:var(--line);}
+.dot.ok{background:var(--ok);}
+.dot.bad{background:var(--bad);}
+.dot.pending{background:var(--gold);}
+.status-text{flex:1;min-width:0;}
+.status-label{font-size:14px;font-weight:600;}
+.status-detail{font-size:12.5px;color:var(--muted);margin-top:2px;}
+
+.repo-form{display:flex;gap:8px;margin-bottom:22px;flex-wrap:wrap;}
+.repo-form input{flex:1;min-width:180px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 12px;color:var(--text);font-size:13.5px;}
+.repo-form button{background:var(--accent);color:#fff;border:none;border-radius:10px;padding:10px 16px;font-size:13.5px;font-weight:600;cursor:pointer;}
+.repo-form button:disabled{opacity:.5;cursor:default;}
+.repo-hint{font-size:12px;color:var(--muted);margin:-14px 0 20px;}
+
+.todo{display:flex;gap:14px;background:var(--card-hi);border:1px dashed var(--line);border-radius:16px;padding:16px;margin-bottom:10px;}
+.todo-num{font-family:'Space Grotesk',sans-serif;color:var(--accent);font-weight:700;flex-shrink:0;}
+.todo-title{font-weight:600;font-size:14.5px;margin:0 0 4px;}
+.todo-desc{color:var(--muted);font-size:13px;line-height:1.5;margin:0;}
+
+.products{display:flex;flex-direction:column;gap:8px;}
+.product{display:flex;gap:12px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 14px;text-decoration:none;color:var(--text);}
+.product-title{font-size:13.5px;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.product-price{font-family:'Space Grotesk',sans-serif;color:var(--gold);font-size:13.5px;font-variant-numeric:tabular-nums;white-space:nowrap;}
+.product-arrow{color:var(--muted);}
+
+.info-card{background:var(--card-hi);border:1px dashed var(--line);border-radius:16px;padding:16px;font-size:13.5px;color:var(--muted);line-height:1.6;}
+.info-card b{color:var(--text);}
+</style>
+
+<div class="wrap">
+  <h1>Panou automatizare — @trendixeu</h1>
+  <p class="sub">Starea de mai jos se verifică singură, live, prin GitHub — nu bifezi nimic manual.</p>
+
+  <div class="section-title">Conectează repo-ul (o singură dată)</div>
+  <div class="repo-form">
+    <input type="text" id="repoInput" placeholder="ex: numeutilizator/trendixeu-automation">
+    <button id="checkBtn">Verifică</button>
+  </div>
+  <p class="repo-hint">Se salvează în acest browser — nu mai trebuie retastat data viitoare.</p>
+
+  <div class="status-card" id="statusCard">
+    <div class="status-row">
+      <span class="dot" id="dotRepo"></span>
+      <div class="status-text"><div class="status-label">Repo GitHub</div><div class="status-detail" id="detailRepo">introdu numele repo-ului mai sus</div></div>
+    </div>
+    <div class="status-row">
+      <span class="dot" id="dotWorkflow"></span>
+      <div class="status-text"><div class="status-label">Automatizare (ultima rulare)</div><div class="status-detail" id="detailWorkflow">—</div></div>
+    </div>
+    <div class="status-row">
+      <span class="dot" id="dotLive"></span>
+      <div class="status-text"><div class="status-label">Pagina de bio</div><div class="status-detail"><a href="https://trendixeu.netlify.app" target="_blank" rel="noopener" style="color:inherit">trendixeu.netlify.app ↗</a></div></div>
+    </div>
+  </div>
+
+  <div class="section-title">Ce trebuie făcut o singură dată de tine</div>
+  <p class="repo-hint" style="margin-top:-4px;">Astea se întâmplă pe conturile tale (AliExpress, Netlify) — nu am acces acolo, nu le pot bifa eu, doar tu.</p>
+  <div id="todos"></div>
+
+  <div class="section-title">Produse fixe pe pagina de bio</div>
+  <div class="products" id="products"></div>
+
+  <div class="section-title">Cum funcționează automat</div>
+  <div class="info-card">
+    În fiecare zi la <b>09:00</b>, GitHub Actions rulează scriptul <b>sync_bio.py</b>: ia produsele "hot sales"
+    din contul tău AliExpress, generează linkurile afiliate și republică pagina de bio pe Netlify — fără nicio
+    atingere din partea ta. Statusul de mai sus se actualizează singur la fiecare vizită a acestei pagini.
+  </div>
+</div>
+
+<script>
+(function(){
+  var TODOS = [
+    {title:'Cere acces la AliExpress Open Platform', desc:'portals.aliexpress.com → API / Open Platform → App Key, App Secret + Tracking ID (deja îl ai din contul de afiliere).'},
+    {title:'Generezi un token Netlify', desc:'User settings → Applications → New access token, plus Site ID-ul din Site settings → General → Site details.'},
+    {title:'Adaugi cele 5 secrete în repo-ul GitHub', desc:'Settings → Secrets and variables → Actions: ALI_APP_KEY, ALI_APP_SECRET, ALI_TRACKING_ID, NETLIFY_AUTH_TOKEN, NETLIFY_SITE_ID.'}
+  ];
+
+  var PRODUCTS = [
+    {title:'Robot curățat geamuri PuRuiKai', price:'RON 386.51', link:'https://s.click.aliexpress.com/e/_c3LpgmjT'},
+    {title:'Aparat spălat covoare Lubluelu V8', price:'RON 395.86', link:'https://s.click.aliexpress.com/e/_c3YrxXEV'},
+    {title:'Aspirator fără fir Laresar V7', price:'RON 615.21', link:'https://s.click.aliexpress.com/e/_c3SRksGz'},
+    {title:'Folie sticlă Joyroom iPhone', price:'RON 44.47', link:'https://s.click.aliexpress.com/e/_c4r4L1Mh'},
+    {title:'Încărcător rapid 65W GaN', price:'RON 23.20', link:'https://s.click.aliexpress.com/e/_c4oBGiev'},
+    {title:'Lampă solară cu senzor de mișcare', price:'RON 32.77', link:'https://s.click.aliexpress.com/e/_c3XsG9WN'},
+    {title:'Mănuși nitril rezistente', price:'RON 26.28', link:'https://s.click.aliexpress.com/e/_c4433IYV'},
+    {title:'Sac spălat încălțăminte', price:'RON 46.95', link:'https://s.click.aliexpress.com/e/_c3Ax29Rf'}
+  ];
+
+  var KEY = 'trendixeu-repo-v1';
+
+  function setDot(id, cls){ document.getElementById(id).className = 'dot ' + cls; }
+
+  function timeAgo(iso){
+    var diffMin = Math.round((Date.now() - new Date(iso).getTime()) / 60000);
+    if (diffMin < 60) return 'acum ' + diffMin + ' min';
+    var h = Math.round(diffMin/60);
+    if (h < 48) return 'acum ' + h + 'h';
+    return 'acum ' + Math.round(h/24) + ' zile';
+  }
+
+  async function checkRepo(repo){
+    setDot('dotRepo','pending'); setDot('dotWorkflow','pending'); setDot('dotLive','pending');
+    document.getElementById('detailRepo').textContent = 'verific...';
+    document.getElementById('detailWorkflow').textContent = 'verific...';
+
+    try {
+      var r = await fetch('https://api.github.com/repos/' + repo);
+      if (!r.ok) {
+        setDot('dotRepo','bad');
+        document.getElementById('detailRepo').textContent = r.status === 404 ? 'repo negăsit — verifică numele (trebuie public)' : 'eroare la verificare (' + r.status + ')';
+        setDot('dotWorkflow','bad');
+        document.getElementById('detailWorkflow').textContent = '—';
+        return;
+      }
+      var data = await r.json();
+      setDot('dotRepo','ok');
+      document.getElementById('detailRepo').textContent = repo + ' — conectat, ramura ' + data.default_branch;
+    } catch(e){
+      setDot('dotRepo','bad');
+      document.getElementById('detailRepo').textContent = 'nu am putut verifica (conexiune)';
+      return;
+    }
+
+    try {
+      var rr = await fetch('https://api.github.com/repos/' + repo + '/actions/runs?per_page=1');
+      var rd = await rr.json();
+      if (!rd.workflow_runs || rd.workflow_runs.length === 0) {
+        setDot('dotWorkflow','pending');
+        document.getElementById('detailWorkflow').textContent = 'niciodată rulat încă — pornește-l manual din tab-ul Actions';
+      } else {
+        var run = rd.workflow_runs[0];
+        var ok = run.status === 'completed' && run.conclusion === 'success';
+        setDot('dotWorkflow', run.status !== 'completed' ? 'pending' : (ok ? 'ok' : 'bad'));
+        var statusTxt = run.status !== 'completed' ? 'rulează acum...' : (ok ? 'succes' : 'eșuat — verifică log-ul');
+        document.getElementById('detailWorkflow').innerHTML = statusTxt + ' · ' + timeAgo(run.created_at) + ' · <a href="' + run.html_url + '" target="_blank" rel="noopener" style="color:inherit">vezi pe GitHub ↗</a>';
+      }
+    } catch(e){
+      document.getElementById('detailWorkflow').textContent = 'nu am putut verifica rulările';
+    }
+  }
+
+  var repoInput = document.getElementById('repoInput');
+  var saved = '';
+  try { saved = localStorage.getItem(KEY) || ''; } catch(e){}
+  if (saved) { repoInput.value = saved; checkRepo(saved); }
+
+  document.getElementById('checkBtn').addEventListener('click', function(){
+    var v = repoInput.value.trim();
+    if (!v || v.indexOf('/') === -1) { document.getElementById('detailRepo').textContent = 'format așteptat: utilizator/nume-repo'; return; }
+    try { localStorage.setItem(KEY, v); } catch(e){}
+    checkRepo(v);
+  });
+
+  setDot('dotLive','ok');
+
+  var todosEl = document.getElementById('todos');
+  TODOS.forEach(function(t, i){
+    var row = document.createElement('div');
+    row.className = 'todo';
+    row.innerHTML = '<div class="todo-num">' + (i+1) + '</div><div><p class="todo-title">' + t.title + '</p><p class="todo-desc">' + t.desc + '</p></div>';
+    todosEl.appendChild(row);
+  });
+
+  var productsEl = document.getElementById('products');
+  PRODUCTS.forEach(function(p){
+    var a = document.createElement('a');
+    a.className = 'product';
+    a.href = p.link; a.target = '_blank'; a.rel = 'noopener';
+    a.innerHTML = '<span class="product-title">' + p.title + '</span><span class="product-price">' + p.price + '</span><span class="product-arrow">↗</span>';
+    productsEl.appendChild(a);
+  });
+})();
+</script>

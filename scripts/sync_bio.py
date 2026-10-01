@@ -1,101 +1,126 @@
 """
-Reconstruieste automat pagina de bio (index.html) cu:
-  - produsele "fixe" din data/featured_products.json (cele din videoclipuri, editate manual de tine)
-  - produsele "hot sales" preluate live din AliExpress Affiliate API (filtrate dupa rating/comenzi)
+Reconstruieste automat pagina de bio (public/index.html) cu:
+  - produsele fixe din data/featured_products.json (cele din videoclipuri, editate manual)
+  - produsele "hot" luate live din AliExpress Affiliate API (filtrate dupa rating/comenzi)
 
 Ruleaza zilnic prin GitHub Actions (.github/workflows/daily-refresh.yml).
-Are nevoie de urmatoarele variabile de mediu (secrets in GitHub):
-  ALI_APP_KEY, ALI_APP_SECRET, ALI_TRACKING_ID
+Variabile de mediu necesare (secrets in GitHub): ALI_APP_KEY, ALI_APP_SECRET, ALI_TRACKING_ID
 """
+import hashlib
+import html
 import json
 import os
+import shutil
 import sys
+import time
+from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
-from aliexpress_api import AliexpressApi, models
+import requests
 
 ROOT = Path(__file__).resolve().parent.parent
 FEATURED_PATH = ROOT / "data" / "featured_products.json"
-OUTPUT_PATH = ROOT / "public" / "index.html"
+IMG_DIR = ROOT / "data" / "img"
+OUT_DIR = ROOT / "public"
 
-# ---- reguli de filtrare pentru produsele "hot sales" ----
-MIN_RATING = 4.5          # rating minim (evaluate_rate)
+API_URL = "https://api-sg.aliexpress.com/sync"
+
+# ---- reguli de filtrare pentru produsele "hot" ----
+MIN_RATING_PERCENT = 90   # evaluate_rate minim (ex. "95.2%")
 MIN_ORDERS = 300          # comenzi minime
 MAX_HOT_PRODUCTS = 10     # cate produse hot afisam sub cele fixe
-CATEGORY_IDS = None       # ex: [7] pentru "Home & Garden" - lasa None pentru toate categoriile
+SHIP_TO = "RO"            # doar produse livrabile in Romania
+CURRENCY = "EUR"          # API-ul nu suporta RON
+KEYWORDS = ["home gadget", "cleaning", "kitchen", "phone accessories"]  # cautari, pe rand
 
 
-def get_client() -> AliexpressApi:
-    key = os.environ["ALI_APP_KEY"]
-    secret = os.environ["ALI_APP_SECRET"]
-    tracking_id = os.environ["ALI_TRACKING_ID"]
-    return AliexpressApi(key, secret, models.Language.RO, models.Currency.RON, tracking_id)
+def sign(secret: str, params: dict) -> str:
+    raw = secret + "".join(f"{k}{params[k]}" for k in sorted(params)) + secret
+    return hashlib.md5(raw.encode("utf-8")).hexdigest().upper()
 
 
-def fetch_hot_products(client: AliexpressApi) -> list[dict]:
-    """Ia produsele hot, le filtreaza dupa rating/comenzi si genereaza linkuri afiliate."""
-    kwargs = {"page_size": 50}
-    if CATEGORY_IDS:
-        kwargs["category_ids"] = CATEGORY_IDS
-    raw = client.get_hotproducts(**kwargs)
-    items = getattr(raw, "products", raw)  # unele versiuni intorc un obiect cu .products
+def call_api(method: str, app_params: dict) -> dict:
+    key = os.environ["ALI_APP_KEY"].strip()
+    secret = os.environ["ALI_APP_SECRET"].strip()
+    params = {
+        "app_key": key,
+        "format": "json",
+        "method": method,
+        "sign_method": "md5",
+        "timestamp": str(int(time.time() * 1000)),
+        "v": "2.0",
+        **{k: str(v) for k, v in app_params.items() if v is not None},
+    }
+    params["sign"] = sign(secret, params)
+    r = requests.post(API_URL, data=params, timeout=30)
+    r.raise_for_status()
+    data = r.json()
+    if "error_response" in data:
+        raise RuntimeError(f"API error: {data['error_response']}")
+    return data
 
-    filtered = []
-    for p in items:
-        rating = float(getattr(p, "evaluate_rate", "0").rstrip("%") or 0) / 20  # ex: 96% -> ~4.8
-        orders = int(getattr(p, "lastest_volume", getattr(p, "volume", 0)) or 0)
-        if rating < MIN_RATING or orders < MIN_ORDERS:
-            continue
-        filtered.append(p)
-        if len(filtered) >= MAX_HOT_PRODUCTS:
-            break
 
-    if not filtered:
-        return []
-
-    ids = [str(getattr(p, "product_id")) for p in filtered]
-    links = client.get_affiliate_links(ids)
-    link_map = {}
-    for link in links:
-        # aliexpress-api intoarce obiecte cu .source_value si .promotion_link
-        src = getattr(link, "source_value", None)
-        if src:
-            link_map[str(src)] = link.promotion_link
-
-    out = []
-    for p in filtered:
-        pid = str(getattr(p, "product_id"))
-        out.append({
-            "title": getattr(p, "product_title", "Produs"),
-            "price": f"RON {getattr(p, 'target_sale_price', '?')}",
-            "link": link_map.get(pid) or getattr(p, "promotion_link", "#"),
-            "image": getattr(p, "product_main_image_url", ""),
+def fetch_hot_products() -> list[dict]:
+    tracking_id = os.environ["ALI_TRACKING_ID"].strip()
+    seen, picked = set(), []
+    for kw in KEYWORDS:
+        data = call_api("aliexpress.affiliate.hotproduct.query", {
+            "keywords": kw,
+            "page_size": 50,
+            "sort": "LAST_VOLUME_DESC",
+            "ship_to_country": SHIP_TO,
+            "target_currency": CURRENCY,
+            "target_language": "EN",
+            "tracking_id": tracking_id,
         })
-    return out
-
-
-def load_featured() -> list[dict]:
-    return json.loads(FEATURED_PATH.read_text(encoding="utf-8"))
+        resp = data.get("aliexpress_affiliate_hotproduct_query_response", {}).get("resp_result", {})
+        if str(resp.get("resp_code")) != "200":
+            print(f"[warn] '{kw}': {resp.get('resp_msg')}", file=sys.stderr)
+            continue
+        products = (resp.get("result") or {}).get("products", {}).get("product", []) or []
+        print(f"[info] '{kw}': {len(products)} produse primite")
+        for p in products:
+            pid = p.get("product_id")
+            if pid in seen or not p.get("promotion_link"):
+                continue
+            rating = float(str(p.get("evaluate_rate", "0")).rstrip("%") or 0)
+            orders = int(p.get("lastest_volume") or 0)
+            if rating < MIN_RATING_PERCENT or orders < MIN_ORDERS:
+                continue
+            seen.add(pid)
+            picked.append({
+                "title": p.get("product_title", "Produs")[:90],
+                "price": f"€ {p.get('target_sale_price') or p.get('sale_price', '?')}",
+                "link": p["promotion_link"],
+                "image": p.get("product_main_image_url", ""),
+                "meta": f"{rating:.0f}% recenzii pozitive · {orders}+ comenzi",
+            })
+            if len(picked) >= MAX_HOT_PRODUCTS:
+                return picked
+    return picked
 
 
 def card_html(p: dict) -> str:
+    e = html.escape
+    meta = f'<p class="meta">{e(p["meta"])}</p>' if p.get("meta") else ""
     return f"""
-  <a class="card" href="{p['link']}" target="_blank" rel="noopener">
-    <img class="thumb" src="{p['image']}" alt="" loading="lazy">
+  <a class="card" href="{e(p['link'])}" target="_blank" rel="noopener">
+    <img class="thumb" src="{e(p['image'])}" alt="" loading="lazy">
     <div class="info">
-      <p class="title">{p['title']}</p>
-      <div class="row"><span class="price">{p['price']}</span><span class="buy">Cumpără · Buy</span></div>
+      <p class="title">{e(p['title'])}</p>
+      {meta}
+      <div class="row"><span class="price">{e(p['price'])}</span><span class="buy">Cumpără · Buy</span></div>
     </div>
   </a>"""
 
 
 def render(featured: list[dict], hot: list[dict]) -> str:
-    featured_html = "\n".join(card_html(p) for p in featured)
-    hot_html = "\n".join(card_html(p) for p in hot)
-    hot_section = f"""
-  <h2 class="section-title">🔥 Hot sales — actualizat automat</h2>
-  {hot_html}""" if hot else ""
-
+    now = datetime.now(timezone(timedelta(hours=3))).strftime("%d.%m.%Y")
+    hot_section = ""
+    if hot:
+        hot_section = f"""
+  <h2 class="section-title">Hot deals · actualizat {now}</h2>
+  {''.join(card_html(p) for p in hot)}"""
     return f"""<!DOCTYPE html>
 <html lang="ro">
 <head>
@@ -106,38 +131,51 @@ def render(featured: list[dict], hot: list[dict]) -> str:
 <style>
 :root{{--bg:#121016;--bg2:#221a2c;--card:#1e1c26;--text:#f5f3f0;--muted:#a9a5b3;--hot:#ff5a3c;--gold:#ffd166;}}
 *{{box-sizing:border-box;margin:0;padding:0;}}
-body{{background:linear-gradient(180deg,var(--bg),var(--bg2));color:var(--text);font-family:Inter,sans-serif;padding:24px 16px 60px;max-width:480px;margin:0 auto;}}
-h1{{font-family:'Space Grotesk',sans-serif;font-size:22px;text-align:center;margin:14px 0 4px;}}
-.section-title{{font-size:15px;color:var(--muted);margin:28px 0 12px;}}
+body{{background:linear-gradient(180deg,var(--bg),var(--bg2));min-height:100vh;color:var(--text);font-family:Inter,sans-serif;padding:28px 16px 60px;}}
+.wrap{{max-width:480px;margin:0 auto;}}
+.avatar{{width:84px;height:84px;border-radius:50%;margin:0 auto;background:linear-gradient(135deg,var(--hot),var(--gold));display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:30px;color:#121016;}}
+h1{{font-family:'Space Grotesk',sans-serif;font-size:22px;text-align:center;margin:12px 0 4px;}}
+.tag{{text-align:center;color:var(--muted);font-size:14px;margin-bottom:22px;}}
+.section-title{{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:28px 0 12px;}}
 .card{{display:flex;gap:14px;background:var(--card);border-radius:16px;padding:12px;margin-bottom:12px;text-decoration:none;color:var(--text);align-items:center;}}
 .thumb{{width:96px;height:96px;object-fit:cover;border-radius:12px;flex-shrink:0;background:#333;}}
-.title{{font-size:14px;line-height:1.3;margin-bottom:8px;}}
-.row{{display:flex;justify-content:space-between;align-items:center;}}
+.info{{flex:1;min-width:0;}}
+.title{{font-size:14px;line-height:1.3;margin-bottom:6px;}}
+.meta{{font-size:12px;color:var(--muted);margin-bottom:6px;}}
+.row{{display:flex;justify-content:space-between;align-items:center;gap:8px;}}
 .price{{color:var(--gold);font-weight:700;font-size:15px;}}
-.buy{{background:var(--hot);color:#fff;border-radius:999px;padding:6px 14px;font-size:13px;font-weight:600;}}
+.buy{{background:var(--hot);color:#fff;border-radius:999px;padding:6px 14px;font-size:13px;font-weight:600;white-space:nowrap;}}
 </style>
 </head>
 <body>
-<h1>@trendixeu — oferte zilnice</h1>
-{featured_html}
-{hot_section}
+<div class="wrap">
+  <div class="avatar">TX</div>
+  <h1>@trendixeu</h1>
+  <p class="tag">Oferte zilnice · Daily deals</p>
+  <h2 class="section-title">Din clipurile mele</h2>
+  {''.join(card_html(p) for p in featured)}
+  {hot_section}
+</div>
 </body>
 </html>
 """
 
 
 def main() -> None:
-    featured = load_featured()
+    featured = json.loads(FEATURED_PATH.read_text(encoding="utf-8"))
     hot = []
     try:
-        client = get_client()
-        hot = fetch_hot_products(client)
+        hot = fetch_hot_products()
     except Exception as exc:  # nu opri publicarea produselor fixe daca API-ul pica
         print(f"[warn] nu am putut lua produsele hot: {exc}", file=sys.stderr)
 
-    OUTPUT_PATH.parent.mkdir(exist_ok=True)
-    OUTPUT_PATH.write_text(render(featured, hot), encoding="utf-8")
-    print(f"OK — {len(featured)} produse fixe + {len(hot)} produse hot -> {OUTPUT_PATH}")
+    if OUT_DIR.exists():
+        shutil.rmtree(OUT_DIR)
+    OUT_DIR.mkdir()
+    if IMG_DIR.exists():
+        shutil.copytree(IMG_DIR, OUT_DIR / "img")
+    (OUT_DIR / "index.html").write_text(render(featured, hot), encoding="utf-8")
+    print(f"OK — {len(featured)} produse fixe + {len(hot)} produse hot")
 
 
 if __name__ == "__main__":
