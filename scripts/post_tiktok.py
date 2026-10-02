@@ -75,6 +75,8 @@ def settings(draft: bool = False) -> dict:
 
 def clip_url(v: dict) -> str | None:
     url = f"{os.environ.get('CLIP_BASE', SITE_URL).rstrip('/')}/{v['clip']['file']}"
+    if v.get("remade"):
+        url += f"?v={v['remade']}"   # adresa noua pentru clipurile refacute
     head = requests.head(url, timeout=30, allow_redirects=True)
     if not head.ok or "video" not in head.headers.get("Content-Type", ""):
         return None

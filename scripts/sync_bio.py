@@ -751,8 +751,6 @@ def make_daily_clips(hot: list[dict], featured: list[dict], rates: dict, video_l
                 v["clip"] = {**old, **copy, "num": num, "file": f"clips/{fname}",
                              "poster": f"clips/trendixeu-{num}.jpg"}
                 v["remade"] = v.get("remade", 0) + 1
-                if v.get("posted"):
-                    v["posted"]["repost"] = True
                 for f in (fname, f"trendixeu-{num}.jpg"):
                     if (clips_dir / f).exists():
                         shutil.copy(clips_dir / f, CLIP_CACHE / f)
