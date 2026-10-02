@@ -105,7 +105,7 @@ def main() -> None:
     slots = next_slots(len(todo), taken)
     for v, when in zip(todo, slots):
         clip = v["clip"]
-        url = f"{SITE_URL}/{clip['file']}"
+        url = f"{os.environ.get('CLIP_BASE', SITE_URL).rstrip('/')}/{clip['file']}"
         head = requests.head(url, timeout=30, allow_redirects=True)
         if not head.ok or "video" not in head.headers.get("Content-Type", ""):
             log(f"Clipul #{v['num']} nu e accesibil online ({head.status_code}); il las pentru data viitoare.")

@@ -204,7 +204,7 @@ tr:last-child td{border-bottom:none}
   <section class="pipe" aria-label="Etapele automatizării">
     <div class="stage" id="st1"><div class="head"><span class="dot"></span><span class="num">01</span></div><h3>Pornire GitHub Actions</h3><p class="detail">—</p></div>
     <div class="stage" id="st2"><div class="head"><span class="dot"></span><span class="num">02</span></div><h3>Produse, traduceri și clipuri</h3><p class="detail">—</p></div>
-    <div class="stage" id="st3"><div class="head"><span class="dot"></span><span class="num">03</span></div><h3>Publicare pe Netlify</h3><p class="detail">—</p></div>
+    <div class="stage" id="st3"><div class="head"><span class="dot"></span><span class="num">03</span></div><h3>Publicare site</h3><p class="detail">—</p></div>
     <div class="stage" id="st4"><div class="head"><span class="dot"></span><span class="num">04</span></div><h3>Pagina de bio live</h3><p class="detail">—</p></div>
   </section>
 
@@ -300,7 +300,7 @@ tr:last-child td{border-bottom:none}
   var STEP_GROUPS = [
     ["Set up job", "Run actions/checkout@v4", "Run actions/setup-python@v5", "Instaleaza dependinte", "Instaleaza ffmpeg"],
     ["Memoria traducerilor", "Genereaza pagina de bio"],
-    ["Run actions/setup-node@v4", "Instaleaza dependintele contorului de click-uri", "Publica pe Netlify"]
+    ["Pregateste site-ul", "Configureaza GitHub Pages", "Incarca site-ul", "Publica pe GitHub Pages", "Actualizeaza poarta Netlify (doar cand se schimba)"]
   ];
   var state = { runs: [], jobs: null, jobsRunId: null, status: null, stats: null, lastFetch: null, rateLimitedUntil: 0, tab: "hot", days: 7 };
   var timer = null;
@@ -359,7 +359,7 @@ tr:last-child td{border-bottom:none}
       state.status = await getJSON("/status.json?t=" + Date.now());
     } catch (e) { notice.push("Nu am putut citi datele publicate pe site."); }
     try {
-      state.stats = await getJSON("/api/stats?t=" + Date.now());
+      state.stats = await getJSON("/.netlify/functions/stats?t=" + Date.now());
     } catch (e) { state.stats = state.stats || null; }
 
     if (Date.now() >= state.rateLimitedUntil) {
@@ -443,7 +443,7 @@ tr:last-child td{border-bottom:none}
       else if (g2 && g2.cls === "ok" && st) d2 = st.hot + " produse noi · " + ((st.clips || []).length) + " clipuri · 1 EUR = " + (st.rates && st.rates.RON ? st.rates.RON.toFixed(3) : "?") + " lei" + (groupDur(g2) ? " · " + groupDur(g2) : "");
       setStage("st2", g2 ? (g2.cls === "ok" && st && (st.hot === 0 || hasWarn) ? "warn" : g2.cls) : "", d2);
       var d3 = "În așteptare";
-      if (g3 && g3.cls === "run") d3 = "Publică pe trendixeu.netlify.app…";
+      if (g3 && g3.cls === "run") d3 = "Publică pagina și clipurile…";
       else if (g3 && g3.cls === "bad") d3 = "Publicarea a eșuat";
       else if (g3 && g3.cls === "ok") d3 = "Publicat" + (groupDur(g3) ? " în " + groupDur(g3) : "");
       setStage("st3", g3 ? g3.cls : "", d3);

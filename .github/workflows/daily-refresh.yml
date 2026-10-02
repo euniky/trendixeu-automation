@@ -15,6 +15,10 @@ on:
         description: "Numarul clipului de refacut cu voce gratuita vs premium (gol = nimic)"
         default: ""
 
+concurrency:
+  group: publicare
+  cancel-in-progress: false
+
 jobs:
   refresh:
     runs-on: ubuntu-latest
@@ -22,6 +26,11 @@ jobs:
     permissions:
       contents: write
       actions: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: https://trendixeu.netlify.app/
     steps:
       - uses: actions/checkout@v4
 
@@ -55,27 +64,46 @@ jobs:
           ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
         run: python scripts/sync_bio.py
 
+      - name: Pregateste site-ul
+        run: touch public/.nojekyll
+
+      - name: Configureaza GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Incarca site-ul
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+      - name: Publica pe GitHub Pages
+        uses: actions/deploy-pages@v4
+
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
 
-      - name: Instaleaza dependintele contorului de click-uri
-        run: npm install --no-audit --no-fund
-
-      - name: Publica pe Netlify
-        if: github.event.inputs.zernio_check != 'true'   # verificarea Zernio nu consuma credite Netlify
+      - name: Actualizeaza poarta Netlify (doar cand se schimba)
+        # Fiecare publicare pe Netlify costa 15 credite din cele 300 gratuite pe luna,
+        # asa ca Netlify se publica doar cand se schimba poarta sau contorul de click-uri.
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-        run: >
-          npx --yes netlify-cli@latest deploy --prod
-          --dir=public --functions=netlify/functions
-          --message "Refresh automat ${{ github.run_number }}"
+        run: |
+          h=$(cat site/netlify-front/_redirects netlify/functions/*.mjs package.json | sha256sum | cut -c1-16)
+          old=$(cat data/.cache/netlify_hash 2>/dev/null || echo none)
+          if [ "$h" != "$old" ]; then
+            npm install --no-audit --no-fund
+            npx --yes netlify-cli@latest deploy --prod --dir=site/netlify-front --functions=netlify/functions --message "Poarta Netlify $h"
+            mkdir -p data/.cache && echo "$h" > data/.cache/netlify_hash
+          else
+            echo "Netlify neschimbat: nicio publicare, niciun credit consumat"
+          fi
 
       - name: Programeaza clipurile pe TikTok (Zernio)
         continue-on-error: true
         env:
           ZERNIO_API_KEY: ${{ secrets.ZERNIO_API_KEY }}
+          CLIP_BASE: https://euniky.github.io/trendixeu-automation   # direct de pe GitHub, fara credite Netlify
         run: python scripts/post_tiktok.py ${{ github.event.inputs.zernio_check == 'true' && '--check' || '' }}
 
       - name: Copie de rezerva a clipurilor (7 zile)

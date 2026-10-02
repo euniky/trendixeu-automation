@@ -1,6 +1,6 @@
 import { getStore } from "@netlify/blobs";
 
-export const config = { path: "/api/track" };
+// adresa: /.netlify/functions/track
 
 const BOTS = /bot|crawl|spider|slurp|preview|facebookexternalhit|bytespider|headless|lighthouse/i;
 

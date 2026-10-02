@@ -1,6 +1,6 @@
 import { getStore } from "@netlify/blobs";
 
-export const config = { path: ["/api/stats", "/api/stats/*"] };
+// adresa: /.netlify/functions/stats
 
 export default async (req) => {
   const store = getStore({ name: "trendixeu-stats", consistency: "strong" });

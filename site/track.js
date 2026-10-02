@@ -3,9 +3,9 @@
   function send(data) {
     var body = JSON.stringify(data);
     try {
-      if (navigator.sendBeacon && navigator.sendBeacon("/api/track", new Blob([body], { type: "application/json" }))) return;
+      if (navigator.sendBeacon && navigator.sendBeacon("/.netlify/functions/track", new Blob([body], { type: "application/json" }))) return;
     } catch (e) {}
-    try { fetch("/api/track", { method: "POST", body: body, keepalive: true, headers: { "Content-Type": "application/json" } }); } catch (e) {}
+    try { fetch("/.netlify/functions/track", { method: "POST", body: body, keepalive: true, headers: { "Content-Type": "application/json" } }); } catch (e) {}
   }
   var seen = false;
   try { seen = sessionStorage.getItem("tx_view") === "1"; sessionStorage.setItem("tx_view", "1"); } catch (e) {}
