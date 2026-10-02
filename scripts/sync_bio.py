@@ -623,6 +623,73 @@ def product_details(pid: str) -> dict:
     return {}
 
 
+FEATURED_IDS = ROOT / "data" / ".cache" / "featured_ids.json"
+
+
+def resolve_product_id(link: str) -> str | None:
+    """Linkul scurt de afiliere (s.click...) -> ID-ul produsului AliExpress."""
+    try:
+        r = requests.get(link, timeout=30, allow_redirects=True,
+                         headers={"User-Agent": "Mozilla/5.0 (Linux; Android 14) AppleWebKit/537.36 Chrome/126 Mobile"})
+        for u in [h.headers.get("Location", "") for h in r.history] + [r.url, r.text[:20000]]:
+            m = re.search(r"(?:item|i)/(\d{8,})\.html|productIds?=(\d{8,})|item%2F(\d{8,})", requests.utils.unquote(u or ""))
+            if m:
+                return next(g for g in m.groups() if g)
+    except Exception as exc:
+        log(f"[warn] nu am putut deschide {link}: {str(exc)[:100]}")
+    return None
+
+
+def refresh_featured(featured: list[dict]) -> None:
+    """Pretul actual (si pozele/filmarea) pentru produsele adaugate manual in pagina de bio."""
+    ids = json.loads(FEATURED_IDS.read_text(encoding="utf-8")) if FEATURED_IDS.exists() else {}
+    for p in featured:
+        if not ids.get(p["link"]):
+            pid = resolve_product_id(p["link"])
+            if pid:
+                ids[p["link"]] = pid
+    FEATURED_IDS.parent.mkdir(parents=True, exist_ok=True)
+    FEATURED_IDS.write_text(json.dumps(ids, indent=1), encoding="utf-8")
+    pids = [ids[p["link"]] for p in featured if ids.get(p["link"])]
+    if not pids:
+        log("[warn] preturi produse fixe: nu am gasit ID-urile produselor")
+        return
+    found = {}
+    try:
+        data = call_api("aliexpress.affiliate.productdetail.get", {
+            "product_ids": ",".join(pids), "target_currency": CURRENCY, "target_language": "EN",
+            "tracking_id": os.environ["ALI_TRACKING_ID"].strip(), "country": SHIP_TO})
+        res = data.get("aliexpress_affiliate_productdetail_get_response", {}).get("resp_result", {}).get("result") or {}
+        for x in (res.get("products") or {}).get("product") or []:
+            found[str(x.get("product_id"))] = x
+    except Exception as exc:
+        log(f"[warn] preturi produse fixe: {str(exc)[:150]}")
+        return
+    changed = []
+    for p in featured:
+        x = found.get(ids.get(p["link"], ""))
+        if not x:
+            if ids.get(p["link"]):
+                log(f"[warn] produsul fix #{p.get('num')} nu mai apare in AliExpress (posibil indisponibil)")
+            continue
+        old = p.get("amount"), p.get("cur")
+        price = float(x.get("target_sale_price") or x.get("sale_price") or 0)
+        if price <= 0:
+            continue
+        smalls = x.get("product_small_image_urls") or []
+        if isinstance(smalls, dict):
+            smalls = smalls.get("string") or []
+        p.update({"pid": ids[p["link"]], "cur": CURRENCY, "amount": price,
+                  "images": [u for u in smalls if isinstance(u, str)][:5],
+                  "image_url": x.get("product_main_image_url") or "",
+                  "video": x.get("product_video_url") or "",
+                  "orders": int(x.get("lastest_volume") or 0),
+                  "rating": float(str(x.get("evaluate_rate", "0")).rstrip("%") or 0)})
+        changed.append(f"#{p.get('num')} {old[1]} {old[0]} -> {CURRENCY} {price}")
+    log(f"[info] preturi produse fixe actualizate: {len(changed)}/{len(featured)}"
+        + (" (" + "; ".join(changed) + ")" if changed else ""))
+
+
 def voice_demo(video_log: list[dict], rates: dict) -> dict | None:
     """Acelasi clip, de doua ori: voce gratuita vs voce premium (ElevenLabs)."""
     num = os.environ.get("DEMO_PREMIUM", "").strip()
@@ -728,6 +795,17 @@ def make_daily_clips(hot: list[dict], featured: list[dict], rates: dict, video_l
 
     # --- 1b. refacere cu muzica a unor clipuri deja facute (REMAKE="13,14")
     remake = {int(x) for x in re.findall(r"\d+", os.environ.get("REMAKE", ""))}
+    have_nums = {v.get("num") for v in video_log}
+    for fp in featured:
+        if fp.get("num") in remake and fp.get("num") not in have_nums and fp.get("image_url"):
+            entry = {k: fp.get(k) for k in ("id", "title", "titles", "cur", "amount", "link", "images",
+                                            "video", "orders", "rating")}
+            entry.update({"image": fp["image_url"], "num": fp["num"], "created": today, "section": "featured"})
+            if not entry.get("images"):
+                entry.update(product_details(fp.get("pid", "")))
+            video_log.append(entry)
+            log(f"[info] clip nou pentru produsul fix #{fp['num']}"
+                + (" (cu filmarea vanzatorului)" if entry.get("video") else ""))
     if remake and make_clips is not None and shutil.which("ffmpeg"):
         music = get_music()
         for v in video_log:
@@ -749,7 +827,9 @@ def make_daily_clips(hot: list[dict], featured: list[dict], rates: dict, video_l
                             copy[k] = copy[k].rstrip() + "\n" + credit
                 old = v.get("clip") or {}
                 v["clip"] = {**old, **copy, "num": num, "file": f"clips/{fname}",
-                             "poster": f"clips/trendixeu-{num}.jpg"}
+                             "poster": f"clips/trendixeu-{num}.jpg", "created": old.get("created") or v.get("created"),
+                             "id": v["id"], "link": v["link"], "image": v.get("image"),
+                             "title_ro": old.get("title_ro") or (v.get("titles") or {}).get("ro") or v["title"]}
                 v["remade"] = v.get("remade", 0) + 1
                 for f in (fname, f"trendixeu-{num}.jpg"):
                     if (clips_dir / f).exists():
@@ -852,6 +932,11 @@ def main() -> None:
     except Exception as exc:  # nu opri publicarea produselor fixe daca API-ul pica
         log(f"[warn] nu am putut lua produsele hot: {exc}")
 
+    try:
+        refresh_featured(featured)
+    except Exception as exc:
+        log(f"[warn] preturi produse fixe: {str(exc)[:150]}")
+
     load_tr_cache()
     localize(featured, "ro")
     localize(hot, "en")
@@ -876,7 +961,7 @@ def main() -> None:
     except Exception as exc:
         log(f"[warn] comparatie voce: {str(exc)[:200]}")
     cutoff = (datetime.now(timezone.utc) - timedelta(days=CLIP_PRODUCTS_DAYS)).date().isoformat()
-    clip_items = [normalize_price(dict(v)) for v in reversed(video_log) if v.get("created", "") >= cutoff]
+    clip_items = [normalize_price(dict(v)) for v in reversed(video_log) if v.get("created", "") >= cutoff and v.get("section") != "featured"]
     clip_ids = {v["id"] for v in clip_items}
     hot_rest = [p for p in hot if p["id"] not in clip_ids]
     (OUT_DIR / "index.html").write_text(render(featured, hot_rest, rates, clip_items), encoding="utf-8")
