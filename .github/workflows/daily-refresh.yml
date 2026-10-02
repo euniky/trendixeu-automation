@@ -44,6 +44,20 @@ jobs:
       - name: Instaleaza ffmpeg
         uses: FedericoCarboni/setup-ffmpeg@v3
         timeout-minutes: 5
+        continue-on-error: true
+
+      - name: Instaleaza ffmpeg (varianta de rezerva)
+        timeout-minutes: 6
+        run: |
+          if command -v ffmpeg >/dev/null; then echo "ffmpeg prezent"; exit 0; fi
+          for i in 1 2 3; do
+            if timeout 120 bash -c 'curl -fsSL https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz | tar -xJ -C /tmp'; then
+              sudo cp /tmp/ffmpeg-*-amd64-static/ffmpeg /tmp/ffmpeg-*-amd64-static/ffprobe /usr/local/bin/ && break
+            fi
+            sleep 10
+          done
+          command -v ffmpeg || (sudo timeout 240 apt-get install -y -q --no-install-recommends ffmpeg || true)
+          command -v ffmpeg || echo "::warning::ffmpeg indisponibil azi: pagina se actualizeaza, clipurile nu"
 
       - name: Memoria traducerilor
         uses: actions/cache@v4
