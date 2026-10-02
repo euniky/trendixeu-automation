@@ -91,6 +91,24 @@ def main() -> None:
         report["ok"] = True
         log("Conturi TikTok conectate: " + ", ".join(f"@{a['username']}" for a in accounts))
 
+    if check and accounts:
+        # starea clipurilor deja programate (publicat / in asteptare / esuat)
+        vlog = json.loads(VIDEO_LOG.read_text(encoding="utf-8")) if VIDEO_LOG.exists() else []
+        report["posts"] = []
+        for v in vlog:
+            pid = (v.get("posted") or {}).get("id")
+            if not pid:
+                continue
+            try:
+                r = requests.get(f"{API}/posts/{pid}", headers=headers(), timeout=30)
+                data = r.json() if r.ok else {"error": f"{r.status_code} {r.text[:300]}"}
+            except Exception as exc:
+                data = {"error": str(exc)[:200]}
+            post = data.get("post", data) if isinstance(data, dict) else data
+            report["posts"].append({"num": v["num"], "when": v["posted"]["scheduledFor"], "raw": post})
+            st = post.get("status") if isinstance(post, dict) else None
+            log(f"Clipul #{v['num']} ({v['posted']['scheduledFor'][11:16]}): {st or post}")
+
     if check or not accounts:
         REPORT.parent.mkdir(parents=True, exist_ok=True)
         REPORT.write_text(json.dumps(report, ensure_ascii=False, indent=1), encoding="utf-8")
