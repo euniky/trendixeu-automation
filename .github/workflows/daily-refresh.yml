@@ -14,6 +14,9 @@ on:
       remake:
         description: "Numerele clipurilor de refacut cu muzica (ex: 13,14)"
         default: ""
+      to_drafts:
+        description: "Clipuri programate de mutat in schitele TikTok (ex: 13,14)"
+        default: ""
       premium_demo:
         description: "Numarul clipului de refacut cu voce gratuita vs premium (gol = nimic)"
         default: ""
@@ -121,6 +124,8 @@ jobs:
         continue-on-error: true
         env:
           ZERNIO_API_KEY: ${{ secrets.ZERNIO_API_KEY }}
+          TO_DRAFTS: ${{ github.event.inputs.to_drafts || '' }}
+          DRAFTS_PER_DAY: "2"
           CLIP_BASE: https://euniky.github.io/trendixeu-automation   # direct de pe GitHub, fara credite Netlify
         run: python scripts/post_tiktok.py ${{ github.event.inputs.zernio_check == 'true' && '--check' || '' }}
 

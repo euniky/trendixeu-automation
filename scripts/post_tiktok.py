@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import sys
 from datetime import datetime, timedelta
 from pathlib import Path
@@ -24,7 +25,10 @@ REPORT = ROOT / "public" / "zernio.json"
 API = "https://zernio.com/api/v1"
 SITE_URL = "https://trendixeu.netlify.app"
 TZ = ZoneInfo("Europe/Bucharest")
-SLOTS = [(12, 0), (13, 0), (14, 0), (19, 0), (20, 0), (21, 0)]   # 3 la pranz + 3 seara, din ora in ora
+# clipurile postate automat (cu muzica de fundal); 13:00 si 20:00 raman libere pentru schitele tale
+SLOTS = [(12, 0), (14, 0), (19, 0), (21, 0)]
+# cele mai "hot" clipuri ale zilei ajung ca schita in inboxul TikTok: le pui tu un sunet trending si le postezi
+DRAFTS_PER_DAY = int(os.environ.get("DRAFTS_PER_DAY", "2"))
 MIN_LEAD = timedelta(minutes=20)          # nu programa mai devreme de atat
 
 
@@ -57,6 +61,44 @@ def next_slots(n: int, taken: set[str]) -> list[datetime]:
                     break
         day += timedelta(days=1)
     return out
+
+
+def settings(draft: bool = False) -> dict:
+    st = {"privacy_level": "PUBLIC_TO_EVERYONE", "allow_comment": True, "allow_duet": True, "allow_stitch": True,
+          "content_preview_confirmed": True, "express_consent_given": True,
+          # promovezi produse cu link de afiliere: TikTok cere marcarea continutului comercial
+          "isBrandOrganicPost": True}
+    if draft:
+        st["draft"] = True
+    return st
+
+
+def clip_url(v: dict) -> str | None:
+    url = f"{os.environ.get('CLIP_BASE', SITE_URL).rstrip('/')}/{v['clip']['file']}"
+    head = requests.head(url, timeout=30, allow_redirects=True)
+    if not head.ok or "video" not in head.headers.get("Content-Type", ""):
+        return None
+    return url
+
+
+def send_draft(v: dict, account: dict, log) -> bool:
+    url = clip_url(v)
+    if not url:
+        log(f"Clipul #{v['num']} nu e accesibil online; schita ramane pentru data viitoare.")
+        return False
+    body = {"content": caption(v["clip"]) + "\n", "publishNow": True,
+            "mediaItems": [{"type": "video", "url": url}],
+            "platforms": [{"platform": "tiktok", "accountId": account["id"]}],
+            "tiktokSettings": settings(draft=True)}
+    r = requests.post(f"{API}/posts", headers=headers(), json=body, timeout=180)
+    if not r.ok:
+        log(f"Schita clipului #{v['num']} a esuat: {r.status_code} {r.text[:200]}")
+        return False
+    post = r.json().get("post", r.json())
+    v["posted"] = {"draft": True, "sent": datetime.now(TZ).isoformat(timespec="minutes"),
+                   "id": post.get("_id") or post.get("id"), "account": account["username"]}
+    log(f"Clipul #{v['num']} trimis ca SCHITA in inboxul TikTok (pune-i un sunet trending si posteaza-l)")
+    return True
 
 
 def caption(clip: dict) -> str:
@@ -105,9 +147,10 @@ def main() -> None:
             except Exception as exc:
                 data = {"error": str(exc)[:200]}
             post = data.get("post", data) if isinstance(data, dict) else data
-            report["posts"].append({"num": v["num"], "when": v["posted"]["scheduledFor"], "raw": post})
+            report["posts"].append({"num": v["num"], "when": v["posted"].get("scheduledFor"), "raw": post})
             st = post.get("status") if isinstance(post, dict) else None
-            log(f"Clipul #{v['num']} ({v['posted']['scheduledFor'][11:16]}): {st or post}")
+            when = v["posted"].get("scheduledFor", "")[11:16] or "schita"
+            log(f"Clipul #{v['num']} ({when}): {st or post}")
 
     if check or not accounts:
         REPORT.parent.mkdir(parents=True, exist_ok=True)
@@ -116,45 +159,42 @@ def main() -> None:
 
     account = accounts[0]
     video_log = json.loads(VIDEO_LOG.read_text(encoding="utf-8")) if VIDEO_LOG.exists() else []
-    # clipuri refacute (cu muzica) inca neprogramate: sterg postarea veche si o reprogramez la aceeasi ora
-    now = datetime.now(TZ)
+    report["drafts"] = []
+
+    # mutare manuala in schite (TO_DRAFTS="13,14"): anulez programarea si trimit clipul in inbox
+    move = {int(x) for x in re.findall(r"\d+", os.environ.get("TO_DRAFTS", ""))}
     for v in video_log:
         po = v.get("posted") or {}
-        if not po.get("repost"):
+        if v.get("num") not in move or po.get("draft"):
             continue
-        when = datetime.fromisoformat(po["scheduledFor"])
-        if when - now < timedelta(minutes=5):
-            log(f"Clipul #{v['num']} e deja publicat sau prea aproape de ora lui; nu-l mai inlocuiesc.")
-            po.pop("repost", None)
-            continue
-        try:
+        if po.get("id"):
             r = requests.delete(f"{API}/posts/{po['id']}", headers=headers(), timeout=30)
-        except Exception as exc:
-            log(f"Nu am putut sterge postarea veche a clipului #{v['num']}: {str(exc)[:150]}")
-            continue
-        if not r.ok and r.status_code != 404:
-            log(f"Nu am putut sterge postarea veche a clipului #{v['num']}: {r.status_code} {r.text[:150]}")
-            continue
-        v["posted"] = None
-        v["created"] = now.date().isoformat() if v.get("created") != now.date().isoformat() else v["created"]
-        v["_slot"] = po["scheduledFor"]
-        log(f"Postarea veche a clipului #{v['num']} a fost stearsa; o reprogramez cu muzica.")
+            if not r.ok and r.status_code != 404:
+                log(f"Nu am putut anula programarea clipului #{v['num']}: {r.status_code} {r.text[:150]}")
+                continue
+            log(f"Programarea clipului #{v['num']} a fost anulata")
+        if send_draft(v, account, log):
+            report["drafts"].append({"num": v["num"], "title": v["clip"].get("title_ro")})
+
     # doar clipurile generate azi (cele mai vechi le-ai postat poate deja manual)
     today = datetime.utcnow().date().isoformat()
     todo = [v for v in video_log if v.get("clip") and not v.get("posted") and v.get("created") == today]
-    taken = {v["posted"]["scheduledFor"] for v in video_log if v.get("posted")}
-    fixed = [v for v in todo if v.get("_slot")]
-    rest = [v for v in todo if not v.get("_slot")]
-    slots = next_slots(len(rest), taken | {v["_slot"] for v in fixed})
-    pairs = [(v, datetime.fromisoformat(v.pop("_slot"))) for v in fixed] + list(zip(rest, slots))
-    for v, when in pairs:
+    todo.sort(key=lambda v: -(v.get("wow") or 0))
+    drafts_today = sum(1 for v in video_log if (v.get("posted") or {}).get("draft")
+                       and (v.get("posted") or {}).get("sent", "")[:10] == datetime.now(TZ).date().isoformat())
+    n_drafts = max(0, DRAFTS_PER_DAY - drafts_today)
+    for v in todo[:n_drafts]:
+        if send_draft(v, account, log):
+            report["drafts"].append({"num": v["num"], "title": v["clip"].get("title_ro")})
+    todo = [v for v in todo if not v.get("posted")]
+
+    taken = {v["posted"]["scheduledFor"] for v in video_log if (v.get("posted") or {}).get("scheduledFor")}
+    slots = next_slots(len(todo), taken)
+    for v, when in zip(todo, slots):
         clip = v["clip"]
-        url = f"{os.environ.get('CLIP_BASE', SITE_URL).rstrip('/')}/{clip['file']}"
-        if v.get("remade"):
-            url += f"?v={v['remade']}"   # adresa noua, ca sa nu se ia varianta veche fara muzica
-        head = requests.head(url, timeout=30, allow_redirects=True)
-        if not head.ok or "video" not in head.headers.get("Content-Type", ""):
-            log(f"Clipul #{v['num']} nu e accesibil online ({head.status_code}); il las pentru data viitoare.")
+        url = clip_url(v)
+        if not url:
+            log(f"Clipul #{v['num']} nu e accesibil online; il las pentru data viitoare.")
             continue
         body = {
             "content": caption(clip),
@@ -162,16 +202,7 @@ def main() -> None:
             "timezone": "Europe/Bucharest",
             "mediaItems": [{"type": "video", "url": url}],
             "platforms": [{"platform": "tiktok", "accountId": account["id"]}],
-            "tiktokSettings": {
-                "privacy_level": "PUBLIC_TO_EVERYONE",
-                "allow_comment": True,
-                "allow_duet": True,
-                "allow_stitch": True,
-                "content_preview_confirmed": True,
-                "express_consent_given": True,
-                # promovezi produse cu link de afiliere: TikTok cere marcarea continutului comercial
-                "isBrandOrganicPost": True,
-            },
+            "tiktokSettings": settings(),
         }
         try:
             r = requests.post(f"{API}/posts", headers=headers(), json=body, timeout=60)

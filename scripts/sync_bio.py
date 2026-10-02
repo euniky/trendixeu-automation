@@ -786,6 +786,7 @@ def make_daily_clips(hot: list[dict], featured: list[dict], rates: dict, video_l
             localize(missing_titles, "en")
             save_tr_cache()
         music = get_music() if todo and CLIP_MUSIC else []
+        wow_of = {p["id"]: sc_ for (sc_, _w), p in scored}
         for p in todo:
             num = next_num
             fname = f"trendixeu-{num}.mp4"
@@ -805,7 +806,7 @@ def make_daily_clips(hot: list[dict], featured: list[dict], rates: dict, video_l
                 next_num += 1
                 entry = {k: p.get(k) for k in ("id", "title", "titles", "cur", "amount", "link", "image",
                                                "images", "video", "orders", "rating", "kw")}
-                entry.update({"num": num, "created": today, "section": "clip"})
+                entry.update({"num": num, "created": today, "section": "clip", "wow": wow_of.get(p["id"])})
                 entry["clip"] = {**copy, "num": num, "file": f"clips/{fname}", "poster": f"clips/trendixeu-{num}.jpg",
                                  "created": today, "id": p["id"], "link": p["link"], "image": p["image"],
                                  "title_ro": (p.get("titles") or {}).get("ro") or p["title"]}
