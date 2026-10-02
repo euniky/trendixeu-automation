@@ -63,6 +63,7 @@ jobs:
         run: npm install --no-audit --no-fund
 
       - name: Publica pe Netlify
+        if: github.event.inputs.zernio_check != 'true'   # verificarea Zernio nu consuma credite Netlify
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
