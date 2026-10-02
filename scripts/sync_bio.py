@@ -51,6 +51,7 @@ CLIP_VOICE = os.environ.get("CLIP_VOICE", "none")     # none = fara voce; edge =
 CLIP_MUSIC = os.environ.get("CLIP_MUSIC", "on") != "off"   # muzica de fundal in clipuri
 CLIP_FILES_DAYS = 7                                   # cat timp raman clipurile in consola
 CLIP_CACHE = ROOT / "data" / ".cache" / "clips"       # pastrate intre rulari (cache GitHub)
+MIN_FALLBACK_SCORE = 3   # pragul minim cand nu sunt destule produse "wow"
 MUSIC_DIR = ROOT / "data" / ".cache" / "music"
 # muzica energica, fara drepturi de platit (Kevin MacLeod, CC BY 4.0: cere doar mentionarea autorului)
 MUSIC_WANTED = ["Funky Chunk", "Life of Riley", "Sneaky Snitch", "Fluffing a Duck", "Monkeys Spinning Monkeys",
@@ -735,6 +736,10 @@ def make_daily_clips(hot: list[dict], featured: list[dict], rates: dict, video_l
         fresh = [p for p in pool if p["id"] not in done]
         scored = sorted(((wow_score(p, to_lei(p, rates)), p) for p in fresh), key=lambda x: -x[0][0])
         todo = [p for (sc_, why), p in scored if sc_ >= MIN_WOW_SCORE][:CLIPS_PER_DAY]
+        if len(todo) < CLIPS_PER_DAY:
+            # zi slaba: completez cu urmatoarele cele mai interesante produse, dar nu cu cele plictisitoare
+            extra = [p for (sc_, why), p in scored if MIN_FALLBACK_SCORE <= sc_ < MIN_WOW_SCORE]
+            todo += extra[:CLIPS_PER_DAY - len(todo)]
         with_video = sum(1 for p in fresh if p.get("video"))
         log(f"[info] clipuri: {len(fresh)} produse verificate, {with_video} cu filmare, "
             f"{sum(1 for (sc_, _), _p in scored if sc_ >= MIN_WOW_SCORE)} peste pragul de interes ({MIN_WOW_SCORE})")
