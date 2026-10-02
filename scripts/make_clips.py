@@ -126,18 +126,23 @@ def build_copy(p: dict, num: int, lei: float) -> dict:
     name_en = tidy(titles.get("en") or p["title"])
     li = max(1, round(lei))
 
-    if li < 40:
-        hook_show, hook_say, hook_en = f"Doar {li} lei?!", f"Doar {ro_count(li, 'lei')} pentru asta?", f"Only {li} lei?!"
-        used = "price"
-    elif orders >= 5000:
-        hook_show = f"{fmt_int(orders)}+ oameni l-au luat"
-        hook_say = f"Peste {ro_people(orders)} au comandat deja asta!"
-        hook_en, used = f"{fmt_int(orders)}+ people bought this", "orders"
+    t_low = p["title"].lower()
+    novelty = any(w in t_low for w in ("robot", "automatic", "magic", "lazy", "levitat", "projector",
+                                        "self-", "galaxy", "smart", "laser"))
+    if novelty:
+        hook_show, hook_en, used = "Nu știam că există așa ceva", "I didn't know this existed", "novelty"
+    elif li <= 30:
+        hook_show, hook_en, used = f"Doar {li} lei?!", f"Only {li} lei?!", "price"
+    elif orders >= 10000:
+        hook_show, hook_en, used = f"{fmt_int(orders)}+ oameni l-au cumpărat", f"{fmt_int(orders)}+ people bought this", "orders"
+    elif p.get("video"):
+        hook_show, hook_en, used = "Uite ce poate face", "Watch what it does", "video"
     elif rating >= 97:
-        hook_show, hook_say, hook_en, used = f"{rating:.0f}% recenzii pozitive", "Aproape nimeni nu s-a plâns de asta!", f"{rating:.0f}% positive reviews", "rating"
+        hook_show, hook_en, used = "Nimeni nu s-a plâns de el", "Nobody complained about it", "rating"
     else:
-        hook_show = hook_say = "Nu știai că ai nevoie de asta!"
-        hook_en, used = "You didn't know you needed this", "generic"
+        hook_show, hook_en, used = "Gadgetul pe care nu știai că-l vrei", "The gadget you didn't know you wanted", "generic"
+    hook_say = f"Doar {ro_count(li, 'lei')} pentru asta?" if used == "price" else hook_show + "!"
+    kicker = "TOP VÂNZĂRI" if orders >= 5000 else "DESCOPERIREA ZILEI"
 
     feats = features(p["title"])
     sentences = [("hook", hook_say), ("name", f"{name_ro}.")]
@@ -160,7 +165,7 @@ def build_copy(p: dict, num: int, lei: float) -> dict:
                          f"⭐ {rating:.0f}% positive reviews · {fmt_int(orders)}+ orders",
                          f"💰 Price: ~{li} lei", f"👉 Link in bio · find product #{num}"])
     tags = HASHTAGS_BASE + HASHTAGS_BY_KW.get(p.get("kw", ""), ["gadgets", "homehacks"])
-    return {"hook": hook_show, "name": name_ro, "sentences": sentences, "cards": cards,
+    return {"hook": hook_show, "kicker": kicker, "name": name_ro, "sentences": sentences, "cards": cards,
             "orders": orders, "rating": rating, "price_text": f"{li} lei", "num": num,
             "description_ro": desc_ro, "description_en": desc_en, "hashtags": tags[:10],
             "bullets": cards}
@@ -256,6 +261,8 @@ def make_voice(sentences: list[tuple[str, str]], tmp: Path, provider: str = "edg
     """Intoarce timpii fiecarei propozitii si ai fiecarui cuvant + fisierul audio."""
     sr = 44100
     chunks, scenes, t, ok, err = [], [], 0.0, True, None
+    if provider == "none":
+        ok, err = False, None
     for i, (kind, text) in enumerate(sentences):
         words, pcm = [], None
         if ok:
@@ -267,7 +274,9 @@ def make_voice(sentences: list[tuple[str, str]], tmp: Path, provider: str = "edg
                 ok, err = False, str(exc)[:240]
                 print(f"[voce] indisponibila, continui fara voce: {exc}")
         if pcm is None or len(pcm) == 0:
-            dur = max(1.2, 0.36 * len(text.split()) + 0.3)
+            # fara voce: durate gandite pentru citit textul de pe ecran
+            fixed = {"hook": 1.9, "proof": 1.9, "cta": 2.3}
+            dur = fixed.get(kind) or min(3.2, max(1.6, 0.30 * len(text.split()) + 0.5))
             pcm = np.zeros(int(dur * sr), dtype=np.int16)
             words = []
         dur = len(pcm) / sr
@@ -287,7 +296,7 @@ def make_voice(sentences: list[tuple[str, str]], tmp: Path, provider: str = "edg
         w.setframerate(sr)
         w.writeframes(audio.tobytes())
     return {"scenes": scenes, "total": total, "wav": wav, "voiced": ok, "provider": provider if ok else None,
-            "error": err}
+            "error": err if provider != "none" else None}
 
 
 # =================================================================== imagini
@@ -598,10 +607,12 @@ def render_clip(p: dict, num: int, lei: float, out_path: Path, local_images: lis
         voice = make_voice(copy["sentences"], tmp, voice)
         scenes, total = voice["scenes"], voice["total"]
         sc = {s["kind"]: s for s in scenes}
-        caps = Captions([s["words"] for s in scenes if s["kind"] in ("name", "features", "proof")])
+        cap_kinds = ("name", "features", "proof") if voice["voiced"] else ("name", "features")
+        caps = Captions([s["words"] for s in scenes if s["kind"] in cap_kinds])
 
         # ---- straturi
         hook_layer = text_box(copy["hook"], font("Bold", 96), (225, 38, 30, 240))
+        kicker = pill(copy.get("kicker", ""), font("Bold", 40), (255, 214, 60, 255), (20, 18, 26, 255), padx=26, pady=12)
         price_pill = pill(copy["price_text"], font("Bold", 50), ACCENT, WHITE)
         num_pill = pill(f"Link în bio · #{num}", font("Bold", 46), (255, 255, 255, 245), (20, 18, 26, 255))
         handle = pill("@trendixeu", font("Medium", 34), (0, 0, 0, 120), (255, 255, 255, 235), padx=22, pady=10)
@@ -688,6 +699,12 @@ def render_clip(p: dict, num: int, lei: float, out_path: Path, local_images: lis
                 if kind == "hook" and lt < 0.12:
                     frame = Image.blend(frame, Image.new("RGB", (W, H), (255, 255, 255)), 0.7 * (1 - lt / 0.12))
 
+            if kind == "hook" and lt < 0.45:   # tremuratura scurta de camera: opreste scroll-ul
+                amp = 22 * (1 - lt / 0.45)
+                dx, dy = amp * math.sin(lt * 90), amp * math.cos(lt * 70)
+                cw, ch = int(W / 1.05), int(H / 1.05)
+                x0, y0 = (W - cw) / 2 + dx, (H - ch) / 2 + dy
+                frame = frame.crop((int(x0), int(y0), int(x0) + cw, int(y0) + ch)).resize((W, H), Image.BILINEAR)
             if prev_kind is not None and kind != "hook" and lt < 0.16:   # lovitura de zoom la trecerea in scena noua
                 z = 1.06 - 0.06 * (lt / 0.16)
                 cw, ch = int(W / z), int(H / z)
@@ -697,7 +714,9 @@ def render_clip(p: dict, num: int, lei: float, out_path: Path, local_images: lis
             # ---- straturi
             put(frame, handle, 50 + handle.width / 2, 150)
             if kind == "hook":
-                put(frame, hook_layer, W / 2, 470, alpha=min(1, lt / 0.1), scale=0.6 + 0.4 * ease_out_back(lt / 0.3))
+                put(frame, kicker, W / 2, 330, alpha=min(1, lt / 0.1), scale=0.7 + 0.3 * ease_out_back(lt / 0.25))
+                put(frame, hook_layer, W / 2, 500, alpha=min(1, max(0, lt - 0.08) / 0.1),
+                    scale=0.6 + 0.4 * ease_out_back(max(0, lt - 0.08) / 0.3))
             else:
                 put(frame, price_pill, 50 + price_pill.width / 2, 245)
                 put(frame, num_pill, W - 50 - num_pill.width / 2, 245)
@@ -716,7 +735,7 @@ def render_clip(p: dict, num: int, lei: float, out_path: Path, local_images: lis
                 put(frame, proof_widget(copy["rating"], int(copy["orders"] * prog), prog, proof_font), W / 2, 430,
                     alpha=min(1, lt / 0.2), scale=0.85 + 0.15 * ease_out_back(lt / 0.35))
 
-            if kind in ("name", "features", "proof"):
+            if kind in cap_kinds:
                 cap, age = caps.at(t)
                 if cap is not None:
                     put(frame, cap, W / 2, CAPTION_Y, scale=0.88 + 0.12 * ease_out_back(age / 0.12))

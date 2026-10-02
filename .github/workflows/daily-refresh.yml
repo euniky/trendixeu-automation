@@ -46,6 +46,7 @@ jobs:
           ALI_APP_SECRET: ${{ secrets.ALI_APP_SECRET }}
           ALI_TRACKING_ID: ${{ secrets.ALI_TRACKING_ID }}
           CLIPS_PER_DAY: ${{ github.event.inputs.clips || '3' }}
+          CLIP_VOICE: "none"   # fara voce; muzica se adauga din TikTok
           GH_TOKEN: ${{ github.token }}
           DEMO_PREMIUM: ${{ github.event.inputs.premium_demo || '' }}
           ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}

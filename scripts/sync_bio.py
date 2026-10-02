@@ -9,6 +9,7 @@ Variabile de mediu necesare (secrets in GitHub): ALI_APP_KEY, ALI_APP_SECRET, AL
 import hashlib
 import html
 import json
+import math
 import os
 import re
 import shutil
@@ -46,6 +47,7 @@ PER_KEYWORD = 3                                       # max produse din aceeasi 
 VIDEO_LOG_PATH = ROOT / "data" / "video_log.json"     # produsele care au primit clip (salvat in repo)
 CLIPS_PER_DAY = int(os.environ.get("CLIPS_PER_DAY", "3"))
 CLIP_PRODUCTS_DAYS = 30                               # cat timp raman pe pagina produsele din clipuri
+CLIP_VOICE = os.environ.get("CLIP_VOICE", "none")     # none = fara voce; edge = voce gratuita; elevenlabs = premium
 CLIP_FILES_DAYS = 7                                   # cat timp raman clipurile in consola
 CLIP_CACHE = ROOT / "data" / ".cache" / "clips"       # pastrate intre rulari (cache GitHub)
 SITE_URL = "https://trendixeu.netlify.app"
@@ -114,6 +116,9 @@ def query_products(kw: str, tracking_id: str) -> list[dict]:
     return []
 
 
+CANDIDATES: list[dict] = []   # toate produsele bune gasite azi (din ele se aleg clipurile)
+
+
 def fetch_hot_products() -> list[dict]:
     tracking_id = os.environ["ALI_TRACKING_ID"].strip()
     seen, picked = set(), []
@@ -122,8 +127,6 @@ def fetch_hot_products() -> list[dict]:
     for kw in order:
         taken = 0
         for p in query_products(kw, tracking_id):
-            if taken >= PER_KEYWORD:
-                break
             pid = p.get("product_id")
             if pid in seen or not p.get("promotion_link"):
                 continue
@@ -132,11 +135,10 @@ def fetch_hot_products() -> list[dict]:
             if rating < MIN_RATING_PERCENT or orders < MIN_ORDERS:
                 continue
             seen.add(pid)
-            taken += 1
             smalls = p.get("product_small_image_urls") or []
             if isinstance(smalls, dict):
                 smalls = smalls.get("string") or []
-            picked.append({
+            item = {
                 "kw": kw,
                 "images": [u for u in smalls if isinstance(u, str)][:5],
                 "video": p.get("product_video_url") or "",
@@ -150,9 +152,11 @@ def fetch_hot_products() -> list[dict]:
                 "link": p["promotion_link"],
                 "image": p.get("product_main_image_url", ""),
                 "meta": f"{rating:.0f}% recenzii pozitive · {orders}+ comenzi",
-            })
-            if len(picked) >= MAX_HOT_PRODUCTS:
-                return picked
+            }
+            CANDIDATES.append(item)
+            if taken < PER_KEYWORD and len(picked) < MAX_HOT_PRODUCTS:
+                picked.append(item)
+                taken += 1
     return picked
 
 
@@ -547,6 +551,52 @@ def recover_from_artifacts(missing: set[int]) -> int:
     return got
 
 
+WOW_WORDS = {
+    "robot": 4, "automatic": 3, "auto ": 2, "smart": 2, "magic": 3, "lazy": 3, "self-": 2, "electric": 2,
+    "projector": 3, "levitat": 4, "galaxy": 3, "laser": 2, "heated": 2, "massag": 2, "humidifier": 2,
+    "vacuum": 2, "sealer": 2, "dispenser": 2, "slicer": 2, "chopper": 2, "spray": 1, "steam": 2,
+    "rechargeable": 2, "wireless": 2, "cordless": 2, "bluetooth": 1, "magnetic": 2, "foldable": 2,
+    "retractable": 2, "2 in 1": 2, "3 in 1": 2, "4 in 1": 2, "multifunction": 1, "multi-function": 1,
+    "creative": 2, "funny": 2, "cute": 1, "mini": 1, "portable": 1, "led": 2, "rgb": 2, "light": 1,
+    "camera": 2, "drone": 3, "fan": 1, "organizer": 1, "gadget": 2, "artifact": 2, "hack": 2, "360": 1,
+}
+BORING_WORDS = {
+    "swab": -5, "cotton": -3, "glove": -4, "replacement": -5, "spare": -5, "refill": -5, "screw": -5,
+    "sticker": -3, "cable": -3, "case": -2, "cover": -2, "sock": -4, "brush set": -2, "makeup brush": -3,
+    "filter": -4, "pcs": -1, "pack": -1, "accessories": -1, "nail": -2, "tweezer": -2, "hair tie": -4,
+    "earring": -3, "ring": -1, "necklace": -3, "label": -3, "tape": -2,
+}
+MIN_WOW_SCORE = 5        # sub acest scor produsul nu primeste clip
+
+
+def wow_score(p: dict, lei: float) -> tuple[float, list[str]]:
+    """Cat de probabil e ca produsul sa opreasca scroll-ul pe TikTok."""
+    t = " " + p["title"].lower() + " "
+    score, why = 0.0, []
+    for w, v in {**WOW_WORDS, **BORING_WORDS}.items():
+        if w in t:
+            score += v
+            why.append(f"{w.strip()}{v:+d}")
+    if p.get("video"):
+        score += 3
+        why.append("filmare+3")
+    orders = int(p.get("orders") or 0)
+    if orders >= 1000:
+        pts = round(min(3.0, math.log10(orders) - 2), 1)
+        score += pts
+        why.append(f"comenzi+{pts}")
+    if float(p.get("rating") or 0) >= 96:
+        score += 1
+        why.append("rating+1")
+    if lei <= 60:
+        score += 1
+        why.append("pret-mic+1")
+    elif lei > 250:
+        score -= 2
+        why.append("scump-2")
+    return round(score, 1), why
+
+
 def product_details(pid: str) -> dict:
     """Pozele si filmarea unui produs anume (pentru refacerea unui clip)."""
     try:
@@ -641,14 +691,26 @@ def make_daily_clips(hot: list[dict], featured: list[dict], rates: dict, video_l
                          "title_ro": (v.get("titles") or {}).get("ro") or v["title"]}
 
     # --- 2. clipuri noi
-    check_voice()
+    if CLIP_VOICE != "none":
+        check_voice()
     if make_clips is not None and CLIPS_PER_DAY > 0 and shutil.which("ffmpeg"):
         done = {v["id"] for v in video_log}
         next_num = max([v.get("num", 0) for v in video_log] + [p.get("num", 0) for p in featured] + [0]) + 1
-        fresh = [p for p in hot if p["id"] not in done]
+        pool = CANDIDATES or hot
+        fresh = [p for p in pool if p["id"] not in done]
+        scored = sorted(((wow_score(p, to_lei(p, rates)), p) for p in fresh), key=lambda x: -x[0][0])
+        todo = [p for (sc_, why), p in scored if sc_ >= MIN_WOW_SCORE][:CLIPS_PER_DAY]
         with_video = sum(1 for p in fresh if p.get("video"))
-        log(f"[info] clipuri: {len(fresh)} produse noi, {with_video} cu filmare de la vanzator")
-        todo = sorted(fresh, key=lambda x: (not x.get("video"), -(x.get("orders") or 0)))[:CLIPS_PER_DAY]
+        log(f"[info] clipuri: {len(fresh)} produse verificate, {with_video} cu filmare, "
+            f"{sum(1 for (sc_, _), _p in scored if sc_ >= MIN_WOW_SCORE)} peste pragul de interes ({MIN_WOW_SCORE})")
+        for (sc_, why), p in scored[:5]:
+            log(f"[info] scor {sc_:>4}: {p['title'][:48]} ({', '.join(why[:5])})")
+        if not todo:
+            log("[info] clipuri: niciun produs destul de interesant azi, nu generez clipuri slabe")
+        missing_titles = [p for p in todo if not p.get("titles")]
+        if missing_titles:
+            localize(missing_titles, "en")
+            save_tr_cache()
         for p in todo:
             num = next_num
             fname = f"trendixeu-{num}.mp4"
@@ -656,7 +718,7 @@ def make_daily_clips(hot: list[dict], featured: list[dict], rates: dict, video_l
                 t0 = time.time()
                 copy = make_clips.render_clip(p, num, to_lei(p, rates), clips_dir / fname,
                                               sheet_path=clips_dir / f"sheet-{num}.jpg",
-                                              poster_path=clips_dir / f"trendixeu-{num}.jpg")
+                                              poster_path=clips_dir / f"trendixeu-{num}.jpg", voice=CLIP_VOICE)
                 next_num += 1
                 entry = {k: p.get(k) for k in ("id", "title", "titles", "cur", "amount", "link", "image",
                                                "images", "video", "orders", "rating", "kw")}
@@ -670,11 +732,9 @@ def make_daily_clips(hot: list[dict], featured: list[dict], rates: dict, video_l
                         shutil.copy(clips_dir / f, CLIP_CACHE / f)
                 log(f"[info] clip #{num} gata in {time.time() - t0:.0f}s, {copy.get('duration')}s"
                     + (", cu filmarea vanzatorului" if copy.get("used_seller_video") else ", din poze animate")
-                    + (", cu voce" if copy.get("voiced") else ", FARA voce"))
+                    + (f", voce {copy.get('voice')}" if copy.get("voiced") else ", fara voce"))
             except Exception as exc:
                 log(f"[warn] clip pentru {p['id']} esuat: {str(exc)[:200]}")
-        if not todo:
-            log("[info] clipuri: niciun produs nou azi (toate au deja clip)")
     elif CLIPS_PER_DAY > 0:
         log("[warn] clipuri: ffmpeg lipseste")
 
