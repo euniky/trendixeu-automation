@@ -45,7 +45,7 @@ KEYWORDS = ["home gadget", "cleaning", "kitchen", "phone accessories",
             "car accessories", "beauty tools", "pet supplies"]  # se rotesc zilnic, pentru varietate
 PER_KEYWORD = 3                                       # max produse din aceeasi categorie
 VIDEO_LOG_PATH = ROOT / "data" / "video_log.json"     # produsele care au primit clip (salvat in repo)
-CLIPS_PER_DAY = int(os.environ.get("CLIPS_PER_DAY", "3"))
+CLIPS_PER_DAY = int(os.environ.get("CLIPS_PER_DAY", "6"))
 CLIP_PRODUCTS_DAYS = 30                               # cat timp raman pe pagina produsele din clipuri
 CLIP_VOICE = os.environ.get("CLIP_VOICE", "none")     # none = fara voce; edge = voce gratuita; elevenlabs = premium
 CLIP_FILES_DAYS = 7                                   # cat timp raman clipurile in consola
