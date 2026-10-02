@@ -1,0 +1,17 @@
+{
+  "name": "Consola trendixeu",
+  "short_name": "trendixeu",
+  "description": "Automatizarea @trendixeu, live: clipuri TikTok, produse, click-uri și comenzi.",
+  "start_url": "/console/",
+  "scope": "/console/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0f0d13",
+  "theme_color": "#0f0d13",
+  "lang": "ro",
+  "icons": [
+    { "src": "/console/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/console/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/console/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

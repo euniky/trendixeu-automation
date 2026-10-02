@@ -804,6 +804,10 @@ def main() -> None:
     if console_src.exists():
         (OUT_DIR / "console").mkdir()
         shutil.copy(console_src, OUT_DIR / "console" / "index.html")
+        app_dir = ROOT / "site" / "console-app"   # manifest, iconite, mod offline: consola se instaleaza ca aplicatie
+        if app_dir.exists():
+            for f in app_dir.iterdir():
+                shutil.copy(f, OUT_DIR / "console" / f.name)
     status = json.dumps({
         "updated": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "started": started.isoformat(timespec="seconds"),

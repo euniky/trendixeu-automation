@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <title>Consola trendixeu</title>
+<link rel="manifest" href="/console/manifest.webmanifest">
+<meta name="theme-color" content="#0f0d13">
+<link rel="icon" href="/console/icon-192.png">
+<link rel="apple-touch-icon" href="/console/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -169,6 +173,7 @@ tr:last-child td{border-bottom:none}
     <div class="live">
       <span class="pulse" id="pulse"></span>
       <span id="liveText">Se conectează…</span>
+      <button class="btn primary" id="installBtn" type="button" hidden>⬇ Instalează aplicația</button>
       <button class="btn" id="refreshBtn" type="button">Reîmprospătează</button>
     </div>
   </header>
@@ -682,6 +687,23 @@ tr:last-child td{border-bottom:none}
       renderInterest();
     });
   });
+  // aplicatie instalabila pe telefon
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("/console/sw.js", { scope: "/console/" }).catch(function () {});
+  }
+  var installEvt = null;
+  window.addEventListener("beforeinstallprompt", function (e) {
+    e.preventDefault();
+    installEvt = e;
+    $("installBtn").hidden = false;
+  });
+  $("installBtn").addEventListener("click", function () {
+    if (!installEvt) return;
+    installEvt.prompt();
+    installEvt.userChoice.then(function () { installEvt = null; $("installBtn").hidden = true; });
+  });
+  window.addEventListener("appinstalled", function () { $("installBtn").hidden = true; });
+
   $("refreshBtn").addEventListener("click", function () { state.rateLimitedUntil = Math.min(state.rateLimitedUntil, Date.now()); load(); });
   document.addEventListener("visibilitychange", function () { if (!document.hidden) load(); });
   function tick() {
