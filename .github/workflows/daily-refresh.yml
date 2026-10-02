@@ -8,6 +8,9 @@ on:
       clips:
         description: "Cate clipuri noi sa genereze"
         default: "3"
+      zernio_check:
+        description: "Doar verifica conexiunea Zernio (true/false)"
+        default: "false"
       premium_demo:
         description: "Numarul clipului de refacut cu voce gratuita vs premium (gol = nimic)"
         default: ""
@@ -68,6 +71,12 @@ jobs:
           --dir=public --functions=netlify/functions
           --message "Refresh automat ${{ github.run_number }}"
 
+      - name: Programeaza clipurile pe TikTok (Zernio)
+        continue-on-error: true
+        env:
+          ZERNIO_API_KEY: ${{ secrets.ZERNIO_API_KEY }}
+        run: python scripts/post_tiktok.py ${{ github.event.inputs.zernio_check == 'true' && '--check' || '' }}
+
       - name: Copie de rezerva a clipurilor (7 zile)
         if: hashFiles('public/clips/*.mp4') != ''
         uses: actions/upload-artifact@v4
@@ -83,6 +92,7 @@ jobs:
           mkdir -p /tmp/prev
           cp public/clips/sheet-*.jpg /tmp/prev/ 2>/dev/null || true
           cp public/status.json /tmp/prev/ 2>/dev/null || true
+          cp public/zernio.json /tmp/prev/ 2>/dev/null || true
           cd /tmp/prev && git init -q -b previews && git add . \
             && git -c user.name=trendixeu-bot -c user.email=trendixeu-bot@users.noreply.github.com commit -qm "Previzualizari rularea ${{ github.run_number }}" \
             && git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" previews || echo "Previzualizarile nu au putut fi salvate"
