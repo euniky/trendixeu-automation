@@ -168,7 +168,57 @@ def build_copy(p: dict, num: int, lei: float) -> dict:
 
 # =================================================================== voce
 
-def _synth_sentence(text: str, mp3: Path) -> list[tuple[float, float, str]]:
+ELEVEN_VOICE = "EXAVITQu4vr4xnSDxMaL"     # "Sarah": energica, merge bine in romana cu modelul multilingv
+ELEVEN_MODEL = "eleven_multilingual_v2"
+
+
+def _synth_eleven(text: str, mp3: Path) -> list[tuple[float, float, str]]:
+    """Voce premium ElevenLabs, cu timpi pe caracter -> timpi pe cuvant."""
+    import base64
+    import os
+    key = os.environ.get("ELEVENLABS_API_KEY", "").strip()
+    if not key:
+        raise RuntimeError("lipseste ELEVENLABS_API_KEY")
+    voice = os.environ.get("ELEVENLABS_VOICE_ID", "").strip() or ELEVEN_VOICE
+    r = requests.post(
+        f"https://api.elevenlabs.io/v1/text-to-speech/{voice}/with-timestamps?output_format=mp3_44100_128",
+        headers={"xi-api-key": key, "Content-Type": "application/json"},
+        json={"text": text, "model_id": ELEVEN_MODEL, "language_code": "ro",
+              "voice_settings": {"stability": 0.4, "similarity_boost": 0.8, "style": 0.35, "use_speaker_boost": True}},
+        timeout=90)
+    if r.status_code == 400 and "language_code" in r.text:   # unele modele nu accepta codul de limba
+        r = requests.post(
+            f"https://api.elevenlabs.io/v1/text-to-speech/{voice}/with-timestamps?output_format=mp3_44100_128",
+            headers={"xi-api-key": key, "Content-Type": "application/json"},
+            json={"text": text, "model_id": ELEVEN_MODEL,
+                  "voice_settings": {"stability": 0.4, "similarity_boost": 0.8, "style": 0.35, "use_speaker_boost": True}},
+            timeout=90)
+    if not r.ok:
+        raise RuntimeError(f"ElevenLabs {r.status_code}: {r.text[:200]}")
+    data = r.json()
+    mp3.write_bytes(base64.b64decode(data["audio_base64"]))
+    al = data.get("alignment") or data.get("normalized_alignment") or {}
+    chars = al.get("characters") or []
+    starts, ends = al.get("character_start_times_seconds") or [], al.get("character_end_times_seconds") or []
+    words, cur, c_start, c_end = [], "", None, None
+    for ch, a, b in zip(chars, starts, ends):
+        if ch.isspace():
+            if cur:
+                words.append((c_start, c_end - c_start, cur))
+            cur, c_start = "", None
+            continue
+        if c_start is None:
+            c_start = a
+        cur += ch
+        c_end = b
+    if cur:
+        words.append((c_start, c_end - c_start, cur))
+    return words
+
+
+def _synth_sentence(text: str, mp3: Path, provider: str = "edge") -> list[tuple[float, float, str]]:
+    if provider == "elevenlabs":
+        return _synth_eleven(text, mp3)
     import edge_tts
 
     async def go():
@@ -202,19 +252,19 @@ def _even_words(text: str, start: float, dur: float) -> list[tuple[float, float,
     return out
 
 
-def make_voice(sentences: list[tuple[str, str]], tmp: Path) -> dict:
+def make_voice(sentences: list[tuple[str, str]], tmp: Path, provider: str = "edge") -> dict:
     """Intoarce timpii fiecarei propozitii si ai fiecarui cuvant + fisierul audio."""
     sr = 44100
-    chunks, scenes, t, ok = [], [], 0.0, True
+    chunks, scenes, t, ok, err = [], [], 0.0, True, None
     for i, (kind, text) in enumerate(sentences):
         words, pcm = [], None
         if ok:
             try:
                 mp3 = tmp / f"v{i}.mp3"
-                words = _synth_sentence(text, mp3)
+                words = _synth_sentence(text, mp3, provider)
                 pcm = _decode_pcm(mp3, sr)
             except Exception as exc:
-                ok = False
+                ok, err = False, str(exc)[:240]
                 print(f"[voce] indisponibila, continui fara voce: {exc}")
         if pcm is None or len(pcm) == 0:
             dur = max(1.2, 0.36 * len(text.split()) + 0.3)
@@ -236,7 +286,8 @@ def make_voice(sentences: list[tuple[str, str]], tmp: Path) -> dict:
         w.setsampwidth(2)
         w.setframerate(sr)
         w.writeframes(audio.tobytes())
-    return {"scenes": scenes, "total": total, "wav": wav, "voiced": ok}
+    return {"scenes": scenes, "total": total, "wav": wav, "voiced": ok, "provider": provider if ok else None,
+            "error": err}
 
 
 # =================================================================== imagini
@@ -511,7 +562,7 @@ def put(frame: Image.Image, layer: Image.Image, cx: float, cy: float, alpha: flo
 
 
 def render_clip(p: dict, num: int, lei: float, out_path: Path, local_images: list[Path] | None = None,
-                sheet_path: Path | None = None, poster_path: Path | None = None) -> dict:
+                sheet_path: Path | None = None, poster_path: Path | None = None, voice: str = "edge") -> dict:
     copy = build_copy(p, num, lei)
     tmp = Path(tempfile.mkdtemp(prefix="clip_"))
     try:
@@ -544,7 +595,7 @@ def render_clip(p: dict, num: int, lei: float, out_path: Path, local_images: lis
                     vid_path, vid_info = vp, (d, vw, vh)
 
         # ---- voce + scene
-        voice = make_voice(copy["sentences"], tmp)
+        voice = make_voice(copy["sentences"], tmp, voice)
         scenes, total = voice["scenes"], voice["total"]
         sc = {s["kind"]: s for s in scenes}
         caps = Captions([s["words"] for s in scenes if s["kind"] in ("name", "features", "proof")])
@@ -696,6 +747,7 @@ def render_clip(p: dict, num: int, lei: float, out_path: Path, local_images: lis
             snaps[1].resize((540, 960)).save(poster_path, quality=80)
 
         copy.update({"duration": round(total, 1), "used_seller_video": bool(vid_path), "voiced": voice["voiced"],
+                     "voice": voice.get("provider"), "voice_error": voice.get("error"),
                      "script": [s["text"] for s in scenes]})
         copy.pop("sentences", None)
         return copy

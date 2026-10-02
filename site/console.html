@@ -190,6 +190,12 @@ tr:last-child td{border-bottom:none}
     <p class="steps"><b>Cum postezi:</b> 1. Descarcă clipul. 2. În TikTok: + → Încarcă → alege clipul. 3. Adaugă un sunet în trend. 4. Lipește descrierea, apoi scrie fiecare cuvânt de mai jos cu # și alege-l din lista TikTok. 5. Dacă ai opțiunea, pune stickerul „Link” spre pagina de bio.</p>
   </section>
 
+  <section class="panel" aria-label="Comparație voce" id="demoPanel" hidden>
+    <div class="panel-head"><h2>Comparație voce: gratuită vs premium</h2><span class="muted" style="font-size:12px" id="demoInfo"></span></div>
+    <div class="clips" id="demoClips"></div>
+    <p class="steps" id="demoNote"></p>
+  </section>
+
   <section class="pipe" aria-label="Etapele automatizării">
     <div class="stage" id="st1"><div class="head"><span class="dot"></span><span class="num">01</span></div><h3>Pornire GitHub Actions</h3><p class="detail">—</p></div>
     <div class="stage" id="st2"><div class="head"><span class="dot"></span><span class="num">02</span></div><h3>Produse, traduceri și clipuri</h3><p class="detail">—</p></div>
@@ -462,7 +468,28 @@ tr:last-child td{border-bottom:none}
       $("kSuccessSub").textContent = "din ultimele " + done.length + " rulări";
     }
 
-    renderFeed(); renderHistory(); renderProducts(); renderInterest(); renderBought(); renderOrders(); renderClips();
+    renderFeed(); renderHistory(); renderProducts(); renderInterest(); renderBought(); renderOrders(); renderClips(); renderDemo();
+  }
+
+  var demoKey = "";
+  function renderDemo() {
+    var d = state.status && state.status.voice_demo;
+    $("demoPanel").hidden = !d;
+    if (!d) return;
+    var key = JSON.stringify(d.versions.map(function (v) { return v.file + v.ok; }));
+    if (key === demoKey) return;
+    demoKey = key;
+    $("demoInfo").textContent = "#" + d.num + " · " + d.title_ro;
+    $("demoClips").innerHTML = d.versions.map(function (v) {
+      return '<article class="clip"><video src="/' + esc(v.file) + '" controls playsinline preload="none" poster="/' + esc(v.poster) + '"></video><div class="body">' +
+        "<h3>" + esc(v.label) + "</h3>" +
+        (v.ok ? '<div class="foot">' + v.chars + " caractere folosite</div>" : '<div class="foot" style="color:var(--warn)">Vocea nu a putut fi generată: ' + esc(v.error || "") + "</div>") +
+        '<div class="row2"><a class="btn" href="/' + esc(v.file) + '" download>⬇ Descarcă</a></div></div></article>';
+    }).join("");
+    var prem = d.versions.filter(function (v) { return v.provider === "elevenlabs"; })[0];
+    $("demoNote").innerHTML = prem && prem.ok
+      ? "<b>Cost estimat:</b> ~" + prem.chars + " caractere pe clip × 3 clipuri pe zi ≈ " + Math.round(prem.chars * 90 / 1000) + " mii de caractere pe lună. Planul gratuit ElevenLabs (10 mii, fără drept de folosire comercială) ajunge doar pentru teste; planul Starter (~6 $/lună, 30 mii, cu licență comercială) acoperă 3 clipuri pe zi."
+      : "Varianta premium are nevoie de cheia ElevenLabs salvată în GitHub (secretul ELEVENLABS_API_KEY).";
   }
 
   var clipsKey = "";

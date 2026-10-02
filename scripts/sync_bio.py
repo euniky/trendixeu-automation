@@ -547,6 +547,64 @@ def recover_from_artifacts(missing: set[int]) -> int:
     return got
 
 
+def product_details(pid: str) -> dict:
+    """Pozele si filmarea unui produs anume (pentru refacerea unui clip)."""
+    try:
+        data = call_api("aliexpress.affiliate.productdetail.get", {
+            "product_ids": pid.lstrip("p"), "target_currency": CURRENCY, "target_language": "EN",
+            "tracking_id": os.environ["ALI_TRACKING_ID"].strip(), "country": SHIP_TO})
+        res = data.get("aliexpress_affiliate_productdetail_get_response", {}).get("resp_result", {}).get("result") or {}
+        prods = (res.get("products") or {}).get("product") or []
+        if prods:
+            smalls = prods[0].get("product_small_image_urls") or []
+            if isinstance(smalls, dict):
+                smalls = smalls.get("string") or []
+            return {"images": [u for u in smalls if isinstance(u, str)][:5], "video": prods[0].get("product_video_url") or ""}
+    except Exception as exc:
+        log(f"[warn] detalii produs {pid}: {str(exc)[:120]}")
+    return {}
+
+
+def voice_demo(video_log: list[dict], rates: dict) -> dict | None:
+    """Acelasi clip, de doua ori: voce gratuita vs voce premium (ElevenLabs)."""
+    num = os.environ.get("DEMO_PREMIUM", "").strip()
+    demo_json = CLIP_CACHE / "demo.json"
+    clips_dir = OUT_DIR / "clips"
+    if not num:
+        if demo_json.exists():   # comparatia ramane vizibila pana la una noua
+            for f in CLIP_CACHE.glob("demo-*"):
+                shutil.copy(f, clips_dir / f.name)
+            return json.loads(demo_json.read_text(encoding="utf-8"))
+        return None
+    entry = next((v for v in video_log if str(v.get("num")) == num), None)
+    if not entry:
+        log(f"[warn] comparatie voce: produsul #{num} nu exista in jurnal")
+        return None
+    import make_clips
+    p = dict(entry)
+    if not p.get("images"):
+        p.update(product_details(p["id"]))
+    lei = to_lei(normalize_price(dict(entry)), rates)
+    out = {"num": int(num), "title_ro": (p.get("titles") or {}).get("ro") or p["title"], "versions": []}
+    for provider, label in (("edge", "Voce gratuită (Microsoft)"), ("elevenlabs", "Voce premium (ElevenLabs)")):
+        fname = f"demo-{num}-{provider}.mp4"
+        try:
+            info = make_clips.render_clip(p, int(num), lei, clips_dir / fname, voice=provider,
+                                          poster_path=clips_dir / f"demo-{num}-{provider}.jpg")
+            ok = info.get("voice") == provider
+            out["versions"].append({"provider": provider, "label": label, "file": f"clips/{fname}",
+                                    "poster": f"clips/demo-{num}-{provider}.jpg", "ok": ok,
+                                    "error": info.get("voice_error"), "chars": sum(len(x) for x in info.get("script", []))})
+            log(f"[{'info' if ok else 'warn'}] comparatie voce #{num}: {label} "
+                + ("gata" if ok else f"esuata ({info.get('voice_error')})"))
+        except Exception as exc:
+            log(f"[warn] comparatie voce #{num} ({provider}): {str(exc)[:200]}")
+    for f in clips_dir.glob(f"demo-{num}-*"):
+        shutil.copy(f, CLIP_CACHE / f.name)
+    demo_json.write_text(json.dumps(out, ensure_ascii=False), encoding="utf-8")
+    return out
+
+
 def make_daily_clips(hot: list[dict], featured: list[dict], rates: dict, video_log: list[dict]) -> list[dict]:
     """Recupereaza clipurile recente, randeaza clipuri noi, intoarce lista pentru consola."""
     clips_dir = OUT_DIR / "clips"
@@ -601,7 +659,7 @@ def make_daily_clips(hot: list[dict], featured: list[dict], rates: dict, video_l
                                               poster_path=clips_dir / f"trendixeu-{num}.jpg")
                 next_num += 1
                 entry = {k: p.get(k) for k in ("id", "title", "titles", "cur", "amount", "link", "image",
-                                               "orders", "rating", "kw")}
+                                               "images", "video", "orders", "rating", "kw")}
                 entry.update({"num": num, "created": today, "section": "clip"})
                 entry["clip"] = {**copy, "num": num, "file": f"clips/{fname}", "poster": f"clips/trendixeu-{num}.jpg",
                                  "created": today, "id": p["id"], "link": p["link"], "image": p["image"],
@@ -669,6 +727,11 @@ def main() -> None:
 
     video_log = load_video_log()
     clips = make_daily_clips(hot, featured, rates, video_log)
+    demo = None
+    try:
+        demo = voice_demo(video_log, rates)
+    except Exception as exc:
+        log(f"[warn] comparatie voce: {str(exc)[:200]}")
     cutoff = (datetime.now(timezone.utc) - timedelta(days=CLIP_PRODUCTS_DAYS)).date().isoformat()
     clip_items = [normalize_price(dict(v)) for v in reversed(video_log) if v.get("created", "") >= cutoff]
     clip_ids = {v["id"] for v in clip_items}
@@ -695,6 +758,7 @@ def main() -> None:
         "hot_items": [{k: p.get(k) for k in ("id", "title", "titles", "cur", "amount", "link", "image", "meta", "orders", "rating")} for p in hot],
         "orders": orders,
         "clips": clips,
+        "voice_demo": demo,
         "clip_products": [{k: v.get(k) for k in ("num", "id", "title", "titles", "created", "link", "image")} for v in clip_items],
         "log": LOG,
     }, ensure_ascii=False, indent=1)

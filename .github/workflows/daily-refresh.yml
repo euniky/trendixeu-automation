@@ -8,6 +8,9 @@ on:
       clips:
         description: "Cate clipuri noi sa genereze"
         default: "3"
+      premium_demo:
+        description: "Numarul clipului de refacut cu voce gratuita vs premium (gol = nimic)"
+        default: ""
 
 jobs:
   refresh:
@@ -44,6 +47,8 @@ jobs:
           ALI_TRACKING_ID: ${{ secrets.ALI_TRACKING_ID }}
           CLIPS_PER_DAY: ${{ github.event.inputs.clips || '3' }}
           GH_TOKEN: ${{ github.token }}
+          DEMO_PREMIUM: ${{ github.event.inputs.premium_demo || '' }}
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
         run: python scripts/sync_bio.py
 
       - uses: actions/setup-node@v4
