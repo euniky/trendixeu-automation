@@ -78,10 +78,17 @@ def call_api(method: str, app_params: dict) -> dict:
         "v": "2.0",
         **{k: str(v) for k, v in app_params.items() if v is not None},
     }
-    params["sign"] = sign(secret, params)
-    r = requests.post(API_URL, data=params, timeout=30)
-    r.raise_for_status()
-    data = r.json()
+    for attempt in range(4):
+        params["timestamp"] = str(int(time.time() * 1000))
+        params.pop("sign", None)
+        params["sign"] = sign(secret, params)
+        r = requests.post(API_URL, data=params, timeout=30)
+        r.raise_for_status()
+        data = r.json()
+        if "ApiCallLimit" in json.dumps(data.get("error_response", "")) and attempt < 3:
+            time.sleep(2 + 2 * attempt)   # limita de frecventa AliExpress: astept si reincerc
+            continue
+        break
     if "error_response" in data:
         raise RuntimeError(f"API error: {data['error_response']}")
     return data
