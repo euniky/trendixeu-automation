@@ -24,7 +24,7 @@ REPORT = ROOT / "public" / "zernio.json"
 API = "https://zernio.com/api/v1"
 SITE_URL = "https://trendixeu.netlify.app"
 TZ = ZoneInfo("Europe/Bucharest")
-SLOTS = [(12, 0), (13, 0), (14, 0), (19, 0), (20, 30), (22, 0)]   # 3 la pranz + 3 seara, la distanta ca sa nu-si fure vizualizari
+SLOTS = [(12, 0), (13, 0), (14, 0), (19, 0), (20, 0), (21, 0)]   # 3 la pranz + 3 seara, din ora in ora
 MIN_LEAD = timedelta(minutes=20)          # nu programa mai devreme de atat
 
 

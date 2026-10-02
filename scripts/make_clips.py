@@ -570,8 +570,25 @@ def put(frame: Image.Image, layer: Image.Image, cx: float, cy: float, alpha: flo
     frame.paste(layer, (int(cx - layer.width / 2), int(cy - layer.height / 2)), a)
 
 
+def mix_music(music: Path, voice_wav: Path, total: float, out: Path, ducked: bool) -> Path | None:
+    """Pune muzica de fundal sub clip: sare peste linistea de la inceput, fade in/out, mai incet sub voce."""
+    vol = 0.22 if ducked else 1.0
+    fo = max(0.0, total - 1.2)
+    graph = (f"[0:a]silenceremove=start_periods=1:start_threshold=-35dB,aresample=44100,apad,"
+             f"atrim=0:{total:.3f},afade=t=in:d=0.25,afade=t=out:st={fo:.3f}:d=1.2,volume={vol}[m];"
+             f"[1:a]aresample=44100,apad[v];[m][v]amix=inputs=2:duration=first:normalize=0[a]")
+    r = subprocess.run(["ffmpeg", "-y", "-v", "error", "-i", str(music), "-i", str(voice_wav),
+                        "-filter_complex", graph, "-map", "[a]", "-ac", "2", "-ar", "44100", str(out)],
+                       capture_output=True, text=True)
+    if r.returncode != 0 or not out.exists():
+        print(f"[muzica] nu am putut mixa: {r.stderr[:200]}")
+        return None
+    return out
+
+
 def render_clip(p: dict, num: int, lei: float, out_path: Path, local_images: list[Path] | None = None,
-                sheet_path: Path | None = None, poster_path: Path | None = None, voice: str = "edge") -> dict:
+                sheet_path: Path | None = None, poster_path: Path | None = None, voice: str = "edge",
+                music: Path | None = None) -> dict:
     copy = build_copy(p, num, lei)
     tmp = Path(tempfile.mkdtemp(prefix="clip_"))
     try:
@@ -608,6 +625,11 @@ def render_clip(p: dict, num: int, lei: float, out_path: Path, local_images: lis
         scenes, total = voice["scenes"], voice["total"]
         sc = {s["kind"]: s for s in scenes}
         cap_kinds = ("name", "features", "proof") if voice["voiced"] else ("name", "features")
+        audio_in = voice["wav"]
+        if music and Path(music).exists():
+            mixed = mix_music(Path(music), voice["wav"], total, tmp / "mix.wav", ducked=voice["voiced"])
+            if mixed:
+                audio_in = mixed
         caps = Captions([s["words"] for s in scenes if s["kind"] in cap_kinds])
 
         # ---- straturi
@@ -657,7 +679,7 @@ def render_clip(p: dict, num: int, lei: float, out_path: Path, local_images: lis
 
         enc = subprocess.Popen(
             ["ffmpeg", "-y", "-v", "error", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r", str(FPS),
-             "-i", "-", "-i", str(voice["wav"]), "-t", f"{total:.3f}",
+             "-i", "-", "-i", str(audio_in), "-t", f"{total:.3f}",
              "-c:v", "libx264", "-preset", "medium", "-crf", "20", "-pix_fmt", "yuv420p",
              "-af", "loudnorm=I=-14:TP=-1.5:LRA=11", "-c:a", "aac", "-b:a", "160k", "-ar", "44100",
              "-movflags", "+faststart", str(out_path)], stdin=subprocess.PIPE)
@@ -767,6 +789,7 @@ def render_clip(p: dict, num: int, lei: float, out_path: Path, local_images: lis
 
         copy.update({"duration": round(total, 1), "used_seller_video": bool(vid_path), "voiced": voice["voiced"],
                      "voice": voice.get("provider"), "voice_error": voice.get("error"),
+                     "with_music": audio_in != voice["wav"],
                      "script": [s["text"] for s in scenes]})
         copy.pop("sentences", None)
         return copy

@@ -48,8 +48,15 @@ VIDEO_LOG_PATH = ROOT / "data" / "video_log.json"     # produsele care au primit
 CLIPS_PER_DAY = int(os.environ.get("CLIPS_PER_DAY", "6"))
 CLIP_PRODUCTS_DAYS = 30                               # cat timp raman pe pagina produsele din clipuri
 CLIP_VOICE = os.environ.get("CLIP_VOICE", "none")     # none = fara voce; edge = voce gratuita; elevenlabs = premium
+CLIP_MUSIC = os.environ.get("CLIP_MUSIC", "on") != "off"   # muzica de fundal in clipuri
 CLIP_FILES_DAYS = 7                                   # cat timp raman clipurile in consola
 CLIP_CACHE = ROOT / "data" / ".cache" / "clips"       # pastrate intre rulari (cache GitHub)
+MUSIC_DIR = ROOT / "data" / ".cache" / "music"
+# muzica energica, fara drepturi de platit (Kevin MacLeod, CC BY 4.0: cere doar mentionarea autorului)
+MUSIC_WANTED = ["Funky Chunk", "Life of Riley", "Sneaky Snitch", "Fluffing a Duck", "Monkeys Spinning Monkeys",
+                "Pamgaea", "Big Mojo", "Blip Stream", "Awesome Call", "Funkorama", "Cipher", "Happy Alley",
+                "Carefree", "Hep Cats", "Wallpaper", "Local Forecast"]
+MUSIC_CREDIT = "🎵 {title} – Kevin MacLeod (incompetech.com) · CC BY 4.0"
 SITE_URL = "https://trendixeu.netlify.app"
 
 
@@ -655,6 +662,34 @@ def voice_demo(video_log: list[dict], rates: dict) -> dict | None:
     return out
 
 
+def get_music() -> list[Path]:
+    """Muzica de fundal: o descarca o singura data de pe Internet Archive si o tine in cache."""
+    MUSIC_DIR.mkdir(parents=True, exist_ok=True)
+    have = sorted(MUSIC_DIR.glob("*.mp3"))
+    if len(have) >= 6:
+        return have
+    norm = lambda x: re.sub(r"[^a-z0-9]", "", x.lower())
+    wanted = {norm(w): w for w in MUSIC_WANTED}
+    try:
+        meta = requests.get("https://archive.org/metadata/Incompetech", timeout=60).json()
+        for f in meta.get("files", []):
+            name = f.get("name", "")
+            if not name.lower().endswith(".mp3"):
+                continue
+            title = wanted.get(norm(Path(name).stem))
+            dest = MUSIC_DIR / f"{title}.mp3" if title else None
+            if not dest or dest.exists():
+                continue
+            r = requests.get(f"https://archive.org/download/Incompetech/{requests.utils.quote(name)}", timeout=120)
+            if r.ok and len(r.content) > 50_000:
+                dest.write_bytes(r.content)
+    except Exception as exc:
+        log(f"[warn] muzica: nu am putut descarca melodiile ({str(exc)[:150]})")
+    have = sorted(MUSIC_DIR.glob("*.mp3"))
+    log(f"[info] muzica: {len(have)} melodii disponibile" + (f" ({', '.join(p.stem for p in have)})" if have else ""))
+    return have
+
+
 def make_daily_clips(hot: list[dict], featured: list[dict], rates: dict, video_log: list[dict]) -> list[dict]:
     """Recupereaza clipurile recente, randeaza clipuri noi, intoarce lista pentru consola."""
     clips_dir = OUT_DIR / "clips"
@@ -711,14 +746,23 @@ def make_daily_clips(hot: list[dict], featured: list[dict], rates: dict, video_l
         if missing_titles:
             localize(missing_titles, "en")
             save_tr_cache()
+        music = get_music() if todo and CLIP_MUSIC else []
         for p in todo:
             num = next_num
             fname = f"trendixeu-{num}.mp4"
+            track = music[num % len(music)] if music else None
             try:
                 t0 = time.time()
                 copy = make_clips.render_clip(p, num, to_lei(p, rates), clips_dir / fname,
                                               sheet_path=clips_dir / f"sheet-{num}.jpg",
-                                              poster_path=clips_dir / f"trendixeu-{num}.jpg", voice=CLIP_VOICE)
+                                              poster_path=clips_dir / f"trendixeu-{num}.jpg", voice=CLIP_VOICE,
+                                              music=track)
+                if copy.get("with_music") and track:
+                    credit = MUSIC_CREDIT.format(title=track.stem)
+                    copy["music"] = track.stem
+                    for k in ("description_ro", "description_en"):
+                        if copy.get(k):
+                            copy[k] = copy[k].rstrip() + "\n" + credit
                 next_num += 1
                 entry = {k: p.get(k) for k in ("id", "title", "titles", "cur", "amount", "link", "image",
                                                "images", "video", "orders", "rating", "kw")}
@@ -732,7 +776,8 @@ def make_daily_clips(hot: list[dict], featured: list[dict], rates: dict, video_l
                         shutil.copy(clips_dir / f, CLIP_CACHE / f)
                 log(f"[info] clip #{num} gata in {time.time() - t0:.0f}s, {copy.get('duration')}s"
                     + (", cu filmarea vanzatorului" if copy.get("used_seller_video") else ", din poze animate")
-                    + (f", voce {copy.get('voice')}" if copy.get("voiced") else ", fara voce"))
+                    + (f", voce {copy.get('voice')}" if copy.get("voiced") else ", fara voce")
+                    + (f", muzica {copy['music']}" if copy.get("music") else ", fara muzica"))
             except Exception as exc:
                 log(f"[warn] clip pentru {p['id']} esuat: {str(exc)[:200]}")
     elif CLIPS_PER_DAY > 0:
