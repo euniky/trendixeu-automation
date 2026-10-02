@@ -726,6 +726,40 @@ def make_daily_clips(hot: list[dict], featured: list[dict], rates: dict, video_l
                          "id": v["id"], "link": v["link"], "image": v.get("image"),
                          "title_ro": (v.get("titles") or {}).get("ro") or v["title"]}
 
+    # --- 1b. refacere cu muzica a unor clipuri deja facute (REMAKE="13,14")
+    remake = {int(x) for x in re.findall(r"\d+", os.environ.get("REMAKE", ""))}
+    if remake and make_clips is not None and shutil.which("ffmpeg"):
+        music = get_music()
+        for v in video_log:
+            if v.get("num") not in remake or not music:
+                continue
+            num, fname = v["num"], f"trendixeu-{v['num']}.mp4"
+            track = music[num % len(music)]
+            try:
+                p = normalize_price(dict(v))
+                copy = make_clips.render_clip(p, num, to_lei(p, rates), clips_dir / fname,
+                                              sheet_path=clips_dir / f"sheet-{num}.jpg",
+                                              poster_path=clips_dir / f"trendixeu-{num}.jpg",
+                                              voice=CLIP_VOICE, music=track)
+                if copy.get("with_music"):
+                    credit = MUSIC_CREDIT.format(title=track.stem)
+                    copy["music"] = track.stem
+                    for k in ("description_ro", "description_en"):
+                        if copy.get(k):
+                            copy[k] = copy[k].rstrip() + "\n" + credit
+                old = v.get("clip") or {}
+                v["clip"] = {**old, **copy, "num": num, "file": f"clips/{fname}",
+                             "poster": f"clips/trendixeu-{num}.jpg"}
+                v["remade"] = v.get("remade", 0) + 1
+                if v.get("posted"):
+                    v["posted"]["repost"] = True
+                for f in (fname, f"trendixeu-{num}.jpg"):
+                    if (clips_dir / f).exists():
+                        shutil.copy(clips_dir / f, CLIP_CACHE / f)
+                log(f"[info] clip #{num} refacut cu muzica {track.stem}")
+            except Exception as exc:
+                log(f"[warn] refacerea clipului #{num} a esuat: {str(exc)[:200]}")
+
     # --- 2. clipuri noi
     if CLIP_VOICE != "none":
         check_voice()

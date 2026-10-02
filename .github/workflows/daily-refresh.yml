@@ -11,6 +11,9 @@ on:
       zernio_check:
         description: "Doar verifica conexiunea Zernio (true/false)"
         default: "false"
+      remake:
+        description: "Numerele clipurilor de refacut cu muzica (ex: 13,14)"
+        default: ""
       premium_demo:
         description: "Numarul clipului de refacut cu voce gratuita vs premium (gol = nimic)"
         default: ""
@@ -75,6 +78,7 @@ jobs:
           CLIP_VOICE: "none"   # fara voce; muzica se adauga din TikTok
           GH_TOKEN: ${{ github.token }}
           DEMO_PREMIUM: ${{ github.event.inputs.premium_demo || '' }}
+          REMAKE: ${{ github.event.inputs.remake || '' }}
           ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
         run: python scripts/sync_bio.py
 

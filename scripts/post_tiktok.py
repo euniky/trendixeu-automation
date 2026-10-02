@@ -116,14 +116,42 @@ def main() -> None:
 
     account = accounts[0]
     video_log = json.loads(VIDEO_LOG.read_text(encoding="utf-8")) if VIDEO_LOG.exists() else []
+    # clipuri refacute (cu muzica) inca neprogramate: sterg postarea veche si o reprogramez la aceeasi ora
+    now = datetime.now(TZ)
+    for v in video_log:
+        po = v.get("posted") or {}
+        if not po.get("repost"):
+            continue
+        when = datetime.fromisoformat(po["scheduledFor"])
+        if when - now < timedelta(minutes=5):
+            log(f"Clipul #{v['num']} e deja publicat sau prea aproape de ora lui; nu-l mai inlocuiesc.")
+            po.pop("repost", None)
+            continue
+        try:
+            r = requests.delete(f"{API}/posts/{po['id']}", headers=headers(), timeout=30)
+        except Exception as exc:
+            log(f"Nu am putut sterge postarea veche a clipului #{v['num']}: {str(exc)[:150]}")
+            continue
+        if not r.ok and r.status_code != 404:
+            log(f"Nu am putut sterge postarea veche a clipului #{v['num']}: {r.status_code} {r.text[:150]}")
+            continue
+        v["posted"] = None
+        v["created"] = now.date().isoformat() if v.get("created") != now.date().isoformat() else v["created"]
+        v["_slot"] = po["scheduledFor"]
+        log(f"Postarea veche a clipului #{v['num']} a fost stearsa; o reprogramez cu muzica.")
     # doar clipurile generate azi (cele mai vechi le-ai postat poate deja manual)
     today = datetime.utcnow().date().isoformat()
     todo = [v for v in video_log if v.get("clip") and not v.get("posted") and v.get("created") == today]
     taken = {v["posted"]["scheduledFor"] for v in video_log if v.get("posted")}
-    slots = next_slots(len(todo), taken)
-    for v, when in zip(todo, slots):
+    fixed = [v for v in todo if v.get("_slot")]
+    rest = [v for v in todo if not v.get("_slot")]
+    slots = next_slots(len(rest), taken | {v["_slot"] for v in fixed})
+    pairs = [(v, datetime.fromisoformat(v.pop("_slot"))) for v in fixed] + list(zip(rest, slots))
+    for v, when in pairs:
         clip = v["clip"]
         url = f"{os.environ.get('CLIP_BASE', SITE_URL).rstrip('/')}/{clip['file']}"
+        if v.get("remade"):
+            url += f"?v={v['remade']}"   # adresa noua, ca sa nu se ia varianta veche fara muzica
         head = requests.head(url, timeout=30, allow_redirects=True)
         if not head.ok or "video" not in head.headers.get("Content-Type", ""):
             log(f"Clipul #{v['num']} nu e accesibil online ({head.status_code}); il las pentru data viitoare.")
