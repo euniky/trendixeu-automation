@@ -613,7 +613,12 @@ def render_clip(p: dict, num: int, lei: float, out_path: Path, local_images: lis
         bg = background(srcs[0])
 
         vid_path, vid_info = None, None
-        if p.get("video"):
+        if p.get("video_path") and Path(p["video_path"]).exists():   # filmare trimisa manual
+            vp = Path(p["video_path"])
+            d, vw, vh = probe(vp)
+            if d >= 3 and vw and vh:
+                vid_path, vid_info = vp, (d, vw, vh)
+        elif p.get("video"):
             vp = download(p["video"], tmp / "seller.mp4")
             if vp:
                 d, vw, vh = probe(vp)

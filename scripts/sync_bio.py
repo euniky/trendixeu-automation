@@ -822,6 +822,12 @@ def make_daily_clips(hot: list[dict], featured: list[dict], rates: dict, video_l
             track = music[num % len(music)]
             try:
                 p = normalize_price(dict(v))
+                own = ROOT / "data" / "seller_videos" / f"{num}.mp4"   # filmare pusa manual pentru acest produs
+                if own.exists():
+                    p["video_path"] = str(own)
+                for fp in featured:   # pret actualizat pentru produsele fixe
+                    if fp.get("num") == num and fp.get("pid"):
+                        p.update({k: fp[k] for k in ("cur", "amount", "orders", "rating") if fp.get(k)})
                 copy = make_clips.render_clip(p, num, to_lei(p, rates), clips_dir / fname,
                                               sheet_path=clips_dir / f"sheet-{num}.jpg",
                                               poster_path=clips_dir / f"trendixeu-{num}.jpg",
@@ -841,7 +847,8 @@ def make_daily_clips(hot: list[dict], featured: list[dict], rates: dict, video_l
                 for f in (fname, f"trendixeu-{num}.jpg"):
                     if (clips_dir / f).exists():
                         shutil.copy(clips_dir / f, CLIP_CACHE / f)
-                log(f"[info] clip #{num} refacut cu muzica {track.stem}")
+                log(f"[info] clip #{num} refacut cu muzica {track.stem}"
+                    + (", cu filmarea produsului" if copy.get("used_seller_video") else ", din poze"))
             except Exception as exc:
                 log(f"[warn] refacerea clipului #{num} a esuat: {str(exc)[:200]}")
 

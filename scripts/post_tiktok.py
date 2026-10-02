@@ -97,7 +97,7 @@ def send_draft(v: dict, account: dict, log) -> bool:
         log(f"Schita clipului #{v['num']} a esuat: {r.status_code} {r.text[:200]}")
         return False
     post = r.json().get("post", r.json())
-    v["posted"] = {"draft": True, "sent": datetime.now(TZ).isoformat(timespec="minutes"),
+    v["posted"] = {"draft": True, "remade": v.get("remade"), "sent": datetime.now(TZ).isoformat(timespec="minutes"),
                    "id": post.get("_id") or post.get("id"), "account": account["username"]}
     log(f"Clipul #{v['num']} trimis ca SCHITA in inboxul TikTok (pune-i un sunet trending si posteaza-l)")
     return True
@@ -167,9 +167,9 @@ def main() -> None:
     move = {int(x) for x in re.findall(r"\d+", os.environ.get("TO_DRAFTS", ""))}
     for v in video_log:
         po = v.get("posted") or {}
-        if v.get("num") not in move or po.get("draft"):
-            continue
-        if po.get("id"):
+        if v.get("num") not in move or (po.get("draft") and po.get("remade") == v.get("remade")):
+            continue   # schita e deja trimisa pentru varianta asta a clipului
+        if po.get("id") and not po.get("draft"):
             r = requests.delete(f"{API}/posts/{po['id']}", headers=headers(), timeout=30)
             if not r.ok and r.status_code != 404:
                 log(f"Nu am putut anula programarea clipului #{v['num']}: {r.status_code} {r.text[:150]}")
