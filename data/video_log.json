@@ -329,8 +329,9 @@
    "music": "Big Mojo"
   },
   "posted": {
-   "scheduledFor": "2026-10-02T19:00:00+03:00",
-   "id": "6abfc6195517e9dfdc6a66ca",
+   "draft": true,
+   "sent": "2026-10-02T18:00+03:00",
+   "id": "6abfc7134b6a40a27ca48630",
    "account": "trendixeu"
   },
   "remade": 1
@@ -414,8 +415,9 @@
    "music": "Blip Stream"
   },
   "posted": {
-   "scheduledFor": "2026-10-02T21:00:00+03:00",
-   "id": "6abfc61a5517e9dfdc6a66d5",
+   "draft": true,
+   "sent": "2026-10-02T18:01+03:00",
+   "id": "6abfc725583796cfdb64cc0f",
    "account": "trendixeu"
   },
   "remade": 1
