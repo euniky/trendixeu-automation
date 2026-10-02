@@ -648,7 +648,7 @@
     "Livrare în România"
    ],
    "duration": 10.5,
-   "used_seller_video": false,
+   "used_seller_video": true,
    "voiced": false,
    "voice": null,
    "voice_error": null,
@@ -668,11 +668,12 @@
    "image": "https://ae-pic-a1.aliexpress-media.com/kf/S59152822e94045e799d354f95f410bdbX.jpeg",
    "title_ro": "Sac spălat încălțăminte în mașina de spălat"
   },
-  "remade": 1,
+  "remade": 2,
   "posted": {
    "draft": true,
-   "sent": "2026-10-02T18:57+03:00",
-   "id": "6abfd463d03fac56cd281fce",
+   "remade": 2,
+   "sent": "2026-10-02T19:10+03:00",
+   "id": "6abfd760cde0499edc3b8035",
    "account": "trendixeu"
   }
  }
