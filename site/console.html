@@ -125,9 +125,18 @@ tr:last-child td{border-bottom:none}
 .rank .num small{display:block;color:var(--dim);font-size:11px}
 .tag{font-size:10.5px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:0 6px;margin-left:6px;vertical-align:1px}
 .cols.even{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
-.clips{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;padding:14px}
-.clip{background:var(--panel-2);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;min-width:0}
-.clip video{width:100%;aspect-ratio:9/16;max-height:520px;background:#000;display:block;object-fit:contain}
+.clips{display:flex;gap:12px;padding:14px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;scrollbar-width:thin}
+.clip{background:var(--panel-2);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;min-width:0;flex:0 0 min(290px,80vw);scroll-snap-align:start}
+.clip video{width:100%;aspect-ratio:9/16;max-height:440px;background:#000;display:block;object-fit:contain}
+.carousel-nav{display:flex;gap:6px;align-items:center}
+.carousel-nav button{font:inherit;font-size:16px;line-height:1;width:32px;height:32px;border-radius:8px;border:1px solid var(--line);background:var(--panel-2);color:var(--text);cursor:pointer}
+.carousel-nav button:disabled{opacity:.35;cursor:default}
+.jump{position:sticky;top:0;z-index:20;display:flex;gap:6px;overflow-x:auto;padding:8px 0;background:var(--bg);scrollbar-width:none}
+.jump::-webkit-scrollbar{display:none}
+.jump a{flex:0 0 auto;font-size:12.5px;text-decoration:none;color:var(--text);border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:6px 12px}
+.jump a:hover{border-color:var(--muted)}
+.scrollbox{max-height:440px;overflow-y:auto;overscroll-behavior:contain}
+[id]{scroll-margin-top:56px}
 .clip .body{padding:12px;display:flex;flex-direction:column;gap:10px}
 .clip h3{font-size:14px;font-weight:600;display:flex;gap:8px;align-items:baseline}
 .clip h3 .n{font-family:var(--mono);color:var(--accent)}
@@ -188,8 +197,20 @@ tr:last-child td{border-bottom:none}
 
   <div class="notice" id="notice" hidden></div>
 
-  <section class="panel" aria-label="Clipuri TikTok de azi">
-    <div class="panel-head"><h2>Clipuri TikTok gata de postat</h2><span class="muted" style="font-size:12px" id="clipsInfo"></span></div>
+  <nav class="jump" aria-label="Sari la secțiune">
+    <a href="#clipsPanel">🎬 Clipuri</a>
+    <a href="#statsPanel">📊 Statistici</a>
+    <a href="#ordersPanel">🛒 Comenzi</a>
+    <a href="#productsPanel">📦 Produse</a>
+    <a href="#runsPanel">⚙️ Rulări</a>
+    <a href="#health">⬆ Sus</a>
+  </nav>
+
+  <section class="panel" aria-label="Clipuri TikTok de azi" id="clipsPanel">
+    <div class="panel-head"><h2>Clipuri TikTok gata de postat</h2>
+      <div class="carousel-nav"><span class="muted" style="font-size:12px" id="clipsInfo"></span>
+        <button type="button" id="clipPrev" aria-label="Clipul anterior">‹</button>
+        <button type="button" id="clipNext" aria-label="Clipul următor">›</button></div></div>
     <div class="clips" id="clips"></div>
     <p class="empty" id="clipsEmpty" hidden></p>
     <p class="steps"><b>Cum postezi:</b> 1. Descarcă clipul. 2. În TikTok: + → Încarcă → alege clipul. 3. Adaugă un sunet în trend. 4. Lipește descrierea, apoi scrie fiecare cuvânt de mai jos cu # și alege-l din lista TikTok. 5. Dacă ai opțiunea, pune stickerul „Link” spre pagina de bio.</p>
@@ -216,7 +237,7 @@ tr:last-child td{border-bottom:none}
     <div class="kpi"><div class="label">Rulări reușite</div><div class="value" id="kSuccess">—</div><div class="sub" id="kSuccessSub">din ultimele rulări</div></div>
   </section>
 
-  <section class="cols">
+  <section class="cols" id="runsPanel">
     <div class="panel">
       <div class="panel-head"><h2>Jurnal de evenimente</h2><span class="muted" style="font-size:12px" id="feedCount"></span></div>
       <ul class="feed" id="feed"><li><span class="t">--:--</span><span class="k info">·</span><span class="m muted">Se încarcă…</span></li></ul>
@@ -232,7 +253,7 @@ tr:last-child td{border-bottom:none}
     </div>
   </section>
 
-  <section class="panel" aria-label="Interesul vizitatorilor">
+  <section class="panel" aria-label="Interesul vizitatorilor" id="statsPanel">
     <div class="panel-head">
       <h2>Ce îi interesează pe vizitatorii tăi</h2>
       <div class="seg" role="group" aria-label="Perioada">
@@ -252,7 +273,7 @@ tr:last-child td{border-bottom:none}
     <p class="foot" style="padding:0 14px 14px">Numărăm o vizită pe sesiune și un click per produs per vizită. Roboții sunt ignorați, nu se salvează date personale.</p>
   </section>
 
-  <section class="cols even">
+  <section class="cols even" id="ordersPanel">
     <div class="panel">
       <div class="panel-head"><h2>Cele mai cumpărate pe AliExpress</h2><span class="muted" style="font-size:12px">comenzi totale</span></div>
       <ol class="rank" id="boughtRank"></ol>
@@ -270,7 +291,7 @@ tr:last-child td{border-bottom:none}
     </div>
   </section>
 
-  <section class="panel">
+  <section class="panel" id="productsPanel">
     <div class="panel-head">
       <h2>Produse publicate acum</h2>
       <div class="tabs" role="tablist">
@@ -278,7 +299,7 @@ tr:last-child td{border-bottom:none}
         <button class="tab" role="tab" aria-selected="false" data-tab="featured" id="tabFeatured" type="button">Din clipuri</button>
       </div>
     </div>
-    <div class="grid" id="products"></div>
+    <div class="scrollbox"><div class="grid" id="products"></div></div>
     <p class="empty" id="productsEmpty" hidden></p>
     <p class="foot" id="filters" style="padding:0 14px 14px"></p>
   </section>
@@ -498,12 +519,28 @@ tr:last-child td{border-bottom:none}
   }
 
   var clipsKey = "";
+  (function () {   // sagetile caruselului de clipuri
+    var box = $("clips");
+    function step(dir) {
+      var c = box.querySelector(".clip");
+      box.scrollBy({ left: dir * ((c ? c.offsetWidth : 300) + 12), behavior: "smooth" });
+    }
+    function upd() {
+      $("clipPrev").disabled = box.scrollLeft < 8;
+      $("clipNext").disabled = box.scrollLeft + box.clientWidth >= box.scrollWidth - 8;
+    }
+    $("clipPrev").addEventListener("click", function () { step(-1); });
+    $("clipNext").addEventListener("click", function () { step(1); });
+    box.addEventListener("scroll", upd, { passive: true });
+    window.addEventListener("resize", upd);
+    setInterval(upd, 1500);
+  })();
   function renderClips() {
     var st = state.status, list = (st && st.clips) || [];
     var key = (st ? st.run_number : "") + ":" + list.length;
     if (key === clipsKey) return; // nu reconstrui playerele la fiecare verificare
     clipsKey = key;
-    $("clipsInfo").textContent = list.length ? list.length + " clipuri · generate " + fmtDate(new Date(st.updated)) : "";
+    $("clipsInfo").textContent = list.length ? list.length + " clipuri · glisează →" : "";
     $("clips").innerHTML = list.map(function (c, i) {
       return '<article class="clip"><video src="/' + esc(c.file) + '" controls playsinline preload="none" poster="' + (c.poster ? "/" + esc(c.poster) : "") + '"></video><div class="body">' +
         '<h3><span class="n">#' + c.num + '</span><span>' + esc(c.title_ro) + "</span></h3>" +
