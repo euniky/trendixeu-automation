@@ -1,0 +1,997 @@
+{
+ "checked": "2026-10-03T13:46:22+03:00",
+ "ok": true,
+ "scheduled": [],
+ "log": [
+  "Conturi TikTok conectate: @trendixeu",
+  "Clipul #12 (12:30): published",
+  "Clipul #13 (schita): published",
+  "Clipul #14 (schita): published",
+  "Clipul #15 (14:00): published",
+  "Clipul #16 (20:00): published",
+  "Clipul #8 (schita): published",
+  "Clipul #17 (schita): published",
+  "Clipul #18 (schita): published",
+  "Clipul #19 (12:00): published",
+  "Clipul #20 (14:00): scheduled",
+  "Clipul #21 (19:00): scheduled",
+  "Clipul #22 (21:00): scheduled"
+ ],
+ "accounts": [
+  {
+   "id": "6abf38c791fc8bcbb436a883",
+   "username": "trendixeu"
+  }
+ ],
+ "posts": [
+  {
+   "num": 12,
+   "when": "2026-10-02T12:30:00+03:00",
+   "raw": {
+    "_id": "6abf4da658ac156d0e64c682",
+    "userId": {
+     "id": "6abf3879c60c56b7cbb1fcb8",
+     "name": "euniky",
+     "image": "https://avatars.githubusercontent.com/u/336625862?v=4"
+    },
+    "title": "",
+    "content": "Nu știam că există așa ceva 😱\nNoul robot de măturat USB Aspirator Mopping\n✅ 3 în 1\n✅ Fără fir\n⭐ 98% recenzii pozitive · 9.139+ comenzi\n💰 Preț: ~77 lei\n👉 Link în bio · caută produsul nr. 12\n\n#aliexpressfinds #tiktokmademebuyit #oferte #reduceri #romania #fyp #cleantok #curatenie #cleaninghacks",
+    "mediaItems": [
+     {
+      "_id": "6abf4da658ac156d0e64c684",
+      "url": "https://euniky.github.io/trendixeu-automation/clips/trendixeu-12.mp4",
+      "type": "video"
+     }
+    ],
+    "scheduledFor": "2026-10-02T09:30:00.000Z",
+    "timezone": "Europe/Bucharest",
+    "status": "published",
+    "tags": [],
+    "hashtags": [],
+    "mentions": [],
+    "visibility": "public",
+    "crosspostingEnabled": true,
+    "metadata": {
+     "usageCounted": true
+    },
+    "publishingClaimedAt": "2026-10-02T09:30:21.588Z",
+    "publishAttempts": 0,
+    "recycling": {
+     "enabled": false,
+     "gapFreq": "month",
+     "recycleCount": 0,
+     "contentVariations": [],
+     "contentVariationIndex": 0
+    },
+    "lastEnqueuedAt": "2026-10-02T09:31:19.677Z",
+    "createdAt": "2026-10-02T06:22:30.058Z",
+    "updatedAt": "2026-10-02T09:35:32.667Z",
+    "platforms": [
+     {
+      "_id": "6abf4da658ac156d0e64c681",
+      "platform": "tiktok",
+      "accountId": {
+       "_id": "6abf38c791fc8bcbb436a883",
+       "platform": "tiktok",
+       "username": "trendixeu",
+       "displayName": "Trendixeu",
+       "profilePicture": "https://p16-common-sign.tiktokcdn-eu.com/tos-no1a-avt-0068c001-no/1c1e030f65631a1a6f1d9e23203e6a85~tplv-tiktokx-cropcenter:168:168.jpeg?dr=10397&refresh_token=55cb97cb&x-expires=1791180000&x-signature=FDWUyTU1Lli8LxjGUnjXvHVoYwg%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=8aecc5ac&idc=useast2b",
+       "isActive": true,
+       "profileId": "6abf3879c60c56b7cbb1fcba"
+      },
+      "profileId": "6abf3879c60c56b7cbb1fcba",
+      "customMedia": [],
+      "scheduledFor": "2026-10-02T09:30:00.000Z",
+      "platformSpecificData": {
+       "tiktokSettings": {
+        "allow_duet": true,
+        "allow_stitch": true,
+        "allow_comment": true,
+        "privacy_level": "PUBLIC_TO_EVERYONE",
+        "isBrandOrganicPost": true,
+        "express_consent_given": true,
+        "content_preview_confirmed": true
+       },
+       "tiktokUploadTimeoutAt": "2026-10-02T09:31:38.121Z",
+       "tiktokBusinessPublishId": "v_pub_url~v2.7692000565576091680",
+       "tiktokBusinessReconciledAt": "2026-10-02T09:35:26.272Z",
+       "tiktokBusinessReconciledReason": "already-resolved"
+      },
+      "status": "published",
+      "publishedAt": "2026-10-02T09:31:46.321Z",
+      "platformPostId": "7692000801060818209",
+      "platformPostUrl": "https://www.tiktok.com/@trendixeu/video/7692000801060818209",
+      "publishAttempts": 1,
+      "contentHash": "1e1608ade5b9d564a3ec9f94001cce66"
+     }
+    ]
+   }
+  },
+  {
+   "num": 13,
+   "when": null,
+   "raw": {
+    "_id": "6abfc7134b6a40a27ca48630",
+    "userId": {
+     "id": "6abf3879c60c56b7cbb1fcb8",
+     "name": "euniky",
+     "image": "https://avatars.githubusercontent.com/u/336625862?v=4"
+    },
+    "title": "",
+    "content": "Nu știam că există așa ceva 😱\nAspirator robot Ilife A30 Pro cu auto-eliberare\n✅ Livrare în România\n⭐ 98% recenzii pozitive · 8.226+ comenzi\n💰 Preț: ~732 lei\n👉 Link în bio · caută produsul nr. 13\n🎵 Big Mojo – Kevin MacLeod (incompetech.com) · CC BY 4.0\n\n#aliexpressfinds #tiktokmademebuyit #oferte #reduceri #romania #fyp #cleantok #curatenie #cleaninghacks\n",
+    "mediaItems": [
+     {
+      "_id": "6abfc7134b6a40a27ca48632",
+      "url": "https://euniky.github.io/trendixeu-automation/clips/trendixeu-13.mp4?v=1",
+      "type": "video"
+     }
+    ],
+    "scheduledFor": "2026-10-02T15:00:34.867Z",
+    "timezone": "UTC",
+    "status": "published",
+    "tags": [],
+    "hashtags": [],
+    "mentions": [],
+    "visibility": "public",
+    "crosspostingEnabled": true,
+    "metadata": {
+     "usageCounted": true
+    },
+    "publishingClaimedAt": "2026-10-02T15:00:37.049Z",
+    "publishAttempts": 0,
+    "recycling": {
+     "enabled": false,
+     "gapFreq": "month",
+     "recycleCount": 0,
+     "contentVariations": [],
+     "contentVariationIndex": 0
+    },
+    "createdAt": "2026-10-02T15:00:35.788Z",
+    "updatedAt": "2026-10-02T16:20:30.125Z",
+    "platforms": [
+     {
+      "_id": "6abfc7134b6a40a27ca4862f",
+      "platform": "tiktok",
+      "accountId": {
+       "_id": "6abf38c791fc8bcbb436a883",
+       "platform": "tiktok",
+       "username": "trendixeu",
+       "displayName": "Trendixeu",
+       "profilePicture": "https://p16-common-sign.tiktokcdn-eu.com/tos-no1a-avt-0068c001-no/1c1e030f65631a1a6f1d9e23203e6a85~tplv-tiktokx-cropcenter:168:168.jpeg?dr=10397&refresh_token=55cb97cb&x-expires=1791180000&x-signature=FDWUyTU1Lli8LxjGUnjXvHVoYwg%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=8aecc5ac&idc=useast2b",
+       "isActive": true,
+       "profileId": "6abf3879c60c56b7cbb1fcba"
+      },
+      "profileId": "6abf3879c60c56b7cbb1fcba",
+      "customMedia": [],
+      "scheduledFor": "2026-10-02T15:00:34.867Z",
+      "platformSpecificData": {
+       "tiktokSettings": {
+        "draft": true,
+        "allow_duet": true,
+        "allow_stitch": true,
+        "allow_comment": true,
+        "privacy_level": "PUBLIC_TO_EVERYONE",
+        "isBrandOrganicPost": true,
+        "express_consent_given": true,
+        "content_preview_confirmed": true
+       },
+       "tiktokUploadTimeoutAt": "2026-10-02T15:00:51.841Z",
+       "tiktokBusinessPublishId": "v_inbox_url~v2.7692085558171961376",
+       "tiktokBusinessReconciledAt": "2026-10-02T16:20:26.465Z",
+       "tiktokBusinessReconciledReason": "url-unresolvable",
+       "tiktokBusinessReconcileAttempts": 11
+      },
+      "status": "published",
+      "publishedAt": "2026-10-02T15:23:36.634Z",
+      "platformPostId": "v_inbox_url~v2.7692085558171961376",
+      "publishAttempts": 1,
+      "contentHash": "e37dc75fca8867d77114dfea4a799f8e"
+     }
+    ]
+   }
+  },
+  {
+   "num": 14,
+   "when": null,
+   "raw": {
+    "_id": "6abfc725583796cfdb64cc0f",
+    "userId": {
+     "id": "6abf3879c60c56b7cbb1fcb8",
+     "name": "euniky",
+     "image": "https://avatars.githubusercontent.com/u/336625862?v=4"
+    },
+    "title": "",
+    "content": "Nu știam că există așa ceva 😱\nSmart Laser Cat-teasing Collar Laser Reîncărcabil Auto\n✅ Reîncărcabil USB\n⭐ 98% recenzii pozitive · 3.746+ comenzi\n💰 Preț: ~33 lei\n👉 Link în bio · caută produsul nr. 14\n🎵 Blip Stream – Kevin MacLeod (incompetech.com) · CC BY 4.0\n\n#aliexpressfinds #tiktokmademebuyit #oferte #reduceri #romania #fyp #pettok #animalutze #petproducts\n",
+    "mediaItems": [
+     {
+      "_id": "6abfc725583796cfdb64cc11",
+      "url": "https://euniky.github.io/trendixeu-automation/clips/trendixeu-14.mp4?v=1",
+      "type": "video"
+     }
+    ],
+    "scheduledFor": "2026-10-02T15:00:52.972Z",
+    "timezone": "UTC",
+    "status": "published",
+    "tags": [],
+    "hashtags": [],
+    "mentions": [],
+    "visibility": "public",
+    "crosspostingEnabled": true,
+    "metadata": {
+     "usageCounted": true
+    },
+    "publishingClaimedAt": "2026-10-02T15:00:53.600Z",
+    "publishAttempts": 0,
+    "recycling": {
+     "enabled": false,
+     "gapFreq": "month",
+     "recycleCount": 0,
+     "contentVariations": [],
+     "contentVariationIndex": 0
+    },
+    "createdAt": "2026-10-02T15:00:53.315Z",
+    "updatedAt": "2026-10-02T16:15:29.961Z",
+    "platforms": [
+     {
+      "_id": "6abfc725583796cfdb64cc0e",
+      "platform": "tiktok",
+      "accountId": {
+       "_id": "6abf38c791fc8bcbb436a883",
+       "platform": "tiktok",
+       "username": "trendixeu",
+       "displayName": "Trendixeu",
+       "profilePicture": "https://p16-common-sign.tiktokcdn-eu.com/tos-no1a-avt-0068c001-no/1c1e030f65631a1a6f1d9e23203e6a85~tplv-tiktokx-cropcenter:168:168.jpeg?dr=10397&refresh_token=55cb97cb&x-expires=1791180000&x-signature=FDWUyTU1Lli8LxjGUnjXvHVoYwg%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=8aecc5ac&idc=useast2b",
+       "isActive": true,
+       "profileId": "6abf3879c60c56b7cbb1fcba"
+      },
+      "profileId": "6abf3879c60c56b7cbb1fcba",
+      "customMedia": [],
+      "scheduledFor": "2026-10-02T15:00:52.972Z",
+      "platformSpecificData": {
+       "tiktokSettings": {
+        "draft": true,
+        "allow_duet": true,
+        "allow_stitch": true,
+        "allow_comment": true,
+        "privacy_level": "PUBLIC_TO_EVERYONE",
+        "isBrandOrganicPost": true,
+        "express_consent_given": true,
+        "content_preview_confirmed": true
+       },
+       "tiktokUploadTimeoutAt": "2026-10-02T15:01:07.225Z",
+       "tiktokBusinessPublishId": "v_inbox_url~v2.7692085624559536160",
+       "tiktokBusinessReconciledAt": "2026-10-02T16:15:26.562Z",
+       "tiktokBusinessReconciledReason": "url-unresolvable",
+       "tiktokBusinessReconcileAttempts": 11
+      },
+      "status": "published",
+      "publishedAt": "2026-10-02T15:16:15.946Z",
+      "platformPostId": "v_inbox_url~v2.7692085624559536160",
+      "publishAttempts": 1,
+      "contentHash": "2513115561af32572a43bd0282705911"
+     }
+    ]
+   }
+  },
+  {
+   "num": 15,
+   "when": "2026-10-02T14:00:00+03:00",
+   "raw": {
+    "_id": "6abf826b505504540fca5978",
+    "userId": {
+     "id": "6abf3879c60c56b7cbb1fcb8",
+     "name": "euniky",
+     "image": "https://avatars.githubusercontent.com/u/336625862?v=4"
+    },
+    "title": "",
+    "content": "Gadgetul pe care nu știai că-l vrei 😱\nMini Pompă de aer electrică reîncărcabilă pentru\n✅ Reîncărcabil USB\n✅ Compact\n⭐ 94% recenzii pozitive · 3.051+ comenzi\n💰 Preț: ~41 lei\n👉 Link în bio · caută produsul nr. 15\n🎵 Awesome Call – Kevin MacLeod (incompetech.com) · CC BY 4.0\n\n#aliexpressfinds #tiktokmademebuyit #oferte #reduceri #romania #fyp #gadgets #homegadgets #casa #homehacks",
+    "mediaItems": [
+     {
+      "_id": "6abf826b505504540fca597a",
+      "url": "https://euniky.github.io/trendixeu-automation/clips/trendixeu-15.mp4",
+      "type": "video"
+     }
+    ],
+    "scheduledFor": "2026-10-02T11:00:00.000Z",
+    "timezone": "Europe/Bucharest",
+    "status": "published",
+    "tags": [],
+    "hashtags": [],
+    "mentions": [],
+    "visibility": "public",
+    "crosspostingEnabled": true,
+    "metadata": {
+     "usageCounted": true
+    },
+    "publishingClaimedAt": "2026-10-02T11:00:21.561Z",
+    "publishAttempts": 0,
+    "recycling": {
+     "enabled": false,
+     "gapFreq": "month",
+     "recycleCount": 0,
+     "contentVariations": [],
+     "contentVariationIndex": 0
+    },
+    "lastEnqueuedAt": "2026-10-02T11:01:20.090Z",
+    "createdAt": "2026-10-02T10:07:39.873Z",
+    "updatedAt": "2026-10-02T11:05:35.644Z",
+    "platforms": [
+     {
+      "_id": "6abf826b505504540fca5977",
+      "platform": "tiktok",
+      "accountId": {
+       "_id": "6abf38c791fc8bcbb436a883",
+       "platform": "tiktok",
+       "username": "trendixeu",
+       "displayName": "Trendixeu",
+       "profilePicture": "https://p16-common-sign.tiktokcdn-eu.com/tos-no1a-avt-0068c001-no/1c1e030f65631a1a6f1d9e23203e6a85~tplv-tiktokx-cropcenter:168:168.jpeg?dr=10397&refresh_token=55cb97cb&x-expires=1791180000&x-signature=FDWUyTU1Lli8LxjGUnjXvHVoYwg%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=8aecc5ac&idc=useast2b",
+       "isActive": true,
+       "profileId": "6abf3879c60c56b7cbb1fcba"
+      },
+      "profileId": "6abf3879c60c56b7cbb1fcba",
+      "customMedia": [],
+      "scheduledFor": "2026-10-02T11:00:00.000Z",
+      "platformSpecificData": {
+       "tiktokSettings": {
+        "allow_duet": true,
+        "allow_stitch": true,
+        "allow_comment": true,
+        "privacy_level": "PUBLIC_TO_EVERYONE",
+        "isBrandOrganicPost": true,
+        "express_consent_given": true,
+        "content_preview_confirmed": true
+       },
+       "tiktokUploadTimeoutAt": "2026-10-02T11:01:36.911Z",
+       "tiktokBusinessPublishId": "v_pub_url~v2.7692023846240749601",
+       "tiktokBusinessReconciledAt": "2026-10-02T11:05:26.420Z",
+       "tiktokBusinessReconciledReason": "already-resolved"
+      },
+      "status": "published",
+      "publishedAt": "2026-10-02T11:01:48.291Z",
+      "platformPostId": "7692024009835220256",
+      "platformPostUrl": "https://www.tiktok.com/@trendixeu/video/7692024009835220256",
+      "publishAttempts": 1,
+      "contentHash": "a7278489e11b622e0b47d2c962066ad2"
+     }
+    ]
+   }
+  },
+  {
+   "num": 16,
+   "when": "2026-10-02T20:00:00+03:00",
+   "raw": {
+    "_id": "6abf826c37d37cec8448f700",
+    "userId": {
+     "id": "6abf3879c60c56b7cbb1fcb8",
+     "name": "euniky",
+     "image": "https://avatars.githubusercontent.com/u/336625862?v=4"
+    },
+    "title": "",
+    "content": "Nu știam că există așa ceva 😱\nProiector fără fir pentru uși auto cu\n✅ Fără fir\n⭐ 98% recenzii pozitive · 3.301+ comenzi\n💰 Preț: ~111 lei\n👉 Link în bio · caută produsul nr. 16\n🎵 Big Mojo – Kevin MacLeod (incompetech.com) · CC BY 4.0\n\n#aliexpressfinds #tiktokmademebuyit #oferte #reduceri #romania #fyp #masina #caraccessories #cartok",
+    "mediaItems": [
+     {
+      "_id": "6abf826c37d37cec8448f702",
+      "url": "https://euniky.github.io/trendixeu-automation/clips/trendixeu-16.mp4",
+      "type": "video"
+     }
+    ],
+    "scheduledFor": "2026-10-02T17:00:00.000Z",
+    "timezone": "Europe/Bucharest",
+    "status": "published",
+    "tags": [],
+    "hashtags": [],
+    "mentions": [],
+    "visibility": "public",
+    "crosspostingEnabled": true,
+    "metadata": {
+     "usageCounted": true
+    },
+    "publishingClaimedAt": "2026-10-02T17:00:21.395Z",
+    "publishAttempts": 0,
+    "recycling": {
+     "enabled": false,
+     "gapFreq": "month",
+     "recycleCount": 0,
+     "contentVariations": [],
+     "contentVariationIndex": 0
+    },
+    "lastEnqueuedAt": "2026-10-02T17:02:19.746Z",
+    "createdAt": "2026-10-02T10:07:40.566Z",
+    "updatedAt": "2026-10-02T17:05:42.293Z",
+    "platforms": [
+     {
+      "_id": "6abf826c37d37cec8448f6ff",
+      "platform": "tiktok",
+      "accountId": {
+       "_id": "6abf38c791fc8bcbb436a883",
+       "platform": "tiktok",
+       "username": "trendixeu",
+       "displayName": "Trendixeu",
+       "profilePicture": "https://p16-common-sign.tiktokcdn-eu.com/tos-no1a-avt-0068c001-no/1c1e030f65631a1a6f1d9e23203e6a85~tplv-tiktokx-cropcenter:168:168.jpeg?dr=10397&refresh_token=55cb97cb&x-expires=1791180000&x-signature=FDWUyTU1Lli8LxjGUnjXvHVoYwg%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=8aecc5ac&idc=useast2b",
+       "isActive": true,
+       "profileId": "6abf3879c60c56b7cbb1fcba"
+      },
+      "profileId": "6abf3879c60c56b7cbb1fcba",
+      "customMedia": [],
+      "scheduledFor": "2026-10-02T17:00:00.000Z",
+      "platformSpecificData": {
+       "tiktokSettings": {
+        "allow_duet": true,
+        "allow_stitch": true,
+        "allow_comment": true,
+        "privacy_level": "PUBLIC_TO_EVERYONE",
+        "isBrandOrganicPost": true,
+        "express_consent_given": true,
+        "content_preview_confirmed": true
+       },
+       "tiktokUploadTimeoutAt": "2026-10-02T17:02:50.306Z",
+       "tiktokBusinessPublishId": "v_pub_url~v2.7692116981579008032",
+       "tiktokBusinessReconciledAt": "2026-10-02T17:05:26.437Z",
+       "tiktokBusinessReconciledReason": "already-resolved"
+      },
+      "status": "published",
+      "publishedAt": "2026-10-02T17:03:01.920Z",
+      "platformPostId": "7692117105470115104",
+      "platformPostUrl": "https://www.tiktok.com/@trendixeu/video/7692117105470115104",
+      "publishAttempts": 1,
+      "contentHash": "39a43ecf63c151cf512b5e3507ffe91e"
+     }
+    ]
+   }
+  },
+  {
+   "num": 8,
+   "when": null,
+   "raw": {
+    "_id": "6abfd760cde0499edc3b8035",
+    "userId": {
+     "id": "6abf3879c60c56b7cbb1fcb8",
+     "name": "euniky",
+     "image": "https://avatars.githubusercontent.com/u/336625862?v=4"
+    },
+    "title": "",
+    "content": "41.292+ oameni l-au cumpărat 😱\nSac spălat încălțăminte în mașina de spălat\n✅ Livrare în România\n⭐ 96% recenzii pozitive · 41.292+ comenzi\n💰 Preț: ~45 lei\n👉 Link în bio · caută produsul nr. 8\n🎵 Blip Stream – Kevin MacLeod (incompetech.com) · CC BY 4.0\n\n#aliexpressfinds #tiktokmademebuyit #oferte #reduceri #romania #fyp #gadgets #homehacks\n",
+    "mediaItems": [
+     {
+      "_id": "6abfd760cde0499edc3b803d",
+      "url": "https://euniky.github.io/trendixeu-automation/clips/trendixeu-8.mp4?v=2",
+      "type": "video"
+     }
+    ],
+    "scheduledFor": "2026-10-02T16:10:08.195Z",
+    "timezone": "UTC",
+    "status": "published",
+    "tags": [],
+    "hashtags": [],
+    "mentions": [],
+    "visibility": "public",
+    "crosspostingEnabled": true,
+    "metadata": {
+     "usageCounted": true
+    },
+    "publishingClaimedAt": "2026-10-02T16:10:09.013Z",
+    "publishAttempts": 0,
+    "recycling": {
+     "enabled": false,
+     "gapFreq": "month",
+     "recycleCount": 0,
+     "contentVariations": [],
+     "contentVariationIndex": 0
+    },
+    "createdAt": "2026-10-02T16:10:08.636Z",
+    "updatedAt": "2026-10-02T17:15:32.674Z",
+    "platforms": [
+     {
+      "_id": "6abfd760cde0499edc3b8034",
+      "platform": "tiktok",
+      "accountId": {
+       "_id": "6abf38c791fc8bcbb436a883",
+       "platform": "tiktok",
+       "username": "trendixeu",
+       "displayName": "Trendixeu",
+       "profilePicture": "https://p16-common-sign.tiktokcdn-eu.com/tos-no1a-avt-0068c001-no/1c1e030f65631a1a6f1d9e23203e6a85~tplv-tiktokx-cropcenter:168:168.jpeg?dr=10397&refresh_token=55cb97cb&x-expires=1791180000&x-signature=FDWUyTU1Lli8LxjGUnjXvHVoYwg%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=8aecc5ac&idc=useast2b",
+       "isActive": true,
+       "profileId": "6abf3879c60c56b7cbb1fcba"
+      },
+      "profileId": "6abf3879c60c56b7cbb1fcba",
+      "customMedia": [],
+      "scheduledFor": "2026-10-02T16:10:08.195Z",
+      "platformSpecificData": {
+       "tiktokSettings": {
+        "draft": true,
+        "allow_duet": true,
+        "allow_stitch": true,
+        "allow_comment": true,
+        "privacy_level": "PUBLIC_TO_EVERYONE",
+        "isBrandOrganicPost": true,
+        "express_consent_given": true,
+        "content_preview_confirmed": true
+       },
+       "tiktokUploadTimeoutAt": "2026-10-02T16:10:23.442Z",
+       "tiktokBusinessPublishId": "v_inbox_url~v2.7692103342687914017",
+       "tiktokBusinessReconciledAt": "2026-10-02T17:15:29.613Z",
+       "tiktokBusinessReconciledReason": "url-unresolvable",
+       "tiktokBusinessReconcileAttempts": 11
+      },
+      "status": "published",
+      "publishedAt": "2026-10-02T16:19:40.341Z",
+      "platformPostId": "v_inbox_url~v2.7692103342687914017",
+      "publishAttempts": 1,
+      "contentHash": "b7115864403ebf6ff5b576de73aa9eb1"
+     }
+    ]
+   }
+  },
+  {
+   "num": 17,
+   "when": null,
+   "raw": {
+    "_id": "6ac0a02a3df8df341e1c2c8e",
+    "userId": {
+     "id": "6abf3879c60c56b7cbb1fcb8",
+     "name": "euniky",
+     "image": "https://avatars.githubusercontent.com/u/336625862?v=4"
+    },
+    "title": "",
+    "content": "Nu știam că există așa ceva 😱\nDispenser de săpun de bucătărie de 480\n✅ Livrare în România\n⭐ 98% recenzii pozitive · 2.112+ comenzi\n💰 Preț: ~166 lei\n👉 Link în bio · caută produsul nr. 17\n🎵 Blip Stream – Kevin MacLeod (incompetech.com) · CC BY 4.0\n\n#aliexpressfinds #tiktokmademebuyit #oferte #reduceri #romania #fyp #bucatarie #kitchengadgets #kitchenhacks\n",
+    "mediaItems": [
+     {
+      "_id": "6ac0a02a3df8df341e1c2c90",
+      "url": "https://euniky.github.io/trendixeu-automation/clips/trendixeu-17.mp4",
+      "type": "video"
+     }
+    ],
+    "scheduledFor": "2026-10-03T06:26:50.877Z",
+    "timezone": "UTC",
+    "status": "published",
+    "tags": [],
+    "hashtags": [],
+    "mentions": [],
+    "visibility": "public",
+    "crosspostingEnabled": true,
+    "metadata": {
+     "usageCounted": true
+    },
+    "publishingClaimedAt": "2026-10-03T06:26:51.047Z",
+    "publishAttempts": 0,
+    "recycling": {
+     "enabled": false,
+     "gapFreq": "month",
+     "recycleCount": 0,
+     "contentVariations": [],
+     "contentVariationIndex": 0
+    },
+    "createdAt": "2026-10-03T06:26:50.970Z",
+    "updatedAt": "2026-10-03T07:25:29.982Z",
+    "platforms": [
+     {
+      "_id": "6ac0a02a3df8df341e1c2c8d",
+      "platform": "tiktok",
+      "accountId": {
+       "_id": "6abf38c791fc8bcbb436a883",
+       "platform": "tiktok",
+       "username": "trendixeu",
+       "displayName": "Trendixeu",
+       "profilePicture": "https://p16-common-sign.tiktokcdn-eu.com/tos-no1a-avt-0068c001-no/1c1e030f65631a1a6f1d9e23203e6a85~tplv-tiktokx-cropcenter:168:168.jpeg?dr=10397&refresh_token=55cb97cb&x-expires=1791180000&x-signature=FDWUyTU1Lli8LxjGUnjXvHVoYwg%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=8aecc5ac&idc=useast2b",
+       "isActive": true,
+       "profileId": "6abf3879c60c56b7cbb1fcba"
+      },
+      "profileId": "6abf3879c60c56b7cbb1fcba",
+      "customMedia": [],
+      "scheduledFor": "2026-10-03T06:26:50.877Z",
+      "platformSpecificData": {
+       "tiktokSettings": {
+        "draft": true,
+        "allow_duet": true,
+        "allow_stitch": true,
+        "allow_comment": true,
+        "privacy_level": "PUBLIC_TO_EVERYONE",
+        "isBrandOrganicPost": true,
+        "express_consent_given": true,
+        "content_preview_confirmed": true
+       },
+       "tiktokUploadTimeoutAt": "2026-10-03T06:27:04.141Z",
+       "tiktokBusinessPublishId": "v_inbox_url~v2.7692323063215720481",
+       "tiktokBusinessReconciledAt": "2026-10-03T07:25:26.401Z",
+       "tiktokBusinessReconciledReason": "url-unresolvable",
+       "tiktokBusinessReconcileAttempts": 11
+      },
+      "status": "published",
+      "publishedAt": "2026-10-03T06:27:22.849Z",
+      "platformPostId": "v_inbox_url~v2.7692323063215720481",
+      "publishAttempts": 1,
+      "contentHash": "5a47c7cca4e14c6deb3f1cc2fa904e39"
+     }
+    ]
+   }
+  },
+  {
+   "num": 18,
+   "when": null,
+   "raw": {
+    "_id": "6ac0a0383df8df341e1c2c9f",
+    "userId": {
+     "id": "6abf3879c60c56b7cbb1fcb8",
+     "name": "euniky",
+     "image": "https://avatars.githubusercontent.com/u/336625862?v=4"
+    },
+    "title": "",
+    "content": "12.501+ oameni l-au cumpărat 😱\nSpumant reîncărcabil cu 3 trepte de viteză\n✅ Baterie 300 mAh\n✅ Reîncărcabil USB\n✅ Compact\n⭐ 98% recenzii pozitive · 12.501+ comenzi\n💰 Preț: ~36 lei\n👉 Link în bio · caută produsul nr. 18\n🎵 Awesome Call – Kevin MacLeod (incompetech.com) · CC BY 4.0\n\n#aliexpressfinds #tiktokmademebuyit #oferte #reduceri #romania #fyp #bucatarie #kitchengadgets #kitchenhacks\n",
+    "mediaItems": [
+     {
+      "_id": "6ac0a0383df8df341e1c2ca1",
+      "url": "https://euniky.github.io/trendixeu-automation/clips/trendixeu-18.mp4",
+      "type": "video"
+     }
+    ],
+    "scheduledFor": "2026-10-03T06:27:04.939Z",
+    "timezone": "UTC",
+    "status": "published",
+    "tags": [],
+    "hashtags": [],
+    "mentions": [],
+    "visibility": "public",
+    "crosspostingEnabled": true,
+    "metadata": {
+     "usageCounted": true
+    },
+    "publishingClaimedAt": "2026-10-03T06:27:04.996Z",
+    "publishAttempts": 0,
+    "recycling": {
+     "enabled": false,
+     "gapFreq": "month",
+     "recycleCount": 0,
+     "contentVariations": [],
+     "contentVariationIndex": 0
+    },
+    "createdAt": "2026-10-03T06:27:04.968Z",
+    "updatedAt": "2026-10-03T07:25:30.297Z",
+    "platforms": [
+     {
+      "_id": "6ac0a0383df8df341e1c2c9e",
+      "platform": "tiktok",
+      "accountId": {
+       "_id": "6abf38c791fc8bcbb436a883",
+       "platform": "tiktok",
+       "username": "trendixeu",
+       "displayName": "Trendixeu",
+       "profilePicture": "https://p16-common-sign.tiktokcdn-eu.com/tos-no1a-avt-0068c001-no/1c1e030f65631a1a6f1d9e23203e6a85~tplv-tiktokx-cropcenter:168:168.jpeg?dr=10397&refresh_token=55cb97cb&x-expires=1791180000&x-signature=FDWUyTU1Lli8LxjGUnjXvHVoYwg%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=8aecc5ac&idc=useast2b",
+       "isActive": true,
+       "profileId": "6abf3879c60c56b7cbb1fcba"
+      },
+      "profileId": "6abf3879c60c56b7cbb1fcba",
+      "customMedia": [],
+      "scheduledFor": "2026-10-03T06:27:04.939Z",
+      "platformSpecificData": {
+       "tiktokSettings": {
+        "draft": true,
+        "allow_duet": true,
+        "allow_stitch": true,
+        "allow_comment": true,
+        "privacy_level": "PUBLIC_TO_EVERYONE",
+        "isBrandOrganicPost": true,
+        "express_consent_given": true,
+        "content_preview_confirmed": true
+       },
+       "tiktokUploadTimeoutAt": "2026-10-03T06:27:17.773Z",
+       "tiktokBusinessPublishId": "v_inbox_url~v2.7692323260000225313",
+       "tiktokBusinessReconciledAt": "2026-10-03T07:25:26.401Z",
+       "tiktokBusinessReconciledReason": "url-unresolvable",
+       "tiktokBusinessReconcileAttempts": 11
+      },
+      "status": "published",
+      "publishedAt": "2026-10-03T06:27:38.852Z",
+      "platformPostId": "v_inbox_url~v2.7692323260000225313",
+      "publishAttempts": 1,
+      "contentHash": "3dbc49ab50b69f282a37b65ccecc42d1"
+     }
+    ]
+   }
+  },
+  {
+   "num": 19,
+   "when": "2026-10-03T12:00:00+03:00",
+   "raw": {
+    "_id": "6ac0a0463df8df341e1c2cd1",
+    "userId": {
+     "id": "6abf3879c60c56b7cbb1fcb8",
+     "name": "euniky",
+     "image": "https://avatars.githubusercontent.com/u/336625862?v=4"
+    },
+    "title": "",
+    "content": "Doar 26 lei?! 😱\nMini USB ventilator de masă reîncărcabil portabil\n✅ Reîncărcabil USB\n✅ Compact\n⭐ 98% recenzii pozitive · 8.905+ comenzi\n💰 Preț: ~26 lei\n👉 Link în bio · caută produsul nr. 19\n🎵 Big Mojo – Kevin MacLeod (incompetech.com) · CC BY 4.0\n\n#aliexpressfinds #tiktokmademebuyit #oferte #reduceri #romania #fyp #gadgets #homegadgets #casa #homehacks",
+    "mediaItems": [
+     {
+      "_id": "6ac0a0463df8df341e1c2cd3",
+      "url": "https://euniky.github.io/trendixeu-automation/clips/trendixeu-19.mp4",
+      "type": "video"
+     }
+    ],
+    "scheduledFor": "2026-10-03T09:00:00.000Z",
+    "timezone": "Europe/Bucharest",
+    "status": "published",
+    "tags": [],
+    "hashtags": [],
+    "mentions": [],
+    "visibility": "public",
+    "crosspostingEnabled": true,
+    "metadata": {
+     "usageCounted": true
+    },
+    "publishingClaimedAt": "2026-10-03T09:00:21.584Z",
+    "publishAttempts": 0,
+    "recycling": {
+     "enabled": false,
+     "gapFreq": "month",
+     "recycleCount": 0,
+     "contentVariations": [],
+     "contentVariationIndex": 0
+    },
+    "lastEnqueuedAt": "2026-10-03T09:01:20.154Z",
+    "createdAt": "2026-10-03T06:27:18.947Z",
+    "updatedAt": "2026-10-03T09:05:34.023Z",
+    "platforms": [
+     {
+      "_id": "6ac0a0463df8df341e1c2cd0",
+      "platform": "tiktok",
+      "accountId": {
+       "_id": "6abf38c791fc8bcbb436a883",
+       "platform": "tiktok",
+       "username": "trendixeu",
+       "displayName": "Trendixeu",
+       "profilePicture": "https://p16-common-sign.tiktokcdn-eu.com/tos-no1a-avt-0068c001-no/1c1e030f65631a1a6f1d9e23203e6a85~tplv-tiktokx-cropcenter:168:168.jpeg?dr=10397&refresh_token=55cb97cb&x-expires=1791180000&x-signature=FDWUyTU1Lli8LxjGUnjXvHVoYwg%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=8aecc5ac&idc=useast2b",
+       "isActive": true,
+       "profileId": "6abf3879c60c56b7cbb1fcba"
+      },
+      "profileId": "6abf3879c60c56b7cbb1fcba",
+      "customMedia": [],
+      "scheduledFor": "2026-10-03T09:00:00.000Z",
+      "platformSpecificData": {
+       "tiktokSettings": {
+        "allow_duet": true,
+        "allow_stitch": true,
+        "allow_comment": true,
+        "privacy_level": "PUBLIC_TO_EVERYONE",
+        "isBrandOrganicPost": true,
+        "express_consent_given": true,
+        "content_preview_confirmed": true
+       },
+       "tiktokUploadTimeoutAt": "2026-10-03T09:01:35.215Z",
+       "tiktokBusinessPublishId": "v_pub_url~v2.7692364042962339872",
+       "tiktokBusinessReconciledAt": "2026-10-03T09:05:26.399Z",
+       "tiktokBusinessReconciledReason": "already-resolved"
+      },
+      "status": "published",
+      "publishedAt": "2026-10-03T09:01:43.053Z",
+      "platformPostId": "7692364147832474913",
+      "platformPostUrl": "https://www.tiktok.com/@trendixeu/video/7692364147832474913",
+      "publishAttempts": 1,
+      "contentHash": "994eddc582c08d214d11c980f6caff47"
+     }
+    ]
+   }
+  },
+  {
+   "num": 20,
+   "when": "2026-10-03T14:00:00+03:00",
+   "raw": {
+    "_id": "6ac0a0473df8df341e1c2cd5",
+    "userId": {
+     "id": "6abf3879c60c56b7cbb1fcb8",
+     "name": "euniky",
+     "image": "https://avatars.githubusercontent.com/u/336625862?v=4"
+    },
+    "title": "",
+    "content": "Nu știam că există așa ceva 😱\nSuport pentru tabletă de înaltă calitate pentru\n✅ Livrare în România\n⭐ 98% recenzii pozitive · 6.711+ comenzi\n💰 Preț: ~118 lei\n👉 Link în bio · caută produsul nr. 20\n🎵 Blip Stream – Kevin MacLeod (incompetech.com) · CC BY 4.0\n\n#aliexpressfinds #tiktokmademebuyit #oferte #reduceri #romania #fyp #gadgets #telefon #techtok #accesoriitelefon",
+    "mediaItems": [
+     {
+      "_id": "6ac0a0473df8df341e1c2cd7",
+      "url": "https://euniky.github.io/trendixeu-automation/clips/trendixeu-20.mp4",
+      "type": "video"
+     }
+    ],
+    "scheduledFor": "2026-10-03T11:00:00.000Z",
+    "timezone": "Europe/Bucharest",
+    "status": "scheduled",
+    "tags": [],
+    "hashtags": [],
+    "mentions": [],
+    "visibility": "public",
+    "crosspostingEnabled": true,
+    "metadata": {
+     "usageCounted": true
+    },
+    "publishAttempts": 0,
+    "recycling": {
+     "enabled": false,
+     "gapFreq": "month",
+     "recycleCount": 0,
+     "contentVariations": [],
+     "contentVariationIndex": 0
+    },
+    "createdAt": "2026-10-03T06:27:19.832Z",
+    "updatedAt": "2026-10-03T06:27:19.832Z",
+    "platforms": [
+     {
+      "_id": "6ac0a0473df8df341e1c2cd4",
+      "platform": "tiktok",
+      "accountId": {
+       "_id": "6abf38c791fc8bcbb436a883",
+       "platform": "tiktok",
+       "username": "trendixeu",
+       "displayName": "Trendixeu",
+       "profilePicture": "https://p16-common-sign.tiktokcdn-eu.com/tos-no1a-avt-0068c001-no/1c1e030f65631a1a6f1d9e23203e6a85~tplv-tiktokx-cropcenter:168:168.jpeg?dr=10397&refresh_token=55cb97cb&x-expires=1791180000&x-signature=FDWUyTU1Lli8LxjGUnjXvHVoYwg%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=8aecc5ac&idc=useast2b",
+       "isActive": true,
+       "profileId": "6abf3879c60c56b7cbb1fcba"
+      },
+      "profileId": "6abf3879c60c56b7cbb1fcba",
+      "customMedia": [],
+      "scheduledFor": "2026-10-03T11:00:00.000Z",
+      "platformSpecificData": {
+       "tiktokSettings": {
+        "allow_duet": true,
+        "allow_stitch": true,
+        "allow_comment": true,
+        "privacy_level": "PUBLIC_TO_EVERYONE",
+        "isBrandOrganicPost": true,
+        "express_consent_given": true,
+        "content_preview_confirmed": true
+       }
+      },
+      "status": "pending",
+      "publishAttempts": 0,
+      "contentHash": "7ec3b60c0e973ef9c694b3df80a0ac79"
+     }
+    ]
+   }
+  },
+  {
+   "num": 21,
+   "when": "2026-10-03T19:00:00+03:00",
+   "raw": {
+    "_id": "6ac0a04808361006abf0b3f1",
+    "userId": {
+     "id": "6abf3879c60c56b7cbb1fcb8",
+     "name": "euniky",
+     "image": "https://avatars.githubusercontent.com/u/336625862?v=4"
+    },
+    "title": "",
+    "content": "Nimeni nu s-a plâns de el 😱\nPerie electrică de călcat cu abur pentru\n✅ 3 în 1\n⭐ 98% recenzii pozitive · 4.649+ comenzi\n💰 Preț: ~125 lei\n👉 Link în bio · caută produsul nr. 21\n🎵 Awesome Call – Kevin MacLeod (incompetech.com) · CC BY 4.0\n\n#aliexpressfinds #tiktokmademebuyit #oferte #reduceri #romania #fyp #pettok #animalutze #petproducts",
+    "mediaItems": [
+     {
+      "_id": "6ac0a04808361006abf0b3f3",
+      "url": "https://euniky.github.io/trendixeu-automation/clips/trendixeu-21.mp4",
+      "type": "video"
+     }
+    ],
+    "scheduledFor": "2026-10-03T16:00:00.000Z",
+    "timezone": "Europe/Bucharest",
+    "status": "scheduled",
+    "tags": [],
+    "hashtags": [],
+    "mentions": [],
+    "visibility": "public",
+    "crosspostingEnabled": true,
+    "metadata": {
+     "usageCounted": true
+    },
+    "publishAttempts": 0,
+    "recycling": {
+     "enabled": false,
+     "gapFreq": "month",
+     "recycleCount": 0,
+     "contentVariations": [],
+     "contentVariationIndex": 0
+    },
+    "createdAt": "2026-10-03T06:27:20.591Z",
+    "updatedAt": "2026-10-03T06:27:20.591Z",
+    "platforms": [
+     {
+      "_id": "6ac0a04808361006abf0b3f0",
+      "platform": "tiktok",
+      "accountId": {
+       "_id": "6abf38c791fc8bcbb436a883",
+       "platform": "tiktok",
+       "username": "trendixeu",
+       "displayName": "Trendixeu",
+       "profilePicture": "https://p16-common-sign.tiktokcdn-eu.com/tos-no1a-avt-0068c001-no/1c1e030f65631a1a6f1d9e23203e6a85~tplv-tiktokx-cropcenter:168:168.jpeg?dr=10397&refresh_token=55cb97cb&x-expires=1791180000&x-signature=FDWUyTU1Lli8LxjGUnjXvHVoYwg%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=8aecc5ac&idc=useast2b",
+       "isActive": true,
+       "profileId": "6abf3879c60c56b7cbb1fcba"
+      },
+      "profileId": "6abf3879c60c56b7cbb1fcba",
+      "customMedia": [],
+      "scheduledFor": "2026-10-03T16:00:00.000Z",
+      "platformSpecificData": {
+       "tiktokSettings": {
+        "allow_duet": true,
+        "allow_stitch": true,
+        "allow_comment": true,
+        "privacy_level": "PUBLIC_TO_EVERYONE",
+        "isBrandOrganicPost": true,
+        "express_consent_given": true,
+        "content_preview_confirmed": true
+       }
+      },
+      "status": "pending",
+      "publishAttempts": 0,
+      "contentHash": "87c1103332643e6c45d79ddb220d3c90"
+     }
+    ]
+   }
+  },
+  {
+   "num": 22,
+   "when": "2026-10-03T21:00:00+03:00",
+   "raw": {
+    "_id": "6ac0a0493df8df341e1c2cd9",
+    "userId": {
+     "id": "6abf3879c60c56b7cbb1fcb8",
+     "name": "euniky",
+     "image": "https://avatars.githubusercontent.com/u/336625862?v=4"
+    },
+    "title": "",
+    "content": "Nimeni nu s-a plâns de el 😱\nOttocast Mini Dot Cube Wireless CarPlay Adaptor\n✅ 2 în 1\n✅ Fără fir\n✅ Compact\n⭐ 98% recenzii pozitive · 2.667+ comenzi\n💰 Preț: ~158 lei\n👉 Link în bio · caută produsul nr. 22\n🎵 Big Mojo – Kevin MacLeod (incompetech.com) · CC BY 4.0\n\n#aliexpressfinds #tiktokmademebuyit #oferte #reduceri #romania #fyp #masina #caraccessories #cartok",
+    "mediaItems": [
+     {
+      "_id": "6ac0a0493df8df341e1c2cdb",
+      "url": "https://euniky.github.io/trendixeu-automation/clips/trendixeu-22.mp4",
+      "type": "video"
+     }
+    ],
+    "scheduledFor": "2026-10-03T18:00:00.000Z",
+    "timezone": "Europe/Bucharest",
+    "status": "scheduled",
+    "tags": [],
+    "hashtags": [],
+    "mentions": [],
+    "visibility": "public",
+    "crosspostingEnabled": true,
+    "metadata": {
+     "usageCounted": true
+    },
+    "publishAttempts": 0,
+    "recycling": {
+     "enabled": false,
+     "gapFreq": "month",
+     "recycleCount": 0,
+     "contentVariations": [],
+     "contentVariationIndex": 0
+    },
+    "createdAt": "2026-10-03T06:27:21.284Z",
+    "updatedAt": "2026-10-03T06:27:21.284Z",
+    "platforms": [
+     {
+      "_id": "6ac0a0493df8df341e1c2cd8",
+      "platform": "tiktok",
+      "accountId": {
+       "_id": "6abf38c791fc8bcbb436a883",
+       "platform": "tiktok",
+       "username": "trendixeu",
+       "displayName": "Trendixeu",
+       "profilePicture": "https://p16-common-sign.tiktokcdn-eu.com/tos-no1a-avt-0068c001-no/1c1e030f65631a1a6f1d9e23203e6a85~tplv-tiktokx-cropcenter:168:168.jpeg?dr=10397&refresh_token=55cb97cb&x-expires=1791180000&x-signature=FDWUyTU1Lli8LxjGUnjXvHVoYwg%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=8aecc5ac&idc=useast2b",
+       "isActive": true,
+       "profileId": "6abf3879c60c56b7cbb1fcba"
+      },
+      "profileId": "6abf3879c60c56b7cbb1fcba",
+      "customMedia": [],
+      "scheduledFor": "2026-10-03T18:00:00.000Z",
+      "platformSpecificData": {
+       "tiktokSettings": {
+        "allow_duet": true,
+        "allow_stitch": true,
+        "allow_comment": true,
+        "privacy_level": "PUBLIC_TO_EVERYONE",
+        "isBrandOrganicPost": true,
+        "express_consent_given": true,
+        "content_preview_confirmed": true
+       }
+      },
+      "status": "pending",
+      "publishAttempts": 0,
+      "contentHash": "69361d91b54c344eb879721ed44f84ec"
+     }
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,1300 @@
+{
+ "updated": "2026-10-03T10:46:07+00:00",
+ "started": "2026-10-03T10:45:20+00:00",
+ "run_number": "36",
+ "run_id": "37117410427",
+ "commit": "71328af",
+ "featured": 8,
+ "hot": 10,
+ "rates": {
+  "RON": 5.3488,
+  "USD": 1.1225,
+  "GBP": 0.85033,
+  "PLN": 4.3775
+ },
+ "filters": {
+  "min_rating_percent": 90,
+  "min_orders": 300,
+  "max_hot": 10,
+  "ship_to": "RO",
+  "keywords": [
+   "home gadget",
+   "cleaning",
+   "kitchen",
+   "phone accessories",
+   "car accessories",
+   "beauty tools",
+   "pet supplies"
+  ]
+ },
+ "featured_items": [
+  {
+   "id": "_EwLFEe2",
+   "title": "Robot curățat geamuri PuRuiKai, cu telecomandă",
+   "titles": {
+    "ro": "Robot curățat geamuri PuRuiKai, cu telecomandă",
+    "en": "PuRuiKai window cleaning robot with remote control",
+    "it": "Robot lavavetri PuRuiKai con telecomando",
+    "de": "PuRuiKai Fensterputzroboter mit Fernbedienung",
+    "fr": "Robot laveur de vitres PuRuiKai avec télécommande",
+    "es": "Robot limpiacristales PuRuiKai con mando a distancia"
+   },
+   "cur": "EUR",
+   "amount": 69.99,
+   "link": "https://s.click.aliexpress.com/e/_EwLFEe2",
+   "image": "img/1.jpg"
+  },
+  {
+   "id": "_c3YrxXEV",
+   "title": "Aparat spălat covoare Lubluelu V8, apă caldă 60°C",
+   "titles": {
+    "ro": "Aparat spălat covoare Lubluelu V8, apă caldă 60°C",
+    "en": "Lubluelu V8 carpet cleaner, 60°C hot water",
+    "it": "Lavatappeti Lubluelu V8, acqua calda a 60°C",
+    "de": "Lubluelu V8 Teppichreiniger, 60°C heißes Wasser",
+    "fr": "Nettoyeur de tapis Lubluelu V8, eau chaude 60°C",
+    "es": "Limpiador de alfombras Lubluelu V8, agua caliente a 60°C"
+   },
+   "cur": "EUR",
+   "amount": 75.39,
+   "link": "https://s.click.aliexpress.com/e/_c3YrxXEV",
+   "image": "img/2.jpg"
+  },
+  {
+   "id": "_c3SRksGz",
+   "title": "Aspirator fără fir Laresar V7, 50.000Pa",
+   "titles": {
+    "ro": "Aspirator fără fir Laresar V7, 50.000Pa",
+    "en": "Laresar V7 cordless vacuum cleaner, 50,000 Pa",
+    "it": "Aspirapolvere senza filo Laresar V7, 50.000 Pa",
+    "de": "Laresar V7 Akku-Staubsauger, 50.000 Pa",
+    "fr": "Aspirateur sans fil Laresar V7, 50 000 Pa",
+    "es": "Aspiradora inalámbrica Laresar V7, 50.000 Pa"
+   },
+   "cur": "EUR",
+   "amount": 112.26,
+   "link": "https://s.click.aliexpress.com/e/_c3SRksGz",
+   "image": "img/3.jpg"
+  },
+  {
+   "id": "_c4r4L1Mh",
+   "title": "Folie sticlă Joyroom iPhone 15–18 Pro Max",
+   "titles": {
+    "ro": "Folie sticlă Joyroom iPhone 15–18 Pro Max",
+    "en": "Joyroom tempered glass, iPhone 15–18 Pro Max",
+    "it": "Vetro temperato Joyroom per iPhone 15–18 Pro Max",
+    "de": "Joyroom Panzerglas für iPhone 15–18 Pro Max",
+    "fr": "Verre trempé Joyroom pour iPhone 15–18 Pro Max",
+    "es": "Cristal templado Joyroom para iPhone 15–18 Pro Max"
+   },
+   "cur": "EUR",
+   "amount": 8.09,
+   "link": "https://s.click.aliexpress.com/e/_c4r4L1Mh",
+   "image": "img/4.jpg"
+  },
+  {
+   "id": "_c4oBGiev",
+   "title": "Încărcător rapid 65W GaN, USB-C + USB-A",
+   "titles": {
+    "ro": "Încărcător rapid 65W GaN, USB-C + USB-A",
+    "en": "65W GaN fast charger, USB-C + USB-A",
+    "it": "Caricatore rapido GaN 65W, USB-C + USB-A",
+    "de": "65W GaN Schnellladegerät, USB-C + USB-A",
+    "fr": "Chargeur rapide GaN 65W, USB-C + USB-A",
+    "es": "Cargador rápido GaN 65W, USB-C + USB-A"
+   },
+   "cur": "EUR",
+   "amount": 4.31,
+   "link": "https://s.click.aliexpress.com/e/_c4oBGiev",
+   "image": "img/5.jpg"
+  },
+  {
+   "id": "_c3XsG9WN",
+   "title": "Lampă solară cu senzor de mișcare, impermeabilă",
+   "titles": {
+    "ro": "Lampă solară cu senzor de mișcare, impermeabilă",
+    "en": "Waterproof solar light with motion sensor",
+    "it": "Lampada solare impermeabile con sensore di movimento",
+    "de": "Wasserdichte Solarlampe mit Bewegungsmelder",
+    "fr": "Lampe solaire étanche avec détecteur de mouvement",
+    "es": "Lámpara solar impermeable con sensor de movimiento"
+   },
+   "cur": "EUR",
+   "amount": 6.21,
+   "link": "https://s.click.aliexpress.com/e/_c3XsG9WN",
+   "image": "img/6.jpg"
+  },
+  {
+   "id": "_c4433IYV",
+   "title": "Mănuși nitril rezistente, grip texturat",
+   "titles": {
+    "ro": "Mănuși nitril rezistente, grip texturat",
+    "en": "Durable nitrile gloves with textured grip",
+    "it": "Guanti in nitrile resistenti con presa ruvida",
+    "de": "Robuste Nitrilhandschuhe mit strukturiertem Griff",
+    "fr": "Gants en nitrile résistants à prise texturée",
+    "es": "Guantes de nitrilo resistentes con agarre texturizado"
+   },
+   "cur": "EUR",
+   "amount": 5.13,
+   "link": "https://s.click.aliexpress.com/e/_c4433IYV",
+   "image": "img/7.jpg"
+  },
+  {
+   "id": "_c3Ax29Rf",
+   "title": "Sac spălat încălțăminte în mașina de spălat",
+   "titles": {
+    "ro": "Sac spălat încălțăminte în mașina de spălat",
+    "en": "Shoe washing bag for the washing machine",
+    "it": "Sacchetto per lavare le scarpe in lavatrice",
+    "de": "Schuhwaschbeutel für die Waschmaschine",
+    "fr": "Sac de lavage pour chaussures en machine",
+    "es": "Bolsa para lavar zapatillas en la lavadora"
+   },
+   "cur": "EUR",
+   "amount": 8.34,
+   "link": "https://s.click.aliexpress.com/e/_c3Ax29Rf",
+   "image": "img/8.jpg"
+  }
+ ],
+ "hot_items": [
+  {
+   "id": "p1005005866435877",
+   "title": "Professional Pet Deshedding Brush Dog Hair Remover Pet Fur Knot Cutter Puppy Cat Comb Brus",
+   "titles": {
+    "en": "Professional Pet Deshedding Brush Dog Hair Remover Pet Fur Knot",
+    "ro": "Perie profesională pentru desprinderea părului câinelui Nod de blană pentru animale de companie",
+    "it": "Professional Pet Deshedding Brush Dog Hair Remover Pet Fur Knot",
+    "de": "Professionelle Haustier Deshedding Bürste Hundehaarentferner Haustier Pelz Knoten",
+    "fr": "Brosse professionnelle pour animaux de compagnie Brosse pour chien Épilateur Nœud en fourrure d'animal de compagnie",
+    "es": "Cepillo Deshedding profesional para mascotas Removedor de pelo para perros Nudo de piel para mascotas"
+   },
+   "cur": "EUR",
+   "amount": 5.19,
+   "link": "https://s.click.aliexpress.com/s/NdpwztbAIgDMmxGbP8fFks7yUFfsHjzlImSYmA68h7xlMRgzueFsRgokQ9f9hcpVKttxtQE2VzIoqkXJXrpOr6uR3zv7mP4CDO9CddoFf4t0QE5DXPy8Pgjhz4irfQSEjEGUmy5yF3A5gJ9h3NYjLMgqIMqa3zcpq5E2BC3W5EbV40Dm9buQxWpZzw1lbX8Zm2kZtNIa4KyDieNjsH7IU6Yv8StELKVvT9r4eFAaXPGhwHsgaDqdNcmY116r3GC2YvsOopeiiZPhJrV0cwgOQDSkW93v7gVKDqPkXyZF1oSWa6wSAOeznMFVlVZeF1ZmB4Sr0zrdjias7r7XSUQZPWeQon4CGT9BX7PwBnG5r3i3gz4W69qxXcGEC8aQGQaQlhZSFuWHY20evOZQinrFKMT7dDOod5QZi2X0SRua70sddvnL4SkwoP350bqHORcOSMjZccdIQ8WCiwXJEBTtqzmsbCwKCowwP8MmzmsuRCCRra1olG9Wwbn2h40gOLU2R3WH9oekTxCuITzKaIcj1cm1ggGFY6OoIZDZHncn0ScYYjXdAVBbX0ETqEygsApkMeq5Q6yJntmEVI4SQUaoM5TQiR1LodezF6plnfEshySyAoLC7wS0KaqZ2fdbJDXfz6TRQFccdqXkXGYEWa2GBF2akGjtCGk7KZVOTZmJbgvHfVqhEoVSC258xTft8BvCGS6THWKJOhUj6GydwMiTLeVNULIt1gvOdlA7E2iiIOUhalAT0YiKSfmA2HDPNfjdIvflwzXTWFoBG7IB7bxPFN43fUENPA0eXpfd6m336XD5U05JWQVOFpaVX3GRogOzXyWAab6O5CCwF9pPOhQAqqqMTV6efGD0F1dNiEm3EAcpiKdbuEVih5E2d2o0YKZmP1URV3pbLoOd4IS2wjkBK6z79B6k6T4qxsUJ06tfvURcVdGNx9nWFOPepX8q0DN8EPvVEntaF0VCL6Nmpk2Mwfiibun7L5ahYcNol8J0peXvD",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sd643895728da4634acde27269e91dd415.jpg",
+   "meta": "96% recenzii pozitive · 10306+ comenzi",
+   "orders": 10306,
+   "rating": 95.8
+  },
+  {
+   "id": "p1005010044020388",
+   "title": "Funny Cat Toy Interactive Launch Pet Training Toy for Kitten Mini Flying Disc Shooting Gun",
+   "titles": {
+    "en": "Funny Cat Toy Interactive Launch Pet Training Toy for Kitten Mini",
+    "ro": "Funny Cat Toy Interactive Launch Pet Training Toy pentru Kitten Mini",
+    "it": "Giocattolo Divertente Gatto Lancio Interattivo Giocattolo da Addestramento per Gattini",
+    "de": "Lustiges Katzenspielzeug Interaktive Einführung Haustier-Trainingsspielzeug für Kätzchen Mini",
+    "fr": "Jouet de Lancement Interactif Funny Cat Jouet d'Entraînement pour Animaux de Compagnie pour Kitten Mini",
+    "es": "Juguete interactivo de lanzamiento divertido para gatos Juguete de entrenamiento de mascotas para gatito Mini"
+   },
+   "cur": "EUR",
+   "amount": 4.24,
+   "link": "https://s.click.aliexpress.com/s/NdpwztbAIgDMmxGbP8fFks7yUFfsHjzlImSYmA68h7xlMRgzueFsRgokQ9f9hcpVKttxtQE2VzIoqkXJXrpOr6uR3zv7mP4CDO9CddoFf4t0QE5DXPy8Pgjhz4irfQSEjEGUmy5yF3A5gJ9h3NYjLMgqIMqa3zcpq5E2BC3W5EbV40Dm9buQxWpZzw1lbX8Zm2kZtNIa4KyDieNjsH7IU6Yv8StELKVvT9r4eFAaXPGhwHsgaDqdNcmY116r3GC2YvsOopeiiZPhJrV0cwgOQDSkW93v7gVKDqPkXyZF1oSWa6wSAOeznMFVlVZD31txIphzT4U8aO8wQuYHj2AhSqZpZuZrHTMgDlN7OHkTvgGjDHa3tlPTAUpDZbEvMoHRfnP7W1Wfm49Z4VLqOvBWXWTbuZuIGPNVggNTsavSxjZJzcfbhQmUA6oJDs8eZCYaZfEWjxyyA3fu9Pyet1AYJky40ZfWm5Br9dy9S5e2Eb7itiriWJ4xLEqocFuIk6V6MyKaApLLWznDeNSze1QMd6wfbGmpxxjWb75KpDzLwcmFzp2RxKoTsjDS4P0n5A0WuFQpc2kGEQjXYmlnAzRXUCLfc01M9C379JtNGUSVtnPr2YfuWEmkLm06NNJfEadccZ2cnpHsZ9EOQEH7zLdpXhxRVoA5QLVgbGc2vJIn0R7OE46LLAHGfCirdfKZ5JIkFIeXRrR5kqK5jMisvBnidR4xnZ5FQEv83nZCrVS4iSXQ2AlaZORGogjG2UkGRJ4JK7tSTYS22pPf00HNfX9tMskPw1ucW6AcN3KbD4E6tD285sE4EeRPQk06RNeo5Ee68Zb9OeYiDxwNiTGJzc3zhcsnTfJ6CsRmaGNwNfSRwIVMcaM9eLlPce6Gn8luru4KBiYgEtwGgKVkPc57aza6bsBGSYO63hOJC3vNIoZnLOR0eFs1wTReyV4JRgOivIc5tTwGM4EmXdrspCTJ2X7H36SWRh9sDEX1K1FY5L2gS2Bjl",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S15b8c0a9e5c24ff4acfecd3e37e7db26k.jpg",
+   "meta": "98% recenzii pozitive · 5670+ comenzi",
+   "orders": 5670,
+   "rating": 98.0
+  },
+  {
+   "id": "p1005009384667101",
+   "title": "1A-Pet Hair Removal Mitts For Cats Dogs Static Brush Pet Hair Remover Brush Removing Dog C",
+   "titles": {
+    "en": "1A-Pet Hair Removal Mitts For Cats Dogs Static Brush Pet Hair Remover",
+    "ro": "1A-Mănuși pentru îndepărtarea părului de animale de companie pentru pisici Câini Perie statică Îndepărtarea părului de animale de companie",
+    "it": "1A-Mantini per la rimozione dei peli di animali domestici per cani gatti Spazzola statica per la rimozione dei peli di animali domestici",
+    "de": "1A-Haarentfernungshandschuhe für Katzen Hunde statische Bürste Haustier-Haarentferner",
+    "fr": "1 Moufles d'épilation pour chats Chiens Brosse statique Épilateur pour animaux de compagnie",
+    "es": "1A-Manoplas de depilación para gatos Perros Cepillo estático Depilador para mascotas"
+   },
+   "cur": "EUR",
+   "amount": 20.59,
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4oBbRUhkWyQBcz7LYWTHimjWXB0WfSn2zDQY1bkN4HYr2kps1YW59bIgJ9assPC31QSGmRx41nVbcb5YFRD0pKHe50gGQyaKR3JT8k1PbtfzKADAEdH8KKpIVw4SMklYRH1GAoEVVmadUsaNi5Ljya6UXSWRfScfZmt7b9g5tpKTSNVYjHwbB80z8TE0odFPZogXb1u9sXhSO9yH7kWjiMc09QJGpEimXRwrlI9FtHue7cr0fbg4lVhPBUHgeWPSx1Uh6gqfKHjexjnrietXPun2FlvASR8w1uXLsUsTn2XpqdDcN5JWHrsjnKoSXrQsRMH00miyMmGWTg6HhWnotR7NM2ZFbadUMMVk7pci0pRfBcGkQXWMs4j9ZE6GioH9VyxjANxhsGYMCulqNQ0Yhzl6U9P6CB57aS4T4kOn2rwv2W6TNs0XF4uMmOYVH04rVqVb2UhVZod6Qe5aptcvrMJjEbVMPsWSlnhGemaKRDOBRbCHryDJRc8JbNA7f04qIxy74ERwh7TLR0pKhMmFPrn02DAllzkxFb2T6ztVQtzbfoTCcxgtXwYo05T3JRESbHZX4ezg812n40UpdsiDGFlUOflJh9iCItkAADKTq5z2WON7VTk3hkib6C6QWxy6XB4F24P0VMKiR1j95EgH2NNIduuiOaFGqW0IQYFI3qbFiZKxbUOMrjU0PnnatP14PWlkCmRPmSdwYy",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/Saac2a10ef55f4427a99c685ed6c4522cF.jpg",
+   "meta": "98% recenzii pozitive · 17975+ comenzi",
+   "orders": 17975,
+   "rating": 98.0
+  },
+  {
+   "id": "p1005007161771665",
+   "title": "1pc Bathroom Floor Brush For Hotel, Hard Bristle Scrub Brush, Long Handle Bathroom Tub And",
+   "titles": {
+    "en": "1pc Bathroom Floor Brush For Hotel",
+    "ro": "1 buc perie de podea pentru baie pentru hotel",
+    "it": "1 spazzola per il pavimento del bagno per hotel.",
+    "de": "1 Stück Badezimmer Bodenbürste für Hotel",
+    "fr": "1 pièce de brosse de sol de salle de bain pour l'hôtel",
+    "es": "1 unidad Cepillo para suelo de baño para hotel"
+   },
+   "cur": "EUR",
+   "amount": 8.89,
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4oqWJSKkyaTXzo1CCGtDV5ztJ0gKPFrmv5bRDVF5IjVdnG38a0nwphz3mJGgveaZZdqKrFgQlSuzLKfEff95Dz0gPbIg1sWV4Z8eS5PrhZnPLlmaAhrDmxZr3JTrDlExhx7ogpGFvbxSr4JEATrrULHbFwvj2YIJ3nCQQvx1Mxid25xwtn9ZI89YG2TBiX0lsx00nHFis5OQyex3DPTMx6DVjXII2mTpzL1LTdQzJTDzmpAwJ196LaRk1XbBvIBIaKVEc29hXlR5ACTjWswbc5X1Rckr7RZ1fk9eWQh6Ku6iDY0tRITUYmS86203uujAGBWkm5pRU5AVzj4r70C9PX1bpFqWFovf6ugRrElNqGUI4GPP9yeZqxkpdNoQ9t3rz4SmrCAbQVvhT5MMgVdVHCSZsErWvKzcJm5dkyRuGuAvEyNhOHidp0RrO8LgiVMbgZbcfj8p8H0rasFsQm041BlqNKc7KacQ1XQWvJywnoY4H05IYZlCcsHpWaRG1bJbATw0NzglecUZU8VpWD3Q08c0yTf8MtAWhE0znVSqsXd7az4jXUdmyszKKZ6Y2ga57SEW6CCQFd1Kjtz1iEuunbL6lBRfTmdH7M74BGp7USVGC8y0Ys1rXEkgT0yKMF9MTVXvBcIraKXtjcJvdNWN3rfXBkmuskVuM9TRGgGt09glwrijmncP57Srn72dcnbaXsoUulhcM0yAAU",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sd142915acea44801b5c69a99a2f69569T.jpeg",
+   "meta": "91% recenzii pozitive · 10352+ comenzi",
+   "orders": 10352,
+   "rating": 90.8
+  },
+  {
+   "id": "p1005011939921829",
+   "title": "120CM High-Rise Window  Cleaner Double-Sided Glass Cleaner Tool for Home No Dead Angle Win",
+   "titles": {
+    "en": "120CM High-Rise Window Cleaner Double-Sided Glass Cleaner Tool for",
+    "ro": "Instrument de curățare a geamurilor de 120 CM, cu două fețe, pentru curățarea geamurilor",
+    "it": "Strumento per la pulizia dei vetri bifacciale ad alta altezza da 120 CM PER",
+    "de": "120CM Fensterhochreiniger Doppelseitiges Glasreinigungswerkzeug für",
+    "fr": "Outil de nettoyage de vitres double face 120 CM POUR",
+    "es": "Limpiador de ventanas de gran altura de 120 CM Herramienta limpiadora de vidrio de doble cara para"
+   },
+   "cur": "EUR",
+   "amount": 9.19,
+   "link": "https://s.click.aliexpress.com/s/NdpwztbAIgDMmxGbP8fFks7yUFfsHjzlImSYmA68h7xlMRgzueFsRgokQ9f9hcpVKttxtQE2VzIoqkXJXrpOr6uR3zv7mP4CDO9CddoFf4t0QE5DXPy8Pgjhz4irfQSEjEGUmy5yF3A5gJ9h3NYjLMgqIMqa3zcpq5E2BC3W5EbV40Dm9buQxWpZzw1lbX8Zm2kZtNIa4KyDieNjsH7IU6Yv8StELKVvT9r4eFAaXPGhwHsgaDqdNcmY116r3GC2YvsOopeiiZPhJrV0cwgOQDSkW93v7gVKDqPkXyZF1oSWa6wSAOeznMFVlVZDdygvKjqCVkmLXpMdVxhcBRjTDxmUQ6yL18QO4MbMpXiczpHg2MY4rKQA8lsyPOyqIApbdxFEX5wZjzAlfJz7TPSeNlpnyIzIsmnZzD1wxtvBDe50O1Pp8PPRmCHqxsrnm76BUiJYtWHGU2Vp9hXMDjr6569llNVaCSK796WC9yIJEEnVIuzLz5dJh7v8qZlqNhEAxKNrTQZojOYTOSZS8HGzSrwjgg84YhpZox3wFk3sTA8ry2hXLVHMgajfCgePcBsyNfVJEN2B4WdZtYoHuHmsHFIQHCuVZR6Esg3IYZEcW7ID1OuVJmD2eZ0kBEiJlPdQk2cPRlUgigZZG2jD7aPLTZcamyrmpl3QAFGFmu8b66HJWHYqyZ7tby2hHiOeRPn83hb45HleItgLQeQN1PQa8abO1Uh7uW3rsDFU1F6G39x5CZ1HcbimkWJSIH1FJberZ5uJl1yko2qkmvd6NnqBIl3iFItkB8Re2G3wCmRShJYWPMvoGI3n0a7DoBnc4sJzjK0GxEGmtt4P2i4ZS6ww7lB23USbGHenohhuCByykMunO6uPdlaKFkMfrOp5MUtMKGqmFzwGo7dHaMKZJa3M7zFW9MPBOCG41Z7dJ8BOU4HcxGOmUMBPHkhhRh5CiSx2l4LowdWT07EI6dsOrOnUunRCIiFQA5LqF520Nygr4Gp1p",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S35ee8c9dd97e424d8503a4bdd9b6ff14g.jpg",
+   "meta": "98% recenzii pozitive · 1599+ comenzi",
+   "orders": 1599,
+   "rating": 98.0
+  },
+  {
+   "id": "p1005006248957301",
+   "title": "1pc, Strainer, Pot Strainer, Adjustable Clip On Strainer For Pots Pans And Bowls, Kitchen ",
+   "titles": {
+    "en": "1pc, Strainer, Pot Strainer, Adjustable Clip On Strainer For Pots",
+    "ro": "1 buc., sită, sită pentru ghiveci, clemă reglabilă pe sită pentru ghivece",
+    "it": "1 pz, colino, colino per pentole, colino regolabile a clip per pentole",
+    "de": "1 Stk., Sieb, Topfsieb, verstellbares Clip-On-Sieb für Töpfe",
+    "fr": "1 pièce, crépine, crépine à pot, crépine à clip réglable pour pots",
+    "es": "1 unidad, colador, colador de macetas, colador con clip ajustable para macetas"
+   },
+   "cur": "EUR",
+   "amount": 8.71,
+   "link": "https://s.click.aliexpress.com/s/NdpwztbAIgDMmxGbP8fFks7yUFfsHjzlImSYmA68h7xlMRgzueFsRgokQ9f9hcpVKttxtQE2VzIoqkXJXrpOr6uR3zv7mP4CDO9CddoFf4t0QE5DXPy8Pgjhz4irfQSEjEGUmy5yF3A5gJ9h3NYjLMgqIMqa3zcpq5E2BC3W5EbV40Dm9buQxWpZzw1lbX8Zm2kZtNIa4KyDieNjsH7IU6Yv8StELKVvT9r4eFAaXPGhwHsgaDqdNcmY116r3GC2YvsOopeiiZPhJrV0cwgOQDSkW93v7gVKDqPkXyZF1oSWa6wSAOeznMFVlVZbYL9l5Zpp0VF8VosCOfhU4KXhcwAWS9x9nLB6W5j3hu3KciKqi9u7oN01PD6K86YqLsN9gxSmK2LGB0HpPZjykkpjhdoPsfiyUIEVBoJhkUaHoCcfD1s4sdGcODPFjUDZoq7zBKzWGqkQcgyUtCkrb23yFzg015xdSO2lWuYjW8aPZYaHx0W6aiez0ToI53pqLx0YwI0eKkUnoEQ4aME0LhXjAssEj4at2RjEUrG3C8a1xK1ICkxDystkS7dEi2bNIgCOLN9phI099F3jbZiej1XmRPcvFATYnb99VCfy2sJWfi5rQgZHQMuvKd6CuPs4BEAqIifL9gujRrbiCfoyRYk5KdAB9bBjS1nLJIwwC5ZYdXzH7Yn6lGb6TGKft75xWpwUW6B2CrF9zub96PP9bQB3TqqlJBnHn1hwokFgMBWPBGwWHUmtPD9sPnvSdY35yrBi4kHufOFWwIFAibiaslFza4Wf3kHGaJMkpBbw1mjGymODv9eAx2vTEbre7aAz4wXvzxCu9dlptaJFqnePqJhgZ8bVMRpdHIUZqTIh7kGj4rmVJPGTyGKNrVfjJHWN6PLaWDRX35RXIrKhZiA1xhdcLmvg3Azr7UPJUTk78bo8bwRehaonxJ5MXxxrvV5pxZwZmwl8tUcErFTnFiopT2AKg6chneLu3IKPRLR9fxAhc3tCJ",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S9c647254aadf4dad8f4322cc9b41d04fZ.jpg",
+   "meta": "93% recenzii pozitive · 10720+ comenzi",
+   "orders": 10720,
+   "rating": 93.1
+  },
+  {
+   "id": "p1005009121780094",
+   "title": "Foldable 360 degree comprehensive cleaning silicone brush with long handle design, reusabl",
+   "titles": {
+    "en": "Foldable 360 degree comprehensive cleaning silicone brush with long",
+    "ro": "Perie de silicon de curățare completă, pliabilă, la 360 de grade, cu",
+    "it": "Spazzola in silicone per la pulizia completa a 360 gradi pieghevole con lunga",
+    "de": "Faltbare 360 Grad umfassende Reinigungs-Silikonbürste mit langer",
+    "fr": "Brosse en silicone de nettoyage complète pliable à 360 degrés avec longue",
+    "es": "Cepillo de silicona de limpieza integral plegable de 360 grados con"
+   },
+   "cur": "EUR",
+   "amount": 3.62,
+   "link": "https://s.click.aliexpress.com/s/NdpwztbAIgDMmxGbP8fFks7yUFfsHjzlImSYmA68h7xlMRgzueFsRgokQ9f9hcpVKttxtQE2VzIoqkXJXrpOr6uR3zv7mP4CDO9CddoFf4t0QE5DXPy8Pgjhz4irfQSEjEGUmy5yF3A5gJ9h3NYjLMgqIMqa3zcpq5E2BC3W5EbV40Dm9buQxWpZzw1lbX8Zm2kZtNIa4KyDieNjsH7IU6Yv8StELKVvT9r4eFAaXPGhwHsgaDqdNcmY116r3GC2YvsOopeiiZPhJrV0cwgOQDSkW93v7gVKDqPkXyZF1oSWa6wSAOeznMFVlVYRBNv6VsW3eY8q35etvxg5CMceQsb5dpBTlqJ4KjztJD3NNuAPnk524dOzMyGcgqo3Tzo3b5ObhBeiuyLmRudVgLhd6hk0njjTDpq3e1kOCoSikmSCNhRAJUG9NGFVu8FDeVHoeIXrnFvoaTVVtSIoFzmMdFZfmxhnjLG6GHLJzP1NsLCDTyYZqhqs9g72oLcIwcOcYajVgs1rYBhoWD9GnYxlPIGj2gBC0vx03phw2HhnCOLJM18FgFPJDMTLdmGfnaoaRhbjcwsUrmEQ6KzqDN8iL9bZrIggp42gCvIWIP0LsqXW4LzEOIV0ygAlHiXagRgfXhMzVy5Obc6qJR41EujXOI2mhKN3mOXF4Uwu5PexdKz0l6eVaUZEJlAphaN7YXGjaA0HjR1gtx489oCOtj1am5PL79n8R0mtRbmlRv4TZHZPmRLZ21xqlkmzR5CRxAdFIAVfzUwCwNgg58Lby6DJcXNTS9KxC4nN4MiTGvRIzYCsh4bTp4MwOFwDemXGmBzRuEhSMNzd3lqIZ4OtDKKjuwU3bzID41noJNKUhkyN4Xtlh1ipZ9iikLGSrrIJqcPcsTKahdrQfoJr68YlxqrL1sXFZflFK8bLca78DXlWDxd9685rcCb7WZsdWKrFt2VBK6zCGm2bBW7iL2G6CBZgCaMFgfeqmpVxffKmcgqq4iOpl",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S9743b062562e4c3589ffb70a1a9e69e34.jpg",
+   "meta": "98% recenzii pozitive · 9327+ comenzi",
+   "orders": 9327,
+   "rating": 98.0
+  },
+  {
+   "id": "p1005008496902585",
+   "title": "Microfiber Cleaning Cloths Premium Cloths for Phone Cleaning Glasses Lenses Screens and Mo",
+   "titles": {
+    "en": "Microfiber Cleaning Cloths Premium Cloths for Phone Cleaning Glasses",
+    "ro": "Lavete de curățare din microfibră Lavete premium pentru curățarea telefonului Ochelari",
+    "it": "Panni per la pulizia in microfibra Panni premium per occhiali per la pulizia del telefono",
+    "de": "Mikrofaser-Reinigungstücher Premium-Tücher für Handy-Reinigungsbrillen",
+    "fr": "Chiffons de nettoyage en microfibre Chiffons de qualité supérieure pour les lunettes de nettoyage de téléphone",
+    "es": "Paños de limpieza de microfibra Paños premium para gafas de limpieza de teléfonos"
+   },
+   "cur": "EUR",
+   "amount": 2.6,
+   "link": "https://s.click.aliexpress.com/s/NdpwztbAIgDMmxGbP8fFks7yUFfsHjzlImSYmA68h7xlMRgzueFsRgokQ9f9hcpVKttxtQE2VzIoqkXJXrpOr6uR3zv7mP4CDO9CddoFf4t0QE5DXPy8Pgjhz4irfQSEjEGUmy5yF3A5gJ9h3NYjLMgqIMqa3zcpq5E2BC3W5EbV40Dm9buQxWpZzw1lbX8Zm2kZtNIa4KyDieNjsH7IU6Yv8StELKVvT9r4eFAaXPGhwHsgaDqdNcmY116r3GC2YvsOopeiiZPhJrV0cwgOQDSkW93v7gVKDqPkXyZF1oSWa6wSAOeznMFVlVZbV9h8wLh29cFLZLsuyRJio0b1UBfxOlAMrTQYGLT1WXds9uZKlPXi1D0eO1P47uJjVmixhb8Z8t5xoqmfXKXlO0lhoZzgRYM9nEwIBWD9Z6Bid24y2B0KWyxGvwfIUvhufZwDCk5brXZ7N9eJgBsV9NJQQXfC2ZUnQcakDaidgUnoV8X8IfSqlrc8ewTmf2YKD83zAuVbImKdL2gYdkXXDPH7l5jcrRI9RA74XQFYmGRmJnzwCX5wsGy5Wy3X16kFTA0eSLfqL5AAO6Q7upFWgsZ6bP5WnKco2FGfDqchNkiqKSxVlbXz4RjGNEI4jnFFeyOj8IvmSPVLgA8K62EkifwLmp09KLVipMFD4DUu3f2GZ2fJ07XpofEJirjzvckisWExXFVksGW77ir6Nh0rZUu8Wt8usatt3uc7OLZQ6IbwJhVxs0x9juwWXMpwVxHS9TooEOtbzdxwPXqJ3FilcAWItSlNzknUxTMatIAHQ47037HZvFom9NZJCoHDUyT2sK2YQirvgU4P08db3wb3W4iXQ97nM70nb1YMm8JOfPW9FRu9H8u4PNukGAab5S6qFUbHE2CTd3K2Dcp4ZfQWTjfRhIIUuBWHJQdaRE71DkjlTcTv7wvu2Yb40yGkN8PLFOzETy3inAoa0YYKpHQxWHImB4FY21YsqzSQcfQgpwsmiY9WF",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sb2e12093952a46baa93c15fad1c4394aD.png",
+   "meta": "92% recenzii pozitive · 28826+ comenzi",
+   "orders": 28826,
+   "rating": 92.4
+  },
+  {
+   "id": "p1005009043064969",
+   "title": "Electric Bicycle Car Cleaning Microfiber, 1/2-Piece Set Scratch Free and Lint Free, High-Q",
+   "titles": {
+    "en": "Electric Bicycle Car Cleaning Microfiber",
+    "ro": "Microfibră pentru curățarea mașinilor electrice de bicicletă",
+    "it": "Pulizia Auto Bicicletta Elettrica Microfibra",
+    "de": "Elektrische Fahrradauto-Reinigung Mikrofaser",
+    "fr": "Microfibre de nettoyage de voiture de vélo électrique",
+    "es": "Microfibra de limpieza de coches para bicicletas eléctricas"
+   },
+   "cur": "EUR",
+   "amount": 4.49,
+   "link": "https://s.click.aliexpress.com/s/NdpwztbAIgDMmxGbP8fFks7yUFfsHjzlImSYmA68h7xlMRgzueFsRgokQ9f9hcpVKttxtQE2VzIoqkXJXrpOr6uR3zv7mP4CDO9CddoFf4t0QE5DXPy8Pgjhz4irfQSEjEGUmy5yF3A5gJ9h3NYjLMgqIMqa3zcpq5E2BC3W5EbV40Dm9buQxWpZzw1lbX8Zm2kZtNIa4KyDieNjsH7IU6Yv8StELKVvT9r4eFAaXPGhwHsgaDqdNcmY116r3GC2YvsOopeiiZPhJrV0cwgOQDSkW93v7gVKDqPkXyZF1oSWa6wSAOeznMFVlVYRc72ighiQLkJFHXSQN4H885wR3W6c5rqd51909UbT7euKd01QzO115VDvanqZhQepvhaPwnGhtUSJHscjaZdipG7xtwN9aWibq9NsBrgTAf0dxlTqtd6qC16RcVsEAZJ3uIVOQh85dVWbFlXnNxR5P8AA2zHrpMjZssEcvKAqU7DZDd1M6AqVmKNOzjGsbe3MQJvkmLXzFJ8UB3eMcagrO2QbZDZgRchsLvMOoNIUXnQWfOAIQnONBb8iMgDbr1KfHW9zU49EFuGuET8T39bRO7BQxggbS0NIFg6FusXrXsLmPTDvDulmF3t08w4lBbD5Ks4MLDLmm0cE0JXBRTeQznAsAJ3obpAu55m2JIokR5pbtsBoWpU29rNMGcCTD94Y5wZdtAFuND0tB30c5AtH21BxhrLjdHuiQ1k4ARM2SYgGl0RHrm5uDWBRiWcw3pVUb8R4YPB8yOFtjFHtxdrOfz5QnGQA3KwsZkkhzs1TXEknD2eU7XhVKD6qLbcwpsodBACW7PslmUsHpgOdhKyZSBb9fVnIny3kbN2XqoSWQcD69qsmDlzjNIJGUmUUJEClrttTBkJwld2m4mlqbqjnqKPRkj3Gm2l9s7AdZIwUygXL8IGGa72gSpRBumQVMZPsFwFFj2aiOS7gsWjUi21WoDykvTvFEhlHc0OiPmu0xTIpPlceX",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sc8137b613ebe4b658047792af670ba89S.jpg",
+   "meta": "91% recenzii pozitive · 21980+ comenzi",
+   "orders": 21980,
+   "rating": 91.1
+  },
+  {
+   "id": "p1005012049555899",
+   "title": "3-In-1 Stainless Steel Kitchen Set, Equipped with Built-in Grinding, Multifunctional Filte",
+   "titles": {
+    "en": "3-In-1 Stainless Steel Kitchen Set",
+    "ro": "Set de bucătărie 3-în-1 din oțel inoxidabil",
+    "it": "Set da cucina in acciaio inox 3 in 1",
+    "de": "3-in-1-Edelstahl-Küchen-Set",
+    "fr": "Ensemble de cuisine en acier inoxydable 3-en-1",
+    "es": "Juego de cocina de acero inoxidable 3 en 1"
+   },
+   "cur": "EUR",
+   "amount": 13.09,
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4nxig5brm7sUrbzeJ0WEOLMEVxnc7CVgYgIvo1aal79t1tjekxgeOcmthqMasGycVSckkR9A4Tp4oKaahEZntKBO3ZLDa316FhKe3PNjSOV3RSZShJWcKlpKI6bjMBPFV9UxYfkk4rV7LkLePYNrxXHLT0d01xDyieIt1m2xgmWJZcJ99ilZnAARTUiDaZtgkBqln8v29KayawGFXXRfdyZpGX56NnZWLUMM5h9acgxnfJEY0VUiYrIgQ9ybBne8MTYI0AvptyZphEgG4wqnONKwPoCvtHJ2hcyfU3dbAACtXXwwLgkI68c8R2O8TgVq5MyogfrTiHhhXofYJOiGKxJOyklN1LWWbSVlFtUqO5jdZTwwQU82aBkgNhmhnmdLHI14bsbNsrTdiNf94hifp4p6dPm3Pqpy41EJjnoSlPjsPqLA14b9gX1Kl4mz164PbqEI8Bc7vnbnABh5Wjwi2BQ9T1uIAH2cMk7CPBs0F4wCLxu07IaDgunliQ81sxayhryWcmKwhQtc6zymgcDmyjJfA32nM1qytsp5qjn7zhkpoMMVrJ95nN2k2fDFLWl6wBDy0Tw9xraNgdf8gxMiZPmUpBDp29flh8YruxOnxSscuAPPsqF2v9eIZ0zfmOeP95lyCPHaCHunxN7xMxRAdTrH8r6ICwoh1i5wj6ilqDfl33wRaHuUpeRI39ehKCFFEES6Hz30UNA0fe",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sd84fe0aa63404b308bdcdd69317d6583d.jpg",
+   "meta": "98% recenzii pozitive · 2511+ comenzi",
+   "orders": 2511,
+   "rating": 98.0
+  }
+ ],
+ "orders": {
+  "days": 30,
+  "items": [],
+  "error": null
+ },
+ "clips": [
+  {
+   "hook": "Nimeni nu s-a plâns de el",
+   "kicker": "DESCOPERIREA ZILEI",
+   "name": "Ottocast Mini Dot Cube Wireless CarPlay Adaptor",
+   "cards": [
+    "2 în 1",
+    "Fără fir",
+    "Compact"
+   ],
+   "orders": 2667,
+   "rating": 98.0,
+   "price_text": "158 lei",
+   "num": 22,
+   "description_ro": "Nimeni nu s-a plâns de el 😱\nOttocast Mini Dot Cube Wireless CarPlay Adaptor\n✅ 2 în 1\n✅ Fără fir\n✅ Compact\n⭐ 98% recenzii pozitive · 2.667+ comenzi\n💰 Preț: ~158 lei\n👉 Link în bio · caută produsul #22\n🎵 Big Mojo – Kevin MacLeod (incompetech.com) · CC BY 4.0",
+   "description_en": "Nobody complained about it 😱\nOttocast Mini Dot Cube Wireless CarPlay Android\n✅ 2-in-1\n✅ Cordless\n✅ Compact\n⭐ 98% positive reviews · 2.667+ orders\n💰 Price: ~158 lei\n👉 Link in bio · find product #22\n🎵 Big Mojo – Kevin MacLeod (incompetech.com) · CC BY 4.0",
+   "hashtags": [
+    "aliexpressfinds",
+    "tiktokmademebuyit",
+    "oferte",
+    "reduceri",
+    "romania",
+    "fyp",
+    "masina",
+    "caraccessories",
+    "cartok"
+   ],
+   "bullets": [
+    "2 în 1",
+    "Fără fir",
+    "Compact"
+   ],
+   "duration": 13.8,
+   "used_seller_video": false,
+   "voiced": false,
+   "voice": null,
+   "voice_error": null,
+   "with_music": true,
+   "script": [
+    "Nimeni nu s-a plâns de el!",
+    "Ottocast Mini Dot Cube Wireless CarPlay Adaptor.",
+    "E 2 în 1, merge fără fir și e mic și îl iei oriunde.",
+    "Peste 2 mii de oameni l-au comandat, cu 98 la sută recenzii pozitive.",
+    "Linkul e în bio. Caută produsul numărul 22!"
+   ],
+   "music": "Big Mojo",
+   "file": "clips/trendixeu-22.mp4",
+   "poster": "clips/trendixeu-22.jpg",
+   "created": "2026-10-03",
+   "id": "p1005010585566358",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4mlhXYGdgWFTkAyxsjqr6ZhmSCrGgZe152nujDvvqqy2hwwNx0Jx1yeONDmxXuD5lAiJokYCpFL4m351o5887c2SOWugqBDgnS3ZKPTxlpLKPzG2fMlYpkYz91VIQ76x5GISsivPuUS1AgEOtz7MQvS7ihAJ3t6rJF8k1R344ZalaD849oYQoeXCioZKYQ9iU0cSBDZVwCwu3S1ZAUBkOndNH3vG8Kh4BVwK4P3hDLhJhqhUSYsJSvVEROb8XhaBMxAY2NKcmk7gXGVbXnDEU4G5SAruTTeSHkkU6kHjH36qLREe2SvfSEauyVrlNkh8DyOcZ9e7Bo8irFakT4osnDmwd09Vypqm9BXzHBD0pu5CleFyvdJQvLHeCD1jvgCAA4l04pu1ZjY7zOk8E6rUI4LuV6HwP6kYgguL8qeEPU4oo0iqIVrAFgaCvpqJSdpRCjgVq5676aBOhZYjFrfR1Ch6l7ds5QZVZP3rCoKDpwsAUnMr7Uc7ldhIyqXM6QGVbQSYgiYxx7E1VKjclYu64oqx9zCTq9IxBRhNVl8B9eFSWn9RIq6syiddZk48iWRYmc3GMVo59tiOXPMf0CJBf9KbAQhGXhb25xGurOtNf9NqnBTvJjLqOkARbFNz1nM2SWII2jobw3JL2MhD98LDaElSJl8HBqLjud9LIlAy0enSlUattqpHFj7tkzkY7mjHeCtI4FAeFXAcQs",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S563e45d7046444cb8bafab61b7157129M.png",
+   "title_ro": "OTTOCAST Mini Dot Cube Wireless CarPlay Adaptor auto Android 2 în 1"
+  },
+  {
+   "hook": "Nimeni nu s-a plâns de el",
+   "kicker": "DESCOPERIREA ZILEI",
+   "name": "Perie electrică de călcat cu abur pentru",
+   "cards": [
+    "3 în 1"
+   ],
+   "orders": 4649,
+   "rating": 98.0,
+   "price_text": "125 lei",
+   "num": 21,
+   "description_ro": "Nimeni nu s-a plâns de el 😱\nPerie electrică de călcat cu abur pentru\n✅ 3 în 1\n⭐ 98% recenzii pozitive · 4.649+ comenzi\n💰 Preț: ~125 lei\n👉 Link în bio · caută produsul #21\n🎵 Awesome Call – Kevin MacLeod (incompetech.com) · CC BY 4.0",
+   "description_en": "Nobody complained about it 😱\nElectric Dog Steamer Brush Grooming 3 in\n✅ 3-in-1\n⭐ 98% positive reviews · 4.649+ orders\n💰 Price: ~125 lei\n👉 Link in bio · find product #21\n🎵 Awesome Call – Kevin MacLeod (incompetech.com) · CC BY 4.0",
+   "hashtags": [
+    "aliexpressfinds",
+    "tiktokmademebuyit",
+    "oferte",
+    "reduceri",
+    "romania",
+    "fyp",
+    "pettok",
+    "animalutze",
+    "petproducts"
+   ],
+   "bullets": [
+    "3 în 1"
+   ],
+   "duration": 12.3,
+   "used_seller_video": false,
+   "voiced": false,
+   "voice": null,
+   "voice_error": null,
+   "with_music": true,
+   "script": [
+    "Nimeni nu s-a plâns de el!",
+    "Perie electrică de călcat cu abur pentru.",
+    "E 3 în 1.",
+    "Peste 4 mii de oameni l-au comandat, cu 98 la sută recenzii pozitive.",
+    "Linkul e în bio. Caută produsul numărul 21!"
+   ],
+   "music": "Awesome Call",
+   "file": "clips/trendixeu-21.mp4",
+   "poster": "clips/trendixeu-21.jpg",
+   "created": "2026-10-03",
+   "id": "p1005007791672610",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4EJKcOYetW3DXeoHOtTE9XKvtQoqdMuRouVRHc4htk1ATT8rhUnBLyKwlcHiMUNgdCR86V7PqNRlybPVJ1AaqLv1EcnBZ5F8SyOxuV56wNyaFJD8IMLDpOgTe38nEqvFpar8gocdmxbkoHgZid067RaUOZfTOCaaSFa4k1tfuV4TYmPMWljrRqubKxNUWlcNM9IJKezpNq4VZp4NnrqZ4zRPpdULmM3m9Q5uProCNt6RVMzpTYOphXkOq5NhswXJaUEnMYQxiXTzNXnxJj7GReG8Tta3gp3KEZcHuIHpeHuvH1FFCOij5u7czoHBi7ot4wXYW4TzHoJF0v6uSsAGYjDm67csKjaGQWNJf7bzjkOGNnbLzrSrLAXmSTTSAy6J5kA7FViK1t9HTynGViwc7NnA0ST1plvB7pmriNnsD4HajCbB0nbtVSWVwObVhMcsoD5RphL0l4b8SO0ZyIGBbyfxYmEGjH0HNwc9Fi07zek5VOrYDmZc5G6uoA5r4JEGRPNDMTmV6M4WWOXVNbwSJzglNKAs59dAD8apJQ95UxNSQ5LQAj9YRcnatvFDcVi9gtujrEOveQda3gwTf1jD302NsaNhvXODKGJnLVdUnJ29VvvQNdumn8i23rzl42tQtvteiNV2UIVUXuS5d6D1legyky4jXeRkmzEspijr4YtIwlK3t9vKuIVrqAf0kZvn8rcxp5O8sGi1N2",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S53dabc50fd014b08a1492baf0fd5e5baU.jpg",
+   "title_ro": "Perie electrică de călcat cu abur pentru câini Îngrijire 3 în 1 Perie cu abur pentru câini Îndepărtați animalul de companie"
+  },
+  {
+   "hook": "Nu știam că există așa ceva",
+   "kicker": "TOP VÂNZĂRI",
+   "name": "Suport pentru tabletă de înaltă calitate pentru",
+   "cards": [
+    "Livrare în România"
+   ],
+   "orders": 6711,
+   "rating": 98.0,
+   "price_text": "118 lei",
+   "num": 20,
+   "description_ro": "Nu știam că există așa ceva 😱\nSuport pentru tabletă de înaltă calitate pentru\n✅ Livrare în România\n⭐ 98% recenzii pozitive · 6.711+ comenzi\n💰 Preț: ~118 lei\n👉 Link în bio · caută produsul #20\n🎵 Blip Stream – Kevin MacLeod (incompetech.com) · CC BY 4.0",
+   "description_en": "I didn't know this existed 😱\nHigh-quality Mobile Phone Stand Lazy Bedside Ipad\n⭐ 98% positive reviews · 6.711+ orders\n💰 Price: ~118 lei\n👉 Link in bio · find product #20\n🎵 Blip Stream – Kevin MacLeod (incompetech.com) · CC BY 4.0",
+   "hashtags": [
+    "aliexpressfinds",
+    "tiktokmademebuyit",
+    "oferte",
+    "reduceri",
+    "romania",
+    "fyp",
+    "gadgets",
+    "telefon",
+    "techtok",
+    "accesoriitelefon"
+   ],
+   "bullets": [
+    "Livrare în România"
+   ],
+   "duration": 10.5,
+   "used_seller_video": true,
+   "voiced": false,
+   "voice": null,
+   "voice_error": null,
+   "with_music": true,
+   "script": [
+    "Nu știam că există așa ceva!",
+    "Suport pentru tabletă de înaltă calitate pentru.",
+    "Peste 6 mii de oameni l-au comandat, cu 98 la sută recenzii pozitive.",
+    "Linkul e în bio. Caută produsul numărul 20!"
+   ],
+   "music": "Blip Stream",
+   "file": "clips/trendixeu-20.mp4",
+   "poster": "clips/trendixeu-20.jpg",
+   "created": "2026-10-03",
+   "id": "p1005013071807962",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4m6iMXvDv53upTiJuFE1c6aUrhPE1Bij2IuqAPhirtIWv51tn0M6BpJ7O0AmoZn30gTTtJvJvjKOhSQQDwzZfJzuN21LSEMBFqBfQMBhtpC49qaEZy7XMrVucEkrDxfElmXJkj9yaPwbUNtUVoUgJyRwn9BKuwALLacFp47TowwtLDQEs7YnSn0Pmcy5Rc4Xaop2SCyQ236ZgAoXrbBPsmCsfJIDpQRwEqL2wBqiRVIYaCiNDuPXVyWrsPXxZyi66EQJZFVI715VeFjD82QWKDeaUaGmCuGVwUQRbIsnWmf4rJQqk9Y95CznnDEHby1rwghg2MYeANi8bHFlJnfteN1IMe1b1ME8FEFzzEnftjFHFnxENXk6yihw7mC2ozxrN0IywlTfvuMSmw50qPlarinEuTVcjHfVcS7ZYkkmfFATkO6gSfKJpXaYAcTKMVgrITOOWtEwhtyqrfvv0hJjfvwFEwZ2vedKNLBU0dMbsgNIRTVpTyVkwaQnRN4F8hhhsRDZp8MD4M0liXbp91gTqj0tUvSdzzn2om2Ygghk2yEuwEA3YCfb3UV6CQkt3OpuUD9YXEIbhBklihZzBsfFls1kG6qAeeJvtxIDP9Ge5zzBxEcCeGHEQeHTM6vpg7dEPlbYbH9s83vBbtbldNSOHIKTC1HoHkUmHSd5UlcjKBtlD6ZaXu8CYVMt6SQvZpgug2TpdBnIhhFu3w",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S6d84f490779949a0b2cc06ff8830dd9eU.jpg",
+   "title_ro": "Suport pentru tabletă de înaltă calitate pentru telefon mobil Lazy Bedside"
+  },
+  {
+   "hook": "Doar 26 lei?!",
+   "kicker": "TOP VÂNZĂRI",
+   "name": "Mini USB ventilator de masă reîncărcabil portabil",
+   "cards": [
+    "Reîncărcabil USB",
+    "Compact"
+   ],
+   "orders": 8905,
+   "rating": 98.0,
+   "price_text": "26 lei",
+   "num": 19,
+   "description_ro": "Doar 26 lei?! 😱\nMini USB ventilator de masă reîncărcabil portabil\n✅ Reîncărcabil USB\n✅ Compact\n⭐ 98% recenzii pozitive · 8.905+ comenzi\n💰 Preț: ~26 lei\n👉 Link în bio · caută produsul #19\n🎵 Big Mojo – Kevin MacLeod (incompetech.com) · CC BY 4.0",
+   "description_en": "Only 26 lei?! 😱\nMini USB Rechargeable Table Fan Portable USB\n✅ USB rechargeable\n✅ Compact\n⭐ 98% positive reviews · 8.905+ orders\n💰 Price: ~26 lei\n👉 Link in bio · find product #19\n🎵 Big Mojo – Kevin MacLeod (incompetech.com) · CC BY 4.0",
+   "hashtags": [
+    "aliexpressfinds",
+    "tiktokmademebuyit",
+    "oferte",
+    "reduceri",
+    "romania",
+    "fyp",
+    "gadgets",
+    "homegadgets",
+    "casa",
+    "homehacks"
+   ],
+   "bullets": [
+    "Reîncărcabil USB",
+    "Compact"
+   ],
+   "duration": 13.8,
+   "used_seller_video": false,
+   "voiced": false,
+   "voice": null,
+   "voice_error": null,
+   "with_music": true,
+   "script": [
+    "Doar 26 de lei pentru asta?",
+    "Mini USB ventilator de masă reîncărcabil portabil.",
+    "Se încarcă prin USB și e mic și îl iei oriunde.",
+    "Peste 8 mii de oameni l-au comandat, cu 98 la sută recenzii pozitive.",
+    "Linkul e în bio. Caută produsul numărul 19!"
+   ],
+   "music": "Big Mojo",
+   "file": "clips/trendixeu-19.mp4",
+   "poster": "clips/trendixeu-19.jpg",
+   "created": "2026-10-03",
+   "id": "p1005009384461256",
+   "link": "https://s.click.aliexpress.com/s/NdpwztbAIgDMmxGbP8fFks7yUFfsHjzlImSYmA68h7xlMRgzueFsRgokQ9f9hcpVKttxtQE2VzIoqkXJXrpOr6uR3zv7mP4CDO9CddoFf4t0QE5DXPy8Pgjhz4irfQSEjEGUmy5yF3A5gJ9h3NYjLMgqIMqa3zcpq5E2BC3W5EbV40Dm9buQxWpZzw1lbX8Zm2kZtNIa4KyDieNjsH7IU6Yv8StELKVvT9r4eFAaXPGhwHsgaDqdNcmY116r3GC2YvsOopeiiZPhJrV0cwgOQDSkW93v7gVKDqPkXyZF1oSWa6wSAOeznMFVlVZeEG4LYbUHxHIHWy5LHfkffJkDxnjG3FGuJNnoCcoLfJhlnAICxfrV6ncQ6vohtoLbbAqwxGDzM4CDXtXMwHmq9wVnALfx4JCZaRwscLivMaYkvmW3JCdKoyi8dLqFQpMrU5IETYaLBfhdBY5kAcetdEtXkwWY8o7ytDkuT1PJ0z7JeddBATN3n2ohvnroyncL4KOvnSfQ1O2ewVB6s3m7X1YSsgbSRfvZXZVQqEvhxvQdrsCtdv4UITwVrXJIBUace4BtFc08GqgRtJm65F9BWkJJVlRnez963iCyPeWUTmCMxMiCYY8x3zEtM9ZghwRL6S4nHD345I6ldmiix9IHhdEG6qfHHCpnMuoU62iW2qsLHmqIbqRmWaZrFCHwl2uGmp4tTTmlPOg05MqAAM2J4oOSczkCuLuVeO7gHNMfFEz0GjhIcToUqgKhmmG5oDEbQSxCZCz2moRxAjPCq78ZSEvGa6OENSJ41AV8Arut1F9hZUi4UXThrl3lYlnGinmOrJcrxqMSW7SwmTeXnIegGBvFN3vOc32W13CfumHE95Kkh1zg6FwprhgWrKmB88jHcO1dbUbRcH7bfYQN0NMUMEF0mFjofLnluHSP4tydiFy1D30LPULonLXc0kFtJEZ3J34oirmVngecOSCwAFIoMjDtBfeNEiD3FAdWWjzbsZ7Ga9EJ1",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sf1a77792d0e54354b87a156641ca4480J.jpg",
+   "title_ro": "Mini USB ventilator de masă reîncărcabil portabil USB ventilator mic pentru"
+  },
+  {
+   "hook": "12.501+ oameni l-au cumpărat",
+   "kicker": "TOP VÂNZĂRI",
+   "name": "Spumant reîncărcabil cu 3 trepte de viteză",
+   "cards": [
+    "Baterie 300 mAh",
+    "Reîncărcabil USB",
+    "Compact"
+   ],
+   "orders": 12501,
+   "rating": 98.0,
+   "price_text": "36 lei",
+   "num": 18,
+   "description_ro": "12.501+ oameni l-au cumpărat 😱\nSpumant reîncărcabil cu 3 trepte de viteză\n✅ Baterie 300 mAh\n✅ Reîncărcabil USB\n✅ Compact\n⭐ 98% recenzii pozitive · 12.501+ comenzi\n💰 Preț: ~36 lei\n👉 Link în bio · caută produsul #18\n🎵 Awesome Call – Kevin MacLeod (incompetech.com) · CC BY 4.0",
+   "description_en": "12.501+ people bought this 😱\nMini Electric Whisk 3-Speed Rechargeable Frother 300mAh\n✅ 300 mAh battery\n✅ USB rechargeable\n✅ Compact\n⭐ 98% positive reviews · 12.501+ orders\n💰 Price: ~36 lei\n👉 Link in bio · find product #18\n🎵 Awesome Call – Kevin MacLeod (incompetech.com) · CC BY 4.0",
+   "hashtags": [
+    "aliexpressfinds",
+    "tiktokmademebuyit",
+    "oferte",
+    "reduceri",
+    "romania",
+    "fyp",
+    "bucatarie",
+    "kitchengadgets",
+    "kitchenhacks"
+   ],
+   "bullets": [
+    "Baterie 300 mAh",
+    "Reîncărcabil USB",
+    "Compact"
+   ],
+   "duration": 13.8,
+   "used_seller_video": false,
+   "voiced": false,
+   "voice": null,
+   "voice_error": null,
+   "with_music": true,
+   "script": [
+    "12.501+ oameni l-au cumpărat!",
+    "Spumant reîncărcabil cu 3 trepte de viteză.",
+    "Are baterie de 300 de miliamperi, se încarcă prin USB și e mic și îl iei oriunde.",
+    "Și are 98 la sută recenzii pozitive.",
+    "Linkul e în bio. Caută produsul numărul 18!"
+   ],
+   "music": "Awesome Call",
+   "file": "clips/trendixeu-18.mp4",
+   "poster": "clips/trendixeu-18.jpg",
+   "created": "2026-10-03",
+   "id": "p1005010530071556",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4ol4UFrSueUSakH8AWjL26QV5BwFATC6vMjCwztnt69s3z2okT4DGmohr7VNqSSaBH8x913qrLR20015FMrRL0c4HmwdZIIDB0pa2X7gwyHghHLTPIMcwPTQUMejFDxjXKeCPFKjg1lGfkx1VvKkXz9BIyW6Z1z6DRxErwN7RJQmUDzrcq57JeXrOvMq7fGQ5EWosWW4NS0hQB6iAdajOsY0d2zHVSREJ2MKYpWLCMzKNnX29Qy6vIkBHuRu1FihLtZqsQG3ngRbhYoBFVU6iBLByIodzQ9iu5is7VRJFGzNM9fjC81ijdCpN7RB6HC9uZyyU9CkpDIbSS7ZtcMfF7vD0b7VvqIksZYkXBxeXrXD684yiS702C1UJMNP4k3YH2cPOBjSdgE7pJHAgPpos9kSDAW1kgiiQ2OLtECW83pffRJuRaKaleVPwpcb8S0WiNNagNu0I9fVBe93kRIXC0lUIsfZBnwoJWXmrWj7rbkMeHOSxQk2FoCn3Z4mrNcyFpC0L6m7oJALyCqaYNI4Zeaz6O8tsrIFDGOd5wR5u4yx9rjAAWLB0BqCZVHWoQEnjOdPC15lmFZq9rP1kxIa68jXCujbhFtDuUPApjjmJM4JtlDrnC0Gr98ucRKauA3OugOfsEgGLlmMTOQYOYcRaKCHV6m20Qmk9JrycdbG1ieKdE7FqRkhQQuLGeloO80DFADwFABrvY7Zhx",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S43202a0cab4c4d92a6ba50a45a74b38bp.jpg",
+   "title_ro": "Spumant reîncărcabil cu 3 trepte de viteză Mini Electric Whisk 300mAh Battery Egg"
+  },
+  {
+   "hook": "Nu știam că există așa ceva",
+   "kicker": "DESCOPERIREA ZILEI",
+   "name": "Dispenser de săpun de bucătărie de 480",
+   "cards": [
+    "Livrare în România"
+   ],
+   "orders": 2112,
+   "rating": 98.0,
+   "price_text": "166 lei",
+   "num": 17,
+   "description_ro": "Nu știam că există așa ceva 😱\nDispenser de săpun de bucătărie de 480\n✅ Livrare în România\n⭐ 98% recenzii pozitive · 2.112+ comenzi\n💰 Preț: ~166 lei\n👉 Link în bio · caută produsul #17\n🎵 Blip Stream – Kevin MacLeod (incompetech.com) · CC BY 4.0",
+   "description_en": "I didn't know this existed 😱\n480ml Kitchen Soap Dispenser Automatic Sensor Hand\n⭐ 98% positive reviews · 2.112+ orders\n💰 Price: ~166 lei\n👉 Link in bio · find product #17\n🎵 Blip Stream – Kevin MacLeod (incompetech.com) · CC BY 4.0",
+   "hashtags": [
+    "aliexpressfinds",
+    "tiktokmademebuyit",
+    "oferte",
+    "reduceri",
+    "romania",
+    "fyp",
+    "bucatarie",
+    "kitchengadgets",
+    "kitchenhacks"
+   ],
+   "bullets": [
+    "Livrare în România"
+   ],
+   "duration": 10.5,
+   "used_seller_video": false,
+   "voiced": false,
+   "voice": null,
+   "voice_error": null,
+   "with_music": true,
+   "script": [
+    "Nu știam că există așa ceva!",
+    "Dispenser de săpun de bucătărie de 480.",
+    "Peste 2 mii de oameni l-au comandat, cu 98 la sută recenzii pozitive.",
+    "Linkul e în bio. Caută produsul numărul 17!"
+   ],
+   "music": "Blip Stream",
+   "file": "clips/trendixeu-17.mp4",
+   "poster": "clips/trendixeu-17.jpg",
+   "created": "2026-10-03",
+   "id": "p1005010585644072",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4oBykwZr3Xut44KfZmpTAifhsq6vXl3BakDD8hRLQT0dSDpgKLeS9BDhUFzkJBrsSbUy0uK5TeMBn3XStygmjGoFFSpMYOwBAQ0ACxXoNRytz4XsnwRUcLnG4xlJQj89Ey9IGQHFMUGYon0GH58rrmwjsLde2u7JLslPZPqohqbUegpPgWL9lQbjLb8zzhZCXTKnoulf8HDB5gZ2N3BomH08MrzDUbArKJIIJKNMg240jqO2dXZLFWvJpUEYTrDBRz3kqfmikmkJTbPfh26mF3DWFZtIWve7914YuLBpbquESqoHbd9YXEDJGBTqqNv1mhFcTnZuGWf5BCcXH3ZHUTxUHlQqWUNQdhs5zyrec57unFM9ZINdDWSsTvZrAUjvS21w7tIlOandtY83XcxvDI8zVuN4lONY4OLl9JjaUnks18L81DLDN5fMVpqCtjIxoGrTyPlVACiRXP3FMAf9Em7UO5iAKMKFVly5dd87gmfC8jdWDApqOM6WHv6Q5lkbBKgU4RLI2Dy0pwQlsDjk01kTZJEMtKRdUfV2IoAMIqut1G7PEgzjEZnLnlxJ95dT5YabdRz54RjWKAk7HErfeNBIO4f6SrgwuX8XCf1Si6vmLoFzr7rGIPBcIhVnMKvml2tvX7qJjdfRcAgyaVjTk4dBBCDcGEhYuMDtxRjIZSqtzqLVZGSkxoZg61ScjbFOgamAiwRz8XhYX2",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S457109ac45f34c9281bae9b9d60dd963K.jpg",
+   "title_ro": "Dispenser de săpun de bucătărie de 480 ml Mașină automată de dezinfectare a mâinilor cu senzor"
+  },
+  {
+   "hook": "41.292+ oameni l-au cumpărat",
+   "kicker": "TOP VÂNZĂRI",
+   "name": "Sac spălat încălțăminte în mașina de spălat",
+   "cards": [
+    "Livrare în România"
+   ],
+   "orders": 41292,
+   "rating": 96.2,
+   "price_text": "45 lei",
+   "num": 8,
+   "description_ro": "41.292+ oameni l-au cumpărat 😱\nSac spălat încălțăminte în mașina de spălat\n✅ Livrare în România\n⭐ 96% recenzii pozitive · 41.292+ comenzi\n💰 Preț: ~45 lei\n👉 Link în bio · caută produsul #8\n🎵 Blip Stream – Kevin MacLeod (incompetech.com) · CC BY 4.0",
+   "description_en": "41.292+ people bought this 😱\nShoe washing bag for the washing machine\n⭐ 96% positive reviews · 41.292+ orders\n💰 Price: ~45 lei\n👉 Link in bio · find product #8\n🎵 Blip Stream – Kevin MacLeod (incompetech.com) · CC BY 4.0",
+   "hashtags": [
+    "aliexpressfinds",
+    "tiktokmademebuyit",
+    "oferte",
+    "reduceri",
+    "romania",
+    "fyp",
+    "gadgets",
+    "homehacks"
+   ],
+   "bullets": [
+    "Livrare în România"
+   ],
+   "duration": 10.5,
+   "used_seller_video": true,
+   "voiced": false,
+   "voice": null,
+   "voice_error": null,
+   "with_music": true,
+   "script": [
+    "41.292+ oameni l-au cumpărat!",
+    "Sac spălat încălțăminte în mașina de spălat.",
+    "Și are 96 la sută recenzii pozitive.",
+    "Linkul e în bio. Caută produsul numărul 8!"
+   ],
+   "music": "Blip Stream",
+   "file": "clips/trendixeu-8.mp4",
+   "poster": "clips/trendixeu-8.jpg",
+   "created": "2026-10-02",
+   "id": "_c3Ax29Rf",
+   "link": "https://s.click.aliexpress.com/e/_c3Ax29Rf",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S59152822e94045e799d354f95f410bdbX.jpeg",
+   "title_ro": "Sac spălat încălțăminte în mașina de spălat"
+  },
+  {
+   "hook": "Nu știam că există așa ceva",
+   "kicker": "DESCOPERIREA ZILEI",
+   "name": "Proiector fără fir pentru uși auto cu",
+   "cards": [
+    "Fără fir"
+   ],
+   "orders": 3301,
+   "rating": 98.0,
+   "price_text": "111 lei",
+   "num": 16,
+   "description_ro": "Nu știam că există așa ceva 😱\nProiector fără fir pentru uși auto cu\n✅ Fără fir\n⭐ 98% recenzii pozitive · 3.301+ comenzi\n💰 Preț: ~111 lei\n👉 Link în bio · caută produsul #16\n🎵 Big Mojo – Kevin MacLeod (incompetech.com) · CC BY 4.0",
+   "description_en": "I didn't know this existed 😱\nWireless HD Laser Car Door Projector -\n✅ Cordless\n⭐ 98% positive reviews · 3.301+ orders\n💰 Price: ~111 lei\n👉 Link in bio · find product #16\n🎵 Big Mojo – Kevin MacLeod (incompetech.com) · CC BY 4.0",
+   "hashtags": [
+    "aliexpressfinds",
+    "tiktokmademebuyit",
+    "oferte",
+    "reduceri",
+    "romania",
+    "fyp",
+    "masina",
+    "caraccessories",
+    "cartok"
+   ],
+   "bullets": [
+    "Fără fir"
+   ],
+   "duration": 12.2,
+   "used_seller_video": false,
+   "voiced": false,
+   "voice": null,
+   "voice_error": null,
+   "with_music": true,
+   "script": [
+    "Nu știam că există așa ceva!",
+    "Proiector fără fir pentru uși auto cu.",
+    "Merge fără fir.",
+    "Peste 3 mii de oameni l-au comandat, cu 98 la sută recenzii pozitive.",
+    "Linkul e în bio. Caută produsul numărul 16!"
+   ],
+   "music": "Big Mojo",
+   "file": "clips/trendixeu-16.mp4",
+   "poster": "clips/trendixeu-16.jpg",
+   "created": "2026-10-02",
+   "id": "p1005013072435050",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4kZz7M8ctwGp0Y8mb1DtnXNymZwZj5hVZiCxMoyGhTobr4iAtL7T1at8XCE8LS8ZNfKca0D0tciVfsSyPi6tMkDhiMTfWArKuCqOTdRDGVdBmoghFLIXbdUsN5ksQUiMxES9I6yxQWleJdBbS4SRvIXNcdj9DDWn5wiTWxjKnI7n8b6IGq8y1LFyB1M48xjCx0nDBkfIEmIeCotGyDDWS9cIXXXmRXJOjQwANJLdN9HVFPQg0E1fUYiVf3gdVy8XH7xpjq8kRKZwz7dgXgSxn3umCSuxavBFgqRGcl6XOSztvjOGTihKAYkO6x9nmizkZ8JYGSgWk7bb16HxEBvAeTVxY651qaO4Sw1FKZKMR4nMqHJe01ODNhZYs4drGNRmzFyDzhOQmBc4KeeL4hSoIXqhqRbBAwsL4UQnq2gdOZ3vnWC1H9ggWF2zT8DRusECMeNFvIxI0QjJ94NLxGARkR58TIwEfpjGP4cln0h3G7DZbM0MTw3j4rXHHnP7AkJJu4382T6var7KP3bM9BXI97WmfNsaI7D9avGsEn91Dc9svqBVwKcBQg1azkdtuTorusuiKCxndMKDC43TS0Aine8QLuZ4jBDOWIv3Ku5swbcVo7i0jCfzU29dyZEOwyXg70yNmXsidIfb270FqL3EPOf0bG0HS0q6CvGG0Ohn1Fjw3COzdQb4f9vNlI7UsD4CwulILUVJrk8s1A",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sbac91f79f28d40778605d21d9fa26062Q.jpg",
+   "title_ro": "Proiector fără fir pentru uși auto cu laser HD - 2/4 buc"
+  },
+  {
+   "hook": "Gadgetul pe care nu știai că-l vrei",
+   "kicker": "DESCOPERIREA ZILEI",
+   "name": "Mini Pompă de aer electrică reîncărcabilă pentru",
+   "cards": [
+    "Reîncărcabil USB",
+    "Compact"
+   ],
+   "orders": 3051,
+   "rating": 93.7,
+   "price_text": "41 lei",
+   "num": 15,
+   "description_ro": "Gadgetul pe care nu știai că-l vrei 😱\nMini Pompă de aer electrică reîncărcabilă pentru\n✅ Reîncărcabil USB\n✅ Compact\n⭐ 94% recenzii pozitive · 3.051+ comenzi\n💰 Preț: ~41 lei\n👉 Link în bio · caută produsul #15\n🎵 Awesome Call – Kevin MacLeod (incompetech.com) · CC BY 4.0",
+   "description_en": "The gadget you didn't know you wanted 😱\nMini Electric Air Pump Rechargeable for Food\n✅ USB rechargeable\n✅ Compact\n⭐ 94% positive reviews · 3.051+ orders\n💰 Price: ~41 lei\n👉 Link in bio · find product #15\n🎵 Awesome Call – Kevin MacLeod (incompetech.com) · CC BY 4.0",
+   "hashtags": [
+    "aliexpressfinds",
+    "tiktokmademebuyit",
+    "oferte",
+    "reduceri",
+    "romania",
+    "fyp",
+    "gadgets",
+    "homegadgets",
+    "casa",
+    "homehacks"
+   ],
+   "bullets": [
+    "Reîncărcabil USB",
+    "Compact"
+   ],
+   "duration": 13.8,
+   "used_seller_video": false,
+   "voiced": false,
+   "voice": null,
+   "voice_error": null,
+   "with_music": true,
+   "script": [
+    "Gadgetul pe care nu știai că-l vrei!",
+    "Mini Pompă de aer electrică reîncărcabilă pentru.",
+    "Se încarcă prin USB și e mic și îl iei oriunde.",
+    "Peste 3 mii de oameni l-au comandat, cu 94 la sută recenzii pozitive.",
+    "Linkul e în bio. Caută produsul numărul 15!"
+   ],
+   "music": "Awesome Call",
+   "file": "clips/trendixeu-15.mp4",
+   "poster": "clips/trendixeu-15.jpg",
+   "created": "2026-10-02",
+   "id": "p1005009684944359",
+   "link": "https://s.click.aliexpress.com/s/NdpwztbAIgDMmxGbP8fFks7yUFfsHjzlImSYmA68h7xlMRgzueFsRgokQ9f9hcpVKttxtQE2VzIoqkXJXrpOr6uR3zv7mP4CDO9CddoFf4t0QE5DXPy8Pgjhz4irfQSEjEGUmy5yF3A5gJ9h3NYjLMgqIMqa3zcpq5E2BC3W5EbV40Dm9buQxWpZzw1lbX8Zm2kZtNIa4KyDieNjsH7IU6Yv8StELKVvT9r4eFAaXPGhwHsgaDqdNcmY116r3GC2YvsOopeiiZPhJrV0cwgOQDSkW93v7gVKDqPkXyZF1oSWa6wSAOeznMFVlVYQS1vI7nOpOWCPNjyHuBbseXQi4TfxoaSnpnjmMf3DzkjVFSQJpqyjKEuH3rUbmTqM2FIqSPqKtG8ppuO2fMk6iHQHCT9ZzwQ3OkgEtbiHnoAzup1CYPUrmafcwbA58hieokzRz6QuRadzXJj8GjLganQINUwSFn5YsCeIo10YVkbbCZJE8CG98PXTflHRzhnCtbKQAhvrl3MszSNDv0xYyWheoohAp1iqs5qpTa9XXuqCtiehSXaP5ZkrPGSNrUQuSj9IaL2X5gDXBoSLzToVlTfI6KD4Sqbl0xjMrFSj4WP7U9wHmG7PgEZycVHWAYshKkkGOUciUL9Ep9Ale9MmuPAYusf7YwLBjyuTo0Z31WUYSeU4K0Xrq4u8BdlztkmoqY4gSH8EMbtz5jzlc28MFxUwpxVy8ZhDYnWQDWSoYII3wSvJzhiCXAE5lmylVy0BHmoQkr0EbFFcXHz8ucanaN9HxZWSARrk66vSLQoGbYFjagkJZwl1LB8L07G0hFmjlib6LPYS6sBiyI8FHmlNpwnXm0o6pVbLMMQ1bYXin2ZUEvVpSDC2szcMetLBXFM5hHrtPuNOfqXcwggvbZfn2IMEkUrR6OH1DsSHkLZ9rUttMlN96O2ftTWp6LXV4yR6nfZmL5tfgIiELpHeWcxL38bfLrgypREZHjXMpMfTPVqrZDUox",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S4da8e88793064b1eb7b3ec79950a93ear.jpg",
+   "title_ro": "Mini Pompă de aer electrică reîncărcabilă pentru aspiratorul de păstrare a alimentelor proaspete"
+  },
+  {
+   "hook": "Nu știam că există așa ceva",
+   "kicker": "DESCOPERIREA ZILEI",
+   "name": "Smart Laser Cat-teasing Collar Laser Reîncărcabil Auto",
+   "cards": [
+    "Reîncărcabil USB"
+   ],
+   "orders": 3746,
+   "rating": 98.0,
+   "price_text": "33 lei",
+   "num": 14,
+   "description_ro": "Nu știam că există așa ceva 😱\nSmart Laser Cat-teasing Collar Laser Reîncărcabil Auto\n✅ Reîncărcabil USB\n⭐ 98% recenzii pozitive · 3.746+ comenzi\n💰 Preț: ~33 lei\n👉 Link în bio · caută produsul #14\n🎵 Blip Stream – Kevin MacLeod (incompetech.com) · CC BY 4.0",
+   "description_en": "I didn't know this existed 😱\nSmart Laser Cat-teasing Collar Laser Rechargeable Auto\n✅ USB rechargeable\n⭐ 98% positive reviews · 3.746+ orders\n💰 Price: ~33 lei\n👉 Link in bio · find product #14\n🎵 Blip Stream – Kevin MacLeod (incompetech.com) · CC BY 4.0",
+   "hashtags": [
+    "aliexpressfinds",
+    "tiktokmademebuyit",
+    "oferte",
+    "reduceri",
+    "romania",
+    "fyp",
+    "pettok",
+    "animalutze",
+    "petproducts"
+   ],
+   "bullets": [
+    "Reîncărcabil USB"
+   ],
+   "duration": 12.3,
+   "used_seller_video": false,
+   "voiced": false,
+   "voice": null,
+   "voice_error": null,
+   "script": [
+    "Nu știam că există așa ceva!",
+    "Smart Laser Cat-teasing Collar Laser Reîncărcabil Auto.",
+    "Se încarcă prin USB.",
+    "Peste 3 mii de oameni l-au comandat, cu 98 la sută recenzii pozitive.",
+    "Linkul e în bio. Caută produsul numărul 14!"
+   ],
+   "file": "clips/trendixeu-14.mp4",
+   "poster": "clips/trendixeu-14.jpg",
+   "created": "2026-10-02",
+   "id": "p1005008406097986",
+   "link": "https://s.click.aliexpress.com/s/NdpwztbAIgDMmxGbP8fFks7yUFfsHjzlImSYmA68h7xlMRgzueFsRgokQ9f9hcpVKttxtQE2VzIoqkXJXrpOr6uR3zv7mP4CDO9CddoFf4t0QE5DXPy8Pgjhz4irfQSEjEGUmy5yF3A5gJ9h3NYjLMgqIMqa3zcpq5E2BC3W5EbV40Dm9buQxWpZzw1lbX8Zm2kZtNIa4KyDieNjsH7IU6Yv8StELKVvT9r4eFAaXPGhwHsgaDqdNcmY116r3GC2YvsOopeiiZPhJrV0cwgOQDSkW93v7gVKDqPkXyZF1oSWa6wSAOeznMFVlVZex52QmM6BCoq9BLxDedpBUv7LdWDD8FQqFPfdlG4Esj7jo19CcgW0rr1O5zAR0nbxiUUiLd0DOGxTJSu77mjjWuAPBpX9t2cQRaGlFa3bFbY55ervFW9YcFVr033TXzDHG8Gu2QwELnEsEkMDYgFFXWy4jOdPUHEryuKH2dsekxndpCOAdFEfyArlBFojxGXUIXxoI2JzLc1DPJlz6BVEshtnpL89dS9LIXODYFKtw2psljThBuvflB6wwIsvUmMa2LSwKJWg88z4bCT3zQHznuGE9WlkKSkP6mt5KEB7z815NPiV332eLQD9qMGL3XrAcK83KmDBQO4t8b3MBMY7naQMm3OtHnRu4Icyl7dFfRbcgNumED2Ww4tpXSiARxjiodaYQ1uEYuqfQfgHkL3r7vrcEKDPqFNnsnQ78bGiSUVgAktqrpVdjeJ8TgOd9cxv9oDU41ZsEWfOM1TwYQ37c3O3qbeWpetksBOrLiGaopgaArZjTXHTVBOTVAfDelmcDGkOL67wwbxvLgU2ta4HM4fZrH0uMhTWvkIt8lzUJacctRFtjlXaOlbXheDIG1RvI0RFowvfXedQFu3RGjH8h71h11LoWMhXesr3uMPgiA3beAjodw1UFxrlj2oNRIUZrRPIyut8drPwDe3c6CcT6ufnqJESGiMxHGtzalM4PreKCHoQJ",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/Saedf636611d74a6588389aabd7b1ccdaW.jpg",
+   "title_ro": "Smart Laser Cat-teasing Collar Laser Reîncărcabil Auto Infraroșu",
+   "with_music": true,
+   "music": "Blip Stream"
+  },
+  {
+   "hook": "Nu știam că există așa ceva",
+   "kicker": "TOP VÂNZĂRI",
+   "name": "Aspirator robot Ilife A30 Pro cu auto-eliberare",
+   "cards": [
+    "Livrare în România"
+   ],
+   "orders": 8226,
+   "rating": 98.3,
+   "price_text": "732 lei",
+   "num": 13,
+   "description_ro": "Nu știam că există așa ceva 😱\nAspirator robot Ilife A30 Pro cu auto-eliberare\n✅ Livrare în România\n⭐ 98% recenzii pozitive · 8.226+ comenzi\n💰 Preț: ~732 lei\n👉 Link în bio · caută produsul #13\n🎵 Big Mojo – Kevin MacLeod (incompetech.com) · CC BY 4.0",
+   "description_en": "I didn't know this existed 😱\nIlife A30 Pro Robot Vacuum Cleaner with\n⭐ 98% positive reviews · 8.226+ orders\n💰 Price: ~732 lei\n👉 Link in bio · find product #13\n🎵 Big Mojo – Kevin MacLeod (incompetech.com) · CC BY 4.0",
+   "hashtags": [
+    "aliexpressfinds",
+    "tiktokmademebuyit",
+    "oferte",
+    "reduceri",
+    "romania",
+    "fyp",
+    "cleantok",
+    "curatenie",
+    "cleaninghacks"
+   ],
+   "bullets": [
+    "Livrare în România"
+   ],
+   "duration": 10.5,
+   "used_seller_video": false,
+   "voiced": false,
+   "voice": null,
+   "voice_error": null,
+   "script": [
+    "Nu știam că există așa ceva!",
+    "Aspirator robot Ilife A30 Pro cu auto-eliberare.",
+    "Peste 8 mii de oameni l-au comandat, cu 98 la sută recenzii pozitive.",
+    "Linkul e în bio. Caută produsul numărul 13!"
+   ],
+   "file": "clips/trendixeu-13.mp4",
+   "poster": "clips/trendixeu-13.jpg",
+   "created": "2026-10-02",
+   "id": "p1005012148697110",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4kNtPXKR5VC22kpj7DEWItrqnxVCwoGI4CV7zsW7hVdB3zvgvf9LXSWCQYJqslkttI1J7471z2cbc9CxEw18RaHFJ3nGGOLLyV7DL5j5OuuvieA9cQv2XLHqGXp0F82DKuL49J4b9E7d7urZoE8X8zjHCcjzyc3hT2YiuzFi7MTXRMc1tQhLCpfZXSQA93hP8rbaAqPJbMWB46VqnUOl59h1KRdFfRahUMUdxtaa8aq2sW6vIEj2eYp0ij1Lyk4pDzX15oOKqAlTGdjc5RlSWXXZ2D0Veu9qHj0HBHCn3q9mueT2MwS0bIG6QrPn5O6TLVfYKoAlGBLwFA83GWs8FlNYTX8sQYmpROpOJv6wpHet9ZPMO2KMAKU0IskqQfPwxpujgxOsfhkI5tyg3Fkdh9T6pvJFZ5D8ciMgPnG0AxgTTYW0gPcEIsCmJfnGnwjRFIBAjVY6wl3NZTvFexnW9r2A4yJ7k1O6eTQ9mnqqzMZf5eggx6yFlr4pQ8PMZfyXZc4N8dLqeparolhNYqLrgmQ7VqgLKvb3t2HBo8xn74hraKvAg8rz7ublABEYtZNN6lK3XlTUwZxs3ccAPtmoic6J5KIT2yZ8aMUagww6wTTL16Ptr8SrFsE0qF6Okv4Qy7ZZyhWgTngxKmIzbj5vzQazeAXSh2DdqfaXLPcTBbH9kUGyz4HnQIYqwZ7DRXfPdmW2a6lppGB59T",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S5cbd7da62f454859a24fc99a2e807b24X.jpg",
+   "title_ro": "Aspirator robot ILIFE A30 Pro cu auto-eliberare automată",
+   "with_music": true,
+   "music": "Big Mojo"
+  },
+  {
+   "hook": "Nu știam că există așa ceva",
+   "kicker": "TOP VÂNZĂRI",
+   "name": "Noul robot de măturat USB Aspirator Mopping",
+   "cards": [
+    "3 în 1",
+    "Fără fir"
+   ],
+   "orders": 9139,
+   "rating": 98.0,
+   "price_text": "77 lei",
+   "num": 12,
+   "description_ro": "Nu știam că există așa ceva 😱\nNoul robot de măturat USB Aspirator Mopping\n✅ 3 în 1\n✅ Fără fir\n⭐ 98% recenzii pozitive · 9.139+ comenzi\n💰 Preț: ~77 lei\n👉 Link în bio · caută produsul #12",
+   "description_en": "I didn't know this existed 😱\nNEW USB Sweeping Robot Vacuum Cleaner Mopping\n✅ 3-in-1\n✅ Cordless\n⭐ 98% positive reviews · 9.139+ orders\n💰 Price: ~77 lei\n👉 Link in bio · find product #12",
+   "hashtags": [
+    "aliexpressfinds",
+    "tiktokmademebuyit",
+    "oferte",
+    "reduceri",
+    "romania",
+    "fyp",
+    "cleantok",
+    "curatenie",
+    "cleaninghacks"
+   ],
+   "bullets": [
+    "3 în 1",
+    "Fără fir"
+   ],
+   "duration": 13.5,
+   "used_seller_video": false,
+   "voiced": false,
+   "voice": null,
+   "voice_error": null,
+   "script": [
+    "Nu știam că există așa ceva!",
+    "Noul robot de măturat USB Aspirator Mopping.",
+    "E 3 în 1 și merge fără fir.",
+    "Peste 9 mii de oameni l-au comandat, cu 98 la sută recenzii pozitive.",
+    "Linkul e în bio. Caută produsul numărul 12!"
+   ],
+   "file": "clips/trendixeu-12.mp4",
+   "poster": "clips/trendixeu-12.jpg",
+   "created": "2026-10-02",
+   "id": "p1005010044045611",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4kIEEvFdERhDD6R2erI61ESOOvMoGHPfICMoPamT9X8STWiMinYM5cfg58f6HmU6Zblw5JPJgkmc0p6ZMgco42jkitRZpZvQ4FhaPiIytampFL6KesJ8Pg2wf8ldVDQatb1MoPS4YpVS0vzByVTNOECzQYFPUzis1Qjdi2S7PyC2wUF8ale56XXMgA7CFoDD68dlL09K42u1ni7TcJdFlu7SBVpd010SHW7cMcw0XfsiZEn5aFLmhVnIdbVCzgxvvwQcxHjjRIpz97M9HxCUvYwpRtwIMvxYQho5ODRLxtLokSRXmujBpfcBeWuGe6naXM7kSpZF4Ymf93YUh9nQhN9jPLuRe4vuYmRUBUmNXrwy40X8Iywx8JxxsUkvvASADv7G8RdVy8viSiGE59jGBxa2NVcqmbJewZk6BKJaraGHaVFyXdCjUTfhWEtH3kbvutoMxjYx0nRALxvfSK6ddey1SDSvXS7peA13AVUrNYMunMIVJM7ijuiM5gHvXEDiGPFT99acpqzsB9SCEJztos0p6Dr3RIyMB6jVB5dpcrOm1jm4GtigPYz2i5MvKNZxhvRwJiFBTKQzx3FVTvXSVuiTtZ1Jp28OwFvaJoAFo3coDqWZETpYGQZXVngZX5YlnjFZ9vtPQIy9qVemLy9Uc1nPyUqioekMtgLLk48zgxcEgj3Nrx37HfvbLNZ6UJ7QoBlvQe5UwPP076",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S00466adf8f8a4d54bd35915830200d37P.png",
+   "title_ro": "NOUL robot de măturat USB Aspirator Mopping 3 în 1 Smart Wireless"
+  },
+  {
+   "hook": "Doar 27 lei?!",
+   "name": "Perie profesională pentru desprinderea părului câinelui Nod",
+   "cards": [
+    "Calitate profesională"
+   ],
+   "orders": 10331,
+   "rating": 95.8,
+   "price_text": "27 lei",
+   "num": 11,
+   "description_ro": "Doar 27 lei?! 😱\nPerie profesională pentru desprinderea părului câinelui Nod\n✅ Calitate profesională\n⭐ 96% recenzii pozitive · 10.331+ comenzi\n💰 Preț: ~27 lei\n👉 Link în bio · caută produsul #11",
+   "description_en": "Only 27 lei?! 😱\nProfessional Pet Deshedding Brush Dog Hair Remover\n✅ Pro quality\n⭐ 96% positive reviews · 10.331+ orders\n💰 Price: ~27 lei\n👉 Link in bio · find product #11",
+   "hashtags": [
+    "aliexpressfinds",
+    "tiktokmademebuyit",
+    "oferte",
+    "reduceri",
+    "romania",
+    "fyp",
+    "pettok",
+    "animalutze",
+    "petproducts"
+   ],
+   "bullets": [
+    "Calitate profesională"
+   ],
+   "file": "clips/trendixeu-11.mp4",
+   "poster": "clips/trendixeu-11.jpg",
+   "created": "2026-10-01",
+   "id": "p1005005866435877",
+   "link": "https://s.click.aliexpress.com/s/NdpwztbAIgDMmxGbP8fFks7yUFfsHjzlImSYmA68h7xlMRgzueFsRgokQ9f9hcpVKttxtQE2VzIoqkXJXrpOr6uR3zv7mP4CDO9CddoFf4t0QE5DXPy8Pgjhz4irfQSEjEGUmy5yF3A5gJ9h3NYjLMgqIMqa3zcpq5E2BC3W5EbV40Dm9buQxWpZzw1lbX8Zm2kZtNIa4KyDieNjsH7IU6Yv8StELKVvT9r4eFAaXPGhwHsgaDqdNcmY116r3GC2YvsOopeiiZPhJrV0cwgOQDSkW93v7gVKDqPkXyZF1oSWa6wSAOeznMFVlVZeF1ZmB4Sr0zrdjias7r7XSUQZPWeQon4CGT9BX7PwBnG5r3i3gz4W69qxXcGEC8aQGQaQlhZSFuWHY20evOZQinrFKMT7dDOod5QZi2X0SRua70sddvnL4SkwoP350bqHORcOSMjZccdIQ8WCiwXJEBTtqzmsbCwKCowwP8MmzmsuRCCRra1olG9Wwbn2h40gOLU2R3WH9oekTxCuITzKaIcj1cm1ggGFY6OoHQYBkzEujv6gA8uQjfNJN8FBDksCHDXbGirRTbqjx3LQykoRkTFobYX00LpkVcZTHA5hbxG4RPYf0v7FWE08j8CsP5Jrrw58utiz8Lt7Gqo5hF0Rvcw46kXerVVQ5bL0UPtrzc9sA9PXZLg2JEwYaMedHdrUf77J8aVWNvxbwlToGRLeyoDuZqBFwKwj0l7YZaHtUg9bu7ASKyVzZxlD0WDTpZ8BGkaiIp9GNgJXEmcrAuuUm9mMMXPkqXrJ5CPIXqVY21dD8dt89y1NwYht7LK5J2UYUYmGJLMmDbBUwKv9C3FIDAAUBr9YKOgIR1ewSO4frGpBjBjLa3Z5mf2oPDD6BthEVzDRUgkfnrYx3mVFkI4X625urbUPuYqrvln4NpqgWFsLUH9det7qag3FvdS1qDNmXmClQHegmH0UEVThIeI2XmmOaLQmRZrKqXJX9hwfZXLJ6lgYF",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sd643895728da4634acde27269e91dd415.jpg",
+   "title_ro": "Perie profesională pentru desprinderea părului câinelui Nod de blană pentru animale de companie"
+  },
+  {
+   "hook": "Doar 32 lei?!",
+   "name": "13 BUC Pensule de machiaj Set Fond",
+   "cards": [
+    "13 bucăți"
+   ],
+   "orders": 13804,
+   "rating": 90.5,
+   "price_text": "32 lei",
+   "num": 10,
+   "description_ro": "Doar 32 lei?! 😱\n13 BUC Pensule de machiaj Set Fond\n✅ 13 bucăți\n⭐ 90% recenzii pozitive · 13.804+ comenzi\n💰 Preț: ~32 lei\n👉 Link în bio · caută produsul #10",
+   "description_en": "Only 32 lei?! 😱\n13 PCS Makeup Brushes Set Eye Shadow\n✅ 13 pieces\n⭐ 90% positive reviews · 13.804+ orders\n💰 Price: ~32 lei\n👉 Link in bio · find product #10",
+   "hashtags": [
+    "aliexpressfinds",
+    "tiktokmademebuyit",
+    "oferte",
+    "reduceri",
+    "romania",
+    "fyp",
+    "beautytok",
+    "frumusete",
+    "beautyhacks"
+   ],
+   "bullets": [
+    "13 bucăți"
+   ],
+   "file": "clips/trendixeu-10.mp4",
+   "poster": "clips/trendixeu-10.jpg",
+   "created": "2026-10-01",
+   "id": "p1005005356228751",
+   "link": "https://s.click.aliexpress.com/s/NdpwztbAIgDMmxGbP8fFks7yUFfsHjzlImSYmA68h7xlMRgzueFsRgokQ9f9hcpVKttxtQE2VzIoqkXJXrpOr6uR3zv7mP4CDO9CddoFf4t0QE5DXPy8Pgjhz4irfQSEjEGUmy5yF3A5gJ9h3NYjLMgqIMqa3zcpq5E2BC3W5EbV40Dm9buQxWpZzw1lbX8Zm2kZtNIa4KyDieNjsH7IU6Yv8StELKVvT9r4eFAaXPGhwHsgaDqdNcmY116r3GC2YvsOopeiiZPhJrV0cwgOQDSkW93v7gVKDqPkXyZF1oSWa6wSAOeznMFVlVYQwfEaS99RJAozG5GCnVXKHdwA0qNLV1jywhjT16wEk43Gk58UDYusVln5qcq7Ojr4AKZ9jHbcuFAunhVaTupxCF597yjyJIO9AU74dUMEpRUNHubSyysOtJ755keOOvR7lrMi2n6ItYgSB5Z4ywE6sZeC1FKMvUkwcAtJS33yrlpfWFcEPKVKqVktr5Au69u4cejOe63NvMpdYugglG50JkzOmKqWMppXfAmWUWVwoFGVoJeqzRIlPOB5Q4q9ySnLhKi08LiR6xrShFaJsD8R0D5CPoqJKaKS6MRSOefo064E4UDQlLBfTpPbOpkFuhzWVj6iLnjwCuoNcSsEYkFJ11uoJszU6yJqeyyW0U5pHILgmFNiW7FErwR5p6QEKuWIFeM37IFlEhQqjpfM53KJjXbtgoest5SawnIy6Evlz3HjJ1H8kb8Eg2RYU4l1CZ1xDFUrzFmspaxWU5VQ77W9lYxwsY3iAFzJOdudGXCVYVe2qVLW6JKMsTo4LaDFgTtGQQNbDDXW73KHKG8AnBQF4tWqhuBZbGlFqlqFdkxQLYJ8RcILQa6Pj8i5D3arXHa3aqdR8MrS56WuezXCPvFfegvdiQe0OR5IKylq7Q0FrxRVshXePfTYWGy4lGcUWzUodFPegSPuIL1FoUX0IhOx4xMLipFYBvKmYXp4ehhRHTHkB15oJ",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S09e878b9dcb843f3a1a56012d0e14e66o.jpg",
+   "title_ro": "13 BUC Pensule de machiaj Set Fond de ten fard de pleoape Perie cosmetică pentru femei"
+  },
+  {
+   "hook": "17.794+ oameni l-au luat",
+   "name": "Tampoane de bumbac cu două capete, cu",
+   "cards": [
+    "100 bucăți"
+   ],
+   "orders": 17794,
+   "rating": 98.0,
+   "price_text": "94 lei",
+   "num": 9,
+   "description_ro": "17.794+ oameni l-au luat 😱\nTampoane de bumbac cu două capete, cu\n✅ 100 bucăți\n⭐ 98% recenzii pozitive · 17.794+ comenzi\n💰 Preț: ~94 lei\n👉 Link în bio · caută produsul #9",
+   "description_en": "17.794+ people bought this 😱\n100Pcs Double-Ended Cotton Swabs Fine Pointed Tips\n✅ 100 pieces\n⭐ 98% positive reviews · 17.794+ orders\n💰 Price: ~94 lei\n👉 Link in bio · find product #9",
+   "hashtags": [
+    "aliexpressfinds",
+    "tiktokmademebuyit",
+    "oferte",
+    "reduceri",
+    "romania",
+    "fyp",
+    "beautytok",
+    "frumusete",
+    "beautyhacks"
+   ],
+   "bullets": [
+    "100 bucăți"
+   ],
+   "file": "clips/trendixeu-9.mp4",
+   "poster": "clips/trendixeu-9.jpg",
+   "created": "2026-10-01",
+   "id": "p1005013071997736",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4mkUeBZiWBHAn28OBDx1pgvhwrW4yRK8k8gOHEQPoVLjHuBPyrM388YgaoVT8SfgCIov7McXmh2l0QpdKtuc3cDcEmTrCPPnY7Sjfjk14np5lt24vqCceXwz6dTLBhB3iW7LzAb7Epp4bTt6zkg6VgpSjZdrxoe5XwWlVIH9NUfeD4lpjCpi7yYL5W0pvOBvizUZFosBEgVKYZ73R5B45KBnjicnV8ttjSo9jJCr5LXJW8OJ9mRTOh7NTNwhIXdyUujxSTi0WPWTzfrabhhMEEqjGsbk1atie5eboa2amS2j62oOW68WXG3bn0ZvRhrTUK6FWDkd6hLT9SGfckrLIKOZJQ5JOHdNlF4iVVbnXZACSLDecrUJjXqka03baVQVebCxDM8dNmfSQdv7A9wvMOxWvM3xg69T9iRufsB72YqZgwSrrloM9ldJcMede7zwS8NAmO4wTvVdCj8BkUYKNBkqC6p0pNcoOjRn4D84KWwUpimwxUD67mMc4t9cJ3jo260i2mQG8QApkNph8xqE2nJBTfNq8grTvFFnpgylVcKIe58x5Rtr6qHZB6rY80Nd1cEJH7DwANS1srgEpULkc3HpXcS3h1ljMYWqBnRjBp1IqIwxKND61EUhWvq4oYStkcqg6pKzcS2Nj0DB6e6F53LRlnjhkCbHIJ9s4JFWZomW1xsCMB1FhlLqzZzdihU7Kokha20NHMb1q8",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/Se07f2e07e34740019a9797280d827234Z.jpg",
+   "title_ro": "Tampoane de bumbac cu două capete, cu vârfuri fin ascuțite, pentru arta unghiilor, 100 de bucăți"
+  }
+ ],
+ "voice_demo": null,
+ "clip_products": [
+  {
+   "num": 22,
+   "id": "p1005010585566358",
+   "title": "OTTOCAST Mini Dot Cube Wireless CarPlay Android Auto Adapter 2 in 1 USB AI Car Accessories",
+   "titles": {
+    "en": "OTTOCAST Mini Dot Cube Wireless CarPlay Android Auto Adapter 2 in 1",
+    "ro": "OTTOCAST Mini Dot Cube Wireless CarPlay Adaptor auto Android 2 în 1",
+    "it": "OTTOCAST Mini Dot Cube Wireless CarPlay Adattatore Android Auto 2 in 1",
+    "de": "OTTOCAST Mini Dot Cube Wireless CarPlay Android Auto Adapter 2 in 1",
+    "fr": "Adaptateur Auto Android 2 en 1 OTTOCAST Mini Dot Cube Wireless CarPlay",
+    "es": "Adaptador automático para Android 2 en 1 OTTOCAST Mini Dot Cube Wireless CarPlay"
+   },
+   "created": "2026-10-03",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4mlhXYGdgWFTkAyxsjqr6ZhmSCrGgZe152nujDvvqqy2hwwNx0Jx1yeONDmxXuD5lAiJokYCpFL4m351o5887c2SOWugqBDgnS3ZKPTxlpLKPzG2fMlYpkYz91VIQ76x5GISsivPuUS1AgEOtz7MQvS7ihAJ3t6rJF8k1R344ZalaD849oYQoeXCioZKYQ9iU0cSBDZVwCwu3S1ZAUBkOndNH3vG8Kh4BVwK4P3hDLhJhqhUSYsJSvVEROb8XhaBMxAY2NKcmk7gXGVbXnDEU4G5SAruTTeSHkkU6kHjH36qLREe2SvfSEauyVrlNkh8DyOcZ9e7Bo8irFakT4osnDmwd09Vypqm9BXzHBD0pu5CleFyvdJQvLHeCD1jvgCAA4l04pu1ZjY7zOk8E6rUI4LuV6HwP6kYgguL8qeEPU4oo0iqIVrAFgaCvpqJSdpRCjgVq5676aBOhZYjFrfR1Ch6l7ds5QZVZP3rCoKDpwsAUnMr7Uc7ldhIyqXM6QGVbQSYgiYxx7E1VKjclYu64oqx9zCTq9IxBRhNVl8B9eFSWn9RIq6syiddZk48iWRYmc3GMVo59tiOXPMf0CJBf9KbAQhGXhb25xGurOtNf9NqnBTvJjLqOkARbFNz1nM2SWII2jobw3JL2MhD98LDaElSJl8HBqLjud9LIlAy0enSlUattqpHFj7tkzkY7mjHeCtI4FAeFXAcQs",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S563e45d7046444cb8bafab61b7157129M.png"
+  },
+  {
+   "num": 21,
+   "id": "p1005007791672610",
+   "title": "Electric Dog Steamer Brush Grooming 3 in 1 Dog Steam Brush Pet Remove Tangles and Loose Ha",
+   "titles": {
+    "en": "Electric Dog Steamer Brush Grooming 3 in 1 Dog Steam Brush Pet Remove",
+    "ro": "Perie electrică de călcat cu abur pentru câini Îngrijire 3 în 1 Perie cu abur pentru câini Îndepărtați animalul de companie",
+    "it": "Spazzola a vapore elettrica per cani Spazzola a vapore per cani 3 in 1 Rimuovi gli animali domestici",
+    "de": "Elektrische Hunde-Dampfbürste Pflege 3 in 1 Hunde-Dampfbürste Haustier entfernen",
+    "fr": "Brosse à vapeur pour chien électrique Toilettage 3 en 1 Brosse à vapeur pour chien Retrait d'animal de compagnie",
+    "es": "Cepillo eléctrico para perros Cepillo de vapor 3 en 1 Cepillo de vapor para perros Eliminar mascotas"
+   },
+   "created": "2026-10-03",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4EJKcOYetW3DXeoHOtTE9XKvtQoqdMuRouVRHc4htk1ATT8rhUnBLyKwlcHiMUNgdCR86V7PqNRlybPVJ1AaqLv1EcnBZ5F8SyOxuV56wNyaFJD8IMLDpOgTe38nEqvFpar8gocdmxbkoHgZid067RaUOZfTOCaaSFa4k1tfuV4TYmPMWljrRqubKxNUWlcNM9IJKezpNq4VZp4NnrqZ4zRPpdULmM3m9Q5uProCNt6RVMzpTYOphXkOq5NhswXJaUEnMYQxiXTzNXnxJj7GReG8Tta3gp3KEZcHuIHpeHuvH1FFCOij5u7czoHBi7ot4wXYW4TzHoJF0v6uSsAGYjDm67csKjaGQWNJf7bzjkOGNnbLzrSrLAXmSTTSAy6J5kA7FViK1t9HTynGViwc7NnA0ST1plvB7pmriNnsD4HajCbB0nbtVSWVwObVhMcsoD5RphL0l4b8SO0ZyIGBbyfxYmEGjH0HNwc9Fi07zek5VOrYDmZc5G6uoA5r4JEGRPNDMTmV6M4WWOXVNbwSJzglNKAs59dAD8apJQ95UxNSQ5LQAj9YRcnatvFDcVi9gtujrEOveQda3gwTf1jD302NsaNhvXODKGJnLVdUnJ29VvvQNdumn8i23rzl42tQtvteiNV2UIVUXuS5d6D1legyky4jXeRkmzEspijr4YtIwlK3t9vKuIVrqAf0kZvn8rcxp5O8sGi1N2",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S53dabc50fd014b08a1492baf0fd5e5baU.jpg"
+  },
+  {
+   "num": 20,
+   "id": "p1005013071807962",
+   "title": "High-quality Mobile Phone Stand Lazy Bedside Ipad Tablet Holder Desktop Cantilever Support",
+   "titles": {
+    "en": "High-quality Mobile Phone Stand Lazy Bedside Ipad Tablet Holder",
+    "ro": "Suport pentru tabletă de înaltă calitate pentru telefon mobil Lazy Bedside",
+    "it": "Supporto per cellulare di alta qualità pigro comodino Ipad Tablet Holder",
+    "de": "Hochwertiger Handyständer Lazy Bedside iPad Tablet Halter",
+    "fr": "Support pour tablette iPad de chevet paresseux pour support de téléphone portable de haute qualité",
+    "es": "Soporte para teléfono móvil de alta calidad Lazy Bedside Ipad Tablet Holder"
+   },
+   "created": "2026-10-03",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4m6iMXvDv53upTiJuFE1c6aUrhPE1Bij2IuqAPhirtIWv51tn0M6BpJ7O0AmoZn30gTTtJvJvjKOhSQQDwzZfJzuN21LSEMBFqBfQMBhtpC49qaEZy7XMrVucEkrDxfElmXJkj9yaPwbUNtUVoUgJyRwn9BKuwALLacFp47TowwtLDQEs7YnSn0Pmcy5Rc4Xaop2SCyQ236ZgAoXrbBPsmCsfJIDpQRwEqL2wBqiRVIYaCiNDuPXVyWrsPXxZyi66EQJZFVI715VeFjD82QWKDeaUaGmCuGVwUQRbIsnWmf4rJQqk9Y95CznnDEHby1rwghg2MYeANi8bHFlJnfteN1IMe1b1ME8FEFzzEnftjFHFnxENXk6yihw7mC2ozxrN0IywlTfvuMSmw50qPlarinEuTVcjHfVcS7ZYkkmfFATkO6gSfKJpXaYAcTKMVgrITOOWtEwhtyqrfvv0hJjfvwFEwZ2vedKNLBU0dMbsgNIRTVpTyVkwaQnRN4F8hhhsRDZp8MD4M0liXbp91gTqj0tUvSdzzn2om2Ygghk2yEuwEA3YCfb3UV6CQkt3OpuUD9YXEIbhBklihZzBsfFls1kG6qAeeJvtxIDP9Ge5zzBxEcCeGHEQeHTM6vpg7dEPlbYbH9s83vBbtbldNSOHIKTC1HoHkUmHSd5UlcjKBtlD6ZaXu8CYVMt6SQvZpgug2TpdBnIhhFu3w",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S6d84f490779949a0b2cc06ff8830dd9eU.jpg"
+  },
+  {
+   "num": 19,
+   "id": "p1005009384461256",
+   "title": "Mini USB Rechargeable Table Fan Portable USB Small Fan Fan For Student Dormitory Computer ",
+   "titles": {
+    "en": "Mini USB Rechargeable Table Fan Portable USB Small Fan Fan For",
+    "ro": "Mini USB ventilator de masă reîncărcabil portabil USB ventilator mic pentru",
+    "it": "Ventola da tavolo ricaricabile mini USB Ventola portatile USB piccola per",
+    "de": "Mini USB Wiederaufladbarer Tischlüfter Tragbarer USB Kleiner Lüfter Für",
+    "fr": "Mini Ventilateur de Table Rechargeable USB Portable Petit Ventilateur USB Pour",
+    "es": "Mini ventilador de mesa recargable USB Ventilador portátil USB Ventilador pequeño para"
+   },
+   "created": "2026-10-03",
+   "link": "https://s.click.aliexpress.com/s/NdpwztbAIgDMmxGbP8fFks7yUFfsHjzlImSYmA68h7xlMRgzueFsRgokQ9f9hcpVKttxtQE2VzIoqkXJXrpOr6uR3zv7mP4CDO9CddoFf4t0QE5DXPy8Pgjhz4irfQSEjEGUmy5yF3A5gJ9h3NYjLMgqIMqa3zcpq5E2BC3W5EbV40Dm9buQxWpZzw1lbX8Zm2kZtNIa4KyDieNjsH7IU6Yv8StELKVvT9r4eFAaXPGhwHsgaDqdNcmY116r3GC2YvsOopeiiZPhJrV0cwgOQDSkW93v7gVKDqPkXyZF1oSWa6wSAOeznMFVlVZeEG4LYbUHxHIHWy5LHfkffJkDxnjG3FGuJNnoCcoLfJhlnAICxfrV6ncQ6vohtoLbbAqwxGDzM4CDXtXMwHmq9wVnALfx4JCZaRwscLivMaYkvmW3JCdKoyi8dLqFQpMrU5IETYaLBfhdBY5kAcetdEtXkwWY8o7ytDkuT1PJ0z7JeddBATN3n2ohvnroyncL4KOvnSfQ1O2ewVB6s3m7X1YSsgbSRfvZXZVQqEvhxvQdrsCtdv4UITwVrXJIBUace4BtFc08GqgRtJm65F9BWkJJVlRnez963iCyPeWUTmCMxMiCYY8x3zEtM9ZghwRL6S4nHD345I6ldmiix9IHhdEG6qfHHCpnMuoU62iW2qsLHmqIbqRmWaZrFCHwl2uGmp4tTTmlPOg05MqAAM2J4oOSczkCuLuVeO7gHNMfFEz0GjhIcToUqgKhmmG5oDEbQSxCZCz2moRxAjPCq78ZSEvGa6OENSJ41AV8Arut1F9hZUi4UXThrl3lYlnGinmOrJcrxqMSW7SwmTeXnIegGBvFN3vOc32W13CfumHE95Kkh1zg6FwprhgWrKmB88jHcO1dbUbRcH7bfYQN0NMUMEF0mFjofLnluHSP4tydiFy1D30LPULonLXc0kFtJEZ3J34oirmVngecOSCwAFIoMjDtBfeNEiD3FAdWWjzbsZ7Ga9EJ1",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sf1a77792d0e54354b87a156641ca4480J.jpg"
+  },
+  {
+   "num": 18,
+   "id": "p1005010530071556",
+   "title": "Mini Electric Whisk 3-Speed Rechargeable Frother 300mAh Battery Egg Beater for Kitchen Han",
+   "titles": {
+    "en": "Mini Electric Whisk 3-Speed Rechargeable Frother 300mAh Battery Egg",
+    "ro": "Spumant reîncărcabil cu 3 trepte de viteză Mini Electric Whisk 300mAh Battery Egg",
+    "it": "Mini Frusta Elettrica Ricaricabile a 3 Velocità Frother 300mAh Batteria Uovo",
+    "de": "Mini-Elektro-Schneebesen 3-Gang wiederaufladbarer Aufschäumer 300mAh Akku-Ei",
+    "fr": "Mini Fouet Électrique 3 Vitesses Mousseur Rechargeable 300mAh Batterie Œuf",
+    "es": "Mini Batidor Eléctrico 3V Espumador Recargable 300mAh Batería Huevo"
+   },
+   "created": "2026-10-03",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4ol4UFrSueUSakH8AWjL26QV5BwFATC6vMjCwztnt69s3z2okT4DGmohr7VNqSSaBH8x913qrLR20015FMrRL0c4HmwdZIIDB0pa2X7gwyHghHLTPIMcwPTQUMejFDxjXKeCPFKjg1lGfkx1VvKkXz9BIyW6Z1z6DRxErwN7RJQmUDzrcq57JeXrOvMq7fGQ5EWosWW4NS0hQB6iAdajOsY0d2zHVSREJ2MKYpWLCMzKNnX29Qy6vIkBHuRu1FihLtZqsQG3ngRbhYoBFVU6iBLByIodzQ9iu5is7VRJFGzNM9fjC81ijdCpN7RB6HC9uZyyU9CkpDIbSS7ZtcMfF7vD0b7VvqIksZYkXBxeXrXD684yiS702C1UJMNP4k3YH2cPOBjSdgE7pJHAgPpos9kSDAW1kgiiQ2OLtECW83pffRJuRaKaleVPwpcb8S0WiNNagNu0I9fVBe93kRIXC0lUIsfZBnwoJWXmrWj7rbkMeHOSxQk2FoCn3Z4mrNcyFpC0L6m7oJALyCqaYNI4Zeaz6O8tsrIFDGOd5wR5u4yx9rjAAWLB0BqCZVHWoQEnjOdPC15lmFZq9rP1kxIa68jXCujbhFtDuUPApjjmJM4JtlDrnC0Gr98ucRKauA3OugOfsEgGLlmMTOQYOYcRaKCHV6m20Qmk9JrycdbG1ieKdE7FqRkhQQuLGeloO80DFADwFABrvY7Zhx",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S43202a0cab4c4d92a6ba50a45a74b38bp.jpg"
+  },
+  {
+   "num": 17,
+   "id": "p1005010585644072",
+   "title": "480ml Kitchen Soap Dispenser Automatic Sensor Hand Sanitizer Machine Intelligent Electric ",
+   "titles": {
+    "en": "480ml Kitchen Soap Dispenser Automatic Sensor Hand Sanitizer Machine",
+    "ro": "Dispenser de săpun de bucătărie de 480 ml Mașină automată de dezinfectare a mâinilor cu senzor",
+    "it": "Dispenser di sapone da cucina da 480 ml con sensore automatico e disinfettante per le mani",
+    "de": "480 ml Küchenseifenspender Automatischer Sensor Händedesinfektionsmaschine",
+    "fr": "Distributeur de savon de cuisine de 480 ml Détecteur automatique de désinfectant pour les mains",
+    "es": "480 ml Dispensador de jabón de cocina Sensor automático Desinfectante de manos Máquina"
+   },
+   "created": "2026-10-03",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4oBykwZr3Xut44KfZmpTAifhsq6vXl3BakDD8hRLQT0dSDpgKLeS9BDhUFzkJBrsSbUy0uK5TeMBn3XStygmjGoFFSpMYOwBAQ0ACxXoNRytz4XsnwRUcLnG4xlJQj89Ey9IGQHFMUGYon0GH58rrmwjsLde2u7JLslPZPqohqbUegpPgWL9lQbjLb8zzhZCXTKnoulf8HDB5gZ2N3BomH08MrzDUbArKJIIJKNMg240jqO2dXZLFWvJpUEYTrDBRz3kqfmikmkJTbPfh26mF3DWFZtIWve7914YuLBpbquESqoHbd9YXEDJGBTqqNv1mhFcTnZuGWf5BCcXH3ZHUTxUHlQqWUNQdhs5zyrec57unFM9ZINdDWSsTvZrAUjvS21w7tIlOandtY83XcxvDI8zVuN4lONY4OLl9JjaUnks18L81DLDN5fMVpqCtjIxoGrTyPlVACiRXP3FMAf9Em7UO5iAKMKFVly5dd87gmfC8jdWDApqOM6WHv6Q5lkbBKgU4RLI2Dy0pwQlsDjk01kTZJEMtKRdUfV2IoAMIqut1G7PEgzjEZnLnlxJ95dT5YabdRz54RjWKAk7HErfeNBIO4f6SrgwuX8XCf1Si6vmLoFzr7rGIPBcIhVnMKvml2tvX7qJjdfRcAgyaVjTk4dBBCDcGEhYuMDtxRjIZSqtzqLVZGSkxoZg61ScjbFOgamAiwRz8XhYX2",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S457109ac45f34c9281bae9b9d60dd963K.jpg"
+  },
+  {
+   "num": 16,
+   "id": "p1005013072435050",
+   "title": "Wireless HD Laser Car Door Projector - 2/4pcs, Auto Accessory, No Wiring Required, Battery",
+   "titles": {
+    "en": "Wireless HD Laser Car Door Projector - 2/4pcs",
+    "ro": "Proiector fără fir pentru uși auto cu laser HD - 2/4 buc",
+    "it": "Proiettore di porte per auto laser HD wireless - 2/4 pezzi",
+    "de": "Kabelloser HD-Laser Autotürprojektor - 2/4 Stk.",
+    "fr": "Projecteur de porte de voiture laser HD sans fil - 2/4pcs",
+    "es": "Proyector inalámbrico de puerta de coche láser HD - 2/4 piezas"
+   },
+   "created": "2026-10-02",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4kZz7M8ctwGp0Y8mb1DtnXNymZwZj5hVZiCxMoyGhTobr4iAtL7T1at8XCE8LS8ZNfKca0D0tciVfsSyPi6tMkDhiMTfWArKuCqOTdRDGVdBmoghFLIXbdUsN5ksQUiMxES9I6yxQWleJdBbS4SRvIXNcdj9DDWn5wiTWxjKnI7n8b6IGq8y1LFyB1M48xjCx0nDBkfIEmIeCotGyDDWS9cIXXXmRXJOjQwANJLdN9HVFPQg0E1fUYiVf3gdVy8XH7xpjq8kRKZwz7dgXgSxn3umCSuxavBFgqRGcl6XOSztvjOGTihKAYkO6x9nmizkZ8JYGSgWk7bb16HxEBvAeTVxY651qaO4Sw1FKZKMR4nMqHJe01ODNhZYs4drGNRmzFyDzhOQmBc4KeeL4hSoIXqhqRbBAwsL4UQnq2gdOZ3vnWC1H9ggWF2zT8DRusECMeNFvIxI0QjJ94NLxGARkR58TIwEfpjGP4cln0h3G7DZbM0MTw3j4rXHHnP7AkJJu4382T6var7KP3bM9BXI97WmfNsaI7D9avGsEn91Dc9svqBVwKcBQg1azkdtuTorusuiKCxndMKDC43TS0Aine8QLuZ4jBDOWIv3Ku5swbcVo7i0jCfzU29dyZEOwyXg70yNmXsidIfb270FqL3EPOf0bG0HS0q6CvGG0Ohn1Fjw3COzdQb4f9vNlI7UsD4CwulILUVJrk8s1A",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sbac91f79f28d40778605d21d9fa26062Q.jpg"
+  },
+  {
+   "num": 15,
+   "id": "p1005009684944359",
+   "title": "Mini Electric Air Pump Rechargeable for Food Fresh-Keeping Vacuum Sealed Bag Storage Bag A",
+   "titles": {
+    "en": "Mini Electric Air Pump Rechargeable for Food Fresh-Keeping Vacuum",
+    "ro": "Mini Pompă de aer electrică reîncărcabilă pentru aspiratorul de păstrare a alimentelor proaspete",
+    "it": "Mini pompa ad aria elettrica ricaricabile per aspirapolvere per alimenti freschi",
+    "de": "Mini elektrische Luftpumpe wiederaufladbar für Lebensmittel Frischhaltevakuum",
+    "fr": "Mini pompe à air électrique rechargeable pour aspirateur de conservation des aliments frais",
+    "es": "Mini bomba de aire eléctrica recargable para aspiradora de alimentos frescos"
+   },
+   "created": "2026-10-02",
+   "link": "https://s.click.aliexpress.com/s/NdpwztbAIgDMmxGbP8fFks7yUFfsHjzlImSYmA68h7xlMRgzueFsRgokQ9f9hcpVKttxtQE2VzIoqkXJXrpOr6uR3zv7mP4CDO9CddoFf4t0QE5DXPy8Pgjhz4irfQSEjEGUmy5yF3A5gJ9h3NYjLMgqIMqa3zcpq5E2BC3W5EbV40Dm9buQxWpZzw1lbX8Zm2kZtNIa4KyDieNjsH7IU6Yv8StELKVvT9r4eFAaXPGhwHsgaDqdNcmY116r3GC2YvsOopeiiZPhJrV0cwgOQDSkW93v7gVKDqPkXyZF1oSWa6wSAOeznMFVlVYQS1vI7nOpOWCPNjyHuBbseXQi4TfxoaSnpnjmMf3DzkjVFSQJpqyjKEuH3rUbmTqM2FIqSPqKtG8ppuO2fMk6iHQHCT9ZzwQ3OkgEtbiHnoAzup1CYPUrmafcwbA58hieokzRz6QuRadzXJj8GjLganQINUwSFn5YsCeIo10YVkbbCZJE8CG98PXTflHRzhnCtbKQAhvrl3MszSNDv0xYyWheoohAp1iqs5qpTa9XXuqCtiehSXaP5ZkrPGSNrUQuSj9IaL2X5gDXBoSLzToVlTfI6KD4Sqbl0xjMrFSj4WP7U9wHmG7PgEZycVHWAYshKkkGOUciUL9Ep9Ale9MmuPAYusf7YwLBjyuTo0Z31WUYSeU4K0Xrq4u8BdlztkmoqY4gSH8EMbtz5jzlc28MFxUwpxVy8ZhDYnWQDWSoYII3wSvJzhiCXAE5lmylVy0BHmoQkr0EbFFcXHz8ucanaN9HxZWSARrk66vSLQoGbYFjagkJZwl1LB8L07G0hFmjlib6LPYS6sBiyI8FHmlNpwnXm0o6pVbLMMQ1bYXin2ZUEvVpSDC2szcMetLBXFM5hHrtPuNOfqXcwggvbZfn2IMEkUrR6OH1DsSHkLZ9rUttMlN96O2ftTWp6LXV4yR6nfZmL5tfgIiELpHeWcxL38bfLrgypREZHjXMpMfTPVqrZDUox",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S4da8e88793064b1eb7b3ec79950a93ear.jpg"
+  },
+  {
+   "num": 14,
+   "id": "p1005008406097986",
+   "title": "Smart Laser Cat-teasing Collar Laser Rechargeable Auto Infrared Interactive Pet Kitten Toy",
+   "titles": {
+    "en": "Smart Laser Cat-teasing Collar Laser Rechargeable Auto Infrared",
+    "ro": "Smart Laser Cat-teasing Collar Laser Reîncărcabil Auto Infraroșu",
+    "it": "Collare Smart Laser Cat-teasing Laser Ricaricabile Auto Infrarossi",
+    "de": "Smart Laser Cat-Teasing Halsband Laser wiederaufladbar Auto-Infrarot",
+    "fr": "Collier Smart Laser Cat-teasing Laser Rechargeable Auto Infrarouge",
+    "es": "Smart Laser Cat-teasing Collar Láser Recargable Auto Infrarrojo"
+   },
+   "created": "2026-10-02",
+   "link": "https://s.click.aliexpress.com/s/NdpwztbAIgDMmxGbP8fFks7yUFfsHjzlImSYmA68h7xlMRgzueFsRgokQ9f9hcpVKttxtQE2VzIoqkXJXrpOr6uR3zv7mP4CDO9CddoFf4t0QE5DXPy8Pgjhz4irfQSEjEGUmy5yF3A5gJ9h3NYjLMgqIMqa3zcpq5E2BC3W5EbV40Dm9buQxWpZzw1lbX8Zm2kZtNIa4KyDieNjsH7IU6Yv8StELKVvT9r4eFAaXPGhwHsgaDqdNcmY116r3GC2YvsOopeiiZPhJrV0cwgOQDSkW93v7gVKDqPkXyZF1oSWa6wSAOeznMFVlVZex52QmM6BCoq9BLxDedpBUv7LdWDD8FQqFPfdlG4Esj7jo19CcgW0rr1O5zAR0nbxiUUiLd0DOGxTJSu77mjjWuAPBpX9t2cQRaGlFa3bFbY55ervFW9YcFVr033TXzDHG8Gu2QwELnEsEkMDYgFFXWy4jOdPUHEryuKH2dsekxndpCOAdFEfyArlBFojxGXUIXxoI2JzLc1DPJlz6BVEshtnpL89dS9LIXODYFKtw2psljThBuvflB6wwIsvUmMa2LSwKJWg88z4bCT3zQHznuGE9WlkKSkP6mt5KEB7z815NPiV332eLQD9qMGL3XrAcK83KmDBQO4t8b3MBMY7naQMm3OtHnRu4Icyl7dFfRbcgNumED2Ww4tpXSiARxjiodaYQ1uEYuqfQfgHkL3r7vrcEKDPqFNnsnQ78bGiSUVgAktqrpVdjeJ8TgOd9cxv9oDU41ZsEWfOM1TwYQ37c3O3qbeWpetksBOrLiGaopgaArZjTXHTVBOTVAfDelmcDGkOL67wwbxvLgU2ta4HM4fZrH0uMhTWvkIt8lzUJacctRFtjlXaOlbXheDIG1RvI0RFowvfXedQFu3RGjH8h71h11LoWMhXesr3uMPgiA3beAjodw1UFxrlj2oNRIUZrRPIyut8drPwDe3c6CcT6ufnqJESGiMxHGtzalM4PreKCHoQJ",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/Saedf636611d74a6588389aabd7b1ccdaW.jpg"
+  },
+  {
+   "num": 13,
+   "id": "p1005012148697110",
+   "title": "ILIFE A30 Pro Robot Vacuum Cleaner with Automatic Self-Emptying Station, 5000Pa Strong Suc",
+   "titles": {
+    "en": "ILIFE A30 Pro Robot Vacuum Cleaner with Automatic Self-Emptying",
+    "ro": "Aspirator robot ILIFE A30 Pro cu auto-eliberare automată",
+    "it": "ILIFE A30 Pro Robot Aspirapolvere con Auto-Svuotamento Automatico",
+    "de": "ILIFE A30 Pro Saugroboter mit automatischer Selbstentleerung",
+    "fr": "Aspirateur robot ILife A30 Pro avec vidange automatique",
+    "es": "Aspiradora robot ILIFE A30 Pro con autovaciado automático"
+   },
+   "created": "2026-10-02",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4kNtPXKR5VC22kpj7DEWItrqnxVCwoGI4CV7zsW7hVdB3zvgvf9LXSWCQYJqslkttI1J7471z2cbc9CxEw18RaHFJ3nGGOLLyV7DL5j5OuuvieA9cQv2XLHqGXp0F82DKuL49J4b9E7d7urZoE8X8zjHCcjzyc3hT2YiuzFi7MTXRMc1tQhLCpfZXSQA93hP8rbaAqPJbMWB46VqnUOl59h1KRdFfRahUMUdxtaa8aq2sW6vIEj2eYp0ij1Lyk4pDzX15oOKqAlTGdjc5RlSWXXZ2D0Veu9qHj0HBHCn3q9mueT2MwS0bIG6QrPn5O6TLVfYKoAlGBLwFA83GWs8FlNYTX8sQYmpROpOJv6wpHet9ZPMO2KMAKU0IskqQfPwxpujgxOsfhkI5tyg3Fkdh9T6pvJFZ5D8ciMgPnG0AxgTTYW0gPcEIsCmJfnGnwjRFIBAjVY6wl3NZTvFexnW9r2A4yJ7k1O6eTQ9mnqqzMZf5eggx6yFlr4pQ8PMZfyXZc4N8dLqeparolhNYqLrgmQ7VqgLKvb3t2HBo8xn74hraKvAg8rz7ublABEYtZNN6lK3XlTUwZxs3ccAPtmoic6J5KIT2yZ8aMUagww6wTTL16Ptr8SrFsE0qF6Okv4Qy7ZZyhWgTngxKmIzbj5vzQazeAXSh2DdqfaXLPcTBbH9kUGyz4HnQIYqwZ7DRXfPdmW2a6lppGB59T",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S5cbd7da62f454859a24fc99a2e807b24X.jpg"
+  },
+  {
+   "num": 12,
+   "id": "p1005010044045611",
+   "title": "NEW USB Sweeping Robot Vacuum Cleaner Mopping 3 In 1 Smart Wireless 1500Pa Dragging Cleani",
+   "titles": {
+    "en": "NEW USB Sweeping Robot Vacuum Cleaner Mopping 3 In 1 Smart Wireless",
+    "ro": "NOUL robot de măturat USB Aspirator Mopping 3 în 1 Smart Wireless",
+    "it": "NUOVO aspirapolvere robot spazzante USB 3 in 1 Smart Wireless",
+    "de": "NEU USB Kehrroboter Staubsauger Wischen 3 in 1 Smart Wireless",
+    "fr": "NOUVEAU Robot Aspirateur De Balayage USB 3 En 1 Sans Fil Intelligent",
+    "es": "NUEVO robot aspirador de barrido USB Trapeador inalámbrico inteligente 3 en 1"
+   },
+   "created": "2026-10-02",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4kIEEvFdERhDD6R2erI61ESOOvMoGHPfICMoPamT9X8STWiMinYM5cfg58f6HmU6Zblw5JPJgkmc0p6ZMgco42jkitRZpZvQ4FhaPiIytampFL6KesJ8Pg2wf8ldVDQatb1MoPS4YpVS0vzByVTNOECzQYFPUzis1Qjdi2S7PyC2wUF8ale56XXMgA7CFoDD68dlL09K42u1ni7TcJdFlu7SBVpd010SHW7cMcw0XfsiZEn5aFLmhVnIdbVCzgxvvwQcxHjjRIpz97M9HxCUvYwpRtwIMvxYQho5ODRLxtLokSRXmujBpfcBeWuGe6naXM7kSpZF4Ymf93YUh9nQhN9jPLuRe4vuYmRUBUmNXrwy40X8Iywx8JxxsUkvvASADv7G8RdVy8viSiGE59jGBxa2NVcqmbJewZk6BKJaraGHaVFyXdCjUTfhWEtH3kbvutoMxjYx0nRALxvfSK6ddey1SDSvXS7peA13AVUrNYMunMIVJM7ijuiM5gHvXEDiGPFT99acpqzsB9SCEJztos0p6Dr3RIyMB6jVB5dpcrOm1jm4GtigPYz2i5MvKNZxhvRwJiFBTKQzx3FVTvXSVuiTtZ1Jp28OwFvaJoAFo3coDqWZETpYGQZXVngZX5YlnjFZ9vtPQIy9qVemLy9Uc1nPyUqioekMtgLLk48zgxcEgj3Nrx37HfvbLNZ6UJ7QoBlvQe5UwPP076",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S00466adf8f8a4d54bd35915830200d37P.png"
+  },
+  {
+   "num": 11,
+   "id": "p1005005866435877",
+   "title": "Professional Pet Deshedding Brush Dog Hair Remover Pet Fur Knot Cutter Puppy Cat Comb Brus",
+   "titles": {
+    "en": "Professional Pet Deshedding Brush Dog Hair Remover Pet Fur Knot",
+    "ro": "Perie profesională pentru desprinderea părului câinelui Nod de blană pentru animale de companie",
+    "it": "Professional Pet Deshedding Brush Dog Hair Remover Pet Fur Knot",
+    "de": "Professionelle Haustier Deshedding Bürste Hundehaarentferner Haustier Pelz Knoten",
+    "fr": "Brosse professionnelle pour animaux de compagnie Brosse pour chien Épilateur Nœud en fourrure d'animal de compagnie",
+    "es": "Cepillo Deshedding profesional para mascotas Removedor de pelo para perros Nudo de piel para mascotas"
+   },
+   "created": "2026-10-01",
+   "link": "https://s.click.aliexpress.com/s/NdpwztbAIgDMmxGbP8fFks7yUFfsHjzlImSYmA68h7xlMRgzueFsRgokQ9f9hcpVKttxtQE2VzIoqkXJXrpOr6uR3zv7mP4CDO9CddoFf4t0QE5DXPy8Pgjhz4irfQSEjEGUmy5yF3A5gJ9h3NYjLMgqIMqa3zcpq5E2BC3W5EbV40Dm9buQxWpZzw1lbX8Zm2kZtNIa4KyDieNjsH7IU6Yv8StELKVvT9r4eFAaXPGhwHsgaDqdNcmY116r3GC2YvsOopeiiZPhJrV0cwgOQDSkW93v7gVKDqPkXyZF1oSWa6wSAOeznMFVlVZeF1ZmB4Sr0zrdjias7r7XSUQZPWeQon4CGT9BX7PwBnG5r3i3gz4W69qxXcGEC8aQGQaQlhZSFuWHY20evOZQinrFKMT7dDOod5QZi2X0SRua70sddvnL4SkwoP350bqHORcOSMjZccdIQ8WCiwXJEBTtqzmsbCwKCowwP8MmzmsuRCCRra1olG9Wwbn2h40gOLU2R3WH9oekTxCuITzKaIcj1cm1ggGFY6OoHQYBkzEujv6gA8uQjfNJN8FBDksCHDXbGirRTbqjx3LQykoRkTFobYX00LpkVcZTHA5hbxG4RPYf0v7FWE08j8CsP5Jrrw58utiz8Lt7Gqo5hF0Rvcw46kXerVVQ5bL0UPtrzc9sA9PXZLg2JEwYaMedHdrUf77J8aVWNvxbwlToGRLeyoDuZqBFwKwj0l7YZaHtUg9bu7ASKyVzZxlD0WDTpZ8BGkaiIp9GNgJXEmcrAuuUm9mMMXPkqXrJ5CPIXqVY21dD8dt89y1NwYht7LK5J2UYUYmGJLMmDbBUwKv9C3FIDAAUBr9YKOgIR1ewSO4frGpBjBjLa3Z5mf2oPDD6BthEVzDRUgkfnrYx3mVFkI4X625urbUPuYqrvln4NpqgWFsLUH9det7qag3FvdS1qDNmXmClQHegmH0UEVThIeI2XmmOaLQmRZrKqXJX9hwfZXLJ6lgYF",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sd643895728da4634acde27269e91dd415.jpg"
+  },
+  {
+   "num": 10,
+   "id": "p1005005356228751",
+   "title": "13 PCS Makeup Brushes Set Eye Shadow Foundation Women Cosmetic Brush Eyeshadow Blush Beaut",
+   "titles": {
+    "en": "13 PCS Makeup Brushes Set Eye Shadow Foundation Women Cosmetic Brush",
+    "ro": "13 BUC Pensule de machiaj Set Fond de ten fard de pleoape Perie cosmetică pentru femei",
+    "it": "Set di 13 pennelli per trucco ombretto fondotinta donna pennello cosmetico",
+    "de": "13 STÜCK Make-up Pinsel Set Lidschatten Foundation Damen Kosmetik Pinsel",
+    "fr": "13 PCS Pinceaux de Maquillage Set Eye Shadow Foundation Femmes Pinceau Cosmétique",
+    "es": "Set de 13 brochas de maquillaje Sombra de ojos Cepillo cosmético para mujer"
+   },
+   "created": "2026-10-01",
+   "link": "https://s.click.aliexpress.com/s/NdpwztbAIgDMmxGbP8fFks7yUFfsHjzlImSYmA68h7xlMRgzueFsRgokQ9f9hcpVKttxtQE2VzIoqkXJXrpOr6uR3zv7mP4CDO9CddoFf4t0QE5DXPy8Pgjhz4irfQSEjEGUmy5yF3A5gJ9h3NYjLMgqIMqa3zcpq5E2BC3W5EbV40Dm9buQxWpZzw1lbX8Zm2kZtNIa4KyDieNjsH7IU6Yv8StELKVvT9r4eFAaXPGhwHsgaDqdNcmY116r3GC2YvsOopeiiZPhJrV0cwgOQDSkW93v7gVKDqPkXyZF1oSWa6wSAOeznMFVlVYQwfEaS99RJAozG5GCnVXKHdwA0qNLV1jywhjT16wEk43Gk58UDYusVln5qcq7Ojr4AKZ9jHbcuFAunhVaTupxCF597yjyJIO9AU74dUMEpRUNHubSyysOtJ755keOOvR7lrMi2n6ItYgSB5Z4ywE6sZeC1FKMvUkwcAtJS33yrlpfWFcEPKVKqVktr5Au69u4cejOe63NvMpdYugglG50JkzOmKqWMppXfAmWUWVwoFGVoJeqzRIlPOB5Q4q9ySnLhKi08LiR6xrShFaJsD8R0D5CPoqJKaKS6MRSOefo064E4UDQlLBfTpPbOpkFuhzWVj6iLnjwCuoNcSsEYkFJ11uoJszU6yJqeyyW0U5pHILgmFNiW7FErwR5p6QEKuWIFeM37IFlEhQqjpfM53KJjXbtgoest5SawnIy6Evlz3HjJ1H8kb8Eg2RYU4l1CZ1xDFUrzFmspaxWU5VQ77W9lYxwsY3iAFzJOdudGXCVYVe2qVLW6JKMsTo4LaDFgTtGQQNbDDXW73KHKG8AnBQF4tWqhuBZbGlFqlqFdkxQLYJ8RcILQa6Pj8i5D3arXHa3aqdR8MrS56WuezXCPvFfegvdiQe0OR5IKylq7Q0FrxRVshXePfTYWGy4lGcUWzUodFPegSPuIL1FoUX0IhOx4xMLipFYBvKmYXp4ehhRHTHkB15oJ",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S09e878b9dcb843f3a1a56012d0e14e66o.jpg"
+  },
+  {
+   "num": 9,
+   "id": "p1005013071997736",
+   "title": "100Pcs Double-Ended Cotton Swabs Fine Pointed Tips for Nail Art Makeup Eyeliner Correction",
+   "titles": {
+    "en": "100Pcs Double-Ended Cotton Swabs Fine Pointed Tips for Nail Art",
+    "ro": "Tampoane de bumbac cu două capete, cu vârfuri fin ascuțite, pentru arta unghiilor, 100 de bucăți",
+    "it": "100pz Tamponi di cotone a doppia estremità a punta fine per nail art",
+    "de": "100 Stück doppelseitige Wattestäbchen, feine, spitze Spitzen für Nagelkunst",
+    "fr": "100 pièces coton-tige à double extrémité pointes fines pour l'art des ongles",
+    "es": "100 piezas de hisopos de algodón de doble punta puntas finas para el arte de uñas"
+   },
+   "created": "2026-10-01",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4mkUeBZiWBHAn28OBDx1pgvhwrW4yRK8k8gOHEQPoVLjHuBPyrM388YgaoVT8SfgCIov7McXmh2l0QpdKtuc3cDcEmTrCPPnY7Sjfjk14np5lt24vqCceXwz6dTLBhB3iW7LzAb7Epp4bTt6zkg6VgpSjZdrxoe5XwWlVIH9NUfeD4lpjCpi7yYL5W0pvOBvizUZFosBEgVKYZ73R5B45KBnjicnV8ttjSo9jJCr5LXJW8OJ9mRTOh7NTNwhIXdyUujxSTi0WPWTzfrabhhMEEqjGsbk1atie5eboa2amS2j62oOW68WXG3bn0ZvRhrTUK6FWDkd6hLT9SGfckrLIKOZJQ5JOHdNlF4iVVbnXZACSLDecrUJjXqka03baVQVebCxDM8dNmfSQdv7A9wvMOxWvM3xg69T9iRufsB72YqZgwSrrloM9ldJcMede7zwS8NAmO4wTvVdCj8BkUYKNBkqC6p0pNcoOjRn4D84KWwUpimwxUD67mMc4t9cJ3jo260i2mQG8QApkNph8xqE2nJBTfNq8grTvFFnpgylVcKIe58x5Rtr6qHZB6rY80Nd1cEJH7DwANS1srgEpULkc3HpXcS3h1ljMYWqBnRjBp1IqIwxKND61EUhWvq4oYStkcqg6pKzcS2Nj0DB6e6F53LRlnjhkCbHIJ9s4JFWZomW1xsCMB1FhlLqzZzdihU7Kokha20NHMb1q8",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/Se07f2e07e34740019a9797280d827234Z.jpg"
+  }
+ ],
+ "log": [
+  "[info] curs BCE: 1 EUR = 5.3488 RON",
+  "[info] comenzi (Payment Completed): nicio comanda in ultimele 30 zile",
+  "[info] comenzi (Buyer Confirmed Receipt): nicio comanda in ultimele 30 zile",
+  "[info] 'pet supplies' via product: 49 produse primite",
+  "[info] 'home gadget' via product: 47 produse primite",
+  "[info] 'cleaning' via product: 47 produse primite",
+  "[info] 'kitchen' via product: 43 produse primite",
+  "[info] 'phone accessories' via product: 49 produse primite",
+  "[info] 'car accessories' via product: 48 produse primite",
+  "[info] 'beauty tools' via product: 47 produse primite",
+  "[info] preturi produse fixe actualizate: 8/8 (#1 RON 386.51 -> EUR 69.99; #2 RON 395.86 -> EUR 75.39; #3 RON 615.21 -> EUR 112.26; #4 RON 44.47 -> EUR 8.09; #5 RON 23.2 -> EUR 4.31; #6 RON 32.77 -> EUR 6.21; #7 RON 26.28 -> EUR 5.13; #8 RON 46.95 -> EUR 8.34)",
+  "[info] traduceri: 10 noi, 40 din memorie"
+ ]
+}
