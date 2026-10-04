@@ -861,7 +861,9 @@ def make_daily_clips(hot: list[dict], featured: list[dict], rates: dict, video_l
         pool = CANDIDATES or hot
         fresh = [p for p in pool if p["id"] not in done]
         scored = sorted(((wow_score(p, to_lei(p, rates)), p) for p in fresh), key=lambda x: -x[0][0])
-        todo = [p for (sc_, why), p in scored if sc_ >= MIN_WOW_SCORE][:CLIPS_PER_DAY]
+        # intai produsele interesante care au filmare reala (clipurile arata mult mai bine), apoi restul
+        good = [p for (sc_, why), p in scored if sc_ >= MIN_WOW_SCORE]
+        todo = ([p for p in good if p.get("video")] + [p for p in good if not p.get("video")])[:CLIPS_PER_DAY]
         if len(todo) < CLIPS_PER_DAY:
             # zi slaba: completez cu urmatoarele cele mai interesante produse, dar nu cu cele plictisitoare
             extra = [p for (sc_, why), p in scored if MIN_FALLBACK_SCORE <= sc_ < MIN_WOW_SCORE]
