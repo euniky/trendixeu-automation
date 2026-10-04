@@ -119,7 +119,55 @@ def features(title: str) -> list[tuple[str, str, str]]:
     return out
 
 
+# ---- texte variate: fiecare clip primeste alta combinatie (aleasa stabil dupa produs + numar)
+HOOKS = {
+    "novelty": ["Nu știam că există așa ceva", "Cine a inventat asta e genial", "Asta chiar există?!",
+                "Trebuia să-l am de mult", "Am rămas fără cuvinte", "Ăsta e viitorul, serios"],
+    "price": ["Doar {li} lei?!", "Sub {li} lei și face asta?", "{li} lei. Atât.", "Cel mai bun lucru de {li} lei",
+              "Ieftin, dar genial: {li} lei", "Nu dai mai mult de {li} lei"],
+    "orders": ["{orders}+ oameni l-au cumpărat", "{orders}+ comenzi. Acum înțeleg de ce", "Toată lumea îl cumpără",
+               "Produsul pe care îl are toată lumea", "{orders}+ oameni nu pot greși"],
+    "video": ["Uite ce poate face", "Privește până la final", "Nu-mi venea să cred până n-am văzut",
+              "Așa arată în realitate", "Uite-l în acțiune"],
+    "rating": ["Nimeni nu s-a plâns de el", "{rating}% recenzii pozitive", "Recenzii aproape perfecte",
+               "Oamenii îl adoră și uite de ce"],
+    "generic": ["Gadgetul pe care nu știai că-l vrei", "Îți trebuie, doar că nu știi încă", "Descoperirea zilei",
+                "Mi-aș fi dorit să-l am mai devreme", "Mic, dar îți schimbă ziua", "Ăsta merită salvat"],
+}
+HOOK_EN = {"novelty": "I didn't know this existed", "price": "Only {li} lei?!", "orders": "{orders}+ people bought this",
+           "video": "Watch what it does", "rating": "Nobody complained about it",
+           "generic": "The gadget you didn't know you wanted"}
+KICKERS = {"top": ["TOP VÂNZĂRI", "CEL MAI CERUT", "BESTSELLER", "VIRAL ACUM"],
+           "new": ["DESCOPERIREA ZILEI", "NOU PE TRENDIXEU", "GADGETUL ZILEI", "MERITĂ VĂZUT"]}
+BENEFITS = {
+    "cleaning": ["Gata cu frecatul de mână", "Curățenie în jumătate de timp", "Casa curată, fără efort",
+                 "Ajunge unde tu nu ajungi", "Murdăria nu mai are nicio șansă"],
+    "kitchen": ["Gătitul devine joacă", "Îți salvează timp în fiecare zi", "Bucătăria ta, mai deșteaptă",
+                "Gata cu bătaia de cap la gătit"],
+    "home gadget": ["Îți face viața mai ușoară", "Un mic upgrade pentru casa ta", "Rezolvă o problemă de zi cu zi",
+                    "Nu mai poți fără el după prima folosire"],
+    "phone accessories": ["Telefonul tău îți mulțumește", "Upgrade mic, diferență mare", "Gata cu bateria descărcată",
+                          "Simplu, dar foarte util"],
+    "car accessories": ["Mașina ta, mai practică", "Fiecare drum mai confortabil", "Ordine în mașină, în sfârșit"],
+    "beauty tools": ["Rezultat de salon, acasă", "Rutina ta, mai simplă", "Arăți impecabil fără efort"],
+    "pet supplies": ["Animăluțul tău o să-l adore", "Mai puțin păr prin casă", "Pentru prietenul tău blănos"],
+}
+BENEFITS_ANY = ["Îți face viața mai ușoară", "Simplu și chiar funcționează", "Mic, dar foarte util",
+                "Rezolvă o problemă de zi cu zi"]
+CTA_SAY = ["Linkul e în bio. Caută produsul numărul {num}!", "Îl găsești în bio, la numărul {num}!",
+           "Intră pe linkul din bio și caută numărul {num}!", "Numărul {num}, pe pagina din bio!"]
+END_SUB = ["Caută numărul pe pagina mea", "Linkul e în profilul meu", "Stocul se termină repede",
+           "Prețul poate crește oricând", "Salvează clipul ca să nu-l pierzi"]
+CAPTION_OPEN = ["{hook} 😱", "{hook} 👀", "{hook} 🔥", "{hook} 🤯", "{hook} ✨"]
+CAPTION_CLOSE = ["👉 Link în bio · caută produsul nr. {num}", "🔗 Linkul e în bio → produsul nr. {num}",
+                 "👉 Îl găsești în bio la nr. {num}", "🛒 Link în bio, numărul {num}"]
+CAPTION_Q = ["Tu l-ai lua? 👇", "Ai nevoie de el? Scrie DA 👇", "Cui i-ar trebui? Dă-i tag 👇",
+             "Merită sau nu? 👇", "Salvează pentru mai târziu 📌"]
+
+
 def build_copy(p: dict, num: int, lei: float) -> dict:
+    import random
+    rnd = random.Random(f"{p.get('id')}-{num}")
     orders, rating = int(p.get("orders") or 0), float(p.get("rating") or 0)
     titles = p.get("titles") or {}
     name_ro = tidy(titles.get("ro") or p["title"])
@@ -130,22 +178,26 @@ def build_copy(p: dict, num: int, lei: float) -> dict:
     novelty = any(w in t_low for w in ("robot", "automatic", "magic", "lazy", "levitat", "projector",
                                         "self-", "galaxy", "smart", "laser"))
     if novelty:
-        hook_show, hook_en, used = "Nu știam că există așa ceva", "I didn't know this existed", "novelty"
+        used = "novelty"
     elif li <= 30:
-        hook_show, hook_en, used = f"Doar {li} lei?!", f"Only {li} lei?!", "price"
+        used = "price"
     elif orders >= 10000:
-        hook_show, hook_en, used = f"{fmt_int(orders)}+ oameni l-au cumpărat", f"{fmt_int(orders)}+ people bought this", "orders"
-    elif p.get("video"):
-        hook_show, hook_en, used = "Uite ce poate face", "Watch what it does", "video"
+        used = "orders"
+    elif p.get("video") or p.get("video_path"):
+        used = "video"
     elif rating >= 97:
-        hook_show, hook_en, used = "Nimeni nu s-a plâns de el", "Nobody complained about it", "rating"
+        used = "rating"
     else:
-        hook_show, hook_en, used = "Gadgetul pe care nu știai că-l vrei", "The gadget you didn't know you wanted", "generic"
-    hook_say = f"Doar {ro_count(li, 'lei')} pentru asta?" if used == "price" else hook_show + "!"
-    kicker = "TOP VÂNZĂRI" if orders >= 5000 else "DESCOPERIREA ZILEI"
+        used = "generic"
+    fill = {"li": li, "orders": fmt_int(orders), "rating": f"{rating:.0f}", "num": num}
+    hook_show = rnd.choice(HOOKS[used]).format(**fill)
+    hook_en = HOOK_EN[used].format(**fill)
+    hook_say = f"Doar {ro_count(li, 'lei')} pentru asta?" if hook_show.startswith("Doar") else hook_show + "!"
+    kicker = rnd.choice(KICKERS["top" if orders >= 5000 else "new"])
+    benefit = rnd.choice(BENEFITS.get(p.get("kw", ""), BENEFITS_ANY))
 
     feats = features(p["title"])
-    sentences = [("hook", hook_say), ("name", f"{name_ro}.")]
+    sentences = [("hook", hook_say), ("name", f"{benefit}. {name_ro}.")]
     if feats:
         parts = [f[1] for f in feats]
         txt = parts[0] if len(parts) == 1 else ", ".join(parts[:-1]) + " și " + parts[-1]
@@ -155,18 +207,24 @@ def build_copy(p: dict, num: int, lei: float) -> dict:
     else:
         proof = f"Peste {ro_people(orders)} l-au comandat, cu {rating:.0f} la sută recenzii pozitive."
     sentences.append(("proof", proof))
-    sentences.append(("cta", f"Linkul e în bio. Caută produsul numărul {num}!"))
+    sentences.append(("cta", rnd.choice(CTA_SAY).format(**fill)))
 
     cards = [f[0] for f in feats] or ["Livrare în România"]
-    desc_ro = "\n".join([f"{hook_show} 😱", name_ro, *[f"✅ {c}" for c in cards],
+    rnd.shuffle(cards)
+    desc_ro = "\n".join([rnd.choice(CAPTION_OPEN).format(hook=hook_show), f"{benefit}: {name_ro}",
+                         *[f"✅ {c}" for c in cards],
                          f"⭐ {rating:.0f}% recenzii pozitive · {fmt_int(orders)}+ comenzi",
-                         f"💰 Preț: ~{li} lei", f"👉 Link în bio · caută produsul #{num}"])
+                         f"💰 Preț: ~{li} lei", rnd.choice(CAPTION_CLOSE).format(**fill), rnd.choice(CAPTION_Q)])
     desc_en = "\n".join([f"{hook_en} 😱", name_en, *[f"✅ {f[2]}" for f in feats],
                          f"⭐ {rating:.0f}% positive reviews · {fmt_int(orders)}+ orders",
                          f"💰 Price: ~{li} lei", f"👉 Link in bio · find product #{num}"])
-    tags = HASHTAGS_BASE + HASHTAGS_BY_KW.get(p.get("kw", ""), ["gadgets", "homehacks"])
+    extra = HASHTAGS_BY_KW.get(p.get("kw", ""), ["gadgets", "homehacks"])
+    base = list(HASHTAGS_BASE)
+    rnd.shuffle(base)
+    tags = extra + base   # hashtag-urile de nisa primele, restul in alta ordine la fiecare clip
     return {"hook": hook_show, "kicker": kicker, "name": name_ro, "sentences": sentences, "cards": cards,
             "orders": orders, "rating": rating, "price_text": f"{li} lei", "num": num,
+            "end_sub": rnd.choice(END_SUB), "benefit": benefit,
             "description_ro": desc_ro, "description_en": desc_en, "hashtags": tags[:10],
             "bullets": cards}
 
@@ -275,8 +333,9 @@ def make_voice(sentences: list[tuple[str, str]], tmp: Path, provider: str = "edg
                 print(f"[voce] indisponibila, continui fara voce: {exc}")
         if pcm is None or len(pcm) == 0:
             # fara voce: durate gandite pentru citit textul de pe ecran
-            fixed = {"hook": 1.9, "proof": 1.9, "cta": 2.3}
-            dur = fixed.get(kind) or min(3.2, max(1.6, 0.30 * len(text.split()) + 0.5))
+            # ritm mai lent: textul ramane destul pe ecran ca sa fie citit linistit (clip mai lung)
+            fixed = {"hook": 2.6, "proof": 3.2, "cta": 3.0}
+            dur = fixed.get(kind) or min(5.5, max(2.8, 0.42 * len(text.split()) + 1.2))
             pcm = np.zeros(int(dur * sr), dtype=np.int16)
             words = []
         dur = len(pcm) / sr
@@ -652,7 +711,7 @@ def render_clip(p: dict, num: int, lei: float, out_path: Path, local_images: lis
         ImageDraw.Draw(price_big).text(((W - fp.getlength(copy["price_text"])) / 2, 0), copy["price_text"], font=fp, fill=GOLD)
         end_pill = pill(f"Link în bio · produsul #{num}", font("Bold", 56), ACCENT, WHITE, padx=36, pady=18)
         fs_ = font("Medium", 42)
-        sub = "Caută numărul pe pagina mea"
+        sub = copy.get("end_sub") or "Caută numărul pe pagina mea"
         end_sub = Image.new("RGBA", (W, 64), (0, 0, 0, 0))
         ImageDraw.Draw(end_sub).text(((W - fs_.getlength(sub)) / 2, 0), sub, font=fs_, fill=(225, 220, 235, 255))
         arrow = Image.new("RGBA", (120, 90), (0, 0, 0, 0))
@@ -741,7 +800,8 @@ def render_clip(p: dict, num: int, lei: float, out_path: Path, local_images: lis
             # ---- straturi
             put(frame, handle, 50 + handle.width / 2, 150)
             if kind == "hook":
-                put(frame, kicker, W / 2, 330, alpha=min(1, lt / 0.1), scale=0.7 + 0.3 * ease_out_back(lt / 0.25))
+                put(frame, kicker, W / 2, min(330, 500 - hook_layer.height / 2 - kicker.height / 2 - 18),
+                    alpha=min(1, lt / 0.1), scale=0.7 + 0.3 * ease_out_back(lt / 0.25))
                 put(frame, hook_layer, W / 2, 500, alpha=min(1, max(0, lt - 0.08) / 0.1),
                     scale=0.6 + 0.4 * ease_out_back(max(0, lt - 0.08) / 0.3))
             else:
