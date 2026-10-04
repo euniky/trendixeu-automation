@@ -32,6 +32,12 @@ def find_video(pid: str, log=print) -> str | None:
             log(f"[video] {url}: {str(exc)[:80]}")
             continue
         html = r.text
+        try:
+            import os
+            os.makedirs("/tmp/p", exist_ok=True)
+            open(f"/tmp/p/{pid}-{url.split('//')[1].split('.')[0]}.html", "w").write(html)
+        except Exception:
+            pass
         blocked = any(k in html for k in ("punish", "captcha", "x5secdata", "_____tmd_____"))
         vids = [_clean(m) for m in VIDEO_RE.findall(html)]
         vids = [v for v in vids if "video" in v or "cloudvideo" in v or ".mp4" in v]
