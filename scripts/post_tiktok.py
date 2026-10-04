@@ -163,6 +163,23 @@ def main() -> None:
     video_log = json.loads(VIDEO_LOG.read_text(encoding="utf-8")) if VIDEO_LOG.exists() else []
     report["drafts"] = []
 
+    # produsele ascunse sau sterse din consola nu se posteaza; programarile lor viitoare se anuleaza
+    off = set()
+    try:
+        m = requests.get(f"{SITE_URL}/.netlify/functions/moderate", timeout=20).json()
+        off = set(m.get("hidden") or []) | set(m.get("deleted") or [])
+    except Exception as exc:
+        log(f"Nu am putut citi produsele ascunse din consola: {str(exc)[:120]}")
+    now = datetime.now(TZ)
+    for v in video_log:
+        po = v.get("posted") or {}
+        if v.get("id") in off and po.get("scheduledFor") and po.get("id") and not po.get("cancelled") \
+                and datetime.fromisoformat(po["scheduledFor"]) - now > timedelta(minutes=5):
+            r = requests.delete(f"{API}/posts/{po['id']}", headers=headers(), timeout=30)
+            if r.ok or r.status_code == 404:
+                po["cancelled"] = True
+                log(f"Clipul #{v['num']} a fost ascuns din consola: programarea de la {po['scheduledFor'][11:16]} e anulata")
+
     # mutare manuala in schite (TO_DRAFTS="13,14"): anulez programarea si trimit clipul in inbox
     move = {int(x) for x in re.findall(r"\d+", os.environ.get("TO_DRAFTS", ""))}
     for v in video_log:
@@ -180,7 +197,8 @@ def main() -> None:
 
     # doar clipurile generate azi (cele mai vechi le-ai postat poate deja manual)
     today = datetime.utcnow().date().isoformat()
-    todo = [v for v in video_log if v.get("clip") and not v.get("posted") and v.get("created") == today]
+    todo = [v for v in video_log if v.get("clip") and not v.get("posted") and v.get("created") == today
+            and v.get("id") not in off]
     todo.sort(key=lambda v: -(v.get("wow") or 0))
     drafts_today = sum(1 for v in video_log if (v.get("posted") or {}).get("draft")
                        and (v.get("posted") or {}).get("sent", "")[:10] == datetime.now(TZ).date().isoformat())
@@ -190,7 +208,8 @@ def main() -> None:
             report["drafts"].append({"num": v["num"], "title": v["clip"].get("title_ro")})
     todo = [v for v in todo if not v.get("posted")]
 
-    taken = {v["posted"]["scheduledFor"] for v in video_log if (v.get("posted") or {}).get("scheduledFor")}
+    taken = {v["posted"]["scheduledFor"] for v in video_log
+             if (v.get("posted") or {}).get("scheduledFor") and not v["posted"].get("cancelled")}
     slots = next_slots(len(todo), taken)
     for v, when in zip(todo, slots):
         clip = v["clip"]

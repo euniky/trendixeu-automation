@@ -20,4 +20,15 @@
     clicked[id] = true;
     send({ e: "click", id: id, s: a.getAttribute("data-s"), title: a.getAttribute("data-title") });
   }, true);
+
+  // produsele ascunse sau sterse din consola dispar imediat de pe pagina
+  try {
+    fetch("/.netlify/functions/moderate", { cache: "no-store" }).then(function (r) { return r.json(); }).then(function (m) {
+      var off = {};
+      (m.hidden || []).concat(m.deleted || []).forEach(function (id) { off[id] = true; });
+      document.querySelectorAll("a.card[data-id]").forEach(function (a) {
+        if (off[a.getAttribute("data-id")]) a.style.display = "none";
+      });
+    }).catch(function () {});
+  } catch (e) {}
 })();

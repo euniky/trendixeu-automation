@@ -96,6 +96,15 @@ tr:last-child td{border-bottom:none}
 .tab{white-space:nowrap;font:inherit;font-size:12.5px;background:none;border:1px solid transparent;color:var(--muted);border-radius:8px;padding:5px 10px;cursor:pointer}
 .tab[aria-selected="true"]{background:var(--panel-2);border-color:var(--line);color:var(--text)}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;padding:14px}
+.prodwrap{display:flex;flex-direction:column;gap:6px;min-width:0}
+.prodwrap.is-off .prod,.clip.is-off video{opacity:.4}
+.prod-actions{display:flex;gap:6px;flex-wrap:wrap}
+.btn.sm{font-size:11.5px;padding:4px 9px}
+.btn.warn{color:#ffb4a8;border-color:#5a2c26}
+.offbadge{display:inline-block;font-size:10.5px;font-weight:600;border-radius:999px;padding:1px 7px;background:#3a2f12;color:var(--gold);margin-left:6px;vertical-align:1px}
+.offbadge.del{background:#3d1a16;color:#ffb4a8}
+.modlist{list-style:none;padding:8px 14px 14px;display:flex;flex-direction:column;gap:8px}
+.modlist li{display:flex;gap:10px;align-items:center;justify-content:space-between;background:var(--panel-2);border:1px solid var(--line);border-radius:10px;padding:8px 10px;font-size:12.5px}
 .prod{display:flex;gap:10px;align-items:center;background:var(--panel-2);border:1px solid var(--line);border-radius:10px;padding:8px;text-decoration:none;min-width:0}
 .prod:hover{border-color:var(--muted)}
 .prod img{width:52px;height:52px;border-radius:8px;object-fit:cover;background:#2a2533;flex-shrink:0}
@@ -203,6 +212,7 @@ tr:last-child td{border-bottom:none}
     <a href="#ordersPanel">🛒 Comenzi</a>
     <a href="#productsPanel">📦 Produse</a>
     <a href="#runsPanel">⚙️ Rulări</a>
+    <a href="#modPanel">🚫 Ascunse</a>
     <a href="#health">⬆ Sus</a>
   </nav>
 
@@ -304,6 +314,13 @@ tr:last-child td{border-bottom:none}
     <p class="foot" id="filters" style="padding:0 14px 14px"></p>
   </section>
 
+  <section class="panel" id="modPanel">
+    <div class="panel-head"><h2>Ascunse și șterse</h2><span class="muted" style="font-size:12px" id="modInfo"></span></div>
+    <ul class="modlist" id="modList"></ul>
+    <p class="empty" id="modEmpty">Nimic ascuns sau șters. Folosește butoanele „Ascunde” / „Șterge” de pe produse și clipuri.</p>
+    <p class="foot" style="padding:0 14px 14px"><b>Ascunde</b>: produsul dispare imediat de pe pagina de bio și clipul lui nu se mai postează (programările viitoare se anulează); îl poți repune oricând. <b>Șterge</b>: în plus, la următoarea rulare dispare definitiv din listă, din clipuri și din fișierul cu produsele tale, iar sistemul nu-l mai alege niciodată. Prima dată îți alegi un PIN, ca nimeni altcineva să nu poată modifica.</p>
+  </section>
+
   <section class="actions" aria-label="Acțiuni rapide">
     <a class="btn primary" href="https://github.com/euniky/trendixeu-automation/actions/workflows/daily-refresh.yml" target="_blank" rel="noopener">▶ Rulează acum</a>
     <a class="btn" href="https://trendixeu.netlify.app/" target="_blank" rel="noopener">Pagina de bio ↗</a>
@@ -382,6 +399,9 @@ tr:last-child td{border-bottom:none}
     try {
       state.stats = await getJSON("/.netlify/functions/stats?t=" + Date.now());
     } catch (e) { state.stats = state.stats || null; }
+    try {
+      state.mod = await getJSON("/.netlify/functions/moderate?t=" + Date.now());
+    } catch (e) { state.mod = state.mod || null; }
 
     if (Date.now() >= state.rateLimitedUntil) {
       try {
@@ -494,7 +514,7 @@ tr:last-child td{border-bottom:none}
       $("kSuccessSub").textContent = "din ultimele " + done.length + " rulări";
     }
 
-    renderFeed(); renderHistory(); renderProducts(); renderInterest(); renderBought(); renderOrders(); renderClips(); renderDemo();
+    renderFeed(); renderHistory(); renderProducts(); renderInterest(); renderBought(); renderOrders(); renderClips(); renderDemo(); renderMod();
   }
 
   var demoKey = "";
@@ -537,13 +557,15 @@ tr:last-child td{border-bottom:none}
   })();
   function renderClips() {
     var st = state.status, list = (st && st.clips) || [];
-    var key = (st ? st.run_number : "") + ":" + list.length;
+    var key = (st ? st.run_number : "") + ":" + list.length + ":" + modKey();
     if (key === clipsKey) return; // nu reconstrui playerele la fiecare verificare
     clipsKey = key;
     $("clipsInfo").textContent = list.length ? list.length + " clipuri · glisează →" : "";
     $("clips").innerHTML = list.map(function (c, i) {
-      return '<article class="clip"><video src="/' + esc(c.file) + '" controls playsinline preload="none" poster="' + (c.poster ? "/" + esc(c.poster) : "") + '"></video><div class="body">' +
-        '<h3><span class="n">#' + c.num + '</span><span>' + esc(c.title_ro) + "</span></h3>" +
+      var m = modOf(c.id);
+      return '<article class="clip' + (m ? " is-off" : "") + '"><video src="/' + esc(c.file) + '" controls playsinline preload="none" poster="' + (c.poster ? "/" + esc(c.poster) : "") + '"></video><div class="body">' +
+        '<h3><span class="n">#' + c.num + '</span><span>' + esc(c.title_ro) + offBadge(m) + "</span></h3>" +
+        modButtons(c.id, c.title_ro, c.num, "clip") +
         '<div class="foot">' + (c.duration ? c.duration + " s · " : "") + (c.used_seller_video ? "filmarea vânzătorului" : "poze animate") + (c.voiced ? " · cu voce" : " · fără voce, pune muzică din TikTok") + "</div>" +
         '<div class="row2"><a class="btn primary" href="/' + esc(c.file) + '" download>⬇ Descarcă</a>' +
         '<button class="btn" type="button" data-copy="ro" data-i="' + i + '">Copiază descrierea</button>' +
@@ -556,6 +578,66 @@ tr:last-child td{border-bottom:none}
     $("clipsEmpty").hidden = list.length > 0;
     $("clipsEmpty").textContent = st ? "Niciun clip nou la ultima rulare. Clipurile apar aici în fiecare dimineață, după actualizarea automată." : "Se încarcă…";
   }
+
+  // ---- ascundere / stergere produse (salvate pe Netlify, protejate cu PIN)
+  function modOf(id) { var it = state.mod && state.mod.items; return it && id && it[id] ? it[id] : null; }
+  function modKey() { return state.mod ? Object.keys(state.mod.items || {}).sort().join(",") + JSON.stringify(state.mod.items || {}).length : ""; }
+  function offBadge(m) { return m ? '<span class="offbadge' + (m.action === "delete" ? " del" : "") + '">' + (m.action === "delete" ? "șters" : "ascuns") + "</span>" : ""; }
+  function modButtons(id, title, num, section) {
+    if (!id) return "";
+    var a = ' data-id="' + esc(id) + '" data-title="' + esc(title || "") + '" data-num="' + esc(num || "") + '" data-s="' + esc(section || "") + '"';
+    if (modOf(id)) return '<div class="prod-actions"><button class="btn sm" type="button" data-mod="restore"' + a + '>↩ Repune</button></div>';
+    return '<div class="prod-actions"><button class="btn sm" type="button" data-mod="hide"' + a + '>🙈 Ascunde</button><button class="btn sm warn" type="button" data-mod="delete"' + a + '>🗑 Șterge</button></div>';
+  }
+  function renderMod() {
+    var it = (state.mod && state.mod.items) || {}, ids = Object.keys(it);
+    ids.sort(function (a, b) { return (it[b].at || "").localeCompare(it[a].at || ""); });
+    $("modInfo").textContent = ids.length ? ids.length + " produse" : "";
+    $("modEmpty").hidden = ids.length > 0;
+    $("modList").innerHTML = ids.map(function (id) {
+      var m = it[id];
+      return "<li><span>" + (m.num ? '<b class="n">#' + esc(m.num) + "</b> " : "") + esc(m.title || id) + offBadge(m) +
+        '<br><span class="muted" style="font-size:11px">' + esc(fmtDate(new Date(m.at))) + "</span></span>" +
+        '<button class="btn sm" type="button" data-mod="restore" data-id="' + esc(id) + '">↩ Repune</button></li>';
+    }).join("");
+  }
+  function getPin(fresh) {
+    var pin = null;
+    try { pin = fresh ? null : localStorage.getItem("tx_pin"); } catch (e) {}
+    if (pin) return { pin: pin, setup: false };
+    var setup = state.mod && !state.mod.pin_set;
+    pin = window.prompt(setup ? "Alege un PIN pentru consolă (minim 4 caractere). Îl folosești ca să ascunzi sau să ștergi produse." : "Introdu PIN-ul consolei:");
+    return pin ? { pin: pin.trim(), setup: setup } : null;
+  }
+  async function modPost(body) {
+    var r = await fetch("/.netlify/functions/moderate", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
+    var j = {}; try { j = await r.json(); } catch (e) {}
+    return { ok: r.ok && j.ok, data: j, status: r.status };
+  }
+  document.addEventListener("click", async function (ev) {
+    var b = ev.target.closest && ev.target.closest("[data-mod]");
+    if (!b) return;
+    ev.preventDefault();
+    var action = b.getAttribute("data-mod"), title = b.getAttribute("data-title") || "";
+    if (action === "delete" && !window.confirm("Ștergi definitiv „" + title + "”?\n\nDispare de pe pagină, din clipuri și din listă la următoarea rulare și nu va mai fi ales niciodată.")) return;
+    var p = getPin(false);
+    if (!p) return;
+    b.disabled = true;
+    try {
+      if (p.setup) {
+        var s1 = await modPost({ action: "setpin", pin: p.pin });
+        if (!s1.ok) { window.alert(s1.data.error || "Nu am putut seta PIN-ul"); return; }
+      }
+      var res = await modPost({ action: action, pin: p.pin, id: b.getAttribute("data-id"), title: title, num: b.getAttribute("data-num"), section: b.getAttribute("data-s") });
+      if (res.status === 403) { try { localStorage.removeItem("tx_pin"); } catch (e) {} window.alert(res.data.error || "PIN greșit"); return; }
+      if (!res.ok) { window.alert(res.data.error || "Nu s-a putut salva. Încearcă din nou."); return; }
+      try { localStorage.setItem("tx_pin", p.pin); } catch (e) {}
+      state.mod = res.data;
+      renderProducts(); renderClips(); renderMod();
+    } catch (e) {
+      window.alert("Nu am putut contacta serverul. Verifică internetul și încearcă din nou.");
+    } finally { b.disabled = false; }
+  });
 
   function copyText(text, btn) {
     function ok() { var o = btn.textContent; btn.textContent = "Copiat ✓"; setTimeout(function () { btn.textContent = o; }, 1500); }
@@ -700,7 +782,9 @@ tr:last-child td{border-bottom:none}
     $("tabFeatured").textContent = "Din clipuri" + (st ? " (" + st.featured + ")" : "");
     $("products").innerHTML = list.map(function (p) {
       var img = p.image && p.image.indexOf("http") !== 0 ? "/" + p.image : p.image;
-      return '<a class="prod" href="' + esc(p.link) + '" target="_blank" rel="noopener"><img src="' + esc(img) + '" alt="" loading="lazy"><div style="min-width:0"><div class="pt" title="' + esc(p.title) + '">' + esc(roTitle(p)) + '</div><div class="pp">' + esc(money(p.cur, p.amount)) + "</div>" + (p.meta ? '<div class="pm">' + esc(p.meta) + "</div>" : "") + "</div></a>";
+      var m = modOf(p.id);
+      return '<div class="prodwrap' + (m ? " is-off" : "") + '"><a class="prod" href="' + esc(p.link) + '" target="_blank" rel="noopener"><img src="' + esc(img) + '" alt="" loading="lazy"><div style="min-width:0"><div class="pt" title="' + esc(p.title) + '">' + esc(roTitle(p)) + offBadge(m) + '</div><div class="pp">' + esc(money(p.cur, p.amount)) + "</div>" + (p.meta ? '<div class="pm">' + esc(p.meta) + "</div>" : "") + "</div></a>" +
+        modButtons(p.id, roTitle(p), p.num, state.tab) + "</div>";
     }).join("");
     $("productsEmpty").hidden = list.length > 0;
     $("productsEmpty").textContent = st ? "Niciun produs în această categorie la ultima rulare." : "Se încarcă produsele…";

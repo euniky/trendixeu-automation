@@ -933,6 +933,39 @@ def make_daily_clips(hot: list[dict], featured: list[dict], rates: dict, video_l
             if v.get("clip") and v["num"] in keep and (clips_dir / f"trendixeu-{v['num']}.mp4").exists()]
 
 
+def fetch_moderation() -> dict:
+    """Produsele ascunse/sterse din consola (salvate pe Netlify)."""
+    try:
+        r = requests.get(f"{SITE_URL}/.netlify/functions/moderate", timeout=20)
+        if r.ok:
+            m = r.json()
+            log(f"[info] consola: {len(m.get('hidden', []))} produse ascunse, {len(m.get('deleted', []))} sterse")
+            return m
+    except Exception as exc:
+        log(f"[warn] nu am putut citi produsele ascunse din consola: {str(exc)[:120]}")
+    return {"hidden": [], "deleted": [], "items": {}}
+
+
+def apply_deletions(deleted: set, featured: list[dict], video_log: list[dict]) -> list[dict]:
+    """Sterge definitiv: din produsele fixe (fisierul din repo), din jurnalul clipurilor si fisierele clipurilor."""
+    if not deleted:
+        return featured
+    raw = json.loads(FEATURED_PATH.read_text(encoding="utf-8"))
+    keep_raw = [r for r in raw if normalize_price(dict(r))["id"] not in deleted]
+    if len(keep_raw) != len(raw):
+        FEATURED_PATH.write_text(json.dumps(keep_raw, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        log(f"[info] consola: {len(raw) - len(keep_raw)} produse fixe sterse definitiv")
+    gone = [v for v in video_log if v.get("id") in deleted]
+    for v in gone:
+        video_log.remove(v)
+        for f in (f"trendixeu-{v['num']}.mp4", f"trendixeu-{v['num']}.jpg"):
+            (CLIP_CACHE / f).unlink(missing_ok=True)
+    if gone:
+        log(f"[info] consola: {len(gone)} clipuri sterse definitiv")
+        VIDEO_LOG_PATH.write_text(json.dumps(video_log, ensure_ascii=False, indent=1), encoding="utf-8")
+    return [p for p in featured if p["id"] not in deleted]
+
+
 def main() -> None:
     started = datetime.now(timezone.utc)
     featured = [normalize_price(p) for p in json.loads(FEATURED_PATH.read_text(encoding="utf-8"))]
@@ -947,6 +980,11 @@ def main() -> None:
         hot = fetch_hot_products()
     except Exception as exc:  # nu opri publicarea produselor fixe daca API-ul pica
         log(f"[warn] nu am putut lua produsele hot: {exc}")
+    moderation = fetch_moderation()
+    deleted = set(moderation.get("deleted") or [])
+    off = set(moderation.get("hidden") or []) | deleted
+    hot = [p for p in hot if p["id"] not in off]
+    CANDIDATES[:] = [p for p in CANDIDATES if p["id"] not in off]
 
     try:
         refresh_featured(featured)
@@ -970,6 +1008,7 @@ def main() -> None:
         shutil.copytree(IMG_DIR, OUT_DIR / "img")
 
     video_log = load_video_log()
+    featured = apply_deletions(deleted, featured, video_log)
     clips = make_daily_clips(hot, featured, rates, video_log)
     demo = None
     try:
@@ -977,10 +1016,12 @@ def main() -> None:
     except Exception as exc:
         log(f"[warn] comparatie voce: {str(exc)[:200]}")
     cutoff = (datetime.now(timezone.utc) - timedelta(days=CLIP_PRODUCTS_DAYS)).date().isoformat()
-    clip_items = [normalize_price(dict(v)) for v in reversed(video_log) if v.get("created", "") >= cutoff and v.get("section") != "featured"]
+    clip_items = [normalize_price(dict(v)) for v in reversed(video_log) if v.get("created", "") >= cutoff
+                  and v.get("section") != "featured" and v.get("id") not in off]
+    page_featured = [p for p in featured if p["id"] not in off]
     clip_ids = {v["id"] for v in clip_items}
     hot_rest = [p for p in hot if p["id"] not in clip_ids]
-    (OUT_DIR / "index.html").write_text(render(featured, hot_rest, rates, clip_items), encoding="utf-8")
+    (OUT_DIR / "index.html").write_text(render(page_featured, hot_rest, rates, clip_items), encoding="utf-8")
     for static in ("track.js", "i18n.js"):
         if (ROOT / "site" / static).exists():
             shutil.copy(ROOT / "site" / static, OUT_DIR / static)
@@ -1002,7 +1043,7 @@ def main() -> None:
         "rates": {k: rates[k] for k in ("RON", "USD", "GBP", "PLN") if k in rates},
         "filters": {"min_rating_percent": MIN_RATING_PERCENT, "min_orders": MIN_ORDERS,
                     "max_hot": MAX_HOT_PRODUCTS, "ship_to": SHIP_TO, "keywords": KEYWORDS},
-        "featured_items": [{k: p.get(k) for k in ("id", "title", "titles", "cur", "amount", "link", "image")} for p in featured],
+        "featured_items": [{k: p.get(k) for k in ("id", "num", "title", "titles", "cur", "amount", "link", "image")} for p in featured],
         "hot_items": [{k: p.get(k) for k in ("id", "title", "titles", "cur", "amount", "link", "image", "meta", "orders", "rating")} for p in hot],
         "orders": orders,
         "clips": clips,
