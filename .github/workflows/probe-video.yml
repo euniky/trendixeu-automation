@@ -1,0 +1,27 @@
+name: Test filmari AliExpress
+on:
+  workflow_dispatch:
+    inputs:
+      links:
+        description: "Linkuri sau ID-uri de produse, separate prin spatiu"
+        default: ""
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install requests
+      - name: Cauta filmarile
+        run: python scripts/find_video.py ${{ github.event.inputs.links }} 2>&1 | tee /tmp/probe.txt
+      - name: Salveaza rezultatul
+        if: always()
+        run: |
+          mkdir -p /tmp/p && cp /tmp/probe.txt /tmp/p/ && cd /tmp/p && git init -q -b probe && git add . \
+            && git -c user.name=bot -c user.email=bot@users.noreply.github.com commit -qm probe \
+            && git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" probe
