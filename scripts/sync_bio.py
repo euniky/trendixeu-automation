@@ -45,9 +45,14 @@ KEYWORDS = ["home gadget", "cleaning", "kitchen", "phone accessories",
             "car accessories", "beauty tools", "pet supplies",
             # aparate de casa de brand, cu specificatii concrete si filmari bune (ca Lubluelu V8)
             "carpet cleaner", "cordless vacuum cleaner", "window cleaning robot", "steam cleaner",
-            "wet dry vacuum", "robot vacuum cleaner"]  # se rotesc zilnic, pentru varietate
+            "wet dry vacuum cleaner mop", "robot vacuum cleaner mop", "professional slingshot",
+            "motorcycle bike phone holder", "dash cam"]  # se rotesc zilnic, pentru varietate
 CATEGORY_OF = {"carpet cleaner": "cleaning", "cordless vacuum cleaner": "cleaning", "window cleaning robot": "cleaning",
-               "steam cleaner": "cleaning", "wet dry vacuum": "cleaning", "robot vacuum cleaner": "cleaning"}
+               "steam cleaner": "cleaning", "wet dry vacuum cleaner mop": "cleaning",
+               "robot vacuum cleaner mop": "cleaning", "professional slingshot": "outdoor",
+               "motorcycle bike phone holder": "moto", "dash cam": "car accessories"}
+# la aceste categorii clipul se face DOAR daca anuntul are filmare HD (fara poze animate)
+VIDEO_ONLY = set(CATEGORY_OF)
 SPEC_RE = re.compile(r"\b\d+(?:[.,]\d+)?\s?(?:w|kpa|pa|mah|l|°c|min|m|db|v|rpm)\b", re.I)
 PER_KEYWORD = 3                                       # max produse din aceeasi categorie
 VIDEO_LOG_PATH = ROOT / "data" / "video_log.json"     # produsele care au primit clip (salvat in repo)
@@ -580,7 +585,8 @@ def recover_from_artifacts(missing: set[int]) -> int:
 WOW_WORDS = {
     "robot": 4, "automatic": 3, "auto ": 2, "smart": 2, "magic": 3, "lazy": 3, "self-": 2, "electric": 2,
     "projector": 3, "levitat": 4, "galaxy": 3, "laser": 2, "heated": 2, "massag": 2, "humidifier": 2,
-    "vacuum": 2, "sealer": 2, "dispenser": 2, "slicer": 2, "chopper": 2, "spray": 1, "steam": 2,
+    "vacuum": 2, "slingshot": 3, "dash cam": 3, "dashcam": 3, "4k": 2, "1080p": 1, "night vision": 2,
+    "mop": 1, "phone holder": 1, "sealer": 2, "dispenser": 2, "slicer": 2, "chopper": 2, "spray": 1, "steam": 2,
     "rechargeable": 2, "wireless": 2, "cordless": 2, "bluetooth": 1, "magnetic": 2, "foldable": 2,
     "retractable": 2, "2 in 1": 2, "3 in 1": 2, "4 in 1": 2, "multifunction": 1, "multi-function": 1,
     "creative": 2, "funny": 2, "cute": 1, "mini": 1, "portable": 1, "led": 2, "rgb": 2, "light": 1,
@@ -878,11 +884,13 @@ def make_daily_clips(hot: list[dict], featured: list[dict], rates: dict, video_l
         fresh = [p for p in pool if p["id"] not in done]
         scored = sorted(((wow_score(p, to_lei(p, rates)), p) for p in fresh), key=lambda x: -x[0][0])
         # intai produsele interesante care au filmare reala (clipurile arata mult mai bine), apoi restul
-        good = [p for (sc_, why), p in scored if sc_ >= MIN_WOW_SCORE]
+        good = [p for (sc_, why), p in scored if sc_ >= MIN_WOW_SCORE
+                and (p.get("video") or p.get("kw") not in VIDEO_ONLY)]
         todo = ([p for p in good if p.get("video")] + [p for p in good if not p.get("video")])[:CLIPS_PER_DAY]
         if len(todo) < CLIPS_PER_DAY:
             # zi slaba: completez cu urmatoarele cele mai interesante produse, dar nu cu cele plictisitoare
-            extra = [p for (sc_, why), p in scored if MIN_FALLBACK_SCORE <= sc_ < MIN_WOW_SCORE]
+            extra = [p for (sc_, why), p in scored if MIN_FALLBACK_SCORE <= sc_ < MIN_WOW_SCORE
+                     and (p.get("video") or p.get("kw") not in VIDEO_ONLY)]
             todo += extra[:CLIPS_PER_DAY - len(todo)]
         with_video = sum(1 for p in fresh if p.get("video"))
         log(f"[info] clipuri: {len(fresh)} produse verificate, {with_video} cu filmare, "

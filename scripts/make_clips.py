@@ -57,6 +57,13 @@ FEATURES = [
     (r"(\d+(?:[.,]\d+)?)\s?kg\b", "Până la {0} kg", "suportă până la {0} kilograme", "Up to {0} kg"),
     (r"(\d{2,3})\s?cm\b", "Lungime {0} cm", "are {0} de centimetri", "{0} cm long"),
     (r"(\d)\s?in\s?1", "{0} în 1", "e {0} în 1", "{0}-in-1"),
+    (r"\b(4k)\b", "Filmare 4K", "filmează în 4K", "4K video"),
+    (r"\b(1080|1440|2160)p\b", "Rezoluție {0}p", "filmează la {0}p", "{0}p resolution"),
+    (r"\b(1[2-7]\d)\s?°", "Unghi larg {0}°", "are unghi de {0} de grade", "{0}° wide angle"),
+    (r"night vision", "Vedere pe timp de noapte", "vede și noaptea", "Night vision"),
+    (r"\bwi-?fi\b", "Conectare WiFi", "se conectează prin WiFi la telefon", "WiFi app"),
+    (r"360", "Rotire 360°", "se rotește la 360 de grade", "360° rotation"),
+    (r"shockproof|anti[- ]?shake|anti[- ]?vibration", "Anti-vibrații", "nu vibrează pe drum", "Anti-shake"),
     (r"stainless steel", "Oțel inoxidabil", "e din oțel inoxidabil", "Stainless steel"),
     (r"waterproof|water[- ]resistant", "Rezistent la apă", "e rezistent la apă", "Waterproof"),
     (r"rechargeable", "Reîncărcabil USB", "se încarcă prin USB", "USB rechargeable"),
@@ -87,6 +94,8 @@ HASHTAGS_BY_KW = {
     "car accessories": ["masina", "caraccessories", "cartok"],
     "beauty tools": ["beautytok", "frumusete", "beautyhacks"],
     "pet supplies": ["pettok", "animalutze", "petproducts"],
+    "outdoor": ["outdoor", "slingshot", "camping", "gadgets"],
+    "moto": ["moto", "motociclete", "bicicleta", "bikelife"],
 }
 
 
@@ -155,9 +164,11 @@ BENEFITS = {
                     "Nu mai poți fără el după prima folosire"],
     "phone accessories": ["Telefonul tău îți mulțumește", "Upgrade mic, diferență mare", "Gata cu bateria descărcată",
                           "Simplu, dar foarte util"],
-    "car accessories": ["Mașina ta, mai practică", "Fiecare drum mai confortabil", "Ordine în mașină, în sfârșit"],
     "beauty tools": ["Rezultat de salon, acasă", "Rutina ta, mai simplă", "Arăți impecabil fără efort"],
     "pet supplies": ["Animăluțul tău o să-l adore", "Mai puțin păr prin casă", "Pentru prietenul tău blănos"],
+    "outdoor": ["Precizie de profesionist", "Pentru ieșirile în natură", "Construită să reziste"],
+    "moto": ["Telefonul stă fix, oricât de rău e drumul", "GPS-ul mereu la vedere", "Montaj în câteva secunde"],
+    "car accessories": ["Mașina ta, mai practică", "Fiecare drum mai confortabil", "Ai dovada video la orice incident"],
 }
 BENEFITS_ANY = ["Îți face viața mai ușoară", "Simplu și chiar funcționează", "Mic, dar foarte util",
                 "Rezolvă o problemă de zi cu zi"]
@@ -368,11 +379,17 @@ def make_voice(sentences: list[tuple[str, str]], tmp: Path, provider: str = "edg
 
 # =================================================================== imagini
 
-def download(url: str, dest: Path) -> Path | None:
+def download(url: str, dest: Path, max_mb: int = 60) -> Path | None:
     try:
-        r = requests.get(url, timeout=40, headers={"User-Agent": "Mozilla/5.0"})
-        r.raise_for_status()
-        dest.write_bytes(r.content)
+        with requests.get(url, timeout=60, headers={"User-Agent": "Mozilla/5.0"}, stream=True) as r:
+            r.raise_for_status()
+            size = 0
+            with open(dest, "wb") as fh:
+                for chunk in r.iter_content(1 << 16):
+                    size += len(chunk)
+                    if size > max_mb * 1e6:   # filmari foarte lungi: nu merita descarcate
+                        raise RuntimeError("fisier prea mare")
+                    fh.write(chunk)
         return dest
     except Exception:
         return None
@@ -689,7 +706,7 @@ def render_clip(p: dict, num: int, lei: float, out_path: Path, local_images: lis
             vp = download(p["video"], tmp / "seller.mp4")
             if vp:
                 d, vw, vh = probe(vp)
-                if vw and vh and min(vw, vh) < 540:   # filmare neclara: arata mai rau decat pozele bune
+                if vw and vh and min(vw, vh) < 720:   # doar filmari HD (min. 720p); altfel pozele arata mai bine
                     print(f"[clip] filmarea vanzatorului e prea mica ({vw}x{vh}), folosesc pozele")
                 elif d >= 3 and vw and vh:
                     vid_path, vid_info = vp, (d, vw, vh)
