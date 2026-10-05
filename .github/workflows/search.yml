@@ -5,6 +5,9 @@ on:
       q:
         description: "Cuvinte cheie (in engleza), mai multe cautari separate prin |"
         required: true
+      img_filter:
+        description: "Descarca pozele doar pentru titlurile care contin aceste cuvinte (separate prin virgula)"
+        default: ""
 jobs:
   search:
     runs-on: ubuntu-latest
@@ -22,6 +25,7 @@ jobs:
           ALI_APP_KEY: ${{ secrets.ALI_APP_KEY }}
           ALI_APP_SECRET: ${{ secrets.ALI_APP_SECRET }}
           ALI_TRACKING_ID: ${{ secrets.ALI_TRACKING_ID }}
+          IMG_FILTER: ${{ github.event.inputs.img_filter }}
         run: python scripts/search_products.py "${{ github.event.inputs.q }}"
       - name: Salveaza rezultatele
         if: always()

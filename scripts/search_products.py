@@ -28,7 +28,16 @@ def main() -> None:
                 "detail": p.get("product_detail_url"),
             })
     out.sort(key=lambda x: -x["orders"])
-    Path("/tmp/p").mkdir(exist_ok=True)
+    Path("/tmp/p/img").mkdir(parents=True, exist_ok=True)
+    must = [w for w in os.environ.get("IMG_FILTER", "").lower().split(",") if w]
+    picked = [x for x in out if not must or any(w in (x["title"] or "").lower() for w in must)][:24]
+    for x in picked:
+        try:
+            r = sb.requests.get(x["image"], timeout=30)
+            if r.ok:
+                Path(f"/tmp/p/img/{x['id']}.jpg").write_bytes(r.content)
+        except Exception:
+            pass
     Path("/tmp/p/search.json").write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
     print(f"{len(out)} produse gasite")
 
