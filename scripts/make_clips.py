@@ -46,6 +46,13 @@ def font(weight: str, size: int) -> ImageFont.FreeTypeFont:
 # (tipar in titlul englezesc, card afisat, ce spune vocea, card in engleza)
 FEATURES = [
     (r"(\d+(?:[.,]\d+)?)\s?w\b", "Putere {0}W", "are o putere de {0} de wați", "{0}W power"),
+    (r"(\d+(?:[.,]\d+)?)\s?kpa\b", "Aspirație {0} kPa", "are o aspirație de {0} kilopascali", "{0} kPa suction"),
+    (r"(\d{3,6})\s?pa\b", "Aspirație {0} Pa", "are o aspirație de {0} de pascali", "{0} Pa suction"),
+    (r"(\d{2,3})\s?°\s?c\b", "Apă caldă {0}°C", "lucrează cu apă caldă de {0} de grade", "{0}°C hot water"),
+    (r"(\d+(?:[.,]\d+)?)\s?l\b", "Rezervor {0} L", "are un rezervor de {0} litri", "{0} L tank"),
+    (r"(\d{2,3})\s?min\b", "Autonomie {0} min", "merge {0} de minute", "{0} min runtime"),
+    (r"(\d+(?:[.,]\d+)?)\s?m\s+(?:long\s+)?(?:power\s+)?cord", "Cablu {0} m", "are cablu de {0} metri", "{0} m cord"),
+    (r"(\d{2})\s?db\b", "Silențios: {0} dB", "e silențios, doar {0} decibeli", "{0} dB quiet"),
     (r"(\d{3,5})\s?mah", "Baterie {0} mAh", "are baterie de {0} de miliamperi", "{0} mAh battery"),
     (r"(\d+(?:[.,]\d+)?)\s?kg\b", "Până la {0} kg", "suportă până la {0} kilograme", "Up to {0} kg"),
     (r"(\d{2,3})\s?cm\b", "Lungime {0} cm", "are {0} de centimetri", "{0} cm long"),
@@ -112,9 +119,9 @@ def features(title: str) -> list[tuple[str, str, str]]:
     for pattern, card, spoken, en in FEATURES:
         m = re.search(pattern, t)
         if m:
-            g = m.group(1) if m.groups() else ""
+            g = (m.group(1) if m.groups() else "").replace(".", ",")
             out.append((card.format(g), spoken.format(g), en.format(g)))
-        if len(out) == 3:
+        if len(out) == 4:
             break
     return out
 
@@ -194,7 +201,8 @@ def build_copy(p: dict, num: int, lei: float) -> dict:
     hook_en = HOOK_EN[used].format(**fill)
     hook_say = f"Doar {ro_count(li, 'lei')} pentru asta?" if hook_show.startswith("Doar") else hook_show + "!"
     kicker = rnd.choice(KICKERS["top" if orders >= 5000 else "new"])
-    benefit = rnd.choice(BENEFITS.get(p.get("kw", ""), BENEFITS_ANY))
+    cat = p.get("cat") or p.get("kw", "")
+    benefit = rnd.choice(BENEFITS.get(cat, BENEFITS_ANY))
 
     feats = features(p["title"])
     sentences = [("hook", hook_say), ("name", f"{benefit}. {name_ro}.")]
@@ -218,7 +226,7 @@ def build_copy(p: dict, num: int, lei: float) -> dict:
     desc_en = "\n".join([f"{hook_en} 😱", name_en, *[f"✅ {f[2]}" for f in feats],
                          f"⭐ {rating:.0f}% positive reviews · {fmt_int(orders)}+ orders",
                          f"💰 Price: ~{li} lei", f"👉 Link in bio · find product #{num}"])
-    extra = HASHTAGS_BY_KW.get(p.get("kw", ""), ["gadgets", "homehacks"])
+    extra = HASHTAGS_BY_KW.get(cat, ["gadgets", "homehacks"])
     base = list(HASHTAGS_BASE)
     rnd.shuffle(base)
     tags = extra + base   # hashtag-urile de nisa primele, restul in alta ordine la fiecare clip
@@ -681,7 +689,9 @@ def render_clip(p: dict, num: int, lei: float, out_path: Path, local_images: lis
             vp = download(p["video"], tmp / "seller.mp4")
             if vp:
                 d, vw, vh = probe(vp)
-                if d >= 3 and vw and vh:
+                if vw and vh and min(vw, vh) < 540:   # filmare neclara: arata mai rau decat pozele bune
+                    print(f"[clip] filmarea vanzatorului e prea mica ({vw}x{vh}), folosesc pozele")
+                elif d >= 3 and vw and vh:
                     vid_path, vid_info = vp, (d, vw, vh)
 
         # ---- voce + scene
@@ -702,7 +712,7 @@ def render_clip(p: dict, num: int, lei: float, out_path: Path, local_images: lis
         price_pill = pill(copy["price_text"], font("Bold", 50), ACCENT, WHITE)
         num_pill = pill(f"Link în bio · #{num}", font("Bold", 46), (255, 255, 255, 245), (20, 18, 26, 255))
         handle = pill("@trendixeu", font("Medium", 34), (0, 0, 0, 120), (255, 255, 255, 235), padx=22, pady=10)
-        cards = [feature_card(c) for c in copy["cards"][:3]]
+        cards = [feature_card(c) for c in copy["cards"][:4]]
         proof_font = font("Bold", 62)
         panel = Image.new("RGBA", (W - 140, 470), (0, 0, 0, 0))
         ImageDraw.Draw(panel).rounded_rectangle([0, 0, W - 141, 469], radius=44, fill=PANEL)

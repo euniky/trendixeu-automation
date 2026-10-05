@@ -42,7 +42,13 @@ MAX_HOT_PRODUCTS = 10     # cate produse hot afisam sub cele fixe
 SHIP_TO = "RO"            # doar produse livrabile in Romania
 CURRENCY = "EUR"          # API-ul nu suporta RON
 KEYWORDS = ["home gadget", "cleaning", "kitchen", "phone accessories",
-            "car accessories", "beauty tools", "pet supplies"]  # se rotesc zilnic, pentru varietate
+            "car accessories", "beauty tools", "pet supplies",
+            # aparate de casa de brand, cu specificatii concrete si filmari bune (ca Lubluelu V8)
+            "carpet cleaner", "cordless vacuum cleaner", "window cleaning robot", "steam cleaner",
+            "wet dry vacuum", "robot vacuum cleaner"]  # se rotesc zilnic, pentru varietate
+CATEGORY_OF = {"carpet cleaner": "cleaning", "cordless vacuum cleaner": "cleaning", "window cleaning robot": "cleaning",
+               "steam cleaner": "cleaning", "wet dry vacuum": "cleaning", "robot vacuum cleaner": "cleaning"}
+SPEC_RE = re.compile(r"\b\d+(?:[.,]\d+)?\s?(?:w|kpa|pa|mah|l|°c|min|m|db|v|rpm)\b", re.I)
 PER_KEYWORD = 3                                       # max produse din aceeasi categorie
 VIDEO_LOG_PATH = ROOT / "data" / "video_log.json"     # produsele care au primit clip (salvat in repo)
 CLIPS_PER_DAY = int(os.environ.get("CLIPS_PER_DAY", "6"))
@@ -155,6 +161,7 @@ def fetch_hot_products() -> list[dict]:
                 smalls = smalls.get("string") or []
             item = {
                 "kw": kw,
+                "cat": CATEGORY_OF.get(kw, kw),
                 "images": [u for u in smalls if isinstance(u, str)][:5],
                 "video": p.get("product_video_url") or "",
                 "id": f"p{pid}",
@@ -603,10 +610,15 @@ def wow_score(p: dict, lei: float) -> tuple[float, list[str]]:
     if float(p.get("rating") or 0) >= 96:
         score += 1
         why.append("rating+1")
+    specs = len(set(m.lower().replace(" ", "") for m in SPEC_RE.findall(p["title"])))
+    if specs:   # specificatii concrete in titlu (800W, 15kPa, 60°C, 1.75L...) = produs serios, usor de prezentat
+        pts = min(3, specs)
+        score += pts
+        why.append(f"specificatii+{pts}")
     if lei <= 60:
         score += 1
         why.append("pret-mic+1")
-    elif lei > 250:
+    elif lei > 250 and specs < 2:
         score -= 2
         why.append("scump-2")
     return round(score, 1), why
