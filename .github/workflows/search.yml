@@ -1,0 +1,31 @@
+name: Cauta produs pe AliExpress
+on:
+  workflow_dispatch:
+    inputs:
+      q:
+        description: "Cuvinte cheie (in engleza), mai multe cautari separate prin |"
+        required: true
+jobs:
+  search:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -r requirements.txt
+      - name: Cauta
+        env:
+          ALI_APP_KEY: ${{ secrets.ALI_APP_KEY }}
+          ALI_APP_SECRET: ${{ secrets.ALI_APP_SECRET }}
+          ALI_TRACKING_ID: ${{ secrets.ALI_TRACKING_ID }}
+        run: python scripts/search_products.py "${{ github.event.inputs.q }}"
+      - name: Salveaza rezultatele
+        if: always()
+        run: |
+          cd /tmp/p && git init -q -b search && git add . \
+            && git -c user.name=bot -c user.email=bot@users.noreply.github.com commit -qm search \
+            && git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" search
