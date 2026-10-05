@@ -42,10 +42,20 @@ def main() -> None:
                 "rating": p.get("evaluate_rate"), "video": bool(p.get("product_video_url")),
                 "image": p.get("product_main_image_url"), "link": p.get("promotion_link"),
                 "detail": p.get("product_detail_url"),
-                "video_url": p.get("product_video_url"),
+                "video_url": p.get("product_video_url") or "",
                 "cats": [p.get("first_level_category_name"), p.get("second_level_category_name")],
             })
     out.sort(key=lambda x: -x["orders"])
+    import subprocess
+    for x in out:   # rezolutia si durata filmarilor (ffprobe citeste doar inceputul fisierului)
+        if not x.get("video_url"):
+            continue
+        r = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries",
+                            "stream=width,height:format=duration", "-of", "default=nw=1", x["video_url"]],
+                           capture_output=True, text=True, timeout=60)
+        vals = dict(l.split("=", 1) for l in r.stdout.split() if "=" in l)
+        x["video_res"] = f"{vals.get('width', '?')}x{vals.get('height', '?')}"
+        x["video_sec"] = vals.get("duration")
     Path("/tmp/p/img").mkdir(parents=True, exist_ok=True)
     must = [w for w in os.environ.get("IMG_FILTER", "").lower().split(",") if w]
     picked = [x for x in out if not must or any(w in (x["title"] or "").lower() for w in must)][:24]

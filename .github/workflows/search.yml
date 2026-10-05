@@ -20,6 +20,8 @@ jobs:
         with:
           python-version: "3.11"
       - run: pip install -r requirements.txt
+      - uses: FedericoCarboni/setup-ffmpeg@v3
+        continue-on-error: true
       - name: Cauta
         env:
           ALI_APP_KEY: ${{ secrets.ALI_APP_KEY }}
