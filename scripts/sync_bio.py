@@ -151,11 +151,15 @@ def fetch_hot_products() -> list[dict]:
             pid = p.get("product_id")
             if pid in seen or not p.get("promotion_link"):
                 continue
+            tkey = re.sub(r"[^a-z0-9]", "", str(p.get("product_title", "")).lower())[:38]
+            if tkey in seen:   # acelasi produs de la alt vanzator
+                continue
             rating = float(str(p.get("evaluate_rate", "0")).rstrip("%") or 0)
             orders = int(p.get("lastest_volume") or 0)
             if rating < MIN_RATING_PERCENT or orders < MIN_ORDERS:
                 continue
             seen.add(pid)
+            seen.add(tkey)
             smalls = p.get("product_small_image_urls") or []
             if isinstance(smalls, dict):
                 smalls = smalls.get("string") or []
