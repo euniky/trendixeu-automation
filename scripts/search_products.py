@@ -14,8 +14,24 @@ def main() -> None:
     queries = [q.strip() for q in " ".join(sys.argv[1:]).split("|") if q.strip()]
     tracking = os.environ["ALI_TRACKING_ID"].strip()
     seen, out = set(), []
+    def detail(pid):
+        d = sb.call_api("aliexpress.affiliate.productdetail.get", {
+            "product_ids": pid, "target_currency": sb.CURRENCY, "target_language": "EN",
+            "tracking_id": tracking, "country": sb.SHIP_TO})
+        res = d.get("aliexpress_affiliate_productdetail_get_response", {}).get("resp_result", {}).get("result") or {}
+        return (res.get("products") or {}).get("product") or []
+
     for q in queries:
-        for p in sb.query_products(q, tracking):
+        if q.startswith("http") or q.isdigit():   # link sau ID de produs: detaliile lui
+            pid = q if q.isdigit() else sb.resolve_product_id(q)
+            prods = detail(pid) if pid else []
+            for p in prods:
+                p["_video_url"] = p.get("product_video_url")
+                p["_cats"] = [p.get("first_level_category_name"), p.get("second_level_category_name")]
+            found = prods
+        else:
+            found = sb.query_products(q, tracking)
+        for p in found:
             pid = str(p.get("product_id"))
             if pid in seen:
                 continue
@@ -26,6 +42,8 @@ def main() -> None:
                 "rating": p.get("evaluate_rate"), "video": bool(p.get("product_video_url")),
                 "image": p.get("product_main_image_url"), "link": p.get("promotion_link"),
                 "detail": p.get("product_detail_url"),
+                "video_url": p.get("product_video_url"),
+                "cats": [p.get("first_level_category_name"), p.get("second_level_category_name")],
             })
     out.sort(key=lambda x: -x["orders"])
     Path("/tmp/p/img").mkdir(parents=True, exist_ok=True)
