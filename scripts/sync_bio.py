@@ -111,13 +111,14 @@ METHODS = [
 ]
 
 
-def query_products(kw: str, tracking_id: str) -> list[dict]:
+def query_products(kw: str, tracking_id: str, page: int = 1) -> list[dict]:
     """Incearca intai API-ul de hot products, apoi cautarea standard daca nu avem permisiune."""
     for method, resp_key in METHODS:
         try:
             data = call_api(method, {
                 "keywords": kw,
                 "page_size": 50,
+                "page_no": page,
                 "sort": "LAST_VOLUME_DESC",
                 "ship_to_country": SHIP_TO,
                 "target_currency": CURRENCY,
@@ -152,7 +153,15 @@ def fetch_hot_products() -> list[dict]:
     order = KEYWORDS[day % len(KEYWORDS):] + KEYWORDS[:day % len(KEYWORDS)]
     for kw in order:
         taken = 0
-        for p in query_products(kw, tracking_id):
+        found = query_products(kw, tracking_id)
+        if kw in VIDEO_ONLY:   # putine anunturi au filmare HD: caut mai adanc (pana la 150 de produse)
+            for page in (2, 3):
+                more = query_products(kw, tracking_id, page)
+                found += more
+                if len(more) < 50:
+                    break
+            found.sort(key=lambda x: (not x.get("product_video_url"), -int(x.get("lastest_volume") or 0)))
+        for p in found:
             pid = p.get("product_id")
             if pid in seen or not p.get("promotion_link"):
                 continue
