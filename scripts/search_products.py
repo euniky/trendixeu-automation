@@ -47,15 +47,27 @@ def main() -> None:
             })
     out.sort(key=lambda x: -x["orders"])
     import subprocess
-    for x in out:   # rezolutia si durata filmarilor (ffprobe citeste doar inceputul fisierului)
+    Path("/tmp/p/vid").mkdir(parents=True, exist_ok=True)
+    for x in out:   # descarc filmarea, ii citesc rezolutia si salvez 4 cadre ca s-o vad
         if not x.get("video_url"):
             continue
-        r = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries",
-                            "stream=width,height:format=duration", "-of", "default=nw=1", x["video_url"]],
-                           capture_output=True, text=True, timeout=60)
-        vals = dict(l.split("=", 1) for l in r.stdout.split() if "=" in l)
-        x["video_res"] = f"{vals.get('width', '?')}x{vals.get('height', '?')}"
-        x["video_sec"] = vals.get("duration")
+        try:
+            r = sb.requests.get(x["video_url"], timeout=90, headers={"User-Agent": "Mozilla/5.0"})
+            f = Path(f"/tmp/v_{x['id']}.mp4")
+            f.write_bytes(r.content)
+            q = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries",
+                                "stream=width,height:format=duration", "-of", "default=nw=1", str(f)],
+                               capture_output=True, text=True, timeout=60)
+            vals = dict(l.split("=", 1) for l in q.stdout.split() if "=" in l)
+            x["video_res"] = f"{vals.get('width', '?')}x{vals.get('height', '?')}"
+            x["video_sec"] = vals.get("duration")
+            x["video_mb"] = round(len(r.content) / 1e6, 1)
+            dur = float(vals.get("duration") or 8)
+            subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(f), "-vf",
+                            f"fps=4/{dur:.2f},scale=-2:200,tile=4x1", "-frames:v", "1",
+                            f"/tmp/p/vid/{x['id']}.jpg"], timeout=120)
+        except Exception as exc:
+            x["video_res"] = f"eroare: {str(exc)[:60]}"
     Path("/tmp/p/img").mkdir(parents=True, exist_ok=True)
     must = [w for w in os.environ.get("IMG_FILTER", "").lower().split(",") if w]
     picked = [x for x in out if not must or any(w in (x["title"] or "").lower() for w in must)][:24]
