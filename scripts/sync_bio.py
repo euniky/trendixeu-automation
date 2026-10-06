@@ -921,10 +921,11 @@ def make_daily_clips(hot: list[dict], featured: list[dict], rates: dict, video_l
             track = music[num % len(music)] if music else None
             try:
                 t0 = time.time()
+                recent = {(v.get("clip") or {}).get("hook") for v in video_log[-40:]}
                 copy = make_clips.render_clip(p, num, to_lei(p, rates), clips_dir / fname,
                                               sheet_path=clips_dir / f"sheet-{num}.jpg",
                                               poster_path=clips_dir / f"trendixeu-{num}.jpg", voice=CLIP_VOICE,
-                                              music=track)
+                                              music=track, avoid=recent)
                 if copy.get("with_music") and track:
                     credit = MUSIC_CREDIT.format(title=track.stem)
                     copy["music"] = track.stem

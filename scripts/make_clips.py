@@ -183,7 +183,69 @@ CAPTION_Q = ["Tu l-ai lua? 👇", "Ai nevoie de el? Scrie DA 👇", "Cui i-ar tr
              "Merită sau nu? 👇", "Salvează pentru mai târziu 📌"]
 
 
-def build_copy(p: dict, num: int, lei: float) -> dict:
+# ---- hook-uri specifice tipului de produs (in loc de fraze generale repetate)
+PRODUCT_TYPES = [
+    (r"carpet (cleaner|washer)|upholstery cleaner", "aspiratorul de covoare",
+     ["Petele de pe covor ies din prima", "Covorul arată ca nou, fără curățătorie", "Spală covorul cu apă caldă, acasă",
+      "Ce iese din covorul tău e dezgustător"]),
+    (r"window (cleaning )?robot|robot window|window cleaner", "robotul de geamuri",
+     ["Geamurile se spală singure", "Nu mai urci pe scară să speli geamuri", "Îl lipești de geam și pleci",
+      "Geamuri curate fără niciun efort"]),
+    (r"robot vacuum|vacuum robot|sweeping robot|robot cleaner", "robotul aspirator",
+     ["Vii acasă și podeaua e deja curată", "Aspiră și spală cât ești la muncă", "Se golește singur, tu nu faci nimic",
+      "Nu mai dai cu aspiratorul niciodată"]),
+    (r"wet (and |& )?dry|vacuum.{0,20}mop|mop.{0,20}vacuum|floor washer", "aspiratorul cu spălare",
+     ["Aspiră și spală podeaua dintr-o trecere", "Gata cu mopul și găleata", "Podeaua spălată în 10 minute"]),
+    (r"car vacuum|vacuum.{0,30}\bcar\b", "aspiratorul auto",
+     ["Mașina curată în 5 minute", "Firimiturile din mașină dispar", "Mic cât o sticlă, trage ca unul mare"]),
+    (r"cordless vacuum|handheld vacuum|wireless vacuum|stick vacuum", "aspiratorul fără fir",
+     ["Fără fir, fără sac, fără nervi", "Aspiratorul care nu se încurcă în cablu", "Ușor ca o mătură, puternic ca un aspirator"]),
+    (r"steam clean|steamer", "aparatul cu abur",
+     ["Grăsimea pleacă doar cu abur", "Curăță fără detergent, doar cu abur", "Hota curată în 2 minute"]),
+    (r"dash ?cam|driving recorder|car dvr|car camera", "camera de bord",
+     ["Dovada video dacă te lovește cineva", "Fiecare șofer ar trebui să aibă asta", "Filmează tot drumul, zi și noapte"]),
+    (r"(bike|bicycle|motorcycle|motor).{0,40}phone (holder|mount)|phone (holder|mount).{0,40}(bike|bicycle|motorcycle)",
+     "suportul de telefon pentru motor/bicicletă",
+     ["Telefonul nu mai cade, oricât de rău e drumul", "GPS-ul mereu la vedere", "Se prinde cu o mână, se scoate cu un click"]),
+    (r"phone (holder|mount|stand)", "suportul de telefon",
+     ["Telefonul stă exact unde ai nevoie", "Mâinile libere, telefonul la vedere"]),
+    (r"slingshot", "praștia", ["Precizie de profesionist", "Construită din oțel, nu din plastic"]),
+    (r"projector", "proiectorul", ["Cinema pe tavan, în dormitorul tău", "Seara de film nu mai e la fel"]),
+    (r"deshedding|pet hair|fur remov|pet brush|dog brush|cat brush", "peria pentru animale",
+     ["Gata cu părul de câine pe canapea", "Animalul tău o să adore periajul ăsta", "Uite cât păr iese dintr-o periere"]),
+    (r"cat toy|pet toy|dog toy|teaser", "jucăria pentru animale",
+     ["Pisica ta nu se mai plictisește", "Animalul tău o să înnebunească după asta"]),
+    (r"\bgan\b|fast charger|charger", "încărcătorul",
+     ["Un singur încărcător pentru tot", "De la 0 la 50% în jumătate de oră"]),
+    (r"screen protector|tempered glass", "folia", ["Ecranul rezistă la căzături", "Folia pe care o pui singur, fără bule"]),
+    (r"solar.{0,30}(light|lamp)|motion sensor (light|lamp)", "lampa solară",
+     ["Lumină gratis, fără cabluri", "Se aprinde singură când treci pe lângă ea"]),
+    (r"shoe wash|sneaker wash|shoe.{0,20}laundry", "sacul de spălat adidași",
+     ["Adidașii albi din nou, din mașina de spălat", "Gata cu frecatul adidașilor"]),
+    (r"vacuum sealer", "aparatul de vidat", ["Mâncarea rămâne proaspătă de 5 ori mai mult", "Videzi orice în 10 secunde"]),
+    (r"chopper|slicer|vegetable cutter|garlic", "tocătorul", ["Tai legumele în 10 secunde", "Gata cu lacrimile de la ceapă"]),
+    (r"lint remover|fabric shaver|pill", "aparatul de scame", ["Puloverul arată ca nou în 30 de secunde"]),
+    (r"massag", "aparatul de masaj", ["Masaj de salon, acasă, oricând", "Spatele tău o să-ți mulțumească"]),
+    (r"led strip|rgb|ambient light|night light", "lumina LED", ["Camera ta, ca în clipurile de pe TikTok", "Atmosferă de seară dintr-un click"]),
+    (r"humidifier|diffuser", "umidificatorul", ["Aerul din cameră, ca după ploaie"]),
+    (r"gloves", "mănușile", ["Mâinile protejate la orice treabă murdară"]),
+    (r"makeup brush|brush set", "setul de pensule", ["Machiaj ca la salon cu pensule de câțiva lei"]),
+    (r"cotton swab|swab", "bețișoarele", ["Detaliul care face diferența la machiaj"]),
+    (r"air pump|vacuum (storage|compression) bag", "pompa electrică",
+     ["Hainele de iarnă ocupă de 3 ori mai puțin loc", "Bagajul se închide, în sfârșit"]),
+    (r"organizer|storage (box|rack|shelf)", "organizatorul", ["Ordine în 5 minute, fără să cumperi mobilă"]),
+]
+
+
+def product_type(title: str) -> tuple[str, list[str]] | tuple[None, list]:
+    t = title.lower()
+    for pattern, name, hooks in PRODUCT_TYPES:
+        if re.search(pattern, t):
+            return name, hooks
+    return None, []
+
+
+def build_copy(p: dict, num: int, lei: float, avoid: set | None = None) -> dict:
     import random
     rnd = random.Random(f"{p.get('id')}-{num}")
     orders, rating = int(p.get("orders") or 0), float(p.get("rating") or 0)
@@ -208,14 +270,29 @@ def build_copy(p: dict, num: int, lei: float) -> dict:
     else:
         used = "generic"
     fill = {"li": li, "orders": fmt_int(orders), "rating": f"{rating:.0f}", "num": num}
-    hook_show = rnd.choice(HOOKS[used]).format(**fill)
+    avoid = avoid or set()
+    feats = features(p["title"])
+    ptype, type_hooks = product_type(p["title"])
+    options = list(type_hooks)
+    nums = [f[0] for f in feats if re.search(r"\d", f[0])]
+    if len(nums) >= 2:   # hook din specificatiile reale ale produsului
+        options.append(f"{nums[0]} + {nums[1].lower()}, la {li} lei")
+    if ptype and orders >= 3000:
+        options.append(f"{fmt_int(orders)}+ oameni au luat {ptype}")
+    if ptype and li <= 60:
+        options.append(f"Doar {li} lei pentru {ptype}")
+    fresh = [h for h in options if h not in avoid]
+    if fresh:
+        hook_show = rnd.choice(fresh)
+    else:   # produs fara tip cunoscut: frazele generale, dar nu una folosita recent
+        pool = [h.format(**fill) for h in HOOKS[used]]
+        hook_show = rnd.choice([h for h in pool if h not in avoid] or pool)
     hook_en = HOOK_EN[used].format(**fill)
     hook_say = f"Doar {ro_count(li, 'lei')} pentru asta?" if hook_show.startswith("Doar") else hook_show + "!"
     kicker = rnd.choice(KICKERS["top" if orders >= 5000 else "new"])
     cat = p.get("cat") or p.get("kw", "")
     benefit = rnd.choice(BENEFITS.get(cat, BENEFITS_ANY))
 
-    feats = features(p["title"])
     sentences = [("hook", hook_say), ("name", f"{benefit}. {name_ro}.")]
     if feats:
         parts = [f[1] for f in feats]
@@ -672,8 +749,8 @@ def mix_music(music: Path, voice_wav: Path, total: float, out: Path, ducked: boo
 
 def render_clip(p: dict, num: int, lei: float, out_path: Path, local_images: list[Path] | None = None,
                 sheet_path: Path | None = None, poster_path: Path | None = None, voice: str = "edge",
-                music: Path | None = None) -> dict:
-    copy = build_copy(p, num, lei)
+                music: Path | None = None, avoid: set | None = None) -> dict:
+    copy = build_copy(p, num, lei, avoid)
     tmp = Path(tempfile.mkdtemp(prefix="clip_"))
     try:
         # ---- materiale
