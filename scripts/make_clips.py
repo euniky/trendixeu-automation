@@ -223,6 +223,7 @@ PRODUCT_TYPES = [
     (r"shoe wash|sneaker wash|shoe.{0,20}laundry", "sacul de spălat adidași",
      ["Adidașii albi din nou, din mașina de spălat", "Gata cu frecatul adidașilor"]),
     (r"vacuum sealer", "aparatul de vidat", ["Mâncarea rămâne proaspătă de 5 ori mai mult", "Videzi orice în 10 secunde"]),
+    (r"peeler|planer", "curățătorul de legume", ["Cartofii curățați în câteva secunde", "Gata cu cojile groase"]),
     (r"chopper|slicer|vegetable cutter|garlic", "tocătorul", ["Tai legumele în 10 secunde", "Gata cu lacrimile de la ceapă"]),
     (r"lint remover|fabric shaver|pill", "aparatul de scame", ["Puloverul arată ca nou în 30 de secunde"]),
     (r"massag", "aparatul de masaj", ["Masaj de salon, acasă, oricând", "Spatele tău o să-ți mulțumească"]),

@@ -198,7 +198,39 @@ def fetch_hot_products() -> list[dict]:
             if taken < PER_KEYWORD and len(picked) < MAX_HOT_PRODUCTS:
                 picked.append(item)
                 taken += 1
+    track_trends(CANDIDATES)
     return picked
+
+
+VOLUMES_PATH = ROOT / "data" / ".cache" / "volumes.json"
+
+
+def track_trends(items: list[dict]) -> None:
+    """Memoreaza zilnic comenzile fiecarui produs; produsele care cresc cel mai repede in ultima
+    saptamana primesc eticheta de trend (cererea reala, nu doar totalul istoric)."""
+    hist = json.loads(VOLUMES_PATH.read_text(encoding="utf-8")) if VOLUMES_PATH.exists() else {}
+    today = datetime.now(timezone.utc).date()
+    cut = (today - timedelta(days=21)).isoformat()
+    for p in items:
+        h = hist.setdefault(p["id"], {})
+        h[today.isoformat()] = int(p.get("orders") or 0)
+        past = sorted(d for d in h if d <= (today - timedelta(days=4)).isoformat())
+        if past:
+            base_day = min(past, key=lambda d: abs((today - datetime.fromisoformat(d).date()).days - 7))
+            days = max(1, (today - datetime.fromisoformat(base_day).date()).days)
+            gain = (h[today.isoformat()] - h[base_day]) * 7 / days
+            base = max(1, h[base_day])
+            p["trend_week"] = round(gain)
+            p["trend_pct"] = round(100 * gain / base, 1)
+    for pid in list(hist):
+        hist[pid] = {d: v for d, v in hist[pid].items() if d >= cut}
+        if not hist[pid]:
+            del hist[pid]
+    VOLUMES_PATH.parent.mkdir(parents=True, exist_ok=True)
+    VOLUMES_PATH.write_text(json.dumps(hist), encoding="utf-8")
+    hot = sorted((p for p in items if p.get("trend_week")), key=lambda p: -p["trend_week"])[:5]
+    for p in hot:
+        log(f"[info] trend: +{p['trend_week']} comenzi/saptamana (+{p['trend_pct']}%) {p['title'][:50]}")
 
 
 def fetch_orders(days: int = 30) -> dict:
@@ -630,6 +662,11 @@ def wow_score(p: dict, lei: float) -> tuple[float, list[str]]:
     if float(p.get("rating") or 0) >= 96:
         score += 1
         why.append("rating+1")
+    tw, tp = int(p.get("trend_week") or 0), float(p.get("trend_pct") or 0)
+    if tw >= 150 and tp >= 5:   # se vinde din ce in ce mai mult saptamana asta = subiect cautat acum
+        pts = 4 if tp >= 25 else 3 if tp >= 12 else 2
+        score += pts
+        why.append(f"trend+{pts}")
     specs = len(set(m.lower().replace(" ", "") for m in SPEC_RE.findall(p["title"])))
     if specs:   # specificatii concrete in titlu (800W, 15kPa, 60°C, 1.75L...) = produs serios, usor de prezentat
         pts = min(3, specs)
@@ -797,6 +834,50 @@ def get_music() -> list[Path]:
     return have
 
 
+UNIT_RE = re.compile(r"^\d+(?:[.,]\d+)?(w|kw|kpa|pa|mah|l|ml|min|m|cm|mm|db|v|rpm|pcs|pc|in1|k|p|g|kg|°c?|x)?$")
+ACCESSORY_RE = re.compile(r"accessor|replacement|spare|refill|compatible|\bfor (xiaomi|mijia|dreame|roborock|ecovacs|"
+                          r"irobot|roomba|dyson|eufy|shark|tineco|narwal|roidmi|viomi|ilife)\b|filter|side brush|mop pad|"
+                          r"dust bag|\bparts?\b", re.I)
+
+
+def product_signature(title: str) -> str:
+    """Acelasi produs vandut de magazine diferite -> aceeasi semnatura (marca + model, sau primele cuvinte)."""
+    words = re.findall(r"[a-z0-9]+(?:[.,][0-9]+)?", title.lower())
+    models = [w for w in words if re.search(r"[a-z]", w) and re.search(r"\d", w) and not UNIT_RE.match(w) and len(w) <= 8]
+    if models:   # codul de model (WD8, V7, A30...) identifica produsul indiferent de vanzator
+        return f"model:{models[0]}"
+    sig = [w for w in words if w.isalpha() and len(w) > 3][:3]
+    return " ".join(sig)
+
+
+def pick_clips(ordered: list[dict], video_log: list[dict], n: int) -> list[dict]:
+    """Alege n produse fara repetari: niciun produs deja prezentat (nici de la alt vanzator),
+    maxim un clip pe acelasi tip de produs in 3 zile si fara piese de schimb."""
+    import make_clips
+    today = datetime.now(timezone.utc).date()
+    used_sig = {product_signature(v.get("title", "")) for v in video_log
+                if v.get("created", "") >= (today - timedelta(days=45)).isoformat()}
+    used_type = {make_clips.product_type(v.get("title", ""))[0] for v in video_log
+                 if v.get("created", "") >= (today - timedelta(days=3)).isoformat()} - {None}
+    kw_count: dict = {}
+    out = []
+    for p in ordered:
+        if len(out) >= n:
+            break
+        if ACCESSORY_RE.search(p["title"]):
+            continue
+        sig = product_signature(p["title"])
+        ptype = make_clips.product_type(p["title"])[0]
+        if sig in used_sig or (ptype and ptype in used_type) or kw_count.get(p.get("kw"), 0) >= 2:
+            continue
+        out.append(p)
+        used_sig.add(sig)
+        if ptype:
+            used_type.add(ptype)
+        kw_count[p.get("kw")] = kw_count.get(p.get("kw"), 0) + 1
+    return out
+
+
 def make_daily_clips(hot: list[dict], featured: list[dict], rates: dict, video_log: list[dict]) -> list[dict]:
     """Recupereaza clipurile recente, randeaza clipuri noi, intoarce lista pentru consola."""
     clips_dir = OUT_DIR / "clips"
@@ -896,12 +977,10 @@ def make_daily_clips(hot: list[dict], featured: list[dict], rates: dict, video_l
         # intai produsele interesante care au filmare reala (clipurile arata mult mai bine), apoi restul
         good = [p for (sc_, why), p in scored if sc_ >= MIN_WOW_SCORE
                 and (p.get("video") or p.get("kw") not in VIDEO_ONLY)]
-        todo = ([p for p in good if p.get("video")] + [p for p in good if not p.get("video")])[:CLIPS_PER_DAY]
-        if len(todo) < CLIPS_PER_DAY:
-            # zi slaba: completez cu urmatoarele cele mai interesante produse, dar nu cu cele plictisitoare
-            extra = [p for (sc_, why), p in scored if MIN_FALLBACK_SCORE <= sc_ < MIN_WOW_SCORE
-                     and (p.get("video") or p.get("kw") not in VIDEO_ONLY)]
-            todo += extra[:CLIPS_PER_DAY - len(todo)]
+        extra = [p for (sc_, why), p in scored if MIN_FALLBACK_SCORE <= sc_ < MIN_WOW_SCORE
+                 and (p.get("video") or p.get("kw") not in VIDEO_ONLY)]
+        ordered = [p for p in good if p.get("video")] + [p for p in good if not p.get("video")] + extra
+        todo = pick_clips(ordered, video_log, CLIPS_PER_DAY)
         with_video = sum(1 for p in fresh if p.get("video"))
         log(f"[info] clipuri: {len(fresh)} produse verificate, {with_video} cu filmare, "
             f"{sum(1 for (sc_, _), _p in scored if sc_ >= MIN_WOW_SCORE)} peste pragul de interes ({MIN_WOW_SCORE})")
