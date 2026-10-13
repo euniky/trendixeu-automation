@@ -136,6 +136,14 @@ def main() -> None:
         log("Conturi TikTok conectate: " + ", ".join(f"@{a['username']}" for a in accounts))
 
     if check and accounts:
+        try:   # sunetele din biblioteca comerciala TikTok (merg doar pe conturi conectate prin TikTok Business)
+            r = requests.get(f"{API}/accounts/{accounts[0]['id']}/tiktok/commercial-music", headers=headers(), timeout=30)
+            report["cml_status"] = r.status_code
+            report["cml_sample"] = r.text[:1500]
+            log(f"Biblioteca comerciala TikTok: {r.status_code} {r.text[:200]}")
+        except Exception as exc:
+            log(f"Biblioteca comerciala TikTok: eroare {str(exc)[:150]}")
+
         # starea clipurilor deja programate (publicat / in asteptare / esuat)
         vlog = json.loads(VIDEO_LOG.read_text(encoding="utf-8")) if VIDEO_LOG.exists() else []
         report["posts"] = []

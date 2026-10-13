@@ -66,8 +66,9 @@ MIN_FALLBACK_SCORE = 3   # pragul minim cand nu sunt destule produse "wow"
 MUSIC_DIR = ROOT / "data" / ".cache" / "music"
 # muzica energica, fara drepturi de platit (Kevin MacLeod, CC BY 4.0: cere doar mentionarea autorului)
 MUSIC_WANTED = ["Funky Chunk", "Life of Riley", "Sneaky Snitch", "Fluffing a Duck", "Monkeys Spinning Monkeys",
-                "Pamgaea", "Big Mojo", "Blip Stream", "Awesome Call", "Funkorama", "Cipher", "Happy Alley",
+                "Pamgaea", "Big Mojo", "Awesome Call", "Funkorama", "Cipher", "Happy Alley",
                 "Carefree", "Hep Cats", "Wallpaper", "Local Forecast"]
+MUSIC_BANNED = {"Blip Stream"}   # nu a placut
 MUSIC_CREDIT = "🎵 {title} – Kevin MacLeod (incompetech.com) · CC BY 4.0"
 SITE_URL = "https://trendixeu.netlify.app"
 
@@ -809,6 +810,8 @@ def voice_demo(video_log: list[dict], rates: dict) -> dict | None:
 def get_music() -> list[Path]:
     """Muzica de fundal: o descarca o singura data de pe Internet Archive si o tine in cache."""
     MUSIC_DIR.mkdir(parents=True, exist_ok=True)
+    for b in MUSIC_BANNED:
+        (MUSIC_DIR / f"{b}.mp3").unlink(missing_ok=True)
     have = sorted(MUSIC_DIR.glob("*.mp3"))
     if len(have) >= 6:
         return have
