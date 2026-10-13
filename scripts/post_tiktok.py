@@ -139,7 +139,8 @@ def main() -> None:
         try:   # sunetele din biblioteca comerciala TikTok (merg doar pe conturi conectate prin TikTok Business)
             r = requests.get(f"{API}/accounts/{accounts[0]['id']}/tiktok/commercial-music", headers=headers(), timeout=30)
             report["cml_status"] = r.status_code
-            report["cml_sample"] = r.text[:1500]
+            report["cml_tracks"] = [{k: t.get(k) for k in ("id", "name", "artist", "durationSec", "genres", "rank")}
+                                    for t in (r.json().get("tracks") or [])] if r.ok else []
             log(f"Biblioteca comerciala TikTok: {r.status_code} {r.text[:200]}")
         except Exception as exc:
             log(f"Biblioteca comerciala TikTok: eroare {str(exc)[:150]}")
