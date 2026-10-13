@@ -12,6 +12,7 @@ from __future__ import annotations
 import json
 import os
 import re
+import time
 import sys
 from datetime import datetime, timedelta
 from pathlib import Path
@@ -177,10 +178,12 @@ def main() -> None:
         # starea clipurilor deja programate (publicat / in asteptare / esuat)
         vlog = json.loads(VIDEO_LOG.read_text(encoding="utf-8")) if VIDEO_LOG.exists() else []
         report["posts"] = []
+        recent = (datetime.now(TZ) - timedelta(days=3)).date().isoformat()
         for v in vlog:
             pid = (v.get("posted") or {}).get("id")
-            if not pid:
+            if not pid or v.get("created", "") < recent:   # doar ultimele zile (Zernio permite 60 cereri/minut)
                 continue
+            time.sleep(1.1)
             try:
                 r = requests.get(f"{API}/posts/{pid}", headers=headers(), timeout=30)
                 data = r.json() if r.ok else {"error": f"{r.status_code} {r.text[:300]}"}
