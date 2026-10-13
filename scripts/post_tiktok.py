@@ -103,9 +103,38 @@ def send_draft(v: dict, account: dict, log) -> bool:
     return True
 
 
-def caption(clip: dict) -> str:
+GOOD_GENRES = {"POP", "ELECTRONIC", "LATIN", "HIP_HOP/RAP", "TROPICAL_HOUSE", "EDM", "R&B/SOUL", "DANCE",
+               "ALTERNATIVE/INDIE", "ROCK", "FUNK", "REGGAETON"}
+BAD_WORDS = re.compile(r"child|kids|cartoon|halloween|horror|sad|heartbreak|blues|piano|lullaby|devotional|"
+                       r"sound effect|\bsound \d|bgm|news|mysterious|gentle|calm|sleep|rain", re.I)
+
+
+def trending_tracks(account: dict, log) -> list[dict]:
+    """Melodiile in trend din biblioteca comerciala TikTok, filtrate pentru reclame de produse."""
+    try:
+        r = requests.get(f"{API}/accounts/{account['id']}/tiktok/commercial-music", headers=headers(), timeout=30)
+        tracks = r.json().get("tracks") or [] if r.ok else []
+    except Exception as exc:
+        log(f"Nu am putut citi melodiile in trend: {str(exc)[:120]}")
+        return []
+    good = [t for t in tracks
+            if (t.get("durationSec") or 0) >= 30 and set(t.get("genres") or []) & GOOD_GENRES
+            and not BAD_WORDS.search(f"{t.get('name', '')} {t.get('artist', '')}")
+            and re.search(r"[A-Za-z]", t.get("name", ""))]
+    good.sort(key=lambda t: t.get("rank") or 999)
+    return good[:15]
+
+
+def music_settings(track: dict) -> dict:
+    return {"musicSoundInfo": {"musicSoundId": str(track["id"]), "musicSoundVolume": 85},
+            "videoOriginalSoundVolume": 0}   # muzica de fundal din clip se opreste, ramane doar melodia TikTok
+
+
+def caption(clip: dict, tiktok_music: bool = False) -> str:
     num = clip.get("num")
     text = clip.get("description_ro", "").replace(f"#{num}", f"nr. {num}")
+    if tiktok_music:   # creditul pentru muzica de fundal nu mai e necesar
+        text = "\n".join(l for l in text.split("\n") if not l.startswith("🎵"))
     tags = " ".join("#" + t for t in clip.get("hashtags", []))
     return f"{text}\n\n{tags}".strip()[:2150]
 
@@ -204,6 +233,18 @@ def main() -> None:
         if send_draft(v, account, log):
             report["drafts"].append({"num": v["num"], "title": v["clip"].get("title_ro")})
 
+    if os.environ.get("RESCHEDULE_MUSIC") == "1":
+        for v in video_log:
+            po = v.get("posted") or {}
+            if po.get("scheduledFor") and po.get("id") and not po.get("music") and not po.get("cancelled") \
+                    and datetime.fromisoformat(po["scheduledFor"]) - now > timedelta(minutes=30):
+                r = requests.delete(f"{API}/posts/{po['id']}", headers=headers(), timeout=30)
+                if r.ok or r.status_code == 404:
+                    v["posted"] = None
+                    v["_slot"] = po["scheduledFor"]
+                    v["created"] = datetime.utcnow().date().isoformat()
+                    log(f"Clipul #{v['num']} reprogramat la {po['scheduledFor'][11:16]} cu o melodie in trend")
+
     # doar clipurile generate azi (cele mai vechi le-ai postat poate deja manual)
     today = datetime.utcnow().date().isoformat()
     todo = [v for v in video_log if v.get("clip") and not v.get("posted") and v.get("created") == today
@@ -212,39 +253,54 @@ def main() -> None:
     drafts_today = sum(1 for v in video_log if (v.get("posted") or {}).get("draft")
                        and (v.get("posted") or {}).get("sent", "")[:10] == datetime.now(TZ).date().isoformat())
     n_drafts = max(0, DRAFTS_PER_DAY - drafts_today)
-    for v in todo[:n_drafts]:
+    for v in [x for x in todo if not x.get("_slot")][:n_drafts]:
         if send_draft(v, account, log):
             report["drafts"].append({"num": v["num"], "title": v["clip"].get("title_ro")})
     todo = [v for v in todo if not v.get("posted")]
 
+    tracks = trending_tracks(account, log)
+    if tracks:
+        log("Melodii in trend disponibile: " + ", ".join(f"{t['name']} ({t['artist']})" for t in tracks[:6]))
     taken = {v["posted"]["scheduledFor"] for v in video_log
              if (v.get("posted") or {}).get("scheduledFor") and not v["posted"].get("cancelled")}
-    slots = next_slots(len(todo), taken)
-    for v, when in zip(todo, slots):
+    fixed = [v for v in todo if v.get("_slot")]
+    rest = [v for v in todo if not v.get("_slot")]
+    slots = next_slots(len(rest), taken | {v["_slot"] for v in fixed})
+    pairs = [(v, datetime.fromisoformat(v.pop("_slot"))) for v in fixed] + list(zip(rest, slots))
+    for v, when in pairs:
         clip = v["clip"]
         url = clip_url(v)
         if not url:
             log(f"Clipul #{v['num']} nu e accesibil online; il las pentru data viitoare.")
             continue
+        track = tracks[(v["num"] + when.hour) % len(tracks)] if tracks else None
         body = {
-            "content": caption(clip),
+            "content": caption(clip, tiktok_music=bool(track)),
             "scheduledFor": when.isoformat(),
             "timezone": "Europe/Bucharest",
             "mediaItems": [{"type": "video", "url": url}],
             "platforms": [{"platform": "tiktok", "accountId": account["id"]}],
-            "tiktokSettings": settings(),
+            "tiktokSettings": {**settings(), **(music_settings(track) if track else {})},
         }
         try:
             r = requests.post(f"{API}/posts", headers=headers(), json=body, timeout=60)
+            if not r.ok and track:   # daca TikTok refuza melodia, postez cu muzica din clip
+                log(f"Melodia TikTok refuzata pentru #{v['num']} ({r.status_code} {r.text[:120]}), postez fara ea")
+                track = None
+                body["content"] = caption(clip)
+                body["tiktokSettings"] = settings()
+                r = requests.post(f"{API}/posts", headers=headers(), json=body, timeout=60)
             if not r.ok:
                 log(f"Programarea clipului #{v['num']} a esuat: {r.status_code} {r.text[:200]}")
                 continue
             data = r.json()
             post = data.get("post", data)
             v["posted"] = {"scheduledFor": when.isoformat(), "id": post.get("_id") or post.get("id"),
-                           "account": account["username"]}
+                           "account": account["username"],
+                           "music": f"{track['name']} – {track['artist']}" if track else None}
             report["scheduled"].append({"num": v["num"], "when": when.isoformat(), "title": clip.get("title_ro")})
-            log(f"Clipul #{v['num']} programat pe TikTok pentru {when.strftime('%d.%m %H:%M')}")
+            log(f"Clipul #{v['num']} programat pe TikTok pentru {when.strftime('%d.%m %H:%M')}"
+                + (f", cu melodia {track['name']} ({track['artist']})" if track else ""))
         except Exception as exc:
             log(f"Programarea clipului #{v['num']} a esuat: {str(exc)[:200]}")
     if not todo:
