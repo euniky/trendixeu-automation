@@ -148,11 +148,36 @@ def query_products(kw: str, tracking_id: str, page: int = 1) -> list[dict]:
 CANDIDATES: list[dict] = []   # toate produsele bune gasite azi (din ele se aleg clipurile)
 
 
+THEME_PATH = ROOT / "data" / "theme.json"
+
+
+def theme_today() -> dict:
+    """Tema zilei (o zi anume): alte cautari, doar filmari HD, interval de pret."""
+    try:
+        t = json.loads(THEME_PATH.read_text(encoding="utf-8"))
+        if t.get("date") == datetime.now(timezone.utc).date().isoformat():
+            return t
+    except Exception:
+        pass
+    return {}
+
+
+THEME = theme_today()
+if THEME:
+    for _k in THEME.get("keywords", []):
+        CATEGORY_OF[_k] = THEME.get("cat", "car accessories")
+        if THEME.get("hd_only"):
+            VIDEO_ONLY.add(_k)
+
+
 def fetch_hot_products() -> list[dict]:
     tracking_id = os.environ["ALI_TRACKING_ID"].strip()
     seen, picked = set(), []
     day = datetime.now(timezone.utc).toordinal()
     order = KEYWORDS[day % len(KEYWORDS):] + KEYWORDS[:day % len(KEYWORDS)]
+    if THEME:
+        log(f"[info] tema zilei: {THEME.get('name')}")
+        order = THEME["keywords"]
     for kw in order:
         taken = 0
         found = query_products(kw, tracking_id)
@@ -917,7 +942,7 @@ def make_daily_clips(hot: list[dict], featured: list[dict], rates: dict, video_l
                          "title_ro": (v.get("titles") or {}).get("ro") or v["title"]}
 
     # --- 1b. refacere cu muzica a unor clipuri deja facute (REMAKE="13,14")
-    remake = {int(x) for x in re.findall(r"\d+", os.environ.get("REMAKE", ""))}
+    remake = {int(x) for x in re.findall(r"\d+", os.environ.get("REMAKE", ""))} | set(THEME.get("remake", []))
     have_nums = {v.get("num") for v in video_log}
     for fp in featured:
         if fp.get("num") in remake and fp.get("num") not in have_nums and fp.get("image_url"):
@@ -937,6 +962,8 @@ def make_daily_clips(hot: list[dict], featured: list[dict], rates: dict, video_l
             num, fname = v["num"], f"trendixeu-{v['num']}.mp4"
             track = music[num % len(music)]
             try:
+                if not v.get("video") and str(v.get("id", "")).startswith("p"):   # poate intre timp are filmare
+                    v.update({k: x for k, x in product_details(v["id"]).items() if x})
                 p = normalize_price(dict(v))
                 own = ROOT / "data" / "seller_videos" / f"{num}.mp4"   # filmare pusa manual pentru acest produs
                 if own.exists():
@@ -983,6 +1010,11 @@ def make_daily_clips(hot: list[dict], featured: list[dict], rates: dict, video_l
         extra = [p for (sc_, why), p in scored if MIN_FALLBACK_SCORE <= sc_ < MIN_WOW_SCORE
                  and (p.get("video") or p.get("kw") not in VIDEO_ONLY)]
         ordered = [p for p in good if p.get("video")] + [p for p in good if not p.get("video")] + extra
+        if THEME:   # tema zilei: doar produsele temei, cu filmare, in intervalul de pret cerut
+            lo, hi = THEME.get("min_lei", 0), THEME.get("max_lei", 10 ** 6)
+            ordered = [p for p in ordered if p.get("kw") in THEME["keywords"]
+                       and (p.get("video") or not THEME.get("hd_only")) and lo <= to_lei(p, rates) <= hi]
+            log(f"[info] tema zilei: {len(ordered)} produse potrivite (filmare HD, {lo}-{hi} lei)")
         todo = pick_clips(ordered, video_log, CLIPS_PER_DAY)
         with_video = sum(1 for p in fresh if p.get("video"))
         log(f"[info] clipuri: {len(fresh)} produse verificate, {with_video} cu filmare, "

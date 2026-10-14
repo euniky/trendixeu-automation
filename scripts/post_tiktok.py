@@ -236,6 +236,21 @@ def main() -> None:
         if send_draft(v, account, log):
             report["drafts"].append({"num": v["num"], "title": v["clip"].get("title_ro")})
 
+    # repostare ceruta in tema zilei (clip refacut, programat din nou)
+    try:
+        theme = json.loads((ROOT / "data" / "theme.json").read_text(encoding="utf-8"))
+    except Exception:
+        theme = {}
+    if theme.get("date") == datetime.utcnow().date().isoformat():
+        for v in video_log:
+            po = v.get("posted") or {}
+            if v.get("num") in theme.get("repost", []) and not po.get("repost_day") == theme["date"]:
+                v["posted_before"] = (v.get("posted_before") or []) + ([po] if po else [])
+                v["posted"] = None
+                v["created"] = datetime.utcnow().date().isoformat()
+                v["_repost_day"] = theme["date"]
+                log(f"Clipul #{v['num']} va fi repostat azi (refacut)")
+
     if os.environ.get("RESCHEDULE_MUSIC") == "1":
         for v in video_log:
             po = v.get("posted") or {}
@@ -256,7 +271,7 @@ def main() -> None:
     drafts_today = sum(1 for v in video_log if (v.get("posted") or {}).get("draft")
                        and (v.get("posted") or {}).get("sent", "")[:10] == datetime.now(TZ).date().isoformat())
     n_drafts = max(0, DRAFTS_PER_DAY - drafts_today)
-    for v in [x for x in todo if not x.get("_slot")][:n_drafts]:
+    for v in [x for x in todo if not x.get("_slot") and not x.get("_repost_day")][:n_drafts]:
         if send_draft(v, account, log):
             report["drafts"].append({"num": v["num"], "title": v["clip"].get("title_ro")})
     todo = [v for v in todo if not v.get("posted")]
@@ -300,7 +315,8 @@ def main() -> None:
             post = data.get("post", data)
             v["posted"] = {"scheduledFor": when.isoformat(), "id": post.get("_id") or post.get("id"),
                            "account": account["username"],
-                           "music": f"{track['name']} – {track['artist']}" if track else None}
+                           "music": f"{track['name']} – {track['artist']}" if track else None,
+                           "repost_day": v.pop("_repost_day", None)}
             report["scheduled"].append({"num": v["num"], "when": when.isoformat(), "title": clip.get("title_ro")})
             log(f"Clipul #{v['num']} programat pe TikTok pentru {when.strftime('%d.%m %H:%M')}"
                 + (f", cu melodia {track['name']} ({track['artist']})" if track else ""))
