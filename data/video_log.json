@@ -590,11 +590,11 @@
    "benefit": "Fiecare drum mai confortabil"
   },
   "posted": {
-   "scheduledFor": "2026-10-14T21:00:00+03:00",
-   "id": "6acf237998ce2c64e44ef226",
-   "account": "trendixeu",
-   "music": "Hushed Aroma – edivieira",
-   "repost_day": "2026-10-14"
+   "draft": true,
+   "remade": 1,
+   "sent": "2026-10-14T12:24+03:00",
+   "id": "6acf4a2d0411595aa199caf0",
+   "account": "trendixeu"
   },
   "remade": 1,
   "posted_before": [
