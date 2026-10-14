@@ -1,13 +1,20 @@
 {
  "date": "2026-10-14",
  "name": "Accesorii premium pentru mașini",
- "keywords": ["car underglow led lights", "car door projector light", "car ambient light interior",
-              "car starlight headliner roof", "car head up display hud", "wireless carplay screen car",
-              "car led interior ambient lighting app", "car welcome light angel wings"],
+ "keywords": [
+  "car underglow led lights",
+  "car door projector light",
+  "car ambient light interior",
+  "car starlight headliner roof",
+  "car head up display hud",
+  "wireless carplay screen car",
+  "car led interior ambient lighting app",
+  "car welcome light angel wings"
+ ],
  "cat": "car accessories",
  "min_lei": 80,
  "max_lei": 900,
  "hd_only": true,
- "remake": [16],
- "repost": [16]
+ "remake": [],
+ "repost": []
 }
