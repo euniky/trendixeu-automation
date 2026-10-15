@@ -37,8 +37,8 @@ Contul TikTok **@trendixeu**: produse AliExpress cu link de afiliere. Totul rule
 | Filtre de calitate | `MIN_RATING_PERCENT` (90), `MIN_ORDERS` (300), `MIN_WOW_SCORE` (5) |
 | Câte clipuri pe zi | `CLIPS_PER_DAY` (6, din workflow) |
 | Ore de postare / câte schițe | `SLOTS`, `DRAFTS_PER_DAY` în `scripts/post_tiktok.py` |
-| Melodii TikTok acceptate | `GOOD_GENRES`, `BAD_WORDS` în `post_tiktok.py` |
-| Muzica de rezervă din clip | `MUSIC_WANTED` / `MUSIC_BANNED` (Blip Stream e interzisă) în `sync_bio.py` |
+| Melodii TikTok acceptate (doar serioase, fără copii / petrecere / explicit) | `GOOD_GENRES`, `BAD_WORDS` în `post_tiktok.py` |
+| Muzica de rezervă din clip (doar serioasă; cea comică e în `MUSIC_BANNED` și se șterge din cache) | `MUSIC_WANTED` / `MUSIC_BANNED` în `sync_bio.py`; titlurile negăsite apar în log |
 | Hook-uri pe tip de produs | `PRODUCT_TYPES` în `scripts/make_clips.py`; fraze generale în `HOOKS` |
 | Specificații afișate în clip | `FEATURES` în `make_clips.py` (W, kPa, °C, L, 4K, 360°…) |
 | Produsele adăugate manual (nr. 1–8) | `data/featured_products.json` (prețul se actualizează singur zilnic) |

@@ -104,10 +104,19 @@ def send_draft(v: dict, account: dict, log) -> bool:
     return True
 
 
-GOOD_GENRES = {"POP", "ELECTRONIC", "LATIN", "HIP_HOP/RAP", "TROPICAL_HOUSE", "EDM", "R&B/SOUL", "DANCE",
-               "ALTERNATIVE/INDIE", "ROCK", "FUNK", "REGGAETON"}
-BAD_WORDS = re.compile(r"child|kids|cartoon|halloween|horror|sad|heartbreak|blues|piano|lullaby|devotional|"
-                       r"sound effect|\bsound \d|bgm|news|mysterious|gentle|calm|sleep|rain", re.I)
+# melodii SERIOASE, moderne, care plac publicului larg: fara genuri de petrecere / vacanta / copii
+GOOD_GENRES = {"ELECTRONIC", "HIP_HOP/RAP", "R&B/SOUL", "ALTERNATIVE/INDIE", "ROCK", "POP", "EDM"}
+BAD_WORDS = re.compile(
+    # copii, desene, glume, sarbatori
+    r"child|\bkids?\b|\bbaby\b|nursery|rhymes?\b|\btoys?\b|cartoon|anime|kawaii|\bcute\b|funny|silly|\bmemes?\b|"
+    r"prank|jingle|birthday|\bparty\b|christmas|xmas|halloween|easter|disney|princess|bunny|chipmunk|"
+    r"sped.?up|speed.?up|"
+    # trist, horror, somn, liniste
+    r"horror|scary|\bsad\b|\bcry\b|heartbreak|blues|lullaby|sleep|\bcalm\b|gentle|\brain\b|"
+    # nu sunt melodii de fundal pentru reclame
+    r"piano|devotional|prayer|gospel|church|sound effect|\bsound \d|\bbgm\b|\bnews\b|mysterious|"
+    # stiluri prea 'vesele' / de vacanta
+    r"tropical|reggaeton|summer|beach|holiday|karaoke|nightcore", re.I)
 
 
 def trending_tracks(account: dict, log) -> list[dict]:
@@ -120,7 +129,8 @@ def trending_tracks(account: dict, log) -> list[dict]:
         return []
     good = [t for t in tracks
             if (t.get("durationSec") or 0) >= 30 and set(t.get("genres") or []) & GOOD_GENRES
-            and not BAD_WORDS.search(f"{t.get('name', '')} {t.get('artist', '')}")
+            and not t.get("explicit")   # fara versuri explicite
+            and not BAD_WORDS.search(f"{t.get('name', '')} {t.get('artist', '')} {' '.join(t.get('genres') or [])}")
             and re.search(r"[A-Za-z]", t.get("name", ""))]
     good.sort(key=lambda t: t.get("rank") or 999)
     return good[:15]
