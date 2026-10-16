@@ -626,6 +626,39 @@ def create_boards(acc: dict, log) -> None:
         time.sleep(1.1)
 
 
+def tiktok_custom(spec: dict, account: dict, log) -> None:
+    """Postare TikTok manuala (TIKTOK_CUSTOM = JSON cu video_url, caption): clipul se incarca in Zernio si se
+    publica imediat cu o melodie in trend din biblioteca comerciala (sunetul clipului e oricum oprit)."""
+    try:
+        r = requests.get(spec["video_url"], timeout=180)
+        r.raise_for_status()
+        pre = requests.post(f"{API}/media/presign", headers=headers(), timeout=30,
+                            json={"filename": "clip.mp4", "contentType": "video/mp4", "size": len(r.content)})
+        pre.raise_for_status()
+        d = pre.json()
+        requests.put(d["uploadUrl"], data=r.content, headers={"Content-Type": "video/mp4"}, timeout=600).raise_for_status()
+    except Exception as exc:
+        log(f"TikTok manual: incarcarea clipului a esuat: {str(exc)[:200]}")
+        return
+    tracks = trending_tracks(account, log)
+    track = tracks[0] if tracks else None
+    body = {"content": spec["caption"][:2150], "publishNow": True, "mediaItems": [{"type": "video", "url": d["publicUrl"]}],
+            "platforms": [{"platform": "tiktok", "accountId": account["id"]}],
+            "tiktokSettings": {**settings(), **(music_settings(track) if track else {})}}
+    resp = requests.post(f"{API}/posts", headers=headers(), json=body, timeout=180)
+    if not resp.ok and track:
+        body["tiktokSettings"] = settings()
+        resp = requests.post(f"{API}/posts", headers=headers(), json=body, timeout=180)
+        track = None
+    try:
+        post = resp.json().get("post", resp.json())
+        pl = [{k: x.get(k) for k in ("status", "errorMessage", "platformPostUrl")} for x in post.get("platforms", [])]
+        log(f"TikTok manual: HTTP {resp.status_code} {post.get('status')} {json.dumps(pl, ensure_ascii=False)[:400]}"
+            + (f" · melodie: {track['name']} – {track['artist']}" if track else ""))
+    except Exception:
+        log(f"TikTok manual: HTTP {resp.status_code} {resp.text[:400]}")
+
+
 def main() -> None:
     check = "--check" in sys.argv
     report: dict = {"checked": datetime.now(TZ).isoformat(timespec="seconds"), "ok": False, "scheduled": [], "log": []}
@@ -807,6 +840,11 @@ def main() -> None:
     todo = [v for v in todo if not v.get("posted")]
 
     boards = {a["id"]: pinterest_board(a, log) for a in extra["pinterest"]}
+    if os.environ.get("TIKTOK_CUSTOM", "").strip():
+        try:
+            tiktok_custom(json.loads(os.environ["TIKTOK_CUSTOM"]), account, log)
+        except Exception as exc:
+            log(f"TikTok manual: eroare {str(exc)[:200]}")
     if os.environ.get("PIN_CUSTOM", "").strip():
         try:
             pin_custom(json.loads(os.environ["PIN_CUSTOM"]), extra, boards, video_log, log)
