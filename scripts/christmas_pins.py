@@ -35,8 +35,11 @@ REPEAT_DAYS = 60
 
 # (cautare AliExpress, eticheta in romana = ce cauta romanii pe Google, pret minim EUR pentru "premium")
 SEARCHES = [
-    ("fiber optic christmas tree", "Brad artificial cu fibră optică", 25),
-    ("pre lit artificial christmas tree led", "Brad artificial cu LED-uri", 35),
+    # brazi: doar premium, minim TREE_MIN_LEI (verificat la curs); anunturile scumpe sunt adesea noi (fara recenzii)
+    ("fiber optic christmas tree", "Brad artificial cu fibră optică", 0),
+    ("210cm pre lit artificial christmas tree PE PVC", "Brad artificial cu luminițe încorporate", 0),
+    ("pre lit flocked christmas tree", "Brad artificial nins cu luminițe", 0),
+    ("luxury full PE christmas tree with lights", "Brad artificial premium cu luminițe", 0),
     ("christmas curtain lights led outdoor", "Perdea luminoasă de Crăciun", 15),
     ("outdoor christmas lights waterproof led string", "Instalație luminoasă de exterior", 15),
     ("icicle christmas lights outdoor", "Instalație țurțuri luminoși", 15),
@@ -48,6 +51,7 @@ SEARCHES = [
     ("christmas wreath led lights", "Coroniță de Crăciun cu LED", 15),
     ("smart app christmas lights rgb", "Instalație de Crăciun smart cu aplicație", 20),
 ]
+TREE_MIN_LEI = float(os.environ.get("TREE_MIN_LEI", "700"))   # brazii postati costa cel putin atat
 MIN_RATING = 92.0
 MIN_ORDERS = 20
 BAD = re.compile(r"\b(sticker|wallpaper|costume|sweater|hat|socks|mold|stencil|replacement|bulb only|plug adapter)\b", re.I)
@@ -59,6 +63,8 @@ HASHTAGS = "#craciun #decoratiunicraciun #bradcraciun #instalatiicraciun #christ
 XMAS_TYPES = [
     (r"(ceramic|tabletop|table top|mini|desktop).{0,40}tree|tree.{0,40}(ceramic|tabletop|ornament)", None),
     (r"fib(er|re) ?optic.{0,40}tree|tree.{0,40}fib(er|re) ?optic", "Brad artificial cu fibră optică"),
+    (r"(flocked|snow).{0,60}tree.{0,80}(pre.?lit|led|lights?)|(pre.?lit|led|lights?).{0,60}(flocked|snow).{0,30}tree",
+     "Brad artificial nins cu luminițe încorporate"),
     (r"(pre.?lit|led|lights?|lighted|illuminated).{0,40}(christmas )?tree|tree.{0,40}(led|lights|pre.?lit)", "Brad artificial cu luminițe încorporate"),
     (r"artificial christmas tree|christmas tree \d", "Brad artificial de Crăciun"),
     (r"curtain", "Perdea luminoasă de Crăciun"),
@@ -90,6 +96,9 @@ def load_log() -> list[dict]:
         return []
 
 
+RON = 4.97   # se actualizeaza din cursul BCE in main()
+
+
 def candidates(tracking: str, used: set[str], log) -> list[dict]:
     """Produsele premium pentru fiecare cautare, cele mai bune primele."""
     groups = []
@@ -115,7 +124,16 @@ def candidates(tracking: str, used: set[str], log) -> list[dict]:
             real_label = xmas_label(title)
             if not real_label:   # nu e ce cautam (sau e un brad de ceramica / de masa)
                 continue
-            if rating < MIN_RATING or orders < MIN_ORDERS or price < min_eur:
+            is_tree = real_label.startswith("Brad")
+            if is_tree:
+                # brad premium: pret minim in lei, mare (>= 150 cm), nu gonflabil; rating doar daca exista recenzii
+                h = re.search(r"(\d{3})\s?cm|(\d(?:[.,]\d)?)\s?m\b|(\d(?:\.\d)?)\s?ft", title, re.I)
+                cm = int(h.group(1)) if h and h.group(1) else (float(h.group(2).replace(",", ".")) * 100 if h and h.group(2)
+                                                               else (float(h.group(3)) * 30.5 if h and h.group(3) else 0))
+                if price * RON < TREE_MIN_LEI or re.search(r"inflat|ceramic|tabletop|mini", title, re.I) \
+                        or (cm and cm < 150) or (orders and rating and rating < 88):
+                    continue
+            elif rating < MIN_RATING or orders < MIN_ORDERS or price < min_eur:
                 continue
             smalls = p.get("product_small_image_urls") or []
             if isinstance(smalls, dict):
@@ -125,7 +143,9 @@ def candidates(tracking: str, used: set[str], log) -> list[dict]:
                          "image": p.get("product_main_image_url", ""),
                          "images": [u for u in smalls if isinstance(u, str)][:4],
                          # scor: popularitate si calitate (pretul mai mare = mai "premium", pana la un punct)
-                         "score": orders * (rating / 100) ** 4 * min(price / min_eur, 3)})
+                         "score": (orders * (rating / 100) ** 4 * min(price / min_eur, 3)) if not is_tree else
+                                  (orders * 50 + int((re.search(r"(\d{3,4})\s?(?:warm )?(?:white )?led", title, re.I) or [0, 0])[1])
+                                   + int((re.search(r"(\d{3,4})\s?(?:full )?(?:branch )?tips", title, re.I) or [0, 0])[1]) / 5)})
         good.sort(key=lambda x: -x["score"])
         if good:
             groups.append(good)
@@ -164,11 +184,11 @@ def description(c: dict, lei: float) -> str:
         ro = ""
     lines = [f"🎄 {c['label']} – decor de Crăciun premium",
              ro.strip()[:180] if ro else "",
-             f"⭐ {c['rating']:.0f}% recenzii pozitive · {c['orders']}+ comenzi",
+             (f"⭐ {c['rating']:.0f}% recenzii pozitive · {c['orders']}+ comenzi" if c['orders'] and c['rating'] else None),
              f"💰 Preț: ~{lei:.0f} lei · ✅ Livrare în România",
              "Comandă din timp, ca să ajungă înainte de Crăciun!",
              "", HASHTAGS, "", "🔗 Link afiliat / Affiliate link"]
-    return "\n".join(l for l in lines if l is not None).replace("\n\n\n", "\n\n")[:800]
+    return "\n".join(l for l in lines if l is not None).replace("\n\n\n", "\n\n")[:800]  # liniile None sunt sarite
 
 
 def main() -> None:
@@ -230,9 +250,10 @@ def main() -> None:
     used = {h["id"] for h in history if h.get("when", "") >= cutoff} | \
            {h["sig"] for h in history if h.get("when", "") >= cutoff and h.get("sig")}
     sb.load_tr_cache()
-    pool = candidates(os.environ["ALI_TRACKING_ID"].strip(), used, log)
+    global RON
     rates = sb.get_rates()
-    ron = rates.get("RON", 4.97)
+    ron = RON = rates.get("RON", 4.97)
+    pool = candidates(os.environ["ALI_TRACKING_ID"].strip(), used, log)
     for when, c in zip(slots, pool):
         img = c["image"] or (c["images"] or [None])[0]
         if not img:
