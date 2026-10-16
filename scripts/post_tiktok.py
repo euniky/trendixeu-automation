@@ -244,7 +244,9 @@ def caption(clip: dict, tiktok_music: bool = False) -> str:
 # --- Pinterest: un pin la fiecare 30 de minute, cele mai bune produse la orele de varf --------------------
 PIN_TIMES = [(h, m) for h in range(10, 24) for m in (0, 30)]          # 10:00 ... 23:30
 PIN_PRIME = {(12, 0), (12, 30), (13, 0), (19, 0), (19, 30), (20, 0), (20, 30), (21, 0)}   # pranz si seara
-PIN_IMAGES = int(os.environ.get("PIN_IMAGES", "3"))                    # poze diferite pe produs, pe langa clip
+PIN_IMAGES = int(os.environ.get("PIN_IMAGES", "2"))                    # poze diferite pe produs, pe langa clip
+# Zernio permite 25 de pinuri pe zi pe cont; programarea automata lasa loc pentru pinuri manuale
+PIN_DAILY_MAX = int(os.environ.get("PIN_DAILY_MAX", "20"))
 
 
 def pin_slots(n: int, taken: set[str]) -> list[datetime]:
@@ -296,6 +298,9 @@ def schedule_pinterest(video_log: list[dict], extra: dict, boards: dict, off: se
     if not queue:
         return 0
     taken = {p["when"] for v in video_log for p in v.get("pins", []) if p.get("when")}
+    today_local = datetime.now(TZ).date().isoformat()
+    used = sum(1 for v in video_log for p in v.get("pins", []) if (p.get("when") or "")[:10] == today_local)
+    queue = queue[:max(0, PIN_DAILY_MAX - used)]
     slots = pin_slots(len(queue), taken)
     done = 0
     for (key, v, media), when in zip(queue, slots):
@@ -347,7 +352,7 @@ def pin_now(num: int, extra: dict, boards: dict, video_log: list[dict], log) -> 
         log(f"Test pin: nu am putut citi starea: {str(exc)[:200]}")
 
 
-def pin_custom(spec: dict, extra: dict, boards: dict, log) -> None:
+def pin_custom(spec: dict, extra: dict, boards: dict, video_log: list[dict], log) -> None:
     """Pin manual pentru un produs care nu are clip (PIN_CUSTOM = JSON cu title, link, image(s), description)."""
     if not extra.get("pinterest"):
         log("Pin manual: niciun cont Pinterest conectat.")
@@ -355,6 +360,21 @@ def pin_custom(spec: dict, extra: dict, boards: dict, log) -> None:
     acc = extra["pinterest"][0]
     imgs = [i for i in ([spec.get("image")] + list(spec.get("images") or [])) if i]
     when0 = datetime.now(TZ)
+    for _ in range(int(spec.get("free_slots", 0))):   # limita de 25/zi: anulez ultimul pin programat azi
+        today_local = when0.date().isoformat()
+        later = [(p["when"], v, p) for v in video_log for p in v.get("pins", [])
+                 if p.get("id") and (p.get("when") or "")[:10] == today_local
+                 and datetime.fromisoformat(p["when"]) - when0 > timedelta(minutes=10)]
+        if not later:
+            break
+        _, v, p = max(later, key=lambda x: x[0])
+        r = requests.delete(f"{API}/posts/{p['id']}", headers=headers(), timeout=30)
+        if r.ok or r.status_code == 404:
+            v["pins"].remove(p)
+            log(f"Pin manual: am anulat pinul #{v['num']} ({p['key']}) de la {p['when'][11:16]} ca sa fac loc")
+        else:
+            log(f"Pin manual: nu am putut anula pinul de la {p['when'][11:16]}: {r.status_code} {r.text[:200]}")
+        time.sleep(1.1)
     for k, img in enumerate(imgs[:int(spec.get("count", 1))]):
         entry = {"platform": "pinterest", "accountId": acc["id"], "platformSpecificData": {
             "boardId": boards.get(acc["id"]), "title": spec["title"][:100], "link": spec["link"]}}
@@ -541,7 +561,7 @@ def main() -> None:
     boards = {a["id"]: pinterest_board(a, log) for a in extra["pinterest"]}
     if os.environ.get("PIN_CUSTOM", "").strip():
         try:
-            pin_custom(json.loads(os.environ["PIN_CUSTOM"]), extra, boards, log)
+            pin_custom(json.loads(os.environ["PIN_CUSTOM"]), extra, boards, video_log, log)
         except Exception as exc:
             log(f"Pin manual: eroare {str(exc)[:200]}")
     if os.environ.get("PIN_NOW", "").strip().isdigit():
