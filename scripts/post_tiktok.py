@@ -395,6 +395,43 @@ def pin_now(num: int, extra: dict, boards: dict, video_log: list[dict], log) -> 
         log(f"Test pin: nu am putut citi starea: {str(exc)[:200]}")
 
 
+def prepare_video(src_url: str, log) -> str | None:
+    """Descarca filmarea vanzatorului, o face verticala 1080x1920 (fundal estompat), mai clara si mai vie
+    (contrast, culori, claritate), H.264 de calitate inalta, apoi o incarca in Zernio. Intoarce URL-ul public."""
+    import subprocess
+    import tempfile
+    tmp = Path(tempfile.mkdtemp())
+    src, out = tmp / "src.mp4", tmp / "pin.mp4"
+    r = requests.get(src_url, timeout=180, headers={"User-Agent": "Mozilla/5.0"})
+    if not r.ok or len(r.content) < 50_000:
+        log(f"Video: nu am putut descarca filmarea ({r.status_code})")
+        return None
+    src.write_bytes(r.content)
+    vf = ("split[a][b];"
+          "[a]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,boxblur=30:2,eq=brightness=-0.08[bg];"
+          "[b]scale=1080:1920:force_original_aspect_ratio=decrease:flags=lanczos,"
+          "eq=contrast=1.08:saturation=1.18:gamma=0.97,unsharp=5:5:0.8:3:3:0.3[fg];"
+          "[bg][fg]overlay=(W-w)/2:(H-h)/2,fps=30,format=yuv420p")
+    cmd = ["ffmpeg", "-v", "error", "-y", "-i", str(src), "-filter_complex", vf, "-c:v", "libx264", "-preset", "slow",
+           "-crf", "18", "-profile:v", "high", "-c:a", "aac", "-b:a", "160k", "-movflags", "+faststart", str(out)]
+    res = subprocess.run(cmd, capture_output=True, text=True, timeout=600)
+    if res.returncode or not out.exists():
+        log(f"Video: conversia a esuat: {res.stderr[:300]}")
+        return None
+    pre = requests.post(f"{API}/media/presign", headers=headers(), timeout=30,
+                        json={"filename": "pin.mp4", "contentType": "video/mp4", "size": out.stat().st_size})
+    if not pre.ok:
+        log(f"Video: presign a esuat: {pre.status_code} {pre.text[:200]}")
+        return None
+    d = pre.json()
+    up = requests.put(d["uploadUrl"], data=out.read_bytes(), headers={"Content-Type": "video/mp4"}, timeout=600)
+    if not up.ok:
+        log(f"Video: incarcarea a esuat: {up.status_code} {up.text[:200]}")
+        return None
+    log(f"Video pregatit: 1080x1920, {out.stat().st_size / 1e6:.1f} MB")
+    return d["publicUrl"]
+
+
 def pin_custom(spec: dict, extra: dict, boards: dict, video_log: list[dict], log) -> None:
     """Pin manual pentru un produs care nu are clip (PIN_CUSTOM = JSON cu title, link, image(s), description)."""
     if not extra.get("pinterest"):
@@ -418,6 +455,20 @@ def pin_custom(spec: dict, extra: dict, boards: dict, video_log: list[dict], log
         else:
             log(f"Pin manual: nu am putut anula pinul de la {p['when'][11:16]}: {r.status_code} {r.text[:200]}")
         time.sleep(1.1)
+    if spec.get("video_url"):   # pin VIDEO cu filmarea vanzatorului (demonstratie), publicat imediat
+        vurl = prepare_video(spec["video_url"], log)
+        if vurl:
+            bid = board_for({"kw": spec.get("kw", ""), "title": spec["title"]}, BOARD_LISTS.get(acc["id"], []),
+                            boards.get(acc["id"]))
+            media = {"type": "video", "url": vurl}
+            body = {"content": (spec.get("description", "") + "\n\n🔗 Link afiliat / Affiliate link").strip()[:800],
+                    "publishNow": True, "mediaItems": [media], "platforms": [{
+                        "platform": "pinterest", "accountId": acc["id"], "platformSpecificData": {
+                            "boardId": bid, "title": spec["title"][:100], "link": spec["link"],
+                            **({"coverImageUrl": imgs[0]} if imgs else {})}}]}
+            r = requests.post(f"{API}/posts", headers=headers(), json=body, timeout=300)
+            log(f"Pin video ({spec['title'][:40]}): HTTP {r.status_code} {r.text[:500]}")
+        return
     for k, img in enumerate(imgs[:int(spec.get("count", 1))]):
         bid = board_for({"kw": spec.get("kw", ""), "title": spec["title"]}, BOARD_LISTS.get(acc["id"], []),
                         boards.get(acc["id"]))
