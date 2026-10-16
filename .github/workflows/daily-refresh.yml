@@ -32,6 +32,9 @@ on:
       reschedule_pins:
         description: "Reprogrameaza pinurile Pinterest nepublicate de azi (1/0)"
         default: "0"
+      get_posts:
+        description: "Starea unor postari (ID-uri Zernio)"
+        default: ""
       delete_posts:
         description: "Sterge postari (ID-uri Zernio, separate prin virgula)"
         default: ""
@@ -150,6 +153,7 @@ jobs:
           CREATE_BOARDS: ${{ github.event.inputs.create_boards || '0' }}
           RESCHEDULE_PINS: ${{ github.event.inputs.reschedule_pins || '0' }}
           DELETE_POSTS: ${{ github.event.inputs.delete_posts || '' }}
+          GET_POSTS: ${{ github.event.inputs.get_posts || '' }}
           CLIP_BASE: https://euniky.github.io/trendixeu-automation   # direct de pe GitHub, fara credite Netlify
         run: python scripts/post_tiktok.py ${{ github.event.inputs.zernio_check == 'true' && '--check' || '' }}
 

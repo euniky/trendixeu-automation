@@ -564,7 +564,12 @@ def pin_custom(spec: dict, extra: dict, boards: dict, video_log: list[dict], log
                             "boardId": bid, "title": spec["title"][:100], "link": spec["link"],
                             **({"coverImageUrl": imgs[0]} if imgs else {})}}]}
             r = requests.post(f"{API}/posts", headers=headers(), json=body, timeout=300)
-            log(f"Pin video ({spec['title'][:40]}): HTTP {r.status_code} {r.text[:500]}")
+            try:
+                post = r.json().get("post", r.json())
+                pl = [{k: x.get(k) for k in ("status", "errorMessage", "platformPostUrl")} for x in post.get("platforms", [])]
+                log(f"Pin video ({spec['title'][:40]}): HTTP {r.status_code} {post.get('status')} {json.dumps(pl, ensure_ascii=False)[:500]}")
+            except Exception:
+                log(f"Pin video ({spec['title'][:40]}): HTTP {r.status_code} {r.text[:500]}")
         return
     if len(imgs) >= 2 and spec.get("collage", True):   # un singur pin cu colaj din mai multe poze
         price = (re.search(r"~?\s?[\d.]+ lei", spec["title"]) or [""])[0]
@@ -650,6 +655,14 @@ def main() -> None:
         report["ok"] = True
         log("Conturi TikTok conectate: " + ", ".join(f"@{a['username']}" for a in accounts))
 
+    for pid in re.findall(r"[0-9a-f]{24}", os.environ.get("GET_POSTS", "")):   # starea unor postari (ID Zernio)
+        r = requests.get(f"{API}/posts/{pid}", headers=headers(), timeout=30)
+        try:
+            post = r.json().get("post", r.json())
+            pl = [{k: x.get(k) for k in ("platform", "status", "errorMessage", "platformPostUrl")} for x in post.get("platforms", [])]
+            log(f"Postare {pid}: {post.get('status')} {json.dumps(pl, ensure_ascii=False)[:600]}")
+        except Exception:
+            log(f"Postare {pid}: HTTP {r.status_code} {r.text[:400]}")
     for pid in re.findall(r"[0-9a-f]{24}", os.environ.get("DELETE_POSTS", "")):   # stergere postari (ID Zernio)
         r = requests.delete(f"{API}/posts/{pid}", headers=headers(), timeout=30)
         log(f"Stergere postare {pid}: HTTP {r.status_code} {r.text[:300]}")
