@@ -149,6 +149,16 @@ jobs:
           CLIP_BASE: https://euniky.github.io/trendixeu-automation   # direct de pe GitHub, fara credite Netlify
         run: python scripts/post_tiktok.py ${{ github.event.inputs.zernio_check == 'true' && '--check' || '' }}
 
+      - name: Pinuri de Craciun (3 pe zi, board Crăciun Premium)
+        continue-on-error: true
+        if: github.event.inputs.zernio_check != 'true'
+        env:
+          ZERNIO_API_KEY: ${{ secrets.ZERNIO_API_KEY }}
+          ALI_APP_KEY: ${{ secrets.ALI_APP_KEY }}
+          ALI_APP_SECRET: ${{ secrets.ALI_APP_SECRET }}
+          ALI_TRACKING_ID: ${{ secrets.ALI_TRACKING_ID }}
+        run: python scripts/christmas_pins.py
+
       - name: Copie de rezerva a clipurilor (7 zile)
         if: hashFiles('public/clips/*.mp4') != ''
         uses: actions/upload-artifact@v4
@@ -165,6 +175,7 @@ jobs:
           cp public/clips/sheet-*.jpg /tmp/prev/ 2>/dev/null || true
           cp public/status.json /tmp/prev/ 2>/dev/null || true
           cp public/zernio.json /tmp/prev/ 2>/dev/null || true
+          cp public/christmas.json /tmp/prev/ 2>/dev/null || true
           cd /tmp/prev && git init -q -b previews && git add . \
             && git -c user.name=trendixeu-bot -c user.email=trendixeu-bot@users.noreply.github.com commit -qm "Previzualizari rularea ${{ github.run_number }}" \
             && git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" previews || echo "Previzualizarile nu au putut fi salvate"
@@ -174,8 +185,9 @@ jobs:
         run: |
           git config user.name "trendixeu-bot"
           git config user.email "trendixeu-bot@users.noreply.github.com"
-          if ! git diff --quiet -- data/video_log.json data/featured_products.json 2>/dev/null || [ -n "$(git ls-files --others --exclude-standard data/video_log.json)" ]; then
+          if ! git diff --quiet -- data/video_log.json data/featured_products.json data/seasonal_log.json 2>/dev/null || [ -n "$(git ls-files --others --exclude-standard data/video_log.json data/seasonal_log.json)" ]; then
             git add data/video_log.json data/featured_products.json
+            git add data/seasonal_log.json 2>/dev/null || true
             git commit -m "Clipuri noi si modificari din consola: rularea ${{ github.run_number }}"
           else
             days=$(( ( $(date +%s) - $(git log -1 --format=%ct) ) / 86400 ))

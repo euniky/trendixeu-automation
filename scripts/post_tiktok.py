@@ -86,6 +86,7 @@ def pinterest_board(account: dict, log) -> str | None:
 # Boardul tematic pentru fiecare categorie de produs: se cauta un board al carui nume contine unul dintre cuvinte.
 # Daca nu exista board potrivit, pinul ajunge in boardul general (AliExpress Deals).
 BOARD_THEMES = [
+    (("christmas", "xmas", "craciun"), ("craciun", "christmas")),
     (("cleaning", "carpet", "vacuum", "mop", "steam", "window"), ("curat", "clean")),
     (("kitchen",), ("bucat", "kitchen")),
     (("home gadget", "home"), ("casa", "casă", "home")),
@@ -286,7 +287,7 @@ PIN_TIMES = [(h, m) for h in range(10, 24) for m in (0, 30)]          # 10:00 ..
 PIN_PRIME = {(12, 0), (12, 30), (13, 0), (19, 0), (19, 30), (20, 0), (20, 30), (21, 0)}   # pranz si seara
 PIN_IMAGES = int(os.environ.get("PIN_IMAGES", "2"))                    # poze diferite pe produs, pe langa clip
 # Zernio permite 25 de pinuri pe zi pe cont; programarea automata lasa loc pentru pinuri manuale
-PIN_DAILY_MAX = int(os.environ.get("PIN_DAILY_MAX", "20"))
+PIN_DAILY_MAX = int(os.environ.get("PIN_DAILY_MAX", "19"))   # + 3 pinuri de Craciun (christmas_pins.py) + 3 manuale
 
 
 def pin_slots(n: int, taken: set[str]) -> list[datetime]:
