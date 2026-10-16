@@ -48,6 +48,7 @@ Contul TikTok **@trendixeu**: produse AliExpress cu link de afiliere. Totul rule
 | Ore de postare / câte schițe | `SLOTS`, `DRAFTS_PER_DAY` în `scripts/post_tiktok.py` |
 | Melodii TikTok acceptate (moderne; fără rock, orchestră, tobe, copii, petrecere, explicit) | `GOOD_GENRES`, `BAD_WORDS` în `post_tiktok.py` |
 | Muzica din clip (modernă și melodică: electronic / chill / lounge; interzise în `MUSIC_BANNED`: orchestrală, simfonică, doar tobe, copilărească) | `MUSIC_WANTED` / `MUSIC_BANNED` în `sync_bio.py`; titlurile negăsite apar în log |
+| Titluri și descrieri Pinterest (cuvinte cheie căutate în română, pe tip de produs) | `PRODUCT_TYPES`, `CATEGORY_KW`, `TAGS` în `scripts/pin_seo.py` |
 | Hook-uri pe tip de produs | `PRODUCT_TYPES` în `scripts/make_clips.py`; fraze generale în `HOOKS` |
 | Specificații afișate în clip | `FEATURES` în `make_clips.py` (W, kPa, °C, L, 4K, 360°…) |
 | Produsele adăugate manual (nr. 1–8) | `data/featured_products.json` (prețul se actualizează singur zilnic) |

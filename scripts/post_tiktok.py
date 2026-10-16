@@ -20,6 +20,9 @@ from zoneinfo import ZoneInfo
 
 import requests
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import pin_seo  # noqa: E402  titluri si descrieri optimizate pentru cautarea Pinterest
+
 ROOT = Path(__file__).resolve().parent.parent
 VIDEO_LOG = ROOT / "data" / "video_log.json"
 REPORT = ROOT / "public" / "zernio.json"
@@ -349,9 +352,9 @@ def schedule_pinterest(video_log: list[dict], extra: dict, boards: dict, off: se
     for (key, v, media), when in zip(queue, slots):
         clip = v["clip"]
         entry = {"platform": "pinterest", "accountId": acc["id"], "platformSpecificData": {
-            "boardId": board_for(v, BOARD_LISTS.get(acc["id"], []), board), "title": (clip.get("title_ro") or v.get("title") or "Oferta AliExpress")[:100],
+            "boardId": board_for(v, BOARD_LISTS.get(acc["id"], []), board), "title": pin_seo.pin_title(v),
             "link": pin_link(v)}}   # linkul clickabil al produsului
-        body = {"content": extra_caption(v, "pinterest"), "scheduledFor": when.isoformat(), "timezone": "Europe/Bucharest",
+        body = {"content": pin_seo.pin_description(v), "scheduledFor": when.isoformat(), "timezone": "Europe/Bucharest",
                 "mediaItems": [{"type": "video" if key == "video" else "image", "url": media}], "platforms": [entry]}
         try:
             r = requests.post(f"{API}/posts", headers=headers(), json=body, timeout=60)
