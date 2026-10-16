@@ -509,8 +509,10 @@ def prepare_video(src_url: str, log) -> str | None:
           "[b]scale=1080:1920:force_original_aspect_ratio=decrease:flags=lanczos,"
           "eq=contrast=1.08:saturation=1.18:gamma=0.97,unsharp=5:5:0.8:3:3:0.3[fg];"
           "[bg][fg]overlay=(W-w)/2:(H-h)/2,fps=30,format=yuv420p")
-    cmd = ["ffmpeg", "-v", "error", "-y", "-i", str(src), "-filter_complex", vf, "-c:v", "libx264", "-preset", "slow",
-           "-crf", "18", "-profile:v", "high", "-an", "-movflags", "+faststart", str(out)]   # fara sunet (drepturi muzica)
+    # fisier mic (~4–5 Mbit/s): Pinterest renunta la procesare dupa 60 s la video-urile prea mari
+    cmd = ["ffmpeg", "-v", "error", "-y", "-i", str(src), "-t", "60", "-filter_complex", vf, "-c:v", "libx264",
+           "-preset", "medium", "-crf", "22", "-maxrate", "5M", "-bufsize", "10M", "-profile:v", "high",
+           "-an", "-movflags", "+faststart", str(out)]   # fara sunet (drepturi muzica)
     res = subprocess.run(cmd, capture_output=True, text=True, timeout=600)
     if res.returncode or not out.exists():
         log(f"Video: conversia a esuat: {res.stderr[:300]}")
