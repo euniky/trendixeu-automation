@@ -434,6 +434,32 @@ def pin_custom(spec: dict, extra: dict, boards: dict, video_log: list[dict], log
         time.sleep(1.1)
 
 
+# Boardurile tematice create automat (CREATE_BOARDS=1), daca lipsesc din cont
+THEMED_BOARDS = [
+    ("Curățenie inteligentă", "Aspiratoare, mopuri, roboți de geamuri și aparate cu abur de pe AliExpress, testate de mii de cumpărători. Oferte cu livrare în România."),
+    ("Casă & Bucătărie", "Gadgeturi utile pentru casă și bucătărie de pe AliExpress: idei practice, prețuri mici, livrare în România."),
+    ("Auto & Moto", "Accesorii auto și moto de pe AliExpress: camere de bord, suporturi de telefon, lumini ambientale. Oferte cu livrare în România."),
+    ("Animale de companie", "Produse pentru câini și pisici de pe AliExpress: jucării, accesorii, îngrijire. Oferte cu livrare în România."),
+    ("Gadgeturi telefon", "Accesorii și gadgeturi pentru telefon de pe AliExpress, la prețuri mici. Livrare în România."),
+    ("Hobby & Outdoor", "Echipament pentru hobby, tir sportiv, camping și pescuit de pe AliExpress. Oferte cu livrare în România."),
+    ("Bricolaj & Scule", "Scule și unelte de bricolaj de pe AliExpress: bormașini, șurubelnițe, accesorii. Oferte cu livrare în România."),
+    ("Frumusețe", "Produse de îngrijire și frumusețe de pe AliExpress, apreciate de cumpărători. Livrare în România."),
+]
+
+
+def create_boards(acc: dict, log) -> None:
+    r = requests.get(f"{API}/accounts/{acc['id']}/pinterest-boards", headers=headers(), timeout=30)
+    have = {_plain(b.get("name", "")) for b in ((r.json().get("boards") or []) if r.ok else [])}
+    for name, desc in THEMED_BOARDS:
+        if _plain(name) in have:
+            log(f"Board existent: {name}")
+            continue
+        c = requests.post(f"{API}/accounts/{acc['id']}/pinterest-boards", headers=headers(), timeout=30,
+                          json={"name": name, "description": desc, "privacy": "PUBLIC"})
+        log(f"Board creat: {name}" if c.ok else f"Board {name}: eroare {c.status_code} {c.text[:200]}")
+        time.sleep(1.1)
+
+
 def main() -> None:
     check = "--check" in sys.argv
     report: dict = {"checked": datetime.now(TZ).isoformat(timespec="seconds"), "ok": False, "scheduled": [], "log": []}
@@ -465,6 +491,9 @@ def main() -> None:
     else:
         report["ok"] = True
         log("Conturi TikTok conectate: " + ", ".join(f"@{a['username']}" for a in accounts))
+
+    if os.environ.get("CREATE_BOARDS") == "1" and extra.get("pinterest"):
+        create_boards(extra["pinterest"][0], log)
 
     if check and accounts:
         try:   # sunetele din biblioteca comerciala TikTok (merg doar pe conturi conectate prin TikTok Business)

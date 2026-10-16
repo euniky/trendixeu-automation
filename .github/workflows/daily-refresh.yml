@@ -26,6 +26,9 @@ on:
       pin_custom:
         description: "Pin manual (JSON: title, link, image, images, description, count)"
         default: ""
+      create_boards:
+        description: "Creeaza boardurile tematice Pinterest care lipsesc (1/0)"
+        default: "0"
       premium_demo:
         description: "Numarul clipului de refacut cu voce gratuita vs premium (gol = nimic)"
         default: ""
@@ -138,6 +141,7 @@ jobs:
           RESCHEDULE_MUSIC: ${{ github.event.inputs.reschedule_music || '0' }}
           PIN_NOW: ${{ github.event.inputs.pin_now || '' }}
           PIN_CUSTOM: ${{ github.event.inputs.pin_custom || '' }}
+          CREATE_BOARDS: ${{ github.event.inputs.create_boards || '0' }}
           CLIP_BASE: https://euniky.github.io/trendixeu-automation   # direct de pe GitHub, fara credite Netlify
         run: python scripts/post_tiktok.py ${{ github.event.inputs.zernio_check == 'true' && '--check' || '' }}
 
