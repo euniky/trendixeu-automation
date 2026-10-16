@@ -94,8 +94,16 @@ def extra_platform_entries(v: dict, extra: dict, boards: dict) -> list[dict]:
             "boardId": board,
             "title": (clip.get("title_ro") or v.get("title") or "Oferta AliExpress")[:100],
             # Pinterest nu accepta URL-uri scurtate: adresa /go/<nr> e pe domeniul tau si duce la linkul de afiliere
-            "link": f"{SITE_URL}/go/{v['num']}"}})
+            "link": pin_link(v)}})
     return entries
+
+
+def pin_link(v: dict) -> str:
+    """Linkul pinului. Pinterest a respins adresele de pe netlify.app (pagini-intermediar), asa ca implicit
+    linkul de afiliere merge direct. PIN_LINK_MODE=go foloseste adresa /go/<nr> (de ex. cu domeniu propriu)."""
+    if os.environ.get("PIN_LINK_MODE", "direct") == "go":
+        return f"{SITE_URL}/go/{v['num']}"
+    return v.get("link") or f"{SITE_URL}/go/{v['num']}"
 
 
 def extra_caption(v: dict, platform: str) -> str:
@@ -106,7 +114,7 @@ def extra_caption(v: dict, platform: str) -> str:
         tags = " ".join("#" + t for t in clip.get("hashtags", [])[:8])
         return f"{text}\n\n🔗 Produs nr. {v['num']}: link in bio ({SITE_URL.split('//')[1]})\n\n{tags}".strip()[:2150]
     text = "\n".join(l for l in text.split("\n") if "bio" not in l.lower())   # pe Pinterest linkul e chiar pe pin
-    return f"{text}\n\n🔗 {SITE_URL}/go/{v['num']}"[:800]
+    return f"{text}\n\n🔗 Link afiliat / Affiliate link"[:800]   # Pinterest cere mentionarea linkurilor de afiliere
 
 
 def post_extra(v: dict, when: datetime, url: str, extra: dict, boards: dict, log) -> None:
@@ -294,13 +302,13 @@ def schedule_pinterest(video_log: list[dict], extra: dict, boards: dict, off: se
         clip = v["clip"]
         entry = {"platform": "pinterest", "accountId": acc["id"], "platformSpecificData": {
             "boardId": board, "title": (clip.get("title_ro") or v.get("title") or "Oferta AliExpress")[:100],
-            "link": f"{SITE_URL}/go/{v['num']}"}}   # linkul clickabil al produsului (nu se accepta URL-uri scurtate)
+            "link": pin_link(v)}}   # linkul clickabil al produsului
         body = {"content": extra_caption(v, "pinterest"), "scheduledFor": when.isoformat(), "timezone": "Europe/Bucharest",
                 "mediaItems": [{"type": "video" if key == "video" else "image", "url": media}], "platforms": [entry]}
         try:
             r = requests.post(f"{API}/posts", headers=headers(), json=body, timeout=60)
             if not r.ok:
-                log(f"Pinterest: {key} pentru #{v['num']} a esuat: {r.status_code} {r.text[:160]}")
+                log(f"Pinterest: {key} pentru #{v['num']} a esuat: {r.status_code} {r.text[:600]}")
                 continue
             data = r.json()
             post = data.get("post", data)
