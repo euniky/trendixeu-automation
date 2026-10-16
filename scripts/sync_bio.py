@@ -64,17 +64,23 @@ CLIP_FILES_DAYS = 7                                   # cat timp raman clipurile
 CLIP_CACHE = ROOT / "data" / ".cache" / "clips"       # pastrate intre rulari (cache GitHub)
 MIN_FALLBACK_SCORE = 3   # pragul minim cand nu sunt destule produse "wow"
 MUSIC_DIR = ROOT / "data" / ".cache" / "music"
-# muzica SERIOASA, moderna si energica (nimic comic, copilaresc sau de desene animate), fara drepturi de platit
+# muzica MODERNA si melodica (nimic comic, copilaresc, orchestral/simfonic sau doar tobe), fara drepturi de platit
 # (Kevin MacLeod, CC BY 4.0: cere doar mentionarea autorului). Titlurile care nu exista in arhiva sunt sarite
 # si apar in log ("nu am gasit"), deci lista poate fi extinsa fara risc.
-MUSIC_WANTED = ["Cipher", "Hitman", "Volatile Reaction", "Aggressor", "Digya", "Crypto", "Dark Fog",
-                "Heroic Age", "Impact Moderato", "Killers", "Come and Find Me", "Prelude and Action",
-                "Mining by Moonlight", "Deep Haze", "Anachronist", "Sovereign", "Hot Pursuit", "Faceoff",
-                "Danger Storm", "Rynos Theme", "Spacial Winds", "Industrial Revolution", "Spy Glass", "Big Mojo"]
-# interzise: nu au placut sau sunt comice / pentru copii (sterse si din cache, ca sa nu mai fie alese)
+MUSIC_WANTED = [
+    # moderna, melodica, relaxata-energica: electronic / chill / lounge / lo-fi (fara orchestra, fara doar tobe, fara copilarii)
+    "Chill Wave", "Dreamer", "Inspired", "Rollin at 5", "Ether Vox", "Cipher", "Airport Lounge", "AcidJazz",
+    "Fretless", "Backed Vibes Clean", "Werq", "Cool Vibes", "Groove Grove", "Vibing Over Venus", "Bossa Antigua",
+    "Tech Talk", "Equatorial Complex", "Ouroboros", "Ambiment", "Almost in F", "Breaktime", "Lobby Time",
+    "Ascending the Vale", "Daily Beetle"]
+# interzise: orchestrale / simfonice / epice, doar tobe si percutie, comice sau pentru copii
 MUSIC_BANNED = {"Blip Stream", "Funky Chunk", "Life of Riley", "Sneaky Snitch", "Fluffing a Duck",
                 "Monkeys Spinning Monkeys", "Awesome Call", "Funkorama", "Happy Alley", "Carefree",
-                "Hep Cats", "Wallpaper", "Local Forecast", "Pamgaea"}
+                "Hep Cats", "Wallpaper", "Local Forecast", "Pamgaea",
+                "Heroic Age", "Impact Moderato", "Killers", "Prelude and Action", "Sovereign", "Danger Storm",
+                "Industrial Revolution", "Hitman", "Aggressor", "Volatile Reaction", "Hot Pursuit", "Faceoff",
+                "Digya", "Big Mojo", "Anachronist", "Rynos Theme", "Spy Glass", "Mining by Moonlight",
+                "Come and Find Me", "Dark Fog", "Deep Haze", "Spacial Winds", "Crypto"}
 MUSIC_CREDIT = "🎵 {title} – Kevin MacLeod (incompetech.com) · CC BY 4.0"
 SITE_URL = "https://trendixeu.netlify.app"
 

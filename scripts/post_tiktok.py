@@ -232,7 +232,7 @@ def send_draft(v: dict, account: dict, log) -> bool:
 
 
 # melodii SERIOASE, moderne, care plac publicului larg: fara genuri de petrecere / vacanta / copii
-GOOD_GENRES = {"ELECTRONIC", "HIP_HOP/RAP", "R&B/SOUL", "ALTERNATIVE/INDIE", "ROCK", "POP", "EDM"}
+GOOD_GENRES = {"ELECTRONIC", "HIP_HOP/RAP", "R&B/SOUL", "ALTERNATIVE/INDIE", "POP", "EDM", "DANCE", "HOUSE"}
 BAD_WORDS = re.compile(
     # copii, desene, glume, sarbatori
     r"child|\bkids?\b|\bbaby\b|nursery|rhymes?\b|\btoys?\b|cartoon|anime|kawaii|\bcute\b|funny|silly|\bmemes?\b|"
@@ -243,7 +243,10 @@ BAD_WORDS = re.compile(
     # nu sunt melodii de fundal pentru reclame
     r"piano|devotional|prayer|gospel|church|sound effect|\bsound \d|\bbgm\b|\bnews\b|mysterious|"
     # stiluri prea 'vesele' / de vacanta
-    r"tropical|reggaeton|summer|beach|holiday|karaoke|nightcore", re.I)
+    r"tropical|reggaeton|summer|beach|holiday|karaoke|nightcore|"
+    # orchestral / simfonic / epic si doar tobe
+    r"orchestr|symphon|classical|epic|cinematic|trailer|soundtrack|heroic|battle|\bwar\b|march|"
+    r"drum|percussion|tribal|taiko|marching", re.I)
 
 
 def trending_tracks(account: dict, log) -> list[dict]:
@@ -257,6 +260,7 @@ def trending_tracks(account: dict, log) -> list[dict]:
     good = [t for t in tracks
             if (t.get("durationSec") or 0) >= 30 and set(t.get("genres") or []) & GOOD_GENRES
             and not t.get("explicit")   # fara versuri explicite
+            and not set(t.get("genres") or []) & {"CLASSICAL", "SOUNDTRACK", "CHILDREN", "ROCK", "METAL"}
             and not BAD_WORDS.search(f"{t.get('name', '')} {t.get('artist', '')} {' '.join(t.get('genres') or [])}")
             and re.search(r"[A-Za-z]", t.get("name", ""))]
     good.sort(key=lambda t: t.get("rank") or 999)
