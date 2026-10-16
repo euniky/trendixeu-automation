@@ -22,7 +22,7 @@ Contul TikTok **@trendixeu**: produse AliExpress cu link de afiliere. Totul rule
      fiecare 30 de minute, 10:00–23:30 (`PIN_TIMES`). Pentru fiecare produs de azi: pinul video + `PIN_IMAGES`
      (3) poze diferite, toate cu linkul de afiliere direct (Pinterest a respins `trendixeu.netlify.app/go/<nr>` ca „pagină-intermediar”; cu un domeniu propriu se poate reveni la /go cu `PIN_LINK_MODE=go`) și mențiunea „link afiliat”. Cele mai „wow”
      clipuri merg primele la orele de vârf `PIN_PRIME` (12:00–13:00 și 19:00–21:00); pinurile aceluiași produs
-     nu vin unul după altul. Include și clipurile care ajung ca schițe TikTok. Boardul: `PINTEREST_BOARD` (nume)
+     nu vin unul după altul. Include și clipurile care ajung ca schițe TikTok. Fiecare pin merge în boardul tematic potrivit (`BOARD_THEMES`: Curățenie, Bucătărie, Casă, Auto & Moto, Animale, Telefon, Frumusețe, Hobby & Outdoor, Bricolaj; potrivire după cuvinte din numele boardului, cu sau fără diacritice); altfel în boardul general: `PINTEREST_BOARD` (nume)
      sau primul cu „deal/oferte/aliexpress” în nume. `EXTRA_PLATFORMS=0` oprește Instagram și Pinterest.
 5. Jurnalul clipurilor (`data/video_log.json`) se salvează înapoi în repository.
 

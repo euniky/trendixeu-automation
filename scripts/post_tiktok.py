@@ -61,6 +61,9 @@ def tiktok_accounts() -> list[dict]:
 EXTRA_ON = os.environ.get("EXTRA_PLATFORMS", "1") != "0"
 
 
+BOARD_LISTS: dict[str, list[dict]] = {}   # toate boardurile fiecarui cont Pinterest
+
+
 def pinterest_board(account: dict, log) -> str | None:
     """Boardul unde ajung pinurile: PINTEREST_BOARD (nume), altfel cel cu 'deal'/'oferte'/'aliexpress', altfel primul."""
     try:
@@ -72,11 +75,44 @@ def pinterest_board(account: dict, log) -> str | None:
     if not boards:
         log("Pinterest: niciun board gasit. Creeaza unul (ex. 'AliExpress Deals') in contul Pinterest.")
         return None
+    BOARD_LISTS[account["id"]] = boards
     want = os.environ.get("PINTEREST_BOARD", "").strip().lower()
     pick = next((b for b in boards if want and want == str(b.get("name", "")).lower()), None) \
         or next((b for b in boards if re.search(r"deal|ofert|aliexpress", str(b.get("name", "")), re.I)), None) \
         or boards[0]
     return str(pick.get("id"))
+
+
+# Boardul tematic pentru fiecare categorie de produs: se cauta un board al carui nume contine unul dintre cuvinte.
+# Daca nu exista board potrivit, pinul ajunge in boardul general (AliExpress Deals).
+BOARD_THEMES = [
+    (("cleaning", "carpet", "vacuum", "mop", "steam", "window"), ("curat", "clean")),
+    (("kitchen",), ("bucat", "kitchen")),
+    (("home gadget", "home"), ("casa", "casă", "home")),
+    (("car ", "car", "dash cam", "motorcycle", "moto", "bike"), ("auto", "moto", "masina", "mașina", "car")),
+    (("pet",), ("animal", "pet", "câin", "caine", "pisic")),
+    (("phone",), ("telefon", "phone", "gadget")),
+    (("beauty",), ("frumus", "beauty", "îngrijire", "ingrijire")),
+    (("slingshot", "outdoor", "camping", "fishing", "hobby"), ("hobby", "outdoor", "sport")),
+    (("tool", "drill", "diy", "bricolaj", "screwdriver"), ("bricolaj", "diy", "scule", "unelte")),
+]
+
+
+def _plain(t: str) -> str:
+    """Fara diacritice, litere mici: 'Curățenie' -> 'curatenie'."""
+    import unicodedata
+    return "".join(c for c in unicodedata.normalize("NFKD", str(t).lower()) if not unicodedata.combining(c))
+
+
+def board_for(v: dict, acc_boards: list[dict], default: str | None) -> str | None:
+    kw = f" {(v.get('kw') or '').lower()} {(v.get('title') or '').lower()} "
+    for keys, names in BOARD_THEMES:
+        if any(k in kw for k in keys):
+            for b in acc_boards:
+                if any(_plain(n) in _plain(b.get("name", "")) for n in names):
+                    return str(b.get("id"))
+            return default   # categoria e cunoscuta, dar nu are board: boardul general
+    return default
 
 
 def extra_platform_entries(v: dict, extra: dict, boards: dict) -> list[dict]:
@@ -306,7 +342,7 @@ def schedule_pinterest(video_log: list[dict], extra: dict, boards: dict, off: se
     for (key, v, media), when in zip(queue, slots):
         clip = v["clip"]
         entry = {"platform": "pinterest", "accountId": acc["id"], "platformSpecificData": {
-            "boardId": board, "title": (clip.get("title_ro") or v.get("title") or "Oferta AliExpress")[:100],
+            "boardId": board_for(v, BOARD_LISTS.get(acc["id"], []), board), "title": (clip.get("title_ro") or v.get("title") or "Oferta AliExpress")[:100],
             "link": pin_link(v)}}   # linkul clickabil al produsului
         body = {"content": extra_caption(v, "pinterest"), "scheduledFor": when.isoformat(), "timezone": "Europe/Bucharest",
                 "mediaItems": [{"type": "video" if key == "video" else "image", "url": media}], "platforms": [entry]}
@@ -319,7 +355,9 @@ def schedule_pinterest(video_log: list[dict], extra: dict, boards: dict, off: se
             post = data.get("post", data)
             v.setdefault("pins", []).append({"key": key, "when": when.isoformat(), "id": post.get("_id") or post.get("id")})
             done += 1
-            log(f"Pinterest {when.strftime('%d.%m %H:%M')}: #{v['num']} ({key})")
+            bname = next((b.get("name") for b in BOARD_LISTS.get(acc["id"], [])
+                          if str(b.get("id")) == entry["platformSpecificData"]["boardId"]), "?")
+            log(f"Pinterest {when.strftime('%d.%m %H:%M')}: #{v['num']} ({key}) -> board {bname}")
         except Exception as exc:
             log(f"Pinterest: {key} pentru #{v['num']} a esuat: {str(exc)[:160]}")
         time.sleep(1.1)   # Zernio permite 60 cereri/minut
@@ -376,8 +414,10 @@ def pin_custom(spec: dict, extra: dict, boards: dict, video_log: list[dict], log
             log(f"Pin manual: nu am putut anula pinul de la {p['when'][11:16]}: {r.status_code} {r.text[:200]}")
         time.sleep(1.1)
     for k, img in enumerate(imgs[:int(spec.get("count", 1))]):
+        bid = board_for({"kw": spec.get("kw", ""), "title": spec["title"]}, BOARD_LISTS.get(acc["id"], []),
+                        boards.get(acc["id"]))
         entry = {"platform": "pinterest", "accountId": acc["id"], "platformSpecificData": {
-            "boardId": boards.get(acc["id"]), "title": spec["title"][:100], "link": spec["link"]}}
+            "boardId": bid, "title": spec["title"][:100], "link": spec["link"]}}
         body = {"content": (spec.get("description", "") + "\n\n🔗 Link afiliat / Affiliate link").strip()[:800],
                 "mediaItems": [{"type": "image", "url": img}], "platforms": [entry]}
         if k == 0:
