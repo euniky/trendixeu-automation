@@ -20,7 +20,8 @@ Contul TikTok **@trendixeu**: produse AliExpress cu link de afiliere. Totul rule
    - dacă în Zernio sunt conectate și **Instagram** (Reels) și **Pinterest**, fiecare clip programat pe TikTok
      se programează la aceeași oră și acolo (`post_extra` în `post_tiktok.py`). Pe Pinterest pinul are linkul
      clickabil `https://trendixeu.netlify.app/go/<nr>`; boardul e cel din `PINTEREST_BOARD` (nume) sau primul cu
-     „deal/oferte/aliexpress” în nume. `EXTRA_PLATFORMS=0` le oprește. Schițele TikTok nu se postează pe ele.
+     „deal/oferte/aliexpress” în nume. Pe lângă pinul video, se programează și un
+     pin cu poza produsului la +30 min, cu același link `/go/<nr>`. `EXTRA_PLATFORMS=0` le oprește. Schițele TikTok nu se postează pe ele.
 5. Jurnalul clipurilor (`data/video_log.json`) se salvează înapoi în repository.
 
 ## Adrese

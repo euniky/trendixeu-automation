@@ -132,6 +132,26 @@ def post_extra(v: dict, when: datetime, url: str, extra: dict, boards: dict, log
             log(f"{pf.capitalize()}: clipul #{v['num']} a esuat: {str(exc)[:160]}")
         time.sleep(1.1)   # Zernio permite 60 cereri/minut
 
+    # pin cu POZA produsului, la 30 de minute dupa clip, cu acelasi link clickabil (mai multa vizibilitate pe Pinterest)
+    pins = [e for e in entries if e["platform"] == "pinterest"]
+    imgs = [i for i in ([v.get("image")] + list(v.get("images") or [])) if i]
+    if pins and imgs and not done.get("pinterest_img"):
+        body = {"content": extra_caption(v, "pinterest"), "scheduledFor": (when + timedelta(minutes=30)).isoformat(),
+                "timezone": "Europe/Bucharest", "mediaItems": [{"type": "image", "url": imgs[0]}], "platforms": pins}
+        try:
+            r = requests.post(f"{API}/posts", headers=headers(), json=body, timeout=60)
+            if r.ok:
+                data = r.json()
+                post = data.get("post", data)
+                done["pinterest_img"] = post.get("_id") or post.get("id") or True
+                log(f"Clipul #{v['num']}: pin cu poza programat pe Pinterest pentru "
+                    f"{(when + timedelta(minutes=30)).strftime('%d.%m %H:%M')}")
+            else:
+                log(f"Pinterest: pinul cu poza pentru #{v['num']} a esuat: {r.status_code} {r.text[:160]}")
+        except Exception as exc:
+            log(f"Pinterest: pinul cu poza pentru #{v['num']} a esuat: {str(exc)[:160]}")
+        time.sleep(1.1)
+
 
 def next_slots(n: int, taken: set[str]) -> list[datetime]:
     now = datetime.now(TZ)
