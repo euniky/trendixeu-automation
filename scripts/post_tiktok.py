@@ -283,11 +283,13 @@ def caption(clip: dict, tiktok_music: bool = False) -> str:
 
 
 # --- Pinterest: un pin la fiecare 30 de minute, cele mai bune produse la orele de varf --------------------
-PIN_TIMES = [(h, m) for h in range(10, 24) for m in (0, 30)]          # 10:00 ... 23:30
-PIN_PRIME = {(12, 0), (12, 30), (13, 0), (19, 0), (19, 30), (20, 0), (20, 30), (21, 0)}   # pranz si seara
-PIN_IMAGES = int(os.environ.get("PIN_IMAGES", "2"))                    # poze diferite pe produs, pe langa clip
-# Zernio permite 25 de pinuri pe zi pe cont; programarea automata lasa loc pentru pinuri manuale
-PIN_DAILY_MAX = int(os.environ.get("PIN_DAILY_MAX", "19"))   # + 3 pinuri de Craciun (christmas_pins.py) + 3 manuale
+# Cont nou: putine pinuri, toate cu produse DIFERITE (Pinterest penalizeaza repetarea aceluiasi link/aceleiasi poze).
+# Un pin video pe produs, raspandite peste zi; cele mai "wow" la orele de varf.
+PIN_TIMES = [(10, 30), (12, 0), (14, 0), (16, 30), (19, 0), (20, 30), (21, 30)]
+PIN_PRIME = {(12, 0), (19, 0), (20, 30)}                              # pranz si seara
+PIN_IMAGES = int(os.environ.get("PIN_IMAGES", "0"))                    # poze in plus pe produs (0 = doar clipul)
+# limita Zernio e 25/zi; noi tinem ~9/zi: 6 video + 3 de Craciun (christmas_pins.py), plus loc pentru pinuri manuale
+PIN_DAILY_MAX = int(os.environ.get("PIN_DAILY_MAX", "6"))
 
 
 def pin_slots(n: int, taken: set[str]) -> list[datetime]:

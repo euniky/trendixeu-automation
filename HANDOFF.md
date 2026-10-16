@@ -18,10 +18,9 @@ Contul TikTok **@trendixeu**: produse AliExpress cu link de afiliere. Totul rule
    - cele mai „hot” 2 clipuri ajung ca **schițe în inboxul TikTok** (`tiktokSettings.draft`). Utilizatorul
      le pune singur un sunet din aplicație. La schițe, TikTok ignoră melodia trimisă prin API.
    - **Instagram** (Reels), dacă e conectat în Zernio: aceleași clipuri, la aceleași ore ca pe TikTok (`post_extra`).
-   - **Pinterest**, dacă e conectat în Zernio (limită Zernio: 25 de pinuri/zi/cont; automat maxim `PIN_DAILY_MAX`=20, restul rămân pentru pinuri manuale cu `pin_custom`): `schedule_pinterest` în `post_tiktok.py` programează un pin la
-     fiecare 30 de minute, 10:00–23:30 (`PIN_TIMES`). Pentru fiecare produs de azi: pinul video + `PIN_IMAGES`
-     (3) poze diferite, toate cu linkul de afiliere direct (Pinterest a respins `trendixeu.netlify.app/go/<nr>` ca „pagină-intermediar”; cu un domeniu propriu se poate reveni la /go cu `PIN_LINK_MODE=go`) și mențiunea „link afiliat”. Cele mai „wow”
-     clipuri merg primele la orele de vârf `PIN_PRIME` (12:00–13:00 și 19:00–21:00); pinurile aceluiași produs
+   - **Pinterest**, dacă e conectat în Zernio (limită Zernio: 25 de pinuri/zi/cont; automat maxim `PIN_DAILY_MAX`=20, restul rămân pentru pinuri manuale cu `pin_custom`): `schedule_pinterest` în `post_tiktok.py` programează câte un pin
+     VIDEO pentru fiecare clip de azi (6/zi, `PIN_DAILY_MAX`), la orele din `PIN_TIMES` (10:30–21:30), toate cu linkul de afiliere direct (Pinterest a respins `trendixeu.netlify.app/go/<nr>` ca „pagină-intermediar”; cu un domeniu propriu se poate reveni la /go cu `PIN_LINK_MODE=go`) și mențiunea „link afiliat”. Cele mai „wow”
+     clipuri merg primele la orele de vârf `PIN_PRIME` (12:00, 19:00, 20:30); pinurile aceluiași produs
      nu vin unul după altul. Include și clipurile care ajung ca schițe TikTok. Fiecare pin merge în boardul tematic potrivit (`BOARD_THEMES`: Curățenie, Bucătărie, Casă, Auto & Moto, Animale, Telefon, Frumusețe, Hobby & Outdoor, Bricolaj; potrivire după cuvinte din numele boardului, cu sau fără diacritice); altfel în boardul general: `PINTEREST_BOARD` (nume)
      sau primul cu „deal/oferte/aliexpress” în nume. `EXTRA_PLATFORMS=0` oprește Instagram și Pinterest.
 5. Jurnalul clipurilor (`data/video_log.json`) se salvează înapoi în repository.
