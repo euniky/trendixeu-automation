@@ -37,17 +37,100 @@ def headers() -> dict:
     return {"Authorization": f"Bearer {os.environ['ZERNIO_API_KEY'].strip()}", "Content-Type": "application/json"}
 
 
-def tiktok_accounts() -> list[dict]:
+def accounts_for(*platforms: str) -> dict[str, list[dict]]:
+    """Conturile conectate in Zernio, grupate pe platforma (tiktok, instagram, pinterest...)."""
     r = requests.get(f"{API}/accounts", headers=headers(), timeout=30)
     r.raise_for_status()
     data = r.json()
     items = data.get("accounts", data) if isinstance(data, dict) else data
-    out = []
+    out: dict[str, list[dict]] = {p: [] for p in platforms}
     for a in items or []:
-        if str(a.get("platform", "")).lower() == "tiktok":
-            out.append({"id": a.get("_id") or a.get("id") or a.get("accountId"),
-                        "username": a.get("username") or a.get("displayName") or a.get("name")})
+        pf = str(a.get("platform", "")).lower()
+        if pf in out:
+            out[pf].append({"id": a.get("_id") or a.get("id") or a.get("accountId"),
+                            "username": a.get("username") or a.get("displayName") or a.get("name")})
     return out
+
+
+def tiktok_accounts() -> list[dict]:
+    return accounts_for("tiktok")["tiktok"]
+
+
+# --- Instagram (Reels) si Pinterest (pin video): acelasi clip, la aceleasi ore ca pe TikTok ---------------
+# Se activeaza singure cand contul e conectat in Zernio. EXTRA_PLATFORMS=0 le opreste.
+EXTRA_ON = os.environ.get("EXTRA_PLATFORMS", "1") != "0"
+
+
+def pinterest_board(account: dict, log) -> str | None:
+    """Boardul unde ajung pinurile: PINTEREST_BOARD (nume), altfel cel cu 'deal'/'oferte'/'aliexpress', altfel primul."""
+    try:
+        r = requests.get(f"{API}/accounts/{account['id']}/pinterest-boards", headers=headers(), timeout=30)
+        boards = (r.json().get("boards") or []) if r.ok else []
+    except Exception as exc:
+        log(f"Nu am putut citi boardurile Pinterest: {str(exc)[:120]}")
+        return None
+    if not boards:
+        log("Pinterest: niciun board gasit. Creeaza unul (ex. 'AliExpress Deals') in contul Pinterest.")
+        return None
+    want = os.environ.get("PINTEREST_BOARD", "").strip().lower()
+    pick = next((b for b in boards if want and want == str(b.get("name", "")).lower()), None) \
+        or next((b for b in boards if re.search(r"deal|ofert|aliexpress", str(b.get("name", "")), re.I)), None) \
+        or boards[0]
+    return str(pick.get("id"))
+
+
+def extra_platform_entries(v: dict, extra: dict, boards: dict) -> list[dict]:
+    """Intrarile 'platforms' pentru Instagram / Pinterest, cu linkul clickabil al produsului."""
+    clip = v["clip"]
+    entries = []
+    for a in extra.get("instagram", []):
+        entries.append({"platform": "instagram", "accountId": a["id"],
+                        "platformSpecificData": {"shareToFeed": True}})
+    for a in extra.get("pinterest", []):
+        board = boards.get(a["id"])
+        if not board:
+            continue
+        entries.append({"platform": "pinterest", "accountId": a["id"], "platformSpecificData": {
+            "boardId": board,
+            "title": (clip.get("title_ro") or v.get("title") or "Oferta AliExpress")[:100],
+            # Pinterest nu accepta URL-uri scurtate: adresa /go/<nr> e pe domeniul tau si duce la linkul de afiliere
+            "link": f"{SITE_URL}/go/{v['num']}"}})
+    return entries
+
+
+def extra_caption(v: dict, platform: str) -> str:
+    clip = v["clip"]
+    text = clip.get("description_ro", "").replace(f"#{v['num']}", f"nr. {v['num']}")
+    text = "\n".join(l for l in text.split("\n") if not l.startswith("🎵")).strip()
+    if platform == "instagram":   # in descrierile Instagram linkurile nu se apasa: trimit spre linkul din bio
+        tags = " ".join("#" + t for t in clip.get("hashtags", [])[:8])
+        return f"{text}\n\n🔗 Produs nr. {v['num']}: link in bio ({SITE_URL.split('//')[1]})\n\n{tags}".strip()[:2150]
+    text = "\n".join(l for l in text.split("\n") if "bio" not in l.lower())   # pe Pinterest linkul e chiar pe pin
+    return f"{text}\n\n🔗 {SITE_URL}/go/{v['num']}"[:800]
+
+
+def post_extra(v: dict, when: datetime, url: str, extra: dict, boards: dict, log) -> None:
+    """Programeaza clipul si pe Instagram / Pinterest. Esecurile nu afecteaza postarea de pe TikTok."""
+    entries = extra_platform_entries(v, extra, boards)
+    done = v["posted"].setdefault("extra", {})
+    for entry in entries:
+        pf = entry["platform"]
+        if done.get(pf):
+            continue
+        body = {"content": extra_caption(v, pf), "scheduledFor": when.isoformat(), "timezone": "Europe/Bucharest",
+                "mediaItems": [{"type": "video", "url": url}], "platforms": [entry]}
+        try:
+            r = requests.post(f"{API}/posts", headers=headers(), json=body, timeout=60)
+            if r.status_code not in (200, 201, 207) and not r.ok:
+                log(f"{pf.capitalize()}: clipul #{v['num']} a esuat: {r.status_code} {r.text[:160]}")
+                continue
+            data = r.json()
+            post = data.get("post", data)
+            done[pf] = post.get("_id") or post.get("id") or True
+            log(f"Clipul #{v['num']} programat si pe {pf.capitalize()} pentru {when.strftime('%d.%m %H:%M')}")
+        except Exception as exc:
+            log(f"{pf.capitalize()}: clipul #{v['num']} a esuat: {str(exc)[:160]}")
+        time.sleep(1.1)   # Zernio permite 60 cereri/minut
 
 
 def next_slots(n: int, taken: set[str]) -> list[datetime]:
@@ -163,12 +246,19 @@ def main() -> None:
         REPORT.parent.mkdir(parents=True, exist_ok=True)
         REPORT.write_text(json.dumps(report, ensure_ascii=False, indent=1), encoding="utf-8")
         return
+    extra: dict[str, list[dict]] = {"instagram": [], "pinterest": []}
     try:
-        accounts = tiktok_accounts()
+        grouped = accounts_for("tiktok", "instagram", "pinterest")
+        accounts = grouped["tiktok"]
+        if EXTRA_ON:
+            extra = {k: grouped[k] for k in extra}
     except Exception as exc:
         log(f"Nu m-am putut conecta la Zernio: {str(exc)[:200]}")
         accounts = []
     report["accounts"] = accounts
+    report["extra_accounts"] = extra
+    for pf, lst in extra.items():
+        log(f"Conturi {pf.capitalize()} conectate: " + (", ".join(str(a["username"]) for a in lst) or "niciunul"))
     if not accounts:
         log("Niciun cont TikTok conectat in Zernio.")
     else:
@@ -286,6 +376,7 @@ def main() -> None:
             report["drafts"].append({"num": v["num"], "title": v["clip"].get("title_ro")})
     todo = [v for v in todo if not v.get("posted")]
 
+    boards = {a["id"]: pinterest_board(a, log) for a in extra["pinterest"]} if todo else {}
     tracks = trending_tracks(account, log)
     if tracks:
         log("Melodii in trend disponibile: " + ", ".join(f"{t['name']} ({t['artist']})" for t in tracks[:6]))
@@ -328,6 +419,8 @@ def main() -> None:
                            "music": f"{track['name']} – {track['artist']}" if track else None,
                            "repost_day": v.pop("_repost_day", None)}
             report["scheduled"].append({"num": v["num"], "when": when.isoformat(), "title": clip.get("title_ro")})
+            if EXTRA_ON and (extra["instagram"] or extra["pinterest"]):
+                post_extra(v, when, url, extra, boards, log)
             log(f"Clipul #{v['num']} programat pe TikTok pentru {when.strftime('%d.%m %H:%M')}"
                 + (f", cu melodia {track['name']} ({track['artist']})" if track else ""))
         except Exception as exc:

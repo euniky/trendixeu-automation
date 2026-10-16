@@ -433,6 +433,42 @@ def card_html(p: dict, rates: dict) -> str:
   </a>"""
 
 
+def write_go_pages(products: list[dict], off: set) -> None:
+    """Adrese scurte pe domeniul tau: /go/<nr> -> linkul de afiliere al produsului cu acel numar.
+
+    Le folosesc pinurile Pinterest (nu accepta linkuri scurtate gen s.click.aliexpress.com),
+    postarile Instagram / Telegram si textul "Produs nr. 12" din clipurile TikTok.
+    Pagina e statica (GitHub Pages) si numara click-ul in acelasi contor ca pagina de bio.
+    """
+    seen: set = set()
+    for p in products:
+        num, link = p.get("num"), p.get("link")
+        if not num or not link or not str(link).startswith("https://") or p.get("id") in off or num in seen:
+            continue
+        seen.add(num)
+        u = html.escape(link, quote=True)
+        track = json.dumps({"e": "click", "id": p.get("id", ""), "s": "go",
+                            "title": (p.get("titles", {}).get("ro") or p.get("title", ""))[:120]}, ensure_ascii=False)
+        page = f"""<!DOCTYPE html>
+<html lang="ro"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex"><meta http-equiv="refresh" content="1;url={u}">
+<title>Te duc la produs…</title>
+<style>body{{font-family:system-ui,sans-serif;background:#0f0f14;color:#fff;display:grid;place-items:center;min-height:100vh;margin:0;text-align:center}}a{{color:#ffd54a}}</style>
+</head><body><p>Te duc la produsul nr. {int(num)}…<br><a href="{u}">Dacă nu se deschide, apasă aici</a></p>
+<script>
+(function(){{
+  var go=function(){{location.replace({json.dumps(link)});}};
+  try{{var b=JSON.stringify({track});
+    if(navigator.sendBeacon)navigator.sendBeacon("/.netlify/functions/track",new Blob([b],{{type:"application/json"}}));}}catch(e){{}}
+  setTimeout(go,150);
+}})();
+</script></body></html>"""
+        d = OUT_DIR / "go" / str(int(num))
+        d.mkdir(parents=True, exist_ok=True)
+        (d / "index.html").write_text(page, encoding="utf-8")
+    log(f"[info] adrese scurte /go/<nr>: {len(seen)} produse")
+
+
 def render(featured: list[dict], hot: list[dict], rates: dict, clip_items: list[dict] | None = None) -> str:
     clip_items = clip_items or []
     titles_json = json.dumps({p.get("id"): p.get("titles", {}) for p in clip_items + featured + hot}, ensure_ascii=False).replace("</", "<\\/")
@@ -1182,6 +1218,7 @@ def main() -> None:
     clip_ids = {v["id"] for v in clip_items}
     hot_rest = [p for p in hot if p["id"] not in clip_ids]
     (OUT_DIR / "index.html").write_text(render(page_featured, hot_rest, rates, clip_items), encoding="utf-8")
+    write_go_pages(featured + video_log, off)
     for static in ("track.js", "i18n.js"):
         if (ROOT / "site" / static).exists():
             shutil.copy(ROOT / "site" / static, OUT_DIR / static)

@@ -17,9 +17,16 @@ Contul TikTok **@trendixeu**: produse AliExpress cu link de afiliere. Totul rule
      TikTok (`musicSoundInfo`). Sunetul original al clipului e pus pe 0.
    - cele mai „hot” 2 clipuri ajung ca **schițe în inboxul TikTok** (`tiktokSettings.draft`). Utilizatorul
      le pune singur un sunet din aplicație. La schițe, TikTok ignoră melodia trimisă prin API.
+   - dacă în Zernio sunt conectate și **Instagram** (Reels) și **Pinterest**, fiecare clip programat pe TikTok
+     se programează la aceeași oră și acolo (`post_extra` în `post_tiktok.py`). Pe Pinterest pinul are linkul
+     clickabil `https://trendixeu.netlify.app/go/<nr>`; boardul e cel din `PINTEREST_BOARD` (nume) sau primul cu
+     „deal/oferte/aliexpress” în nume. `EXTRA_PLATFORMS=0` le oprește. Schițele TikTok nu se postează pe ele.
 5. Jurnalul clipurilor (`data/video_log.json`) se salvează înapoi în repository.
 
 ## Adrese
+- Linkuri scurte pe domeniul tău: https://trendixeu.netlify.app/go/<nr produs> (se generează zilnic în `sync_bio.py`,
+  duc la linkul de afiliere și numără click-ul). Folosește-le oriunde linkul trebuie scris de mână sau nu acceptă
+  linkuri scurtate (Pinterest, Telegram, „Produs nr. 12” în clipuri).
 - Pagina de bio: https://trendixeu.netlify.app
 - Consola (pe telefon, instalabilă): https://trendixeu.netlify.app/console/
   Are clipuri de descărcat, statistici, comenzi și butoanele **Ascunde / Șterge** pentru produse (cu PIN).
@@ -62,7 +69,8 @@ Contul TikTok **@trendixeu**: produse AliExpress cu link de afiliere. Totul rule
   afiliere, rezoluția filmărilor și poze. Rezultatul ajunge în ramura `search`.
 
 ## Limitări cunoscute
-- TikTok cere 1.000 de urmăritori pentru link în bio. Până atunci linkul nu e apăsabil.
+- TikTok cere 1.000 de urmăritori pentru link în bio. Până atunci linkul nu e apăsabil; pe Pinterest e apăsabil de la primul pin.
+- Instagram: cont Business/Creator conectat în Zernio. Linkurile din descriere nu se apasă, doar cel din bio.
 - Prin API nu se pot pune sunete din biblioteca normală TikTok, doar din cea comercială.
 - Paginile de produs AliExpress cer captcha pentru programe automate. Filmările vin doar din API sau trimise manual.
 - Zernio: 60 de cereri/minut. Verificările citesc doar ultimele 3 zile.
