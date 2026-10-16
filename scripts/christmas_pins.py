@@ -54,6 +54,35 @@ BAD = re.compile(r"\b(sticker|wallpaper|costume|sweater|hat|socks|mold|stencil|r
 HASHTAGS = "#craciun #decoratiunicraciun #bradcraciun #instalatiicraciun #christmasdecor #aliexpressfinds"
 
 
+# Denumirea pinului se ia din titlul PRODUSULUI (nu din cuvantul cautat). Produsele care nu se potrivesc
+# cu niciun tip sunt sarite (ex. un brad de ceramica gasit la "brad cu fibra optica").
+XMAS_TYPES = [
+    (r"(ceramic|tabletop|table top|mini|desktop).{0,40}tree|tree.{0,40}(ceramic|tabletop|ornament)", None),
+    (r"fib(er|re) ?optic.{0,40}tree|tree.{0,40}fib(er|re) ?optic", "Brad artificial cu fibră optică"),
+    (r"(pre.?lit|led|lights?|lighted|illuminated).{0,40}(christmas )?tree|tree.{0,40}(led|lights|pre.?lit)", "Brad artificial cu luminițe încorporate"),
+    (r"artificial christmas tree|christmas tree \d", "Brad artificial de Crăciun"),
+    (r"curtain", "Perdea luminoasă de Crăciun"),
+    (r"icicle", "Instalație țurțuri luminoși"),
+    (r"reindeer|deer|elk", "Ren luminos de Crăciun"),
+    (r"projector", "Proiector de Crăciun pentru casă"),
+    (r"(tree )?topper|top star", "Stea luminoasă pentru vârful bradului"),
+    (r"village|lighted house|christmas house", "Căsuță luminoasă de Crăciun"),
+    (r"wreath|garland", "Coroniță de Crăciun cu LED"),
+    (r"ornament|bauble|ball", "Globuri de Crăciun premium"),
+    (r"(app|smart|bluetooth|rgb).{0,40}(light|led)", "Instalație de Crăciun smart cu aplicație"),
+    (r"solar.{0,30}(light|string)", "Instalație luminoasă solară de exterior"),
+    (r"string|fairy|light", "Instalație luminoasă de Crăciun"),
+]
+
+
+def xmas_label(title: str) -> str | None:
+    t = title.lower()
+    for rx, label in XMAS_TYPES:
+        if re.search(rx, t):
+            return label
+    return None
+
+
 def load_log() -> list[dict]:
     try:
         return json.loads(LOG_PATH.read_text(encoding="utf-8"))
@@ -83,12 +112,15 @@ def candidates(tracking: str, used: set[str], log) -> list[dict]:
             orders = int(p.get("lastest_volume") or 0)
             if pid in used or sig in used or not p.get("promotion_link") or BAD.search(title):
                 continue
+            real_label = xmas_label(title)
+            if not real_label:   # nu e ce cautam (sau e un brad de ceramica / de masa)
+                continue
             if rating < MIN_RATING or orders < MIN_ORDERS or price < min_eur:
                 continue
             smalls = p.get("product_small_image_urls") or []
             if isinstance(smalls, dict):
                 smalls = smalls.get("string") or []
-            good.append({"id": pid, "sig": sig, "kw": kw, "label": label, "title": title, "price": price,
+            good.append({"id": pid, "sig": sig, "kw": kw, "label": real_label, "title": title, "price": price,
                          "rating": rating, "orders": orders, "link": p["promotion_link"],
                          "image": p.get("product_main_image_url", ""),
                          "images": [u for u in smalls if isinstance(u, str)][:4],
