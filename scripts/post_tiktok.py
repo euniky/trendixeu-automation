@@ -564,7 +564,8 @@ def pin_custom(spec: dict, extra: dict, boards: dict, video_log: list[dict], log
                     "publishNow": True, "mediaItems": [media], "platforms": [{
                         "platform": "pinterest", "accountId": acc["id"], "platformSpecificData": {
                             "boardId": bid, "title": spec["title"][:100], "link": spec["link"],
-                            **({"coverImageUrl": imgs[0]} if imgs else {})}}]}
+                            # coperta = un cadru din video (cu o poza AliExpress drept coperta Pinterest a refuzat pinul)
+                            "coverImageKeyFrameTime": float(spec.get("cover_at", 2))}}]}
             r = requests.post(f"{API}/posts", headers=headers(), json=body, timeout=300)
             try:
                 post = r.json().get("post", r.json())
