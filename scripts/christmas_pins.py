@@ -258,6 +258,9 @@ def main() -> None:
         img = c["image"] or (c["images"] or [None])[0]
         if not img:
             continue
+        # mai multe poze ale produsului intr-un singur pin (colaj 2:3)
+        col = pt.make_collage([img] + [u for u in c["images"] if u != img], ro_title(c), f"~{c['price'] * ron:.0f} lei", log)
+        img = col or img
         body = {"content": description(c, c["price"] * ron), "scheduledFor": when.isoformat(),
                 "timezone": "Europe/Bucharest", "mediaItems": [{"type": "image", "url": img}],
                 "platforms": [{"platform": "pinterest", "accountId": acc["id"], "platformSpecificData": {

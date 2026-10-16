@@ -405,6 +405,64 @@ def pin_now(num: int, extra: dict, boards: dict, video_log: list[dict], log) -> 
         log(f"Test pin: nu am putut citi starea: {str(exc)[:200]}")
 
 
+FONT_DIR = Path(__file__).resolve().parent.parent / "assets" / "fonts"
+
+
+def make_collage(urls: list[str], title: str, price: str, log) -> str | None:
+    """Pinterest nu accepta pinuri cu mai multe poze prin API, asa ca fac un COLAJ vertical 2:3 (1000x1500):
+    poza principala sus, banda cu denumirea si pretul, apoi inca 3 poze ale produsului. Il incarc in Zernio."""
+    from io import BytesIO
+    from PIL import Image, ImageDraw, ImageFont, ImageOps
+    imgs = []
+    for u in urls:
+        if len(imgs) == 4:
+            break
+        try:
+            r = requests.get(u, timeout=40, headers={"User-Agent": "Mozilla/5.0"})
+            im = Image.open(BytesIO(r.content)).convert("RGB")
+            if min(im.size) >= 300:
+                imgs.append(im)
+        except Exception:
+            continue
+    if len(imgs) < 2:
+        return None
+    W, H, TOP, BAND = 1000, 1500, 1000, 167
+    canvas = Image.new("RGB", (W, H), (255, 255, 255))
+    canvas.paste(ImageOps.fit(imgs[0], (W, TOP), Image.LANCZOS), (0, 0))
+    d = ImageDraw.Draw(canvas)
+    d.rectangle([0, TOP, W, TOP + BAND], fill=(20, 20, 26))
+    try:
+        fb = ImageFont.truetype(str(FONT_DIR / "Poppins-Bold.ttf"), 40)
+        fp = ImageFont.truetype(str(FONT_DIR / "Poppins-Bold.ttf"), 46)
+    except Exception:
+        fb = fp = ImageFont.load_default()
+    name = title.split("|")[0].strip()
+    while d.textlength(name, font=fb) > W - 300 and len(name) > 10:
+        name = name.rsplit(" ", 1)[0]
+    d.text((36, TOP + BAND / 2), name, font=fb, fill=(255, 255, 255), anchor="lm")
+    if price:
+        d.text((W - 36, TOP + BAND / 2), price, font=fp, fill=(255, 213, 74), anchor="rm")
+    small = imgs[1:4]
+    sw = W // max(len(small), 1)
+    for i, im in enumerate(small):
+        canvas.paste(ImageOps.fit(im, (sw, H - TOP - BAND), Image.LANCZOS), (i * sw, TOP + BAND))
+    for i in range(1, len(small)):   # linii subtiri intre poze
+        d.line([(i * sw, TOP + BAND), (i * sw, H)], fill=(255, 255, 255), width=4)
+    buf = BytesIO()
+    canvas.save(buf, "JPEG", quality=90, optimize=True)
+    try:
+        pre = requests.post(f"{API}/media/presign", headers=headers(), timeout=30,
+                            json={"filename": "pin.jpg", "contentType": "image/jpeg", "size": buf.tell()})
+        pre.raise_for_status()
+        dd = pre.json()
+        up = requests.put(dd["uploadUrl"], data=buf.getvalue(), headers={"Content-Type": "image/jpeg"}, timeout=120)
+        up.raise_for_status()
+        return dd["publicUrl"]
+    except Exception as exc:
+        log(f"Colaj: incarcarea a esuat: {str(exc)[:150]}")
+        return None
+
+
 def muted_video(url: str, log) -> str | None:
     """Copie FARA SUNET a clipului, incarcata in Zernio. Pe Pinterest muzica din clipuri (Kevin MacLeod) e detectata
     ca avand drepturi inregistrate (Frequency Music) si sunetul e sters; repetat, asta poate afecta contul.
@@ -508,6 +566,11 @@ def pin_custom(spec: dict, extra: dict, boards: dict, video_log: list[dict], log
             r = requests.post(f"{API}/posts", headers=headers(), json=body, timeout=300)
             log(f"Pin video ({spec['title'][:40]}): HTTP {r.status_code} {r.text[:500]}")
         return
+    if len(imgs) >= 2 and spec.get("collage", True):   # un singur pin cu colaj din mai multe poze
+        price = (re.search(r"~?\s?[\d.]+ lei", spec["title"]) or [""])[0]
+        col = make_collage(imgs, spec["title"], price.replace("~", "").strip() and price, log)
+        if col:
+            imgs = [col]
     for k, img in enumerate(imgs[:int(spec.get("count", 1))]):
         bid = board_for({"kw": spec.get("kw", ""), "title": spec["title"]}, BOARD_LISTS.get(acc["id"], []),
                         boards.get(acc["id"]))
