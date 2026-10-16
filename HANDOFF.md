@@ -72,6 +72,7 @@ Contul TikTok **@trendixeu**: produse AliExpress cu link de afiliere. Totul rule
   afiliere, rezoluția filmărilor și poze. Rezultatul ajunge în ramura `search`.
 
 ## Limitări cunoscute
+- Pinterest detectează muzica Kevin MacLeod ca având drepturi (Frequency Music) și șterge sunetul: pinurile video se încarcă FĂRĂ sunet (`muted_video` în `post_tiktok.py`).
 - TikTok cere 1.000 de urmăritori pentru link în bio. Până atunci linkul nu e apăsabil; pe Pinterest e apăsabil de la primul pin.
 - Instagram: cont Business/Creator conectat în Zernio. Linkurile din descriere nu se apasă, doar cel din bio.
 - Prin API nu se pot pune sunete din biblioteca normală TikTok, doar din cea comercială.

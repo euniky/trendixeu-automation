@@ -351,6 +351,11 @@ def schedule_pinterest(video_log: list[dict], extra: dict, boards: dict, off: se
     done = 0
     for (key, v, media), when in zip(queue, slots):
         clip = v["clip"]
+        if key == "video":   # fara muzica: Pinterest sterge sunetul cu drepturi inregistrate
+            media = muted_video(media, log)
+            if not media:
+                log(f"Pinterest: #{v['num']} sarit (nu am putut face copia fara sunet)")
+                continue
         entry = {"platform": "pinterest", "accountId": acc["id"], "platformSpecificData": {
             "boardId": board_for(v, BOARD_LISTS.get(acc["id"], []), board), "title": pin_seo.pin_title(v),
             "link": pin_link(v)}}   # linkul clickabil al produsului
@@ -400,6 +405,35 @@ def pin_now(num: int, extra: dict, boards: dict, video_log: list[dict], log) -> 
         log(f"Test pin: nu am putut citi starea: {str(exc)[:200]}")
 
 
+def muted_video(url: str, log) -> str | None:
+    """Copie FARA SUNET a clipului, incarcata in Zernio. Pe Pinterest muzica din clipuri (Kevin MacLeod) e detectata
+    ca avand drepturi inregistrate (Frequency Music) si sunetul e sters; repetat, asta poate afecta contul.
+    Pinterest reda video-urile fara sunet in feed oricum."""
+    import subprocess
+    import tempfile
+    tmp = Path(tempfile.mkdtemp())
+    src, out = tmp / "src.mp4", tmp / "mute.mp4"
+    try:
+        r = requests.get(url, timeout=180)
+        r.raise_for_status()
+        src.write_bytes(r.content)
+        res = subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(src), "-an", "-c:v", "copy",
+                              "-movflags", "+faststart", str(out)], capture_output=True, text=True, timeout=300)
+        if res.returncode or not out.exists():
+            log(f"Video fara sunet: ffmpeg a esuat: {res.stderr[:200]}")
+            return None
+        pre = requests.post(f"{API}/media/presign", headers=headers(), timeout=30,
+                            json={"filename": "pin.mp4", "contentType": "video/mp4", "size": out.stat().st_size})
+        pre.raise_for_status()
+        d = pre.json()
+        up = requests.put(d["uploadUrl"], data=out.read_bytes(), headers={"Content-Type": "video/mp4"}, timeout=600)
+        up.raise_for_status()
+        return d["publicUrl"]
+    except Exception as exc:
+        log(f"Video fara sunet: {str(exc)[:200]}")
+        return None
+
+
 def prepare_video(src_url: str, log) -> str | None:
     """Descarca filmarea vanzatorului, o face verticala 1080x1920 (fundal estompat), mai clara si mai vie
     (contrast, culori, claritate), H.264 de calitate inalta, apoi o incarca in Zernio. Intoarce URL-ul public."""
@@ -418,7 +452,7 @@ def prepare_video(src_url: str, log) -> str | None:
           "eq=contrast=1.08:saturation=1.18:gamma=0.97,unsharp=5:5:0.8:3:3:0.3[fg];"
           "[bg][fg]overlay=(W-w)/2:(H-h)/2,fps=30,format=yuv420p")
     cmd = ["ffmpeg", "-v", "error", "-y", "-i", str(src), "-filter_complex", vf, "-c:v", "libx264", "-preset", "slow",
-           "-crf", "18", "-profile:v", "high", "-c:a", "aac", "-b:a", "160k", "-movflags", "+faststart", str(out)]
+           "-crf", "18", "-profile:v", "high", "-an", "-movflags", "+faststart", str(out)]   # fara sunet (drepturi muzica)
     res = subprocess.run(cmd, capture_output=True, text=True, timeout=600)
     if res.returncode or not out.exists():
         log(f"Video: conversia a esuat: {res.stderr[:300]}")
