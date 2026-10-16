@@ -383,6 +383,27 @@ def main() -> None:
             when = v["posted"].get("scheduledFor", "")[11:16] or "schita"
             log(f"Clipul #{v['num']} ({when}): {st or post}")
 
+        # starea pinurilor Pinterest de azi (publicat / in asteptare / esuat + motivul)
+        report["pins"] = []
+        today_iso = datetime.now(TZ).date().isoformat()
+        for v in vlog:
+            for pin in v.get("pins", []):
+                if not pin.get("id") or (pin.get("when") or "")[:10] != today_iso:
+                    continue
+                time.sleep(1.1)
+                try:
+                    r = requests.get(f"{API}/posts/{pin['id']}", headers=headers(), timeout=30)
+                    data = r.json() if r.ok else {"error": f"{r.status_code} {r.text[:300]}"}
+                except Exception as exc:
+                    data = {"error": str(exc)[:200]}
+                post = data.get("post", data) if isinstance(data, dict) else data
+                plats = post.get("platforms") if isinstance(post, dict) else None
+                report["pins"].append({"num": v["num"], "key": pin["key"], "when": pin["when"][11:16],
+                                       "status": post.get("status") if isinstance(post, dict) else None,
+                                       "platforms": plats, "error": data.get("error") if isinstance(data, dict) else None})
+        bad = [x for x in report["pins"] if x["status"] not in ("scheduled", "published", "publishing", "pending")]
+        log(f"Pinuri Pinterest azi: {len(report['pins'])} verificate, {len(bad)} cu probleme")
+
     if check or not accounts:
         REPORT.parent.mkdir(parents=True, exist_ok=True)
         REPORT.write_text(json.dumps(report, ensure_ascii=False, indent=1), encoding="utf-8")
