@@ -587,6 +587,11 @@ def main() -> None:
         report["ok"] = True
         log("Conturi TikTok conectate: " + ", ".join(f"@{a['username']}" for a in accounts))
 
+    for pid in re.findall(r"[0-9a-f]{24}", os.environ.get("DELETE_POSTS", "")):   # stergere postari (ID Zernio)
+        r = requests.delete(f"{API}/posts/{pid}", headers=headers(), timeout=30)
+        log(f"Stergere postare {pid}: HTTP {r.status_code} {r.text[:300]}")
+        time.sleep(1.1)
+
     if os.environ.get("CREATE_BOARDS") == "1" and extra.get("pinterest"):
         create_boards(extra["pinterest"][0], log)
 
