@@ -347,6 +347,33 @@ def pin_now(num: int, extra: dict, boards: dict, video_log: list[dict], log) -> 
         log(f"Test pin: nu am putut citi starea: {str(exc)[:200]}")
 
 
+def pin_custom(spec: dict, extra: dict, boards: dict, log) -> None:
+    """Pin manual pentru un produs care nu are clip (PIN_CUSTOM = JSON cu title, link, image(s), description)."""
+    if not extra.get("pinterest"):
+        log("Pin manual: niciun cont Pinterest conectat.")
+        return
+    acc = extra["pinterest"][0]
+    imgs = [i for i in ([spec.get("image")] + list(spec.get("images") or [])) if i]
+    when0 = datetime.now(TZ)
+    for k, img in enumerate(imgs[:int(spec.get("count", 1))]):
+        entry = {"platform": "pinterest", "accountId": acc["id"], "platformSpecificData": {
+            "boardId": boards.get(acc["id"]), "title": spec["title"][:100], "link": spec["link"]}}
+        body = {"content": (spec.get("description", "") + "\n\n🔗 Link afiliat / Affiliate link").strip()[:800],
+                "mediaItems": [{"type": "image", "url": img}], "platforms": [entry]}
+        if k == 0:
+            body["publishNow"] = True
+        else:   # celelalte poze ale aceluiasi produs: la cate o ora distanta
+            body.update({"scheduledFor": (when0 + timedelta(hours=k)).isoformat(), "timezone": "Europe/Bucharest"})
+        r = requests.post(f"{API}/posts", headers=headers(), json=body, timeout=120)
+        try:
+            post = r.json().get("post", r.json())
+            st = post.get("status")
+        except Exception:
+            st = None
+        log(f"Pin manual {k + 1} ({spec['title'][:40]}): HTTP {r.status_code} {st or r.text[:400]}")
+        time.sleep(1.1)
+
+
 def main() -> None:
     check = "--check" in sys.argv
     report: dict = {"checked": datetime.now(TZ).isoformat(timespec="seconds"), "ok": False, "scheduled": [], "log": []}
@@ -512,6 +539,11 @@ def main() -> None:
     todo = [v for v in todo if not v.get("posted")]
 
     boards = {a["id"]: pinterest_board(a, log) for a in extra["pinterest"]}
+    if os.environ.get("PIN_CUSTOM", "").strip():
+        try:
+            pin_custom(json.loads(os.environ["PIN_CUSTOM"]), extra, boards, log)
+        except Exception as exc:
+            log(f"Pin manual: eroare {str(exc)[:200]}")
     if os.environ.get("PIN_NOW", "").strip().isdigit():
         pin_now(int(os.environ["PIN_NOW"]), extra, boards, video_log, log)
     tracks = trending_tracks(account, log)

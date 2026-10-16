@@ -23,6 +23,9 @@ on:
       pin_now:
         description: "Test: publica ACUM un pin Pinterest pentru produsul cu acest numar (ex: 91)"
         default: ""
+      pin_custom:
+        description: "Pin manual (JSON: title, link, image, images, description, count)"
+        default: ""
       premium_demo:
         description: "Numarul clipului de refacut cu voce gratuita vs premium (gol = nimic)"
         default: ""
@@ -134,6 +137,7 @@ jobs:
           DRAFTS_PER_DAY: "2"
           RESCHEDULE_MUSIC: ${{ github.event.inputs.reschedule_music || '0' }}
           PIN_NOW: ${{ github.event.inputs.pin_now || '' }}
+          PIN_CUSTOM: ${{ github.event.inputs.pin_custom || '' }}
           CLIP_BASE: https://euniky.github.io/trendixeu-automation   # direct de pe GitHub, fara credite Netlify
         run: python scripts/post_tiktok.py ${{ github.event.inputs.zernio_check == 'true' && '--check' || '' }}
 
