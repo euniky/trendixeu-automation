@@ -17,11 +17,13 @@ Contul TikTok **@trendixeu**: produse AliExpress cu link de afiliere. Totul rule
      TikTok (`musicSoundInfo`). Sunetul original al clipului e pus pe 0.
    - cele mai „hot” 2 clipuri ajung ca **schițe în inboxul TikTok** (`tiktokSettings.draft`). Utilizatorul
      le pune singur un sunet din aplicație. La schițe, TikTok ignoră melodia trimisă prin API.
-   - dacă în Zernio sunt conectate și **Instagram** (Reels) și **Pinterest**, fiecare clip programat pe TikTok
-     se programează la aceeași oră și acolo (`post_extra` în `post_tiktok.py`). Pe Pinterest pinul are linkul
-     clickabil `https://trendixeu.netlify.app/go/<nr>`; boardul e cel din `PINTEREST_BOARD` (nume) sau primul cu
-     „deal/oferte/aliexpress” în nume. Pe lângă pinul video, se programează și un
-     pin cu poza produsului la +30 min, cu același link `/go/<nr>`. `EXTRA_PLATFORMS=0` le oprește. Schițele TikTok nu se postează pe ele.
+   - **Instagram** (Reels), dacă e conectat în Zernio: aceleași clipuri, la aceleași ore ca pe TikTok (`post_extra`).
+   - **Pinterest**, dacă e conectat în Zernio: `schedule_pinterest` în `post_tiktok.py` programează un pin la
+     fiecare 30 de minute, 10:00–23:30 (`PIN_TIMES`). Pentru fiecare produs de azi: pinul video + `PIN_IMAGES`
+     (3) poze diferite, toate cu linkul clickabil `https://trendixeu.netlify.app/go/<nr>`. Cele mai „wow”
+     clipuri merg primele la orele de vârf `PIN_PRIME` (12:00–13:00 și 19:00–21:00); pinurile aceluiași produs
+     nu vin unul după altul. Include și clipurile care ajung ca schițe TikTok. Boardul: `PINTEREST_BOARD` (nume)
+     sau primul cu „deal/oferte/aliexpress” în nume. `EXTRA_PLATFORMS=0` oprește Instagram și Pinterest.
 5. Jurnalul clipurilor (`data/video_log.json`) se salvează înapoi în repository.
 
 ## Adrese

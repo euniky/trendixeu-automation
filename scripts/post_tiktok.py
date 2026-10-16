@@ -110,8 +110,8 @@ def extra_caption(v: dict, platform: str) -> str:
 
 
 def post_extra(v: dict, when: datetime, url: str, extra: dict, boards: dict, log) -> None:
-    """Programeaza clipul si pe Instagram / Pinterest. Esecurile nu afecteaza postarea de pe TikTok."""
-    entries = extra_platform_entries(v, extra, boards)
+    """Programeaza clipul si pe Instagram (Pinterest are programul lui, schedule_pinterest). Esecurile nu afecteaza TikTok."""
+    entries = [e for e in extra_platform_entries(v, extra, boards) if e["platform"] == "instagram"]
     done = v["posted"].setdefault("extra", {})
     for entry in entries:
         pf = entry["platform"]
@@ -131,26 +131,6 @@ def post_extra(v: dict, when: datetime, url: str, extra: dict, boards: dict, log
         except Exception as exc:
             log(f"{pf.capitalize()}: clipul #{v['num']} a esuat: {str(exc)[:160]}")
         time.sleep(1.1)   # Zernio permite 60 cereri/minut
-
-    # pin cu POZA produsului, la 30 de minute dupa clip, cu acelasi link clickabil (mai multa vizibilitate pe Pinterest)
-    pins = [e for e in entries if e["platform"] == "pinterest"]
-    imgs = [i for i in ([v.get("image")] + list(v.get("images") or [])) if i]
-    if pins and imgs and not done.get("pinterest_img"):
-        body = {"content": extra_caption(v, "pinterest"), "scheduledFor": (when + timedelta(minutes=30)).isoformat(),
-                "timezone": "Europe/Bucharest", "mediaItems": [{"type": "image", "url": imgs[0]}], "platforms": pins}
-        try:
-            r = requests.post(f"{API}/posts", headers=headers(), json=body, timeout=60)
-            if r.ok:
-                data = r.json()
-                post = data.get("post", data)
-                done["pinterest_img"] = post.get("_id") or post.get("id") or True
-                log(f"Clipul #{v['num']}: pin cu poza programat pe Pinterest pentru "
-                    f"{(when + timedelta(minutes=30)).strftime('%d.%m %H:%M')}")
-            else:
-                log(f"Pinterest: pinul cu poza pentru #{v['num']} a esuat: {r.status_code} {r.text[:160]}")
-        except Exception as exc:
-            log(f"Pinterest: pinul cu poza pentru #{v['num']} a esuat: {str(exc)[:160]}")
-        time.sleep(1.1)
 
 
 def next_slots(n: int, taken: set[str]) -> list[datetime]:
@@ -251,6 +231,86 @@ def caption(clip: dict, tiktok_music: bool = False) -> str:
         text = "\n".join(l for l in text.split("\n") if not l.startswith("🎵"))
     tags = " ".join("#" + t for t in clip.get("hashtags", []))
     return f"{text}\n\n{tags}".strip()[:2150]
+
+
+# --- Pinterest: un pin la fiecare 30 de minute, cele mai bune produse la orele de varf --------------------
+PIN_TIMES = [(h, m) for h in range(10, 24) for m in (0, 30)]          # 10:00 ... 23:30
+PIN_PRIME = {(12, 0), (12, 30), (13, 0), (19, 0), (19, 30), (20, 0), (20, 30), (21, 0)}   # pranz si seara
+PIN_IMAGES = int(os.environ.get("PIN_IMAGES", "3"))                    # poze diferite pe produs, pe langa clip
+
+
+def pin_slots(n: int, taken: set[str]) -> list[datetime]:
+    """Sloturile libere, in ordinea completarii: azi orele de varf, apoi restul zilei, apoi la fel maine."""
+    now = datetime.now(TZ)
+    out: list[datetime] = []
+    day = now.date()
+    while len(out) < n and (day - now.date()).days < 3:
+        free = [datetime(day.year, day.month, day.day, h, m, tzinfo=TZ) for h, m in PIN_TIMES]
+        free = [t for t in free if t - now >= MIN_LEAD and t.isoformat() not in taken]
+        out += [t for t in free if (t.hour, t.minute) in PIN_PRIME] + [t for t in free if (t.hour, t.minute) not in PIN_PRIME]
+        day += timedelta(days=1)
+    return out[:n]
+
+
+def schedule_pinterest(video_log: list[dict], extra: dict, boards: dict, off: set, log) -> int:
+    """Pinurile Pinterest ale produselor de azi. Ordinea: toate clipurile (cele mai 'wow' primele),
+    apoi prima poza a fiecarui produs, apoi a doua etc. — asa produsele bune ajung la orele de varf,
+    iar pinurile aceluiasi produs nu vin unul dupa altul."""
+    if not extra.get("pinterest"):
+        return 0
+    acc = extra["pinterest"][0]
+    board = boards.get(acc["id"])
+    if not board:
+        return 0
+    today = datetime.utcnow().date().isoformat()
+    elig = [v for v in video_log if v.get("clip") and v.get("created") == today and v.get("id") not in off]
+    elig.sort(key=lambda v: -(v.get("wow") or 0))
+    queue: list[tuple[str, dict, str]] = []   # (cheie, produs, url media)
+    urls = {}
+    for v in elig:
+        urls[v["num"]] = clip_url(v)
+    for v in elig:
+        if urls[v["num"]]:
+            queue.append(("video", v, urls[v["num"]]))
+    imgs_of = {}
+    for v in elig:
+        seen, lst = set(), []
+        for u in [v.get("image")] + list(v.get("images") or []):
+            if u and str(u).startswith("https://") and u not in seen:
+                seen.add(u)
+                lst.append(u)
+        imgs_of[v["num"]] = lst
+    for k in range(PIN_IMAGES):
+        for v in elig:
+            if len(imgs_of[v["num"]]) > k:
+                queue.append((f"img{k + 1}", v, imgs_of[v["num"]][k]))
+    queue = [q for q in queue if q[0] not in {p.get("key") for p in q[1].get("pins", [])}]
+    if not queue:
+        return 0
+    taken = {p["when"] for v in video_log for p in v.get("pins", []) if p.get("when")}
+    slots = pin_slots(len(queue), taken)
+    done = 0
+    for (key, v, media), when in zip(queue, slots):
+        clip = v["clip"]
+        entry = {"platform": "pinterest", "accountId": acc["id"], "platformSpecificData": {
+            "boardId": board, "title": (clip.get("title_ro") or v.get("title") or "Oferta AliExpress")[:100],
+            "link": f"{SITE_URL}/go/{v['num']}"}}   # linkul clickabil al produsului (nu se accepta URL-uri scurtate)
+        body = {"content": extra_caption(v, "pinterest"), "scheduledFor": when.isoformat(), "timezone": "Europe/Bucharest",
+                "mediaItems": [{"type": "video" if key == "video" else "image", "url": media}], "platforms": [entry]}
+        try:
+            r = requests.post(f"{API}/posts", headers=headers(), json=body, timeout=60)
+            if not r.ok:
+                log(f"Pinterest: {key} pentru #{v['num']} a esuat: {r.status_code} {r.text[:160]}")
+                continue
+            data = r.json()
+            post = data.get("post", data)
+            v.setdefault("pins", []).append({"key": key, "when": when.isoformat(), "id": post.get("_id") or post.get("id")})
+            done += 1
+            log(f"Pinterest {when.strftime('%d.%m %H:%M')}: #{v['num']} ({key})")
+        except Exception as exc:
+            log(f"Pinterest: {key} pentru #{v['num']} a esuat: {str(exc)[:160]}")
+        time.sleep(1.1)   # Zernio permite 60 cereri/minut
+    return done
 
 
 def main() -> None:
@@ -396,7 +456,7 @@ def main() -> None:
             report["drafts"].append({"num": v["num"], "title": v["clip"].get("title_ro")})
     todo = [v for v in todo if not v.get("posted")]
 
-    boards = {a["id"]: pinterest_board(a, log) for a in extra["pinterest"]} if todo else {}
+    boards = {a["id"]: pinterest_board(a, log) for a in extra["pinterest"]}
     tracks = trending_tracks(account, log)
     if tracks:
         log("Melodii in trend disponibile: " + ", ".join(f"{t['name']} ({t['artist']})" for t in tracks[:6]))
@@ -439,12 +499,15 @@ def main() -> None:
                            "music": f"{track['name']} – {track['artist']}" if track else None,
                            "repost_day": v.pop("_repost_day", None)}
             report["scheduled"].append({"num": v["num"], "when": when.isoformat(), "title": clip.get("title_ro")})
-            if EXTRA_ON and (extra["instagram"] or extra["pinterest"]):
+            if EXTRA_ON and extra["instagram"]:
                 post_extra(v, when, url, extra, boards, log)
             log(f"Clipul #{v['num']} programat pe TikTok pentru {when.strftime('%d.%m %H:%M')}"
                 + (f", cu melodia {track['name']} ({track['artist']})" if track else ""))
         except Exception as exc:
             log(f"Programarea clipului #{v['num']} a esuat: {str(exc)[:200]}")
+    if EXTRA_ON and extra["pinterest"]:
+        n_pins = schedule_pinterest(video_log, extra, boards, off, log)
+        report["pinterest_pins"] = n_pins
     if not todo:
         log("Niciun clip nou de programat.")
     VIDEO_LOG.write_text(json.dumps(video_log, ensure_ascii=False, indent=1), encoding="utf-8")
