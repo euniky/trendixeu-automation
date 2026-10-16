@@ -683,6 +683,20 @@ def main() -> None:
                 + (f", cu melodia {track['name']} ({track['artist']})" if track else ""))
         except Exception as exc:
             log(f"Programarea clipului #{v['num']} a esuat: {str(exc)[:200]}")
+    if os.environ.get("RESCHEDULE_PINS") == "1" and extra["pinterest"]:
+        # anulez pinurile de azi inca nepublicate; se reprogrameaza mai jos (de ex. in boardurile tematice)
+        now_l = datetime.now(TZ)
+        for v in video_log:
+            for p in list(v.get("pins", [])):
+                if p.get("id") and (p.get("when") or "")[:10] == now_l.date().isoformat() \
+                        and datetime.fromisoformat(p["when"]) - now_l > timedelta(minutes=10):
+                    r = requests.delete(f"{API}/posts/{p['id']}", headers=headers(), timeout=30)
+                    if r.ok or r.status_code == 404:
+                        v["pins"].remove(p)
+                    else:
+                        log(f"Nu am putut anula pinul #{v['num']} de la {p['when'][11:16]}: {r.status_code} {r.text[:150]}")
+                    time.sleep(1.1)
+        log("Pinurile nepublicate de azi au fost anulate pentru reprogramare")
     if EXTRA_ON and extra["pinterest"]:
         n_pins = schedule_pinterest(video_log, extra, boards, off, log)
         report["pinterest_pins"] = n_pins
