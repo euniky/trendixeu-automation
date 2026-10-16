@@ -63,7 +63,7 @@ HASHTAGS = "#craciun #decoratiunicraciun #bradcraciun #instalatiicraciun #christ
 XMAS_TYPES = [
     (r"(ceramic|tabletop|table top|mini|desktop).{0,40}tree|tree.{0,40}(ceramic|tabletop|ornament)", None),
     (r"fib(er|re) ?optic.{0,40}tree|tree.{0,40}fib(er|re) ?optic", "Brad artificial cu fibră optică"),
-    (r"(flocked|snow).{0,60}tree.{0,80}(pre.?lit|led|lights?)|(pre.?lit|led|lights?).{0,60}(flocked|snow).{0,30}tree",
+    (r"(?=.*\btree)(?:(flocked|snowy?).{0,80}(pre.?lit|led|light)|(pre.?lit|led|light).{0,80}(flocked|snowy?))",
      "Brad artificial nins cu luminițe încorporate"),
     (r"(pre.?lit|led|lights?|lighted|illuminated).{0,40}(christmas )?tree|tree.{0,40}(led|lights|pre.?lit)", "Brad artificial cu luminițe încorporate"),
     (r"artificial christmas tree|christmas tree \d", "Brad artificial de Crăciun"),
