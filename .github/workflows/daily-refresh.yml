@@ -20,6 +20,9 @@ on:
       to_drafts:
         description: "Clipuri programate de mutat in schitele TikTok (ex: 13,14)"
         default: ""
+      pin_now:
+        description: "Test: publica ACUM un pin Pinterest pentru produsul cu acest numar (ex: 91)"
+        default: ""
       premium_demo:
         description: "Numarul clipului de refacut cu voce gratuita vs premium (gol = nimic)"
         default: ""
@@ -130,6 +133,7 @@ jobs:
           TO_DRAFTS: ${{ github.event.inputs.to_drafts || '' }}
           DRAFTS_PER_DAY: "2"
           RESCHEDULE_MUSIC: ${{ github.event.inputs.reschedule_music || '0' }}
+          PIN_NOW: ${{ github.event.inputs.pin_now || '' }}
           CLIP_BASE: https://euniky.github.io/trendixeu-automation   # direct de pe GitHub, fara credite Netlify
         run: python scripts/post_tiktok.py ${{ github.event.inputs.zernio_check == 'true' && '--check' || '' }}
 

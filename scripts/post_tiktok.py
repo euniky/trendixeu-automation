@@ -321,6 +321,32 @@ def schedule_pinterest(video_log: list[dict], extra: dict, boards: dict, off: se
     return done
 
 
+def pin_now(num: int, extra: dict, boards: dict, video_log: list[dict], log) -> None:
+    """Test: publica ACUM un pin cu poza produsului `num` si raporteaza raspunsul Pinterest (PIN_NOW=<nr>)."""
+    v = next((x for x in video_log if x.get("num") == num and x.get("clip")), None)
+    if not v or not extra.get("pinterest"):
+        log(f"Test pin: produsul #{num} sau contul Pinterest lipseste.")
+        return
+    acc = extra["pinterest"][0]
+    board = boards.get(acc["id"])
+    img = next((i for i in [v.get("image")] + list(v.get("images") or []) if i), None)
+    entry = {"platform": "pinterest", "accountId": acc["id"], "platformSpecificData": {
+        "boardId": board, "title": (v["clip"].get("title_ro") or "Oferta AliExpress")[:100], "link": pin_link(v)}}
+    body = {"content": extra_caption(v, "pinterest"), "publishNow": True,
+            "mediaItems": [{"type": "image", "url": img}], "platforms": [entry]}
+    r = requests.post(f"{API}/posts", headers=headers(), json=body, timeout=120)
+    log(f"Test pin #{num} (link {pin_link(v)[:60]}...): HTTP {r.status_code} {r.text[:900]}")
+    try:
+        post = r.json().get("post", r.json())
+        pid = post.get("_id") or post.get("id")
+        if pid:
+            time.sleep(8)
+            g = requests.get(f"{API}/posts/{pid}", headers=headers(), timeout=30)
+            log(f"Test pin, stare dupa 8 s: {g.text[:900]}")
+    except Exception as exc:
+        log(f"Test pin: nu am putut citi starea: {str(exc)[:200]}")
+
+
 def main() -> None:
     check = "--check" in sys.argv
     report: dict = {"checked": datetime.now(TZ).isoformat(timespec="seconds"), "ok": False, "scheduled": [], "log": []}
@@ -486,6 +512,8 @@ def main() -> None:
     todo = [v for v in todo if not v.get("posted")]
 
     boards = {a["id"]: pinterest_board(a, log) for a in extra["pinterest"]}
+    if os.environ.get("PIN_NOW", "").strip().isdigit():
+        pin_now(int(os.environ["PIN_NOW"]), extra, boards, video_log, log)
     tracks = trending_tracks(account, log)
     if tracks:
         log("Melodii in trend disponibile: " + ", ".join(f"{t['name']} ({t['artist']})" for t in tracks[:6]))
