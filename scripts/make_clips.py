@@ -885,7 +885,8 @@ def render_clip(p: dict, num: int, lei: float, out_path: Path, local_images: lis
                 mode, vis = scene_visual[kind]
                 target, cy = {"cta": (640, 760), "hook": (900, 1010)}.get(kind, (800, 980))
                 if kind == "hook":
-                    scl = 1.25 - 0.25 * ease(lt / 0.35) + 0.03 * lt
+                    # primul cadru = coperta din grila TikTok: produsul intreg, la 100%, fara taiere la margini
+                    scl = 1.0 + 0.07 * math.sin(math.pi * min(1.0, lt / 0.35)) + 0.03 * lt
                 else:
                     scl = (0.55 + 0.45 * ease_out_back(lt / 0.45)) * (1 + 0.025 * math.sin(t * 2.2))
                 size = target * scl
@@ -899,15 +900,16 @@ def render_clip(p: dict, num: int, lei: float, out_path: Path, local_images: lis
                     put(frame, shadow_cache[sw], W / 2, cy + img.height / 2 - 10, 0.9)
                 bob = 16 * math.sin(t * 2.4) if mode == "cut" else 0
                 put(frame, img, W / 2, cy + bob)
-                if kind == "hook" and lt < 0.12:
-                    frame = Image.blend(frame, Image.new("RGB", (W, H), (255, 255, 255)), 0.7 * (1 - lt / 0.12))
+                # (flash-ul alb de la inceput a fost scos: facea coperta sa para in ceata)
 
             if kind == "hook" and lt < 0.45:   # tremuratura scurta de camera: opreste scroll-ul
-                amp = 22 * (1 - lt / 0.45)
+                u = lt / 0.45
+                amp = 22 * 4 * u * (1 - u)   # 0 la primul cadru -> coperta ramane clara si dreapta
                 dx, dy = amp * math.sin(lt * 90), amp * math.cos(lt * 70)
                 cw, ch = int(W / 1.05), int(H / 1.05)
                 x0, y0 = (W - cw) / 2 + dx, (H - ch) / 2 + dy
-                frame = frame.crop((int(x0), int(y0), int(x0) + cw, int(y0) + ch)).resize((W, H), Image.BILINEAR)
+                if amp > 1.5:   # fara crop+resize pe primele cadre: coperta ramane la rezolutie plina
+                    frame = frame.crop((int(x0), int(y0), int(x0) + cw, int(y0) + ch)).resize((W, H), Image.LANCZOS)
             if prev_kind is not None and kind != "hook" and lt < 0.16:   # lovitura de zoom la trecerea in scena noua
                 z = 1.06 - 0.06 * (lt / 0.16)
                 cw, ch = int(W / z), int(H / z)
