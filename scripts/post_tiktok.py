@@ -359,6 +359,12 @@ def schedule_pinterest(video_log: list[dict], extra: dict, boards: dict, off: se
         entry = {"platform": "pinterest", "accountId": acc["id"], "platformSpecificData": {
             "boardId": board_for(v, BOARD_LISTS.get(acc["id"], []), board), "title": pin_seo.pin_title(v),
             "link": pin_link(v)}}   # linkul clickabil al produsului
+        if key == "video":   # coperta clara a produsului (altfel Pinterest ia primul cadru, in ceata)
+            cover = make_pin_cover(v, log)
+            if cover:
+                entry["platformSpecificData"]["coverImageUrl"] = cover
+            else:
+                entry["platformSpecificData"]["coverImageKeyFrameTime"] = 2.0
         body = {"content": pin_seo.pin_description(v), "scheduledFor": when.isoformat(), "timezone": "Europe/Bucharest",
                 "mediaItems": [{"type": "video" if key == "video" else "image", "url": media}], "platforms": [entry]}
         try:
@@ -460,6 +466,67 @@ def make_collage(urls: list[str], title: str, price: str, log) -> str | None:
         return dd["publicUrl"]
     except Exception as exc:
         log(f"Colaj: incarcarea a esuat: {str(exc)[:150]}")
+        return None
+
+
+def make_pin_cover(v: dict, log) -> str | None:
+    """Coperta pinului video: poza produsului CLARA si intreaga (1080x1920), fara estompare, pe fundal inchis,
+    cu pretul. Fara ea Pinterest ia primul cadru al clipului (efect de zoom/tremur, arata ca in ceata)."""
+    from io import BytesIO
+    from PIL import Image, ImageDraw, ImageFont, ImageOps
+    src = v.get("image") or next(iter(v.get("images") or []), None)
+    if not src:
+        return None
+    try:
+        r = requests.get(src, timeout=40, headers={"User-Agent": "Mozilla/5.0"})
+        im = ImageOps.exif_transpose(Image.open(BytesIO(r.content))).convert("RGB")
+    except Exception as exc:
+        log(f"Coperta Pinterest: poza nu s-a putut descarca: {str(exc)[:120]}")
+        return None
+    if min(im.size) < 300:
+        return None
+    W, H = 1080, 1920
+    canvas = Image.new("RGB", (W, H))
+    d = ImageDraw.Draw(canvas)
+    for y in range(H):   # degrade vertical inchis (fara blur)
+        t = y / H
+        d.line([(0, y), (W, y)], fill=(int(22 + 24 * t), int(20 + 10 * t), int(34 + 30 * t)))
+    box = 1000
+    k = box / max(im.size)
+    big = im.resize((max(1, round(im.width * k)), max(1, round(im.height * k))), Image.LANCZOS)
+    card = Image.new("RGB", (box + 40, big.height + 40), (255, 255, 255))
+    card.paste(big, (20, 20))
+    cx, cy = (W - card.width) // 2, 330 + (box + 40 - card.height) // 2
+    canvas.paste(card, (cx, cy))
+    try:
+        fb = ImageFont.truetype(str(FONT_DIR / "Poppins-Bold.ttf"), 54)
+        fs = ImageFont.truetype(str(FONT_DIR / "Poppins-Bold.ttf"), 64)
+    except Exception:
+        fb = fs = ImageFont.load_default()
+    clip = v.get("clip") or {}
+    name = (clip.get("title_ro") or clip.get("name") or "").split("|")[0].strip()
+    while name and d.textlength(name, font=fb) > W - 120 and len(name) > 10:
+        name = name.rsplit(" ", 1)[0]
+    y0 = cy + card.height + 70
+    if name:
+        d.text((W // 2, y0), name, font=fb, fill=(255, 255, 255), anchor="mm")
+    price = clip.get("price_text")
+    if price:
+        w = d.textlength(price, font=fs) + 80
+        d.rounded_rectangle([W / 2 - w / 2, y0 + 70, W / 2 + w / 2, y0 + 170], radius=50, fill=(255, 213, 74))
+        d.text((W // 2, y0 + 120), price, font=fs, fill=(20, 20, 26), anchor="mm")
+    buf = BytesIO()
+    canvas.save(buf, "JPEG", quality=92, optimize=True)
+    try:
+        pre = requests.post(f"{API}/media/presign", headers=headers(), timeout=30,
+                            json={"filename": "cover.jpg", "contentType": "image/jpeg", "size": buf.tell()})
+        pre.raise_for_status()
+        dd = pre.json()
+        up = requests.put(dd["uploadUrl"], data=buf.getvalue(), headers={"Content-Type": "image/jpeg"}, timeout=120)
+        up.raise_for_status()
+        return dd["publicUrl"]
+    except Exception as exc:
+        log(f"Coperta Pinterest: incarcarea a esuat: {str(exc)[:150]}")
         return None
 
 

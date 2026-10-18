@@ -52,6 +52,7 @@ SEARCHES = [
     ("smart app christmas lights rgb", "Instalație de Crăciun smart cu aplicație", 20),
 ]
 TREE_MIN_LEI = float(os.environ.get("TREE_MIN_LEI", "700"))   # brazii postati costa cel putin atat
+OTHER_MIN_LEI = float(os.environ.get("XMAS_OTHER_MIN_LEI", "200"))   # celelalte decoratiuni premium: minim atat
 MIN_RATING = 92.0
 MIN_ORDERS = 20
 BAD = re.compile(r"\b(sticker|wallpaper|costume|sweater|hat|socks|mold|stencil|replacement|bulb only|plug adapter)\b", re.I)
@@ -124,6 +125,8 @@ def candidates(tracking: str, used: set[str], log) -> list[dict]:
             real_label = xmas_label(title)
             if not real_label:   # nu e ce cautam (sau e un brad de ceramica / de masa)
                 continue
+            if not re.search(r"christmas|xmas|noel", title, re.I):   # ex. ghirlande solare de gradina, nu de Craciun
+                continue
             is_tree = real_label.startswith("Brad")
             if is_tree:
                 # brad premium: pret minim in lei, mare (>= 150 cm), nu gonflabil; rating doar daca exista recenzii
@@ -133,7 +136,7 @@ def candidates(tracking: str, used: set[str], log) -> list[dict]:
                 if price * RON < TREE_MIN_LEI or re.search(r"inflat|ceramic|tabletop|mini", title, re.I) \
                         or (cm and cm < 150) or (orders and rating and rating < 88):
                     continue
-            elif rating < MIN_RATING or orders < MIN_ORDERS or price < min_eur:
+            elif rating < MIN_RATING or orders < MIN_ORDERS or price < min_eur or price * RON < OTHER_MIN_LEI:
                 continue
             smalls = p.get("product_small_image_urls") or []
             if isinstance(smalls, dict):
@@ -143,7 +146,7 @@ def candidates(tracking: str, used: set[str], log) -> list[dict]:
                          "image": p.get("product_main_image_url", ""),
                          "images": [u for u in smalls if isinstance(u, str)][:4],
                          # scor: popularitate si calitate (pretul mai mare = mai "premium", pana la un punct)
-                         "score": (orders * (rating / 100) ** 4 * min(price / min_eur, 3)) if not is_tree else
+                         "score": (orders * (rating / 100) ** 4 * min(price / max(min_eur, 1), 3)) if not is_tree else
                                   (orders * 50 + int((re.search(r"(\d{3,4})\s?(?:warm )?(?:white )?led", title, re.I) or [0, 0])[1])
                                    + int((re.search(r"(\d{3,4})\s?(?:full )?(?:branch )?tips", title, re.I) or [0, 0])[1]) / 5)})
         good.sort(key=lambda x: -x["score"])

@@ -715,6 +715,7 @@ BORING_WORDS = {
     "earring": -3, "ring": -1, "necklace": -3, "label": -3, "tape": -2,
 }
 MIN_WOW_SCORE = 5        # sub acest scor produsul nu primeste clip
+PREMIUM_MIN_LEI = float(os.environ.get("PREMIUM_MIN_LEI", "150"))   # clipuri doar pentru produse premium (0 = oprit)
 
 
 def wow_score(p: dict, lei: float) -> tuple[float, list[str]]:
@@ -1068,6 +1069,10 @@ def make_daily_clips(hot: list[dict], featured: list[dict], rates: dict, video_l
             ordered = [p for p in ordered if p.get("kw") in THEME["keywords"]
                        and (p.get("video") or not THEME.get("hd_only")) and lo <= to_lei(p, rates) <= hi]
             log(f"[info] tema zilei: {len(ordered)} produse potrivite (filmare HD, {lo}-{hi} lei)")
+        elif PREMIUM_MIN_LEI:   # implicit: doar produse premium, nu gadgeturi de 15-40 lei
+            before = len(ordered)
+            ordered = [p for p in ordered if to_lei(p, rates) >= PREMIUM_MIN_LEI]
+            log(f"[info] premium (>= {PREMIUM_MIN_LEI:.0f} lei): {len(ordered)} din {before} produse raman")
         todo = pick_clips(ordered, video_log, CLIPS_PER_DAY)
         with_video = sum(1 for p in fresh if p.get("video"))
         log(f"[info] clipuri: {len(fresh)} produse verificate, {with_video} cu filmare, "
