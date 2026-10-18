@@ -8642,11 +8642,11 @@
    "title_ro": "Kit de curățare multifuncțional 3-în-1 pentru peria de curățare a căștilor cu"
   },
   "posted": {
-   "scheduledFor": "2026-10-18T19:00:00+03:00",
-   "id": "6ad468478269045eb7ca3b60",
-   "account": "trendixeu",
-   "music": "怪しい屋敷を探索する的なBGM – 鷹尾まさき(タカオマサキ)",
-   "repost_day": null
+   "draft": true,
+   "remade": null,
+   "sent": "2026-10-18T13:11+03:00",
+   "id": "6ad49b54ecbf8c01a7f812f5",
+   "account": "trendixeu"
   },
   "pins": [
    {
@@ -8737,11 +8737,11 @@
    "title_ro": "Microfibră pentru curățarea mașinilor electrice de bicicletă"
   },
   "posted": {
-   "scheduledFor": "2026-10-18T21:00:00+03:00",
-   "id": "6ad4684713696c68fe220430",
-   "account": "trendixeu",
-   "music": "Mint Breeze – RITA",
-   "repost_day": null
+   "draft": true,
+   "remade": null,
+   "sent": "2026-10-18T13:11+03:00",
+   "id": "6ad49b63f2844273f678a3d3",
+   "account": "trendixeu"
   },
   "pins": [
    {
@@ -8925,6 +8925,190 @@
    "id": "6ad499b6d4090c4dac15e59c",
    "account": "trendixeu",
    "music": "Prisoner – DIDKER",
+   "repost_day": null
+  }
+ },
+ {
+  "id": "p1005012875011681",
+  "title": "Integrated Foldable Christmas Tree with Ornaments LED Lights High-end Christmas Tree 150cm",
+  "titles": {
+   "en": "Integrated Foldable Christmas Tree with Ornaments LED Lights High-end",
+   "ro": "Pom de Crăciun pliabil integrat cu ornamente Lumini LED High-end",
+   "it": "Albero di Natale pieghevole integrato con luci LED ornamentali di fascia alta",
+   "de": "Integrierter faltbarer Weihnachtsbaum mit Ornamenten LED-Leuchten High-End",
+   "fr": "Sapin de Noël pliable intégré avec ornements lumières LED haut de gamme",
+   "es": "Árbol de Navidad plegable integrado con adornos LED Luces de gama alta"
+  },
+  "cur": "EUR",
+  "amount": 143.39,
+  "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4mlG6sq9NxnQQhCPTN8YHZjLUdCRaKAKXAaIlNcFF9oAJIdOXaNFyNlH44coQbxwCUSU64oBtW39eILGk6LWTbRHAH3cd1nBNyS46MW9jwpSrh8RUZ8CZFHnmLII9xJ14F09J2Vb8RlpJglByuj8OAL5FEPGJmxHuqB49D6cAQK2H7XOZnvqHqGyvxImzgqx9zG8ej0MlGlfMstDLrVmpYaC436tvIs0CEfNI5S3hWTFqXpKyCP95UcCCPDylZSJqo4EPz30GYV46DFEi0v0iZm1Dpa52Wm0f5PWKdU8Ov0ky294V8MhKnzEKmCQFPveOdbJfyMqcvoCKe2seI8OPO8MtkIPP9Xfiko41BEXDVwfldXw0mRsnMHmPPmqU8aDFDoAKegNxXaD9dTgnfwUA5rxEp2nL0DCZeVXNPsQtGOcJvyFC0XMt8nT4On2pBpljOmevbFpyiUoRYdp7NzSstpYKzuynLrUxRcevsFM5gxDtrE2utV9q7259y2tbciuXCssd87GenPXAdbnhjoTlAq9GjORcGeU4BGxDHtYfDRbSGcfjxej9SwxosliftImofOqDSaiE3NFgklMzSvDWtGlVF7tfMUgeOKK94r5WCKaUErwtEsgCsNSGIO4ExEIX6LuGO7dHhtfVaRDtMFgc5N4MIxS9nNllDI8eulBm8QmL4PIAOBpQgF2IBrGTE0Fl0Lld7DBWQPfMv",
+  "image": "https://ae-pic-a1.aliexpress-media.com/kf/S64dc4d50b189484b9dcf78ca92525cf2o.png",
+  "images": [
+   "https://ae-pic-a1.aliexpress-media.com/kf/S64dc4d50b189484b9dcf78ca92525cf2o.png",
+   "https://ae-pic-a1.aliexpress-media.com/kf/S03be9cd10bca4276a586a94588bb5d07c.png",
+   "https://ae-pic-a1.aliexpress-media.com/kf/S1d16ceb3d3a44ec9ac6fa9e19ce83881M.png",
+   "https://ae-pic-a1.aliexpress-media.com/kf/Sebc370f4ec9a4beeafc410ecb42b30da9.png",
+   "https://ae-pic-a1.aliexpress-media.com/kf/Sc8de3cba6934492ab86fec4b285ecc3bX.png"
+  ],
+  "video": "",
+  "orders": 8,
+  "rating": 100.0,
+  "kw": "fiber optic christmas tree",
+  "num": 110,
+  "created": "2026-10-18",
+  "section": "clip",
+  "wow": 4.0,
+  "clip": {
+   "hook": "Bradul vine deja luminat",
+   "kicker": "GADGETUL ZILEI",
+   "name": "Pom de Crăciun pliabil integrat cu ornamente",
+   "cards": [
+    "Pliabil",
+    "Lumină LED",
+    "Lungime 150 cm"
+   ],
+   "orders": 8,
+   "rating": 100.0,
+   "price_text": "764 lei",
+   "num": 110,
+   "end_sub": "Caută numărul pe pagina mea",
+   "benefit": "Crăciunul ca în reviste, acasă la tine",
+   "description_ro": "Bradul vine deja luminat ✨\nCrăciunul ca în reviste, acasă la tine: Pom de Crăciun pliabil integrat cu ornamente\n✅ Pliabil\n✅ Lumină LED\n✅ Lungime 150 cm\n⭐ 100% recenzii pozitive · 8+ comenzi\n💰 Preț: ~764 lei\n👉 Îl găsești în bio la nr. 110\nAi nevoie de el? Scrie DA 👇\n🎵 Almost in F – Kevin MacLeod (incompetech.com) · CC BY 4.0",
+   "description_en": "Nobody complained about it 😱\nIntegrated Foldable Christmas Tree with Ornaments LED\n✅ 150 cm long\n✅ Foldable\n✅ LED light\n⭐ 100% positive reviews · 8+ orders\n💰 Price: ~764 lei\n👉 Link in bio · find product #110\n🎵 Almost in F – Kevin MacLeod (incompetech.com) · CC BY 4.0",
+   "hashtags": [
+    "craciun",
+    "bradcraciun",
+    "decoratiunicraciun",
+    "christmastok",
+    "tiktokmademebuyit",
+    "fyp",
+    "romania",
+    "reduceri",
+    "oferte",
+    "aliexpressfinds"
+   ],
+   "bullets": [
+    "Pliabil",
+    "Lumină LED",
+    "Lungime 150 cm"
+   ],
+   "duration": 21.7,
+   "used_seller_video": false,
+   "voiced": false,
+   "voice": null,
+   "voice_error": null,
+   "with_music": true,
+   "script": [
+    "Bradul vine deja luminat!",
+    "Crăciunul ca în reviste, acasă la tine. Pom de Crăciun pliabil integrat cu ornamente.",
+    "Are 150 de centimetri, se pliază și ocupă puțin loc și are lumină LED.",
+    "Peste 8 oameni l-au comandat, cu 100 la sută recenzii pozitive.",
+    "Numărul 110, pe pagina din bio!"
+   ],
+   "music": "Almost in F",
+   "file": "clips/trendixeu-110.mp4",
+   "poster": "clips/trendixeu-110.jpg",
+   "created": "2026-10-18",
+   "id": "p1005012875011681",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4mlG6sq9NxnQQhCPTN8YHZjLUdCRaKAKXAaIlNcFF9oAJIdOXaNFyNlH44coQbxwCUSU64oBtW39eILGk6LWTbRHAH3cd1nBNyS46MW9jwpSrh8RUZ8CZFHnmLII9xJ14F09J2Vb8RlpJglByuj8OAL5FEPGJmxHuqB49D6cAQK2H7XOZnvqHqGyvxImzgqx9zG8ej0MlGlfMstDLrVmpYaC436tvIs0CEfNI5S3hWTFqXpKyCP95UcCCPDylZSJqo4EPz30GYV46DFEi0v0iZm1Dpa52Wm0f5PWKdU8Ov0ky294V8MhKnzEKmCQFPveOdbJfyMqcvoCKe2seI8OPO8MtkIPP9Xfiko41BEXDVwfldXw0mRsnMHmPPmqU8aDFDoAKegNxXaD9dTgnfwUA5rxEp2nL0DCZeVXNPsQtGOcJvyFC0XMt8nT4On2pBpljOmevbFpyiUoRYdp7NzSstpYKzuynLrUxRcevsFM5gxDtrE2utV9q7259y2tbciuXCssd87GenPXAdbnhjoTlAq9GjORcGeU4BGxDHtYfDRbSGcfjxej9SwxosliftImofOqDSaiE3NFgklMzSvDWtGlVF7tfMUgeOKK94r5WCKaUErwtEsgCsNSGIO4ExEIX6LuGO7dHhtfVaRDtMFgc5N4MIxS9nNllDI8eulBm8QmL4PIAOBpQgF2IBrGTE0Fl0Lld7DBWQPfMv",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S64dc4d50b189484b9dcf78ca92525cf2o.png",
+   "title_ro": "Pom de Crăciun pliabil integrat cu ornamente Lumini LED High-end"
+  },
+  "posted": {
+   "scheduledFor": "2026-10-18T19:00:00+03:00",
+   "id": "6ad49b72f2844273f678a3eb",
+   "account": "trendixeu",
+   "music": "Gotta Be – Seemann",
+   "repost_day": null
+  }
+ },
+ {
+  "id": "p1005013121805413",
+  "title": "7ft Snow Flocked Artificial Christmas Tree 2.1m PVC Xmas Tree Full Dense Branches Foldable",
+  "titles": {
+   "en": "7ft Snow Flocked Artificial Christmas Tree 2.1m PVC Xmas Tree Full",
+   "ro": "7 ft Pom de Crăciun artificial acoperit cu zăpadă 2,1 m Pom de Crăciun din PVC plin",
+   "it": "Albero di Natale artificiale affollato di neve 2,1 m in PVC Albero di Natale pieno",
+   "de": "7 Fuß Schnee beflockter künstlicher Weihnachtsbaum 2,1 m PVC-Weihnachtsbaum voll",
+   "fr": "7 pieds Arbre de Noël artificiel floqué de neige 2.1m Arbre de Noël en PVC plein",
+   "es": "Árbol de Navidad artificial flocado de nieve de 7 pies y 2,1 m de árbol de Navidad de PVC lleno"
+  },
+  "cur": "EUR",
+  "amount": 184.39,
+  "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4o2KrwsrCid20pALjgCj8gnqebmoXyYBjHMvwq0Kk5d0i0C7MCBf5yOR3ZyPKhMdR5HGkDgrvn2JPj2jEgzvUILJodt3QSei7dLYPYYgWc98I8kt2XG0j3DtXWPlejlsOH1LhRD0QB1T4CANLZgknqKTDXnN3Ov7D9fXa4awZ7MRQmIHWLR536fC5FYPcQO26B5IzDdK0fklGmkIpMoMAIcLa8YRnJhxjYuZecjumTxrI8hHnS3dYV7DmriVIhLLcq9Edv2e46sqRFVil21JXkFA6sp4vOqZ1osbHxB8n5P9g0H9jRCuYe5pgHax72DG6yJMs9wwvmPalZiKJLs3e9bt8HjysgSSqm8I0xnXFYRMxz4ZlJgqRaYmueeuvDvSMiCLUkKmTfHPxmrFFhiJKaTqJvRR3Ap26vaf8bmqvuTxIRrEfKgKMceHXVg0DMdrQ7NJ5kyRWiUTUk9N295XMFY1pLNn5xYX5oKz59ZBHO5ZENLUKclCMUibN85EDIDt9f25a1l1YvM7FDQG5WpUJZeAWXC28YWNOfT0phwkC2uYN1LOrmzjWOeQ981uwRBFTFK27rT2QL5E9qNzzMEsYVAOqOffblMWbZQNb3Xn3Bi4zYsGttZjxm6baHnGbyUhBOFVB74pXCGVRjz3eR5yTE3KMy3vrkS0vBFF3wbnSLZSs02NjnDjMz7mmjgj6cNmYey8WoFNYL8ezJ",
+  "image": "https://ae-pic-a1.aliexpress-media.com/kf/S215d9f302cc44ae8a55e9121928befbfG.png",
+  "images": [
+   "https://ae-pic-a1.aliexpress-media.com/kf/S215d9f302cc44ae8a55e9121928befbfG.png",
+   "https://ae-pic-a1.aliexpress-media.com/kf/S10bf3dcdc53a46788ff5723af7c163c7i.png",
+   "https://ae-pic-a1.aliexpress-media.com/kf/Sca068959754a44dbba6af81234bb86a3d.png",
+   "https://ae-pic-a1.aliexpress-media.com/kf/Sfbe291df0aed472f856ebfa258358456l.png",
+   "https://ae-pic-a1.aliexpress-media.com/kf/Sca73b0bded5b4ce29f4dfd5bbe194a250.png"
+  ],
+  "video": "",
+  "orders": 3,
+  "rating": 0.0,
+  "kw": "fiber optic christmas tree",
+  "num": 111,
+  "created": "2026-10-18",
+  "section": "clip",
+  "wow": 1.0,
+  "clip": {
+   "hook": "Crăciun alb, chiar în sufragerie",
+   "kicker": "MERITĂ VĂZUT",
+   "name": "7 ft Pom de Crăciun artificial acoperit",
+   "cards": [
+    "Pliabil"
+   ],
+   "orders": 3,
+   "rating": 0.0,
+   "price_text": "983 lei",
+   "num": 111,
+   "end_sub": "Linkul e în profilul meu",
+   "benefit": "Atmosferă de sărbătoare din prima seară",
+   "description_ro": "Crăciun alb, chiar în sufragerie 🤯\nAtmosferă de sărbătoare din prima seară: 7 ft Pom de Crăciun artificial acoperit\n✅ Pliabil\n⭐ 0% recenzii pozitive · 3+ comenzi\n💰 Preț: ~983 lei\n👉 Link în bio · caută produsul nr. 111\nMerită sau nu? 👇\n🎵 Ambiment – Kevin MacLeod (incompetech.com) · CC BY 4.0",
+   "description_en": "The gadget you didn't know you wanted 😱\n7ft Snow Flocked Artificial Christmas Tree 2.1m\n✅ Foldable\n⭐ 0% positive reviews · 3+ orders\n💰 Price: ~983 lei\n👉 Link in bio · find product #111\n🎵 Ambiment – Kevin MacLeod (incompetech.com) · CC BY 4.0",
+   "hashtags": [
+    "craciun",
+    "bradcraciun",
+    "decoratiunicraciun",
+    "christmastok",
+    "fyp",
+    "tiktokmademebuyit",
+    "reduceri",
+    "oferte",
+    "romania",
+    "aliexpressfinds"
+   ],
+   "bullets": [
+    "Pliabil"
+   ],
+   "duration": 19.9,
+   "used_seller_video": false,
+   "voiced": false,
+   "voice": null,
+   "voice_error": null,
+   "with_music": true,
+   "script": [
+    "Crăciun alb, chiar în sufragerie!",
+    "Atmosferă de sărbătoare din prima seară. 7 ft Pom de Crăciun artificial acoperit.",
+    "Se pliază și ocupă puțin loc.",
+    "Peste 3 oameni l-au comandat, cu 0 la sută recenzii pozitive.",
+    "Intră pe linkul din bio și caută numărul 111!"
+   ],
+   "music": "Ambiment",
+   "file": "clips/trendixeu-111.mp4",
+   "poster": "clips/trendixeu-111.jpg",
+   "created": "2026-10-18",
+   "id": "p1005013121805413",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4o2KrwsrCid20pALjgCj8gnqebmoXyYBjHMvwq0Kk5d0i0C7MCBf5yOR3ZyPKhMdR5HGkDgrvn2JPj2jEgzvUILJodt3QSei7dLYPYYgWc98I8kt2XG0j3DtXWPlejlsOH1LhRD0QB1T4CANLZgknqKTDXnN3Ov7D9fXa4awZ7MRQmIHWLR536fC5FYPcQO26B5IzDdK0fklGmkIpMoMAIcLa8YRnJhxjYuZecjumTxrI8hHnS3dYV7DmriVIhLLcq9Edv2e46sqRFVil21JXkFA6sp4vOqZ1osbHxB8n5P9g0H9jRCuYe5pgHax72DG6yJMs9wwvmPalZiKJLs3e9bt8HjysgSSqm8I0xnXFYRMxz4ZlJgqRaYmueeuvDvSMiCLUkKmTfHPxmrFFhiJKaTqJvRR3Ap26vaf8bmqvuTxIRrEfKgKMceHXVg0DMdrQ7NJ5kyRWiUTUk9N295XMFY1pLNn5xYX5oKz59ZBHO5ZENLUKclCMUibN85EDIDt9f25a1l1YvM7FDQG5WpUJZeAWXC28YWNOfT0phwkC2uYN1LOrmzjWOeQ981uwRBFTFK27rT2QL5E9qNzzMEsYVAOqOffblMWbZQNb3Xn3Bi4zYsGttZjxm6baHnGbyUhBOFVB74pXCGVRjz3eR5yTE3KMy3vrkS0vBFF3wbnSLZSs02NjnDjMz7mmjgj6cNmYey8WoFNYL8ezJ",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S215d9f302cc44ae8a55e9121928befbfG.png",
+   "title_ro": "7 ft Pom de Crăciun artificial acoperit cu zăpadă 2,1 m Pom de Crăciun din PVC plin"
+  },
+  "posted": {
+   "scheduledFor": "2026-10-18T21:00:00+03:00",
+   "id": "6ad49b721dea4d9378cfed10",
+   "account": "trendixeu",
+   "music": "Ultra Titan - Dj Version – Kgod the destroyer",
    "repost_day": null
   }
  }
