@@ -14,6 +14,18 @@ import re
 
 # (regex pe titlul englezesc, denumirea cautata in romana, cuvinte cheie inrudite, beneficiul principal)
 PRODUCT_TYPES: list[tuple[str, str, list[str], str]] = [
+    # Craciun
+    (r"fib(er|re) ?optic.{0,40}tree|tree.{0,40}fib(er|re) ?optic", "Brad artificial cu fibră optică",
+     ["brad de Crăciun", "decor de Crăciun", "idei de Crăciun"], "își schimbă culorile singur și nu are nevoie de luminițe"),
+    (r"(flocked|snowy?).{0,80}tree|tree.{0,80}(flocked|snowy?)", "Brad artificial nins cu luminițe",
+     ["brad de Crăciun", "decor de Crăciun", "Crăciun alb"], "arată ca un brad plin de zăpadă, cu luminițe gata puse"),
+    (r"christmas tree|xmas tree|pre.?lit.{0,30}tree", "Brad artificial cu luminițe încorporate",
+     ["brad de Crăciun", "decor de Crăciun", "idei de Crăciun"], "vine deja luminat, fără încâlcit luminițe"),
+    (r"christmas.{0,40}(curtain|icicle|string|fairy|outdoor).{0,20}light|(curtain|icicle).{0,30}light",
+     "Instalație luminoasă de Crăciun", ["lumini de Crăciun", "decor exterior", "idei de Crăciun"],
+     "transformă fațada casei într-o priveliște de sărbători"),
+    (r"reindeer|deer|elk", "Ren luminos de Crăciun", ["decor exterior", "lumini de Crăciun", "idei de Crăciun"],
+     "face curtea să arate ca în poveste"),
     # curatenie
     (r"carpet|upholstery|fabric.*(cleaner|washer)|spot cleaner", "Aparat de spălat covoare și tapițerie",
      ["curățare canapea", "pete pe covor", "spălat tapițerie auto"], "scoate petele din covoare și canapele fără firmă de curățenie"),
@@ -176,6 +188,7 @@ CATEGORY_KW = {
     "car accessories": ("Accesoriu auto util", ["accesorii auto", "gadget mașină", "interior auto"]),
     "beauty tools": ("Accesoriu de frumusețe", ["îngrijire personală", "frumusețe acasă", "cadou pentru ea"]),
     "professional slingshot": ("Praștie profesională din metal", ["tir sportiv", "praștie cu bile", "hobby outdoor"]),
+    "craciun": ("Decorațiune premium de Crăciun", ["decor de Crăciun", "brad de Crăciun", "lumini de Crăciun"]),
 }
 
 # 3 hashtaguri pe categorie (pe Pinterest conteaza putin; prea multe arata a spam)
@@ -184,6 +197,7 @@ TAGS = {
     "home gadget": "#ideipentrucasa #gadgeturi #casa", "pet supplies": "#pisici #caini #accesoriianimale",
     "phone accessories": "#accesoriitelefon #gadgeturi #tech", "car accessories": "#accesoriiauto #masina #auto",
     "beauty tools": "#frumusete #ingrijire #beauty", "professional slingshot": "#prastie #tirsportiv #outdoor",
+    "craciun": "#craciun #bradcraciun #decoratiunicraciun",
 }
 
 SPEC_PATTERNS = [

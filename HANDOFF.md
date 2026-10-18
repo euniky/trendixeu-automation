@@ -25,6 +25,13 @@ Contul TikTok **@trendixeu**: produse AliExpress cu link de afiliere. Totul rule
      sau primul cu „deal/oferte/aliexpress” în nume. `EXTRA_PLATFORMS=0` oprește Instagram și Pinterest.
 5. Jurnalul clipurilor (`data/video_log.json`) se salvează înapoi în repository.
 
+## Craciun (1 oct – 24 dec)
+- Din cele 6 clipuri zilnice, `XMAS_CLIPS_PER_DAY` (2) sunt produse de Craciun PREMIUM, doar cu filmare reala: brazi
+  (fibra optica, nins, cu luminite) >= 700 lei (`TREE_MIN_LEI`), restul >= 200 lei (`XMAS_OTHER_MIN_LEI`). Merg pe TikTok
+  si Pinterest (board „Crăciun Premium”) ca orice clip. Cautarile sunt in `XMAS_KEYWORDS` (`sync_bio.py`).
+- `scripts/christmas_pins.py` ramane pentru pinurile cu poza (3/zi) pe Pinterest.
+- Clipurile obisnuite au pret minim `PREMIUM_MIN_LEI` (150 lei).
+
 ## Adrese
 - Linkuri scurte pe domeniul tău: https://trendixeu.netlify.app/go/<nr produs> (se generează zilnic în `sync_bio.py`,
   duc la linkul de afiliere și numără click-ul). Folosește-le oriunde linkul trebuie scris de mână sau nu acceptă

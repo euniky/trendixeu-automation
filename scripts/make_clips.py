@@ -96,6 +96,7 @@ HASHTAGS_BY_KW = {
     "pet supplies": ["pettok", "animalutze", "petproducts"],
     "outdoor": ["outdoor", "slingshot", "camping", "gadgets"],
     "moto": ["moto", "motociclete", "bicicleta", "bikelife"],
+    "craciun": ["craciun", "bradcraciun", "decoratiunicraciun", "christmastok"],
 }
 
 
@@ -169,6 +170,8 @@ BENEFITS = {
     "outdoor": ["Precizie de profesionist", "Pentru ieșirile în natură", "Construită să reziste"],
     "moto": ["Telefonul stă fix, oricât de rău e drumul", "GPS-ul mereu la vedere", "Montaj în câteva secunde"],
     "car accessories": ["Mașina ta, mai practică", "Fiecare drum mai confortabil", "Ai dovada video la orice incident"],
+    "craciun": ["Crăciunul ca în reviste, acasă la tine", "Decor premium pentru sărbători",
+                "Casa ta, pregătită de Crăciun", "Atmosferă de sărbătoare din prima seară"],
 }
 BENEFITS_ANY = ["Îți face viața mai ușoară", "Simplu și chiar funcționează", "Mic, dar foarte util",
                 "Rezolvă o problemă de zi cu zi"]
@@ -185,6 +188,19 @@ CAPTION_Q = ["Tu l-ai lua? 👇", "Ai nevoie de el? Scrie DA 👇", "Cui i-ar tr
 
 # ---- hook-uri specifice tipului de produs (in loc de fraze generale repetate)
 PRODUCT_TYPES = [
+    # Craciun (sezon): produse premium, fara hook-uri de "pret mic"
+    (r"fib(er|re) ?optic.{0,40}tree|tree.{0,40}fib(er|re) ?optic", "bradul cu fibră optică",
+     ["Bradul care își schimbă culorile singur", "Fibră optică în loc de luminițe: arată cu totul altfel",
+      "Bradul pe care îl vor admira toți vecinii", "Un brad de Crăciun ca în reclame"]),
+    (r"(flocked|snowy?).{0,80}tree|tree.{0,80}(flocked|snowy?)", "bradul nins",
+     ["Brad cu zăpadă, direct din filme", "Zăpadă pe brad, fără frig", "Crăciun alb, chiar în sufragerie"]),
+    (r"christmas tree|xmas tree|pre.?lit.{0,30}tree", "bradul cu luminițe încorporate",
+     ["Gata cu încâlcitul luminițelor", "Bradul vine deja luminat", "Se scoate din cutie și e gata de Crăciun",
+      "Un brad cât toată camera, cu luminițe gata puse"]),
+    (r"christmas.{0,40}(curtain|icicle|string|fairy|outdoor).{0,20}light|(curtain|icicle).{0,30}light",
+     "instalația luminoasă de Crăciun",
+     ["Casa ta strălucește cel mai tare pe stradă", "Fațada ca la mall, de Crăciun", "Lumini care schimbă tot exteriorul"]),
+    (r"reindeer|deer|elk", "renul luminos", ["Renul care face curtea să arate ca în poveste", "Crăciun în fața casei, cu un singur ren"]),
     (r"carpet (cleaner|washer)|upholstery cleaner", "aspiratorul de covoare",
      ["Petele de pe covor ies din prima", "Covorul arată ca nou, fără curățătorie", "Spală covorul cu apă caldă, acasă",
       "Ce iese din covorul tău e dezgustător"]),

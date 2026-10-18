@@ -51,6 +51,18 @@ CATEGORY_OF = {"carpet cleaner": "cleaning", "cordless vacuum cleaner": "cleanin
                "steam cleaner": "cleaning", "wet dry vacuum cleaner mop": "cleaning",
                "robot vacuum cleaner mop": "cleaning", "professional slingshot": "outdoor",
                "motorcycle bike phone holder": "moto", "dash cam": "car accessories"}
+# ---- Craciun (1 oct - 24 dec): produse premium, DOAR cu filmare, in clipurile zilnice (TikTok + Pinterest)
+XMAS_KEYWORDS = ["fiber optic christmas tree", "pre lit flocked christmas tree", "210cm pre lit artificial christmas tree",
+                 "luxury full PE christmas tree with lights", "christmas curtain lights led outdoor",
+                 "outdoor christmas lights waterproof led string", "light up reindeer christmas decoration"]
+for _k in XMAS_KEYWORDS:
+    CATEGORY_OF[_k] = "craciun"
+XMAS_CLIPS_PER_DAY = int(os.environ.get("XMAS_CLIPS_PER_DAY", "2"))   # din cele 6 clipuri/zi (0 = oprit)
+XMAS_LAST_DAY = os.environ.get("XMAS_LAST_DAY", "12-24")
+XMAS_TREE_MIN_LEI = float(os.environ.get("TREE_MIN_LEI", "700"))       # brazi: minim 700 lei
+XMAS_OTHER_MIN_LEI = float(os.environ.get("XMAS_OTHER_MIN_LEI", "200"))  # restul decoratiunilor premium
+XMAS_BAD = re.compile(r"\b(sticker|wallpaper|costume|sweater|hat|socks|mold|stencil|replacement|bulb only|plug adapter|"
+                      r"ceramic|tabletop|table top|inflatable|mini|desktop|topper)\b", re.I)
 # la aceste categorii clipul se face DOAR daca anuntul are filmare HD (fara poze animate)
 VIDEO_ONLY = set(CATEGORY_OF)
 SPEC_RE = re.compile(r"\b\d+(?:[.,]\d+)?\s?(?:w|kpa|pa|mah|l|°c|min|m|db|v|rpm)\b", re.I)
@@ -182,7 +194,62 @@ if THEME:
             VIDEO_ONLY.add(_k)
 
 
-def fetch_hot_products() -> list[dict]:
+def xmas_season() -> bool:
+    md = datetime.now(timezone.utc).strftime("%m-%d")
+    return bool(XMAS_CLIPS_PER_DAY) and "10-01" <= md <= XMAS_LAST_DAY
+
+
+def fetch_christmas_candidates(tracking_id: str, rates: dict | None) -> None:
+    """Produse premium de Craciun CU FILMARE (brazi >= 700 lei, restul >= 200 lei) adaugate la candidatii zilei."""
+    ron = (rates or FALLBACK_RATES).get("RON", 4.97)
+    seen = {p["id"] for p in CANDIDATES} | {re.sub(r"[^a-z0-9]", "", p["title"].lower())[:38] for p in CANDIDATES}
+    added = 0
+    for kw in XMAS_KEYWORDS:
+        try:
+            found = query_products(kw, tracking_id)
+            if len(found) >= 50:
+                found += query_products(kw, tracking_id, 2)
+        except Exception as exc:
+            log(f"[warn] Craciun '{kw}': {str(exc)[:120]}")
+            continue
+        for p in found:
+            title = str(p.get("product_title", ""))
+            pid = f"p{p.get('product_id')}"
+            tkey = re.sub(r"[^a-z0-9]", "", title.lower())[:38]
+            if pid in seen or tkey in seen or not p.get("promotion_link") or not p.get("product_video_url"):
+                continue
+            if not re.search(r"christmas|xmas|noel", title, re.I) or XMAS_BAD.search(title):
+                continue
+            try:
+                rating = float(str(p.get("evaluate_rate", "0")).rstrip("%") or 0)
+                price = float(p.get("target_sale_price") or p.get("sale_price") or 0)
+            except ValueError:
+                continue
+            orders = int(p.get("lastest_volume") or 0)
+            lei = price * ron
+            if re.search(r"\btree\b", title, re.I):   # brad: premium, inalt, rating doar daca exista recenzii
+                h = re.search(r"(\d{3})\s?cm|(\d(?:[.,]\d)?)\s?m\b|(\d(?:\.\d)?)\s?ft", title, re.I)
+                cm = (int(h.group(1)) if h and h.group(1) else float(h.group(2).replace(",", ".")) * 100
+                      if h and h.group(2) else float(h.group(3)) * 30.5 if h and h.group(3) else 0)
+                if lei < XMAS_TREE_MIN_LEI or (cm and cm < 150) or (orders and rating and rating < 88):
+                    continue
+            elif lei < XMAS_OTHER_MIN_LEI or rating < 92 or orders < 20:
+                continue
+            smalls = p.get("product_small_image_urls") or []
+            if isinstance(smalls, dict):
+                smalls = smalls.get("string") or []
+            seen.update({pid, tkey})
+            added += 1
+            CANDIDATES.append({
+                "kw": kw, "cat": "craciun", "images": [u for u in smalls if isinstance(u, str)][:5],
+                "video": p["product_video_url"], "id": pid, "section": "hot", "orders": orders, "rating": rating,
+                "title": title[:90], "cur": "EUR", "amount": price, "link": p["promotion_link"],
+                "image": p.get("product_main_image_url", ""),
+                "meta": f"{rating:.0f}% recenzii pozitive · {orders}+ comenzi"})
+    log(f"[info] Craciun: {added} produse premium cu filmare gasite")
+
+
+def fetch_hot_products(rates: dict | None = None) -> list[dict]:
     tracking_id = os.environ["ALI_TRACKING_ID"].strip()
     seen, picked = set(), []
     day = datetime.now(timezone.utc).toordinal()
@@ -236,6 +303,11 @@ def fetch_hot_products() -> list[dict]:
             if taken < PER_KEYWORD and len(picked) < MAX_HOT_PRODUCTS:
                 picked.append(item)
                 taken += 1
+    if xmas_season() and not THEME:
+        try:
+            fetch_christmas_candidates(tracking_id, rates)
+        except Exception as exc:   # Craciunul nu trebuie sa opreasca restul produselor
+            log(f"[warn] Craciun: {str(exc)[:150]}")
     track_trends(CANDIDATES)
     return picked
 
@@ -1073,7 +1145,14 @@ def make_daily_clips(hot: list[dict], featured: list[dict], rates: dict, video_l
             before = len(ordered)
             ordered = [p for p in ordered if to_lei(p, rates) >= PREMIUM_MIN_LEI]
             log(f"[info] premium (>= {PREMIUM_MIN_LEI:.0f} lei): {len(ordered)} din {before} produse raman")
-        todo = pick_clips(ordered, video_log, CLIPS_PER_DAY)
+        xm_todo: list[dict] = []
+        if xmas_season() and not THEME:   # Craciun: brazii (cu filmare) primii, apoi restul decoratiunilor premium
+            xm = [p for p in fresh if p.get("kw") in XMAS_KEYWORDS and p.get("video")]
+            xm.sort(key=lambda p: (not re.search(r"\btree\b", p["title"], re.I), -int(p.get("orders") or 0)))
+            xm_todo = pick_clips(xm, video_log, XMAS_CLIPS_PER_DAY)
+            log(f"[info] Craciun: {len(xm_todo)} clipuri azi din {len(xm)} produse premium cu filmare")
+            ordered = [p for p in ordered if p.get("kw") not in XMAS_KEYWORDS]
+        todo = xm_todo + pick_clips(ordered, video_log, CLIPS_PER_DAY - len(xm_todo))
         with_video = sum(1 for p in fresh if p.get("video"))
         log(f"[info] clipuri: {len(fresh)} produse verificate, {with_video} cu filmare, "
             f"{sum(1 for (sc_, _), _p in scored if sc_ >= MIN_WOW_SCORE)} peste pragul de interes ({MIN_WOW_SCORE})")
@@ -1184,7 +1263,7 @@ def main() -> None:
         log(f"[warn] nu am putut citi comenzile: {exc}")
     hot = []
     try:
-        hot = fetch_hot_products()
+        hot = fetch_hot_products(rates)
     except Exception as exc:  # nu opri publicarea produselor fixe daca API-ul pica
         log(f"[warn] nu am putut lua produsele hot: {exc}")
     moderation = fetch_moderation()
