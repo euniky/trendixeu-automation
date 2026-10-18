@@ -216,7 +216,9 @@ def fetch_christmas_candidates(tracking_id: str, rates: dict | None) -> None:
             title = str(p.get("product_title", ""))
             pid = f"p{p.get('product_id')}"
             tkey = re.sub(r"[^a-z0-9]", "", title.lower())[:38]
-            if pid in seen or tkey in seen or not p.get("promotion_link") or not p.get("product_video_url"):
+            is_tree = bool(re.search(r"\btree\b", title, re.I))
+            # filmare reala ceruta pentru toate, mai putin brazii premium (rar au filmare in API: clip din poze)
+            if pid in seen or tkey in seen or not p.get("promotion_link") or (not p.get("product_video_url") and not is_tree):
                 continue
             if not re.search(r"christmas|xmas|noel", title, re.I) or XMAS_BAD.search(title):
                 continue
@@ -227,7 +229,7 @@ def fetch_christmas_candidates(tracking_id: str, rates: dict | None) -> None:
                 continue
             orders = int(p.get("lastest_volume") or 0)
             lei = price * ron
-            if re.search(r"\btree\b", title, re.I):   # brad: premium, inalt, rating doar daca exista recenzii
+            if is_tree:   # brad: premium, inalt, rating doar daca exista recenzii
                 h = re.search(r"(\d{3})\s?cm|(\d(?:[.,]\d)?)\s?m\b|(\d(?:\.\d)?)\s?ft", title, re.I)
                 cm = (int(h.group(1)) if h and h.group(1) else float(h.group(2).replace(",", ".")) * 100
                       if h and h.group(2) else float(h.group(3)) * 30.5 if h and h.group(3) else 0)
@@ -242,11 +244,11 @@ def fetch_christmas_candidates(tracking_id: str, rates: dict | None) -> None:
             added += 1
             CANDIDATES.append({
                 "kw": kw, "cat": "craciun", "images": [u for u in smalls if isinstance(u, str)][:5],
-                "video": p["product_video_url"], "id": pid, "section": "hot", "orders": orders, "rating": rating,
+                "video": p.get("product_video_url") or "", "id": pid, "section": "hot", "orders": orders, "rating": rating,
                 "title": title[:90], "cur": "EUR", "amount": price, "link": p["promotion_link"],
                 "image": p.get("product_main_image_url", ""),
                 "meta": f"{rating:.0f}% recenzii pozitive · {orders}+ comenzi"})
-    log(f"[info] Craciun: {added} produse premium cu filmare gasite")
+    log(f"[info] Craciun: {added} produse premium gasite (brazi si cu poze, restul doar cu filmare)")
 
 
 def fetch_hot_products(rates: dict | None = None) -> list[dict]:
@@ -1147,8 +1149,9 @@ def make_daily_clips(hot: list[dict], featured: list[dict], rates: dict, video_l
             log(f"[info] premium (>= {PREMIUM_MIN_LEI:.0f} lei): {len(ordered)} din {before} produse raman")
         xm_todo: list[dict] = []
         if xmas_season() and not THEME:   # Craciun: brazii (cu filmare) primii, apoi restul decoratiunilor premium
-            xm = [p for p in fresh if p.get("kw") in XMAS_KEYWORDS and p.get("video")]
-            xm.sort(key=lambda p: (not re.search(r"\btree\b", p["title"], re.I), -int(p.get("orders") or 0)))
+            xm = [p for p in fresh if p.get("kw") in XMAS_KEYWORDS]
+            xm.sort(key=lambda p: (not re.search(r"\btree\b", p["title"], re.I), not p.get("video"),
+                                   -int(p.get("orders") or 0)))   # brazi intai, cele cu filmare primele
             xm_todo = pick_clips(xm, video_log, XMAS_CLIPS_PER_DAY)
             log(f"[info] Craciun: {len(xm_todo)} clipuri azi din {len(xm)} produse premium cu filmare")
             ordered = [p for p in ordered if p.get("kw") not in XMAS_KEYWORDS]
