@@ -289,6 +289,7 @@ def caption(clip: dict, tiktok_music: bool = False) -> str:
 # Cont nou: putine pinuri, toate cu produse DIFERITE (Pinterest penalizeaza repetarea aceluiasi link/aceleiasi poze).
 # Un pin video pe produs, raspandite peste zi; cele mai "wow" la orele de varf.
 PIN_TIMES = [(10, 30), (12, 0), (14, 0), (16, 30), (19, 0), (20, 30), (21, 30)]
+HD_PRIME_LEI = float(os.environ.get("HD_REQUIRED_LEI", "300"))   # produse scumpe cu video HD: primele pe Pinterest
 PIN_PRIME = {(12, 0), (19, 0), (20, 30)}                              # pranz si seara
 PIN_IMAGES = int(os.environ.get("PIN_IMAGES", "0"))                    # poze in plus pe produs (0 = doar clipul)
 # limita Zernio e 25/zi; noi tinem ~9/zi: 6 video + 3 de Craciun (christmas_pins.py), plus loc pentru pinuri manuale
@@ -320,7 +321,9 @@ def schedule_pinterest(video_log: list[dict], extra: dict, boards: dict, off: se
         return 0
     today = datetime.utcnow().date().isoformat()
     elig = [v for v in video_log if v.get("clip") and v.get("created") == today and v.get("id") not in off]
-    elig.sort(key=lambda v: -(v.get("wow") or 0))
+    # cele mai scumpe produse cu filmare HD primele (orele de varf), apoi restul dupa "wow"
+    elig.sort(key=lambda v: (not (v.get("hd") and (v.get("lei") or 0) >= HD_PRIME_LEI), -(v.get("lei") or 0)
+                             if v.get("hd") else 0, -(v.get("wow") or 0)))
     queue: list[tuple[str, dict, str]] = []   # (cheie, produs, url media)
     urls = {}
     for v in elig:
@@ -559,7 +562,7 @@ def muted_video(url: str, log) -> str | None:
         return None
 
 
-def prepare_video(src_url: str, log) -> str | None:
+def prepare_video(src_url: str, log, min_side: int = 0) -> str | None:
     """Descarca filmarea vanzatorului, o face verticala 1080x1920 (fundal estompat), mai clara si mai vie
     (contrast, culori, claritate), H.264 de calitate inalta, apoi o incarca in Zernio. Intoarce URL-ul public."""
     import subprocess
@@ -571,6 +574,16 @@ def prepare_video(src_url: str, log) -> str | None:
         log(f"Video: nu am putut descarca filmarea ({r.status_code})")
         return None
     src.write_bytes(r.content)
+    if min_side:   # doar filmari HD
+        pr = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries", "stream=width,height",
+                             "-of", "csv=p=0", str(src)], capture_output=True, text=True)
+        try:
+            w, h = (int(x) for x in pr.stdout.strip().split(",")[:2])
+        except ValueError:
+            w = h = 0
+        if min(w, h) < min_side:
+            log(f"Video: filmarea are doar {w}x{h}, sub {min_side}p: nu e HD")
+            return None
     vf = ("split[a][b];"
           "[a]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,boxblur=30:2,eq=brightness=-0.08[bg];"
           "[b]scale=1080:1920:force_original_aspect_ratio=decrease:flags=lanczos,"

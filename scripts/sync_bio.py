@@ -203,12 +203,14 @@ def fetch_christmas_candidates(tracking_id: str, rates: dict | None) -> None:
     """Produse premium de Craciun CU FILMARE (brazi >= 700 lei, restul >= 200 lei) adaugate la candidatii zilei."""
     ron = (rates or FALLBACK_RATES).get("RON", 4.97)
     seen = {p["id"] for p in CANDIDATES} | {re.sub(r"[^a-z0-9]", "", p["title"].lower())[:38] for p in CANDIDATES}
-    added = 0
+    added = n_total = n_video = 0
     for kw in XMAS_KEYWORDS:
         try:
             found = query_products(kw, tracking_id)
-            if len(found) >= 50:
-                found += query_products(kw, tracking_id, 2)
+            for page in (2, 3):   # putine anunturi au filmare: caut mai adanc
+                if len(found) < 50 * (page - 1):
+                    break
+                found += query_products(kw, tracking_id, page)
         except Exception as exc:
             log(f"[warn] Craciun '{kw}': {str(exc)[:120]}")
             continue
@@ -217,9 +219,12 @@ def fetch_christmas_candidates(tracking_id: str, rates: dict | None) -> None:
             pid = f"p{p.get('product_id')}"
             tkey = re.sub(r"[^a-z0-9]", "", title.lower())[:38]
             is_tree = bool(re.search(r"\btree\b", title, re.I))
-            # filmare reala ceruta pentru toate, mai putin brazii premium (rar au filmare in API: clip din poze)
-            if pid in seen or tkey in seen or not p.get("promotion_link") or (not p.get("product_video_url") and not is_tree):
+            n_total += 1
+            if pid in seen or tkey in seen or not p.get("promotion_link"):
                 continue
+            if not p.get("product_video_url"):   # produse premium: DOAR cu filmare reala (HD verificat la randare)
+                continue
+            n_video += 1
             if not re.search(r"christmas|xmas|noel", title, re.I) or XMAS_BAD.search(title):
                 continue
             try:
@@ -248,7 +253,7 @@ def fetch_christmas_candidates(tracking_id: str, rates: dict | None) -> None:
                 "title": title[:90], "cur": "EUR", "amount": price, "link": p["promotion_link"],
                 "image": p.get("product_main_image_url", ""),
                 "meta": f"{rating:.0f}% recenzii pozitive · {orders}+ comenzi"})
-    log(f"[info] Craciun: {added} produse premium gasite (brazi si cu poze, restul doar cu filmare)")
+    log(f"[info] Craciun: {n_total} anunturi verificate, {n_video} cu filmare, {added} produse premium cu filmare retinute")
 
 
 def fetch_hot_products(rates: dict | None = None) -> list[dict]:
@@ -789,6 +794,7 @@ BORING_WORDS = {
     "earring": -3, "ring": -1, "necklace": -3, "label": -3, "tape": -2,
 }
 MIN_WOW_SCORE = 5        # sub acest scor produsul nu primeste clip
+HD_REQUIRED_LEI = float(os.environ.get("HD_REQUIRED_LEI", "300"))   # produsele de la acest pret in sus au DOAR clip cu filmare HD (>=720p)
 PREMIUM_MIN_LEI = float(os.environ.get("PREMIUM_MIN_LEI", "150"))   # clipuri doar pentru produse premium (0 = oprit)
 
 
@@ -1147,15 +1153,21 @@ def make_daily_clips(hot: list[dict], featured: list[dict], rates: dict, video_l
             before = len(ordered)
             ordered = [p for p in ordered if to_lei(p, rates) >= PREMIUM_MIN_LEI]
             log(f"[info] premium (>= {PREMIUM_MIN_LEI:.0f} lei): {len(ordered)} din {before} produse raman")
+        hd_need = lambda p: HD_REQUIRED_LEI and to_lei(p, rates) >= HD_REQUIRED_LEI   # noqa: E731
+        before = len(ordered)
+        ordered = [p for p in ordered if not hd_need(p) or p.get("video")]
+        if before != len(ordered):
+            log(f"[info] HD: {before - len(ordered)} produse de peste {HD_REQUIRED_LEI:.0f} lei sarite (fara filmare)")
         xm_todo: list[dict] = []
         if xmas_season() and not THEME:   # Craciun: brazii (cu filmare) primii, apoi restul decoratiunilor premium
             xm = [p for p in fresh if p.get("kw") in XMAS_KEYWORDS]
             xm.sort(key=lambda p: (not re.search(r"\btree\b", p["title"], re.I), not p.get("video"),
                                    -int(p.get("orders") or 0)))   # brazi intai, cele cu filmare primele
-            xm_todo = pick_clips(xm, video_log, XMAS_CLIPS_PER_DAY)
+            xm = [p for p in xm if p.get("video")]
+            xm_todo = pick_clips(xm, video_log, XMAS_CLIPS_PER_DAY + 4)   # rezerve, in caz ca filmarea nu e HD
             log(f"[info] Craciun: {len(xm_todo)} clipuri azi din {len(xm)} produse premium cu filmare")
             ordered = [p for p in ordered if p.get("kw") not in XMAS_KEYWORDS]
-        todo = xm_todo + pick_clips(ordered, video_log, CLIPS_PER_DAY - len(xm_todo))
+        todo = xm_todo + pick_clips(ordered, video_log, CLIPS_PER_DAY + 6)   # +6 rezerve pentru filmari sub 720p
         with_video = sum(1 for p in fresh if p.get("video"))
         log(f"[info] clipuri: {len(fresh)} produse verificate, {with_video} cu filmare, "
             f"{sum(1 for (sc_, _), _p in scored if sc_ >= MIN_WOW_SCORE)} peste pragul de interes ({MIN_WOW_SCORE})")
@@ -1169,7 +1181,11 @@ def make_daily_clips(hot: list[dict], featured: list[dict], rates: dict, video_l
             save_tr_cache()
         music = get_music() if todo and CLIP_MUSIC else []
         wow_of = {p["id"]: sc_ for (sc_, _w), p in scored}
+        made = xm_made = 0
         for p in todo:
+            is_xm = p.get("kw") in XMAS_KEYWORDS
+            if made >= CLIPS_PER_DAY or (is_xm and xm_made >= XMAS_CLIPS_PER_DAY):
+                continue
             num = next_num
             fname = f"trendixeu-{num}.mp4"
             track = music[num % len(music)] if music else None
@@ -1180,6 +1196,11 @@ def make_daily_clips(hot: list[dict], featured: list[dict], rates: dict, video_l
                                               sheet_path=clips_dir / f"sheet-{num}.jpg",
                                               poster_path=clips_dir / f"trendixeu-{num}.jpg", voice=CLIP_VOICE,
                                               music=track, avoid=recent)
+                if hd_need(p) and not copy.get("used_seller_video"):   # produs scump fara filmare HD: nu-l postam din poze
+                    log(f"[info] HD: produsul {p['id']} ({to_lei(p, rates):.0f} lei) sarit, filmarea nu e HD (>=720p)")
+                    for f in (fname, f"trendixeu-{num}.jpg", f"sheet-{num}.jpg"):
+                        (clips_dir / f).unlink(missing_ok=True)
+                    continue
                 if copy.get("with_music") and track:
                     credit = MUSIC_CREDIT.format(title=track.stem)
                     copy["music"] = track.stem
@@ -1187,9 +1208,12 @@ def make_daily_clips(hot: list[dict], featured: list[dict], rates: dict, video_l
                         if copy.get(k):
                             copy[k] = copy[k].rstrip() + "\n" + credit
                 next_num += 1
+                made += 1
+                xm_made += is_xm
                 entry = {k: p.get(k) for k in ("id", "title", "titles", "cur", "amount", "link", "image",
                                                "images", "video", "orders", "rating", "kw")}
-                entry.update({"num": num, "created": today, "section": "clip", "wow": wow_of.get(p["id"])})
+                entry.update({"num": num, "created": today, "section": "clip", "wow": wow_of.get(p["id"]),
+                              "lei": round(to_lei(p, rates)), "hd": bool(copy.get("used_seller_video"))})
                 entry["clip"] = {**copy, "num": num, "file": f"clips/{fname}", "poster": f"clips/trendixeu-{num}.jpg",
                                  "created": today, "id": p["id"], "link": p["link"], "image": p["image"],
                                  "title_ro": (p.get("titles") or {}).get("ro") or p["title"]}

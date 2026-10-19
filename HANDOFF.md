@@ -30,6 +30,9 @@ Contul TikTok **@trendixeu**: produse AliExpress cu link de afiliere. Totul rule
   (fibra optica, nins, cu luminite) >= 700 lei (`TREE_MIN_LEI`), restul >= 200 lei (`XMAS_OTHER_MIN_LEI`). Merg pe TikTok
   si Pinterest (board „Crăciun Premium”) ca orice clip. Cautarile sunt in `XMAS_KEYWORDS` (`sync_bio.py`).
 - `scripts/christmas_pins.py` ramane pentru pinurile cu poza (3/zi) pe Pinterest.
+- **Produse scumpe = video HD**: de la `HD_REQUIRED_LEI` (300 lei) in sus, clipul se face DOAR cu filmarea reala a vanzatorului
+  (>= 720p); fara filmare sau sub 720p produsul e sarit (nu se posteaza din poze). Pe Pinterest ele merg primele, la orele de
+  varf, iar pinurile foto de Craciun (`christmas_pins.py`) devin pinuri video HD cand produsul are filmare.
 - Clipurile obisnuite au pret minim `PREMIUM_MIN_LEI` (150 lei).
 
 ## Adrese

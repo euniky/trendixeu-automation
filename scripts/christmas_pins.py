@@ -143,7 +143,7 @@ def candidates(tracking: str, used: set[str], log) -> list[dict]:
                 smalls = smalls.get("string") or []
             good.append({"id": pid, "sig": sig, "kw": kw, "label": real_label, "title": title, "price": price,
                          "rating": rating, "orders": orders, "link": p["promotion_link"],
-                         "image": p.get("product_main_image_url", ""),
+                         "image": p.get("product_main_image_url", ""), "video": p.get("product_video_url") or "",
                          "images": [u for u in smalls if isinstance(u, str)][:4],
                          # scor: popularitate si calitate (pretul mai mare = mai "premium", pana la un punct)
                          "score": (orders * (rating / 100) ** 4 * min(price / max(min_eur, 1), 3)) if not is_tree else
@@ -161,6 +161,8 @@ def candidates(tracking: str, used: set[str], log) -> list[dict]:
             if i < len(g) and g[i]["sig"] not in seen:
                 seen.add(g[i]["sig"])
                 out.append(g[i])
+    out.sort(key=lambda c: not c["video"])   # produsele cu filmare (pin video HD) primele
+    log(f"{sum(1 for c in out if c['video'])} din {len(out)} produse premium au filmare")
     return out
 
 
@@ -261,13 +263,21 @@ def main() -> None:
         img = c["image"] or (c["images"] or [None])[0]
         if not img:
             continue
-        # mai multe poze ale produsului intr-un singur pin (colaj 2:3)
-        col = pt.make_collage([img] + [u for u in c["images"] if u != img], ro_title(c), f"~{c['price'] * ron:.0f} lei", log)
-        img = col or img
+        psd = {"boardId": board, "title": ro_title(c), "link": c["link"]}
+        media = None
+        if c.get("video"):   # pin VIDEO HD cu filmarea vanzatorului (min. 720p), coperta clara a produsului
+            vurl = pt.prepare_video(c["video"], log, min_side=720)
+            if vurl:
+                cover = pt.make_pin_cover({"image": img, "clip": {"title_ro": ro_title(c), "price_text": f"{c['price'] * ron:.0f} lei"}}, log)
+                psd["coverImageUrl" if cover else "coverImageKeyFrameTime"] = cover or 2.0
+                media = {"type": "video", "url": vurl}
+        if not media:   # fara filmare HD: colaj cu mai multe poze (2:3)
+            col = pt.make_collage([img] + [u for u in c["images"] if u != img], ro_title(c), f"~{c['price'] * ron:.0f} lei", log)
+            media = {"type": "image", "url": col or img}
+            log(f"Pin foto (fara filmare HD): {ro_title(c)}")
         body = {"content": description(c, c["price"] * ron), "scheduledFor": when.isoformat(),
-                "timezone": "Europe/Bucharest", "mediaItems": [{"type": "image", "url": img}],
-                "platforms": [{"platform": "pinterest", "accountId": acc["id"], "platformSpecificData": {
-                    "boardId": board, "title": ro_title(c), "link": c["link"]}}]}
+                "timezone": "Europe/Bucharest", "mediaItems": [media],
+                "platforms": [{"platform": "pinterest", "accountId": acc["id"], "platformSpecificData": psd}]}
         resp = pt.requests.post(f"{pt.API}/posts", headers=pt.headers(), json=body, timeout=60)
         if not resp.ok:
             log(f"Pinul de Craciun '{ro_title(c)}' a esuat: {resp.status_code} {resp.text[:300]}")
@@ -277,7 +287,7 @@ def main() -> None:
                         "title": c["title"][:120], "price_eur": c["price"], "post": post.get("_id") or post.get("id")})
         report["scheduled"].append({"when": when.strftime("%H:%M"), "title": ro_title(c), "price_lei": round(c["price"] * ron),
                                     "rating": c["rating"], "orders": c["orders"]})
-        log(f"Craciun {when.strftime('%d.%m %H:%M')}: {ro_title(c)} (~{c['price'] * ron:.0f} lei, "
+        log(f"Craciun {when.strftime('%d.%m %H:%M')} [{media['type']}]: {ro_title(c)} (~{c['price'] * ron:.0f} lei, "
             f"{c['rating']:.0f}%, {c['orders']} comenzi)")
         time.sleep(1.1)
     sb.save_tr_cache()
