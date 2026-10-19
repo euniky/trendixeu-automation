@@ -29,6 +29,9 @@ on:
       create_boards:
         description: "Creeaza boardurile tematice Pinterest care lipsesc (1/0)"
         default: "0"
+      refresh_posts:
+        description: "Clipuri refacute (REMAKE) de reprogramat la aceeasi ora (ex: 109)"
+        default: ""
       reschedule_pins:
         description: "Reprogrameaza pinurile Pinterest nepublicate de azi (1/0)"
         default: "0"
@@ -155,6 +158,7 @@ jobs:
           PIN_CUSTOM: ${{ github.event.inputs.pin_custom || '' }}
           CREATE_BOARDS: ${{ github.event.inputs.create_boards || '0' }}
           RESCHEDULE_PINS: ${{ github.event.inputs.reschedule_pins || '0' }}
+          REFRESH_POSTS: ${{ github.event.inputs.refresh_posts || '' }}
           DELETE_POSTS: ${{ github.event.inputs.delete_posts || '' }}
           GET_POSTS: ${{ github.event.inputs.get_posts || '' }}
           TIKTOK_CUSTOM: ${{ github.event.inputs.tiktok_custom || '' }}

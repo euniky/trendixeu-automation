@@ -893,6 +893,21 @@ def main() -> None:
                     v["created"] = datetime.utcnow().date().isoformat()
                     log(f"Clipul #{v['num']} reprogramat la {po['scheduledFor'][11:16]} cu o melodie in trend")
 
+    # REFRESH_POSTS="109": clip refacut (REMAKE) -> anulez programarea veche si il reprogramez la ACEEASI ora, cu clipul nou
+    refresh = {int(x) for x in re.findall(r"\d+", os.environ.get("REFRESH_POSTS", ""))}
+    for v in video_log:
+        po = v.get("posted") or {}
+        if v.get("num") in refresh and po.get("scheduledFor") and po.get("id") and not po.get("cancelled") \
+                and not po.get("draft") and datetime.fromisoformat(po["scheduledFor"]) - now > timedelta(minutes=15):
+            r = requests.delete(f"{API}/posts/{po['id']}", headers=headers(), timeout=30)
+            if r.ok or r.status_code == 404:
+                v["posted"] = None
+                v["_slot"] = po["scheduledFor"]
+                v["created"] = datetime.utcnow().date().isoformat()
+                log(f"Clipul #{v['num']} reprogramat la {po['scheduledFor'][11:16]} cu descrierea si clipul refacute")
+            else:
+                log(f"Clipul #{v['num']}: nu am putut anula programarea veche ({r.status_code})")
+
     # doar clipurile generate azi (cele mai vechi le-ai postat poate deja manual)
     today = datetime.utcnow().date().isoformat()
     todo = [v for v in video_log if v.get("clip") and not v.get("posted") and v.get("created") == today
