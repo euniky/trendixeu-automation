@@ -200,7 +200,7 @@ PRODUCT_TYPES = [
     (r"christmas.{0,40}(curtain|icicle|string|fairy|outdoor).{0,20}light|(curtain|icicle).{0,30}light",
      "instalația luminoasă de Crăciun",
      ["Casa ta strălucește cel mai tare pe stradă", "Fațada ca la mall, de Crăciun", "Lumini care schimbă tot exteriorul"]),
-    (r"reindeer|deer|elk", "renul luminos", ["Renul care face curtea să arate ca în poveste", "Crăciun în fața casei, cu un singur ren"]),
+    (r"\b(reindeer|deer|elk)\b", "renul luminos", ["Renul care face curtea să arate ca în poveste", "Crăciun în fața casei, cu un singur ren"]),
     (r"carpet (cleaner|washer)|upholstery cleaner", "aspiratorul de covoare",
      ["Petele de pe covor ies din prima", "Covorul arată ca nou, fără curățătorie", "Spală covorul cu apă caldă, acasă",
       "Ce iese din covorul tău e dezgustător"]),
@@ -251,9 +251,11 @@ PRODUCT_TYPES = [
     (r"shoe wash|sneaker wash|shoe.{0,20}laundry", "sacul de spălat adidași",
      ["Adidașii albi din nou, din mașina de spălat", "Gata cu frecatul adidașilor"]),
     (r"vacuum sealer", "aparatul de vidat", ["Mâncarea rămâne proaspătă de 5 ori mai mult", "Videzi orice în 10 secunde"]),
-    (r"peeler|planer", "curățătorul de legume", ["Cartofii curățați în câteva secunde", "Gata cu cojile groase"]),
+    (r"\bpeeler\b|\bplaner\b", "curățătorul de legume", ["Cartofii curățați în câteva secunde", "Gata cu cojile groase"]),
     (r"chopper|slicer|vegetable cutter|garlic", "tocătorul", ["Tai legumele în 10 secunde", "Gata cu lacrimile de la ceapă"]),
-    (r"lint remover|fabric shaver|pill", "aparatul de scame", ["Puloverul arată ca nou în 30 de secunde"]),
+    (r"lint remover|fabric shaver|\bpill(ing)?\b", "aparatul de scame", ["Puloverul arată ca nou în 30 de secunde"]),
+    (r"ice roller|gua sha|facial.{0,20}(roller|massager)", "setul de gua sha",
+     ["Ten odihnit în 5 minute, fără salon", "Rutina de dimineață care îți dezumflă fața"]),
     (r"massag", "aparatul de masaj", ["Masaj de salon, acasă, oricând", "Spatele tău o să-ți mulțumească"]),
     (r"led strip|rgb|ambient light|night light", "lumina LED", ["Camera ta, ca în clipurile de pe TikTok", "Atmosferă de seară dintr-un click"]),
     (r"humidifier|diffuser", "umidificatorul", ["Aerul din cameră, ca după ploaie"]),
@@ -274,14 +276,54 @@ def product_type(title: str) -> tuple[str, list[str]] | tuple[None, list]:
     return None, []
 
 
+_STOP_END = {"cu", "de", "pentru", "și", "si", "a", "din", "în", "in", "la", "pe", "al", "ale", "un", "o", "the", "for", "with", "and", "of"}
+
+
+def clean_name(text: str, max_words: int = 8) -> str:
+    """Nume de produs lizibil: fara cuvinte repetate (traducerile automate repeta des), taiat la limita unui
+    cuvant, fara sa se termine in 'cu', 'de', 'pentru'..."""
+    words, seen = [], set()
+    for w in str(text).replace("|", " ").replace(",", " ").split():
+        k = re.sub(r"\W", "", w.lower())
+        if len(k) > 3 and k in seen:
+            continue
+        seen.add(k)
+        words.append(w.capitalize() if w.isupper() and len(w) > 3 else w)
+    words = words[:max_words]
+    while words and re.sub(r"\W", "", words[-1].lower()) in _STOP_END:
+        words.pop()
+    return " ".join(words).rstrip(",.;:-–")
+
+
+def family_of(type_name: str | None, fallback: str) -> str:
+    """Familia produsului (pentru hashtag-uri), din denumirea tipului; cuvantul cautat doar daca tipul nu e cunoscut."""
+    t = (type_name or "").lower()
+    for rx, fam in ((r"crăciun|brad|ren ", "craciun"), (r"pisic|câin|animal", "pet supplies"),
+                    (r"telefon|căști|încărcător|baterie", "phone accessories"), (r"mașin|auto|cameră de bord|moto", "car accessories"),
+                    (r"bucătărie|aliment|vase|cafea|vidat|legume|cuțit|sigilat", "kitchen"),
+                    (r"masaj|gua sha|manichiur|păr |machiaj|dinți|tartru|frumus", "beauty tools"),
+                    (r"curăț|geamuri|aspirator|mop|covor|abur|perie|burete|lavete", "cleaning"),
+                    (r"praștie", "outdoor")):
+        if t and re.search(rx, t):
+            return fam
+    return "home gadget" if t else fallback
+
+
 def build_copy(p: dict, num: int, lei: float, avoid: set | None = None) -> dict:
     import random
     rnd = random.Random(f"{p.get('id')}-{num}")
     orders, rating = int(p.get("orders") or 0), float(p.get("rating") or 0)
     titles = p.get("titles") or {}
-    name_ro = tidy(titles.get("ro") or p["title"])
-    name_en = tidy(titles.get("en") or p["title"])
+    import pin_seo
+    spec = pin_seo.detect_type(p["title"])   # (denumire, cuvinte cheie, beneficiu) sau None daca tipul nu e cunoscut
+    ro, en = titles.get("ro") or "", titles.get("en") or p["title"]
+    if spec:   # tip recunoscut: denumire si beneficiu scrise de mana, nu traducere automata
+        name_ro, type_benefit = spec[0], spec[2]
+    else:      # tip necunoscut: traducerea curatata; daca traducerea a esuat (= titlul englezesc), titlul englezesc curatat
+        name_ro, type_benefit = clean_name(ro if ro and ro != en else en), ""
+    name_en = clean_name(en)
     li = max(1, round(lei))
+    strong = orders >= 100 and rating >= 80   # destule comenzi/recenzii ca sa le aratam (listarile noi nu au)
 
     t_low = p["title"].lower()
     novelty = any(w in t_low for w in ("robot", "automatic", "magic", "lazy", "levitat", "projector",
@@ -290,11 +332,11 @@ def build_copy(p: dict, num: int, lei: float, avoid: set | None = None) -> dict:
         used = "novelty"
     elif li <= 30:
         used = "price"
-    elif orders >= 10000:
+    elif orders >= 10000 and strong:
         used = "orders"
     elif p.get("video") or p.get("video_path"):
         used = "video"
-    elif rating >= 97:
+    elif rating >= 97 and strong:
         used = "rating"
     else:
         used = "generic"
@@ -306,7 +348,7 @@ def build_copy(p: dict, num: int, lei: float, avoid: set | None = None) -> dict:
     nums = [f[0] for f in feats if re.search(r"\d", f[0])]
     if len(nums) >= 2:   # hook din specificatiile reale ale produsului
         options.append(f"{nums[0]} + {nums[1].lower()}, la {li} lei")
-    if ptype and orders >= 3000:
+    if ptype and orders >= 3000 and strong:
         options.append(f"{fmt_int(orders)}+ oameni au luat {ptype}")
     if ptype and li <= 60:
         options.append(f"Doar {li} lei pentru {ptype}")
@@ -319,15 +361,18 @@ def build_copy(p: dict, num: int, lei: float, avoid: set | None = None) -> dict:
     hook_en = HOOK_EN[used].format(**fill)
     hook_say = f"Doar {ro_count(li, 'lei')} pentru asta?" if hook_show.startswith("Doar") else hook_show + "!"
     kicker = rnd.choice(KICKERS["top" if orders >= 5000 else "new"])
-    cat = p.get("cat") or p.get("kw", "")
-    benefit = rnd.choice(BENEFITS.get(cat, BENEFITS_ANY))
+    cat = family_of(spec[0] if spec else None, p.get("cat") or p.get("kw", ""))
+    benefit = type_benefit   # doar beneficiul REAL al tipului de produs; fara fraze alese dupa cuvantul cautat
+    name_line = f"{name_ro} – {benefit}" if benefit else name_ro
 
-    sentences = [("hook", hook_say), ("name", f"{benefit}. {name_ro}.")]
+    sentences = [("hook", hook_say), ("name", f"{name_ro}. {benefit[:1].upper() + benefit[1:]}." if benefit else f"{name_ro}.")]
     if feats:
         parts = [f[1] for f in feats]
         txt = parts[0] if len(parts) == 1 else ", ".join(parts[:-1]) + " și " + parts[-1]
         sentences.append(("features", txt[0].upper() + txt[1:] + "."))
-    if used == "orders":
+    if not strong:
+        proof = "Livrare în România."
+    elif used == "orders":
         proof = f"Și are {rating:.0f} la sută recenzii pozitive."
     else:
         proof = f"Peste {ro_people(orders)} l-au comandat, cu {rating:.0f} la sută recenzii pozitive."
@@ -336,12 +381,12 @@ def build_copy(p: dict, num: int, lei: float, avoid: set | None = None) -> dict:
 
     cards = [f[0] for f in feats] or ["Livrare în România"]
     rnd.shuffle(cards)
-    desc_ro = "\n".join([rnd.choice(CAPTION_OPEN).format(hook=hook_show), f"{benefit}: {name_ro}",
+    desc_ro = "\n".join([rnd.choice(CAPTION_OPEN).format(hook=hook_show), name_line,
                          *[f"✅ {c}" for c in cards],
-                         f"⭐ {rating:.0f}% recenzii pozitive · {fmt_int(orders)}+ comenzi",
+                         *([f"⭐ {rating:.0f}% recenzii pozitive · {fmt_int(orders)}+ comenzi"] if strong else []),
                          f"💰 Preț: ~{li} lei", rnd.choice(CAPTION_CLOSE).format(**fill), rnd.choice(CAPTION_Q)])
     desc_en = "\n".join([f"{hook_en} 😱", name_en, *[f"✅ {f[2]}" for f in feats],
-                         f"⭐ {rating:.0f}% positive reviews · {fmt_int(orders)}+ orders",
+                         *([f"⭐ {rating:.0f}% positive reviews · {fmt_int(orders)}+ orders"] if strong else []),
                          f"💰 Price: ~{li} lei", f"👉 Link in bio · find product #{num}"])
     extra = HASHTAGS_BY_KW.get(cat, ["gadgets", "homehacks"])
     base = list(HASHTAGS_BASE)
@@ -349,7 +394,7 @@ def build_copy(p: dict, num: int, lei: float, avoid: set | None = None) -> dict:
     tags = extra + base   # hashtag-urile de nisa primele, restul in alta ordine la fiecare clip
     return {"hook": hook_show, "kicker": kicker, "name": name_ro, "sentences": sentences, "cards": cards,
             "orders": orders, "rating": rating, "price_text": f"{li} lei", "num": num,
-            "end_sub": rnd.choice(END_SUB), "benefit": benefit,
+            "end_sub": rnd.choice(END_SUB), "benefit": benefit, "show_proof": strong,
             "description_ro": desc_ro, "description_en": desc_en, "hashtags": tags[:10],
             "bullets": cards}
 
@@ -837,6 +882,7 @@ def render_clip(p: dict, num: int, lei: float, out_path: Path, local_images: lis
         handle = pill("@trendixeu", font("Medium", 34), (0, 0, 0, 120), (255, 255, 255, 235), padx=22, pady=10)
         cards = [feature_card(c) for c in copy["cards"][:4]]
         proof_font = font("Bold", 62)
+        proof_card = feature_card("Livrare în România")
         panel = Image.new("RGBA", (W - 140, 470), (0, 0, 0, 0))
         ImageDraw.Draw(panel).rounded_rectangle([0, 0, W - 141, 469], radius=44, fill=PANEL)
         fp = font("Bold", 150)
@@ -952,7 +998,9 @@ def render_clip(p: dict, num: int, lei: float, out_path: Path, local_images: lis
                     if at >= 0:
                         x = 50 + c.width / 2 - 260 * (1 - ease(at / 0.28))
                         put(frame, c, x, 350 + i * 92, alpha=min(1, at / 0.2) * fade)
-            if kind == "proof":
+            if kind == "proof" and not copy.get("show_proof", True):   # listare noua: fara stele si "0% recenzii"
+                put(frame, proof_card, W / 2, 430, alpha=min(1, lt / 0.2))
+            elif kind == "proof":
                 prog = ease(lt / 0.9)
                 put(frame, proof_widget(copy["rating"], int(copy["orders"] * prog), prog, proof_font), W / 2, 430,
                     alpha=min(1, lt / 0.2), scale=0.85 + 0.15 * ease_out_back(lt / 0.35))

@@ -70,7 +70,7 @@ XMAS_TYPES = [
     (r"artificial christmas tree|christmas tree \d", "Brad artificial de Crăciun"),
     (r"curtain", "Perdea luminoasă de Crăciun"),
     (r"icicle", "Instalație țurțuri luminoși"),
-    (r"reindeer|deer|elk", "Ren luminos de Crăciun"),
+    (r"\b(reindeer|deer|elk)\b", "Ren luminos de Crăciun"),
     (r"projector", "Proiector de Crăciun pentru casă"),
     (r"(tree )?topper|top star", "Stea luminoasă pentru vârful bradului"),
     (r"village|lighted house|christmas house", "Căsuță luminoasă de Crăciun"),

@@ -24,7 +24,7 @@ PRODUCT_TYPES: list[tuple[str, str, list[str], str]] = [
     (r"christmas.{0,40}(curtain|icicle|string|fairy|outdoor).{0,20}light|(curtain|icicle).{0,30}light",
      "Instalație luminoasă de Crăciun", ["lumini de Crăciun", "decor exterior", "idei de Crăciun"],
      "transformă fațada casei într-o priveliște de sărbători"),
-    (r"reindeer|deer|elk", "Ren luminos de Crăciun", ["decor exterior", "lumini de Crăciun", "idei de Crăciun"],
+    (r"\b(reindeer|deer|elk)\b", "Ren luminos de Crăciun", ["decor exterior", "lumini de Crăciun", "idei de Crăciun"],
      "face curtea să arate ca în poveste"),
     # curatenie
     (r"carpet|upholstery|fabric.*(cleaner|washer)|spot cleaner", "Aparat de spălat covoare și tapițerie",
@@ -55,6 +55,8 @@ PRODUCT_TYPES: list[tuple[str, str, list[str], str]] = [
      ["perie toaletă", "curățat baie", "igienă"], "se curăță ușor și nu reține murdăria"),
     (r"shoe.{0,15}(wash|laundry) bag|laundry bag|încălțăminte", "Sac pentru spălat încălțăminte în mașina de spălat",
      ["spălat adidași", "săculeț rufe", "trucuri spălătorie"], "speli adidașii în mașină fără să se strice"),
+    (r"microfiber|cleaning (towel|cloth)", "Lavete din microfibră pentru curățenie",
+     ["lavete microfibră", "uscat fără urme", "curățenie rapidă"], "șterg fără urme și fără scame, pe orice suprafață"),
     (r"\bmop\b", "Mop rotativ pentru curățenie", ["spălat podeaua", "mop cu găleată", "curățenie rapidă"], "speli podeaua mai repede, fără să te apleci"),
     (r"(charging port|speaker|earphone|airpods).{0,30}clean|clean(ing)? (kit|pen|set).{0,30}(phone|iphone|earphone|airpods)",
      "Kit de curățare pentru telefon și căști", ["curățat port încărcare", "curățat AirPods", "difuzor telefon înfundat"],
@@ -94,6 +96,8 @@ PRODUCT_TYPES: list[tuple[str, str, list[str], str]] = [
     (r"kitchen|cooking|baking|spatula|whisk", "Gadget util pentru bucătărie",
      ["ustensile bucătărie", "idei bucătărie", "gătit ușor"], "îți scurtează timpul petrecut în bucătărie"),
     # animale
+    (r"poop bag|waste bag|poo bag", "Dozator cu pungi igienice pentru plimbarea câinelui",
+     ["plimbare câine", "accesorii câini", "pungi pentru căcuței"], "pungile sunt mereu la îndemână la plimbare"),
     (r"(cat|pet).{0,20}laser|laser.{0,20}(cat|pet)", "Jucărie laser automată pentru pisici",
      ["jucării pisici", "pisică activă", "joacă interactivă"], "pisica se joacă singură, chiar când nu ești acasă"),
     (r"pet hair|lint remover|fur remover", "Perie pentru părul de animale de pe haine și canapea",
@@ -106,7 +110,7 @@ PRODUCT_TYPES: list[tuple[str, str, list[str], str]] = [
      ["năpârlire", "îngrijire blană", "perie animale"], "mai puțin păr prin casă, blană frumoasă"),
     (r"nail (clipper|grinder|trimmer).{0,20}(dog|pet|cat)|(dog|pet|cat).{0,20}nail", "Pilă electrică de unghii pentru câini și pisici",
      ["tăiat unghii câine", "îngrijire animale", "fără stres"], "tai unghiile animalului fără stres și fără sângerări"),
-    (r"scratch(er|ing)", "Covoraș de zgâriat pentru pisici", ["protecție canapea", "zgârietoare pisici", "accesorii pisici"],
+    (r"scratch(ing)? (board|post|pad|mat|tree)|scratcher\b", "Covoraș de zgâriat pentru pisici", ["protecție canapea", "zgârietoare pisici", "accesorii pisici"],
      "pisica își ascute ghearele fără să strice canapeaua"),
     (r"(cat|pet|dog) toy|toys?.{0,20}(cat|kitten|dog)", "Jucărie interactivă pentru pisici și câini", ["jucării pisici", "pisică plictisită", "joacă interactivă"],
      "animalul se joacă singur și nu se mai plictisește"),
@@ -135,6 +139,9 @@ PRODUCT_TYPES: list[tuple[str, str, list[str], str]] = [
      "Suport telefon pentru moto și bicicletă", ["suport GPS moto", "accesorii moto", "suport telefon bicicletă"], "telefonul stă fix, chiar și pe drum cu gropi"),
     (r"car.{0,20}(phone|mobile) (holder|mount)|(phone|mobile) (holder|mount).{0,20}car|dashboard.*holder", "Suport telefon auto",
      ["suport telefon mașină", "suport GPS", "accesorii auto"], "navigație la vedere, mâinile pe volan"),
+    (r"under.?seat.{0,25}(storage|organi[sz]er|box)|seat.{0,15}(gap|bottom).{0,25}(storage|organi[sz]er|box)",
+     "Organizator pentru sub scaunul mașinii", ["organizator auto", "depozitare mașină", "accesorii auto"],
+     "ai loc pentru acte, șervețele și sticle, fără să ocupi bancheta"),
     (r"\bcar\b|vehicle|auto ", "Accesoriu auto util", ["accesorii auto", "gadget mașină", "interior auto"], "mașina mai practică în fiecare zi"),
     # telefon
     (r"(neck|chest|head).{0,30}(mount|holder|strap)|(mount|holder|clip).{0,30}(neck|chest|head)", "Suport telefon pentru filmare POV (gât / piept)",
@@ -160,6 +167,8 @@ PRODUCT_TYPES: list[tuple[str, str, list[str], str]] = [
     # frumusete
     (r"hair (straightener|curler|dryer)|hot brush", "Placă și perie de păr", ["coafat acasă", "păr drept", "îngrijire păr"], "coafură de salon, acasă"),
     (r"nail|manicure", "Set de manichiură", ["unghii", "manichiură acasă", "îngrijire unghii"], "unghii îngrijite, fără salon"),
+    (r"ice roller|gua sha|facial.{0,20}(roller|massager)|face.{0,15}(roller|massager)", "Set ice roller și gua sha pentru față",
+     ["masaj facial", "îngrijire ten", "cadou pentru ea"], "ten mai odihnit și mai luminos, în doar câteva minute"),
     (r"massag", "Aparat de masaj", ["masaj relaxare", "dureri musculare", "masaj acasă"], "relaxare după o zi lungă"),
     (r"fidget|stress relief|anti.?stress|squishy", "Jucărie antistres", ["cadou original", "relaxare", "jucării antistres"],
      "relaxează mâinile și mintea, perfectă și ca un cadou mic"),
@@ -171,6 +180,8 @@ PRODUCT_TYPES: list[tuple[str, str, list[str], str]] = [
      "montezi în baie fără burghiu"),
     (r"prank|gag|novelty", "Jucărie farsă amuzantă", ["cadou amuzant", "farse", "idei cadouri"], "râsete garantate cu prietenii"),
     # casa
+    (r"gel cushion|seat cushion|honeycomb.{0,20}cushion|cushion", "Pernă de gel pentru scaun și birou",
+     ["pernă scaun", "confort la birou", "spate sănătos"], "stai ore întregi fără să te mai doară spatele"),
     (r"night light|motion sensor light|led lamp|desk lamp", "Lampă LED cu senzor", ["iluminat casă", "lumină de veghe", "LED fără fir"],
      "lumină exact unde ai nevoie, fără cabluri"),
     (r"humidifier|diffuser", "Umidificator și difuzor de arome", ["aer umed", "aromaterapie", "dormitor"], "aer mai plăcut în casă"),
@@ -229,6 +240,19 @@ def group_of(name: str, kw: str | None) -> str:
         if any(w in low for w in words):
             return g
     return kw or ""
+
+
+GENERIC_NAMES = {"Accesoriu auto util", "Accesoriu util pentru câini și pisici", "Accesoriu pentru telefon",
+                 "Organizator pentru casă", "Gadget util pentru bucătărie"}   # tipuri "de rezerva", prea vagi pentru descriere
+
+
+def detect_type(title_en: str) -> tuple[str, list[str], str] | None:
+    """Tipul SPECIFIC de produs (denumire, cuvinte cheie, beneficiu) sau None daca nu e cunoscut / e prea vag."""
+    t = (title_en or "").lower()
+    for rx, name, kws, benefit in PRODUCT_TYPES:
+        if re.search(rx, t):
+            return None if name in GENERIC_NAMES else (name, kws, benefit)
+    return None
 
 
 def detect(title_en: str, kw: str | None) -> tuple[str, list[str], str]:
