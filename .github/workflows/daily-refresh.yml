@@ -80,16 +80,21 @@ jobs:
         continue-on-error: true
 
       - name: Instaleaza ffmpeg (varianta de rezerva)
-        timeout-minutes: 6
+        timeout-minutes: 8
+        continue-on-error: true
         run: |
           if command -v ffmpeg >/dev/null; then echo "ffmpeg prezent"; exit 0; fi
-          for i in 1 2 3; do
-            if timeout 120 bash -c 'curl -fsSL https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz | tar -xJ -C /tmp'; then
+          # 1) apt: rapid pe serverele GitHub
+          sudo timeout 150 apt-get update -q || true
+          sudo timeout 240 apt-get install -y -q --no-install-recommends ffmpeg || true
+          if command -v ffmpeg >/dev/null; then echo "ffmpeg instalat cu apt"; exit 0; fi
+          # 2) varianta statica, 2 incercari
+          for i in 1 2; do
+            if timeout 100 bash -c 'curl -fsSL https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz | tar -xJ -C /tmp'; then
               sudo cp /tmp/ffmpeg-*-amd64-static/ffmpeg /tmp/ffmpeg-*-amd64-static/ffprobe /usr/local/bin/ && break
             fi
-            sleep 10
+            sleep 5
           done
-          command -v ffmpeg || (sudo timeout 240 apt-get install -y -q --no-install-recommends ffmpeg || true)
           command -v ffmpeg || echo "::warning::ffmpeg indisponibil azi: pagina se actualizeaza, clipurile nu"
 
       - name: Memoria traducerilor
