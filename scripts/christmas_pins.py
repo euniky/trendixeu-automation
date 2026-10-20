@@ -51,6 +51,22 @@ SEARCHES = [
     ("christmas wreath led lights", "Coroniță de Crăciun cu LED", 15),
     ("smart app christmas lights rgb", "Instalație de Crăciun smart cu aplicație", 20),
 ]
+# Al doilea lot zilnic pe Pinterest: instalatii cu turturi / perdele de lumini + figurine Mos Craciun si reni, premium
+DECOR_SEARCHES = [
+    ("icicle christmas lights outdoor led 10m", "Instalație țurțuri luminoși", 0),
+    ("christmas icicle curtain lights 8 modes remote waterproof", "Instalație țurțuri luminoși", 0),
+    ("christmas curtain lights led outdoor", "Perdea luminoasă de Crăciun", 0),
+    ("window curtain fairy lights christmas remote 3x3m", "Perdea luminoasă de Crăciun", 0),
+    ("santa claus christmas outdoor decoration lighted", "Figurină Moș Crăciun luminoasă", 0),
+    ("light up santa sleigh reindeer christmas outdoor decoration", "Moș Crăciun cu sanie și reni luminoși", 0),
+    ("large light up reindeer christmas decoration outdoor", "Ren luminos de Crăciun", 0),
+    ("inflatable santa claus christmas outdoor led", "Figurină Moș Crăciun luminoasă", 0),
+]
+DECOR_LABELS = {"Instalație țurțuri luminoși", "Perdea luminoasă de Crăciun", "Ren luminos de Crăciun",
+                "Figurină Moș Crăciun luminoasă", "Moș Crăciun cu sanie și reni luminoși"}
+DECOR_TIMES = [(13, 15), (18, 45)]
+DECOR_PER_DAY = int(os.environ.get("XMAS_DECOR_PER_DAY", "2"))
+DECOR_MIN_LEI = float(os.environ.get("XMAS_DECOR_MIN_LEI", "150"))   # "premium": minim atat, in lei
 TREE_MIN_LEI = float(os.environ.get("TREE_MIN_LEI", "700"))   # brazii postati costa cel putin atat
 OTHER_MIN_LEI = float(os.environ.get("XMAS_OTHER_MIN_LEI", "200"))   # celelalte decoratiuni premium: minim atat
 MIN_RATING = 92.0
@@ -70,6 +86,9 @@ XMAS_TYPES = [
     (r"artificial christmas tree|christmas tree \d", "Brad artificial de Crăciun"),
     (r"curtain", "Perdea luminoasă de Crăciun"),
     (r"icicle", "Instalație țurțuri luminoși"),
+    (r"(santa|claus).{0,80}(sleigh|reindeer|elk)|(sleigh|reindeer).{0,80}(santa|claus)|sleigh",
+     "Moș Crăciun cu sanie și reni luminoși"),
+    (r"santa|claus", "Figurină Moș Crăciun luminoasă"),
     (r"\b(reindeer|deer|elk)\b", "Ren luminos de Crăciun"),
     (r"projector", "Proiector de Crăciun pentru casă"),
     (r"(tree )?topper|top star", "Stea luminoasă pentru vârful bradului"),
@@ -100,10 +119,12 @@ def load_log() -> list[dict]:
 RON = 4.97   # se actualizeaza din cursul BCE in main()
 
 
-def candidates(tracking: str, used: set[str], log) -> list[dict]:
+def candidates(tracking: str, used: set[str], log, searches=None, min_lei: float | None = None,
+               labels: set | None = None) -> list[dict]:
     """Produsele premium pentru fiecare cautare, cele mai bune primele."""
     groups = []
-    for kw, label, min_eur in SEARCHES:
+    min_lei = OTHER_MIN_LEI if min_lei is None else min_lei
+    for kw, label, min_eur in (searches or SEARCHES):
         try:
             found = sb.query_products(kw, tracking)
         except Exception as exc:
@@ -125,6 +146,8 @@ def candidates(tracking: str, used: set[str], log) -> list[dict]:
             real_label = xmas_label(title)
             if not real_label:   # nu e ce cautam (sau e un brad de ceramica / de masa)
                 continue
+            if labels is not None and real_label not in labels:   # lot specializat: doar tipurile cerute
+                continue
             if not re.search(r"christmas|xmas|noel", title, re.I):   # ex. ghirlande solare de gradina, nu de Craciun
                 continue
             is_tree = real_label.startswith("Brad")
@@ -136,7 +159,7 @@ def candidates(tracking: str, used: set[str], log) -> list[dict]:
                 if price * RON < TREE_MIN_LEI or re.search(r"inflat|ceramic|tabletop|mini", title, re.I) \
                         or (cm and cm < 150) or (orders and rating and rating < 88):
                     continue
-            elif rating < MIN_RATING or orders < MIN_ORDERS or price < min_eur or price * RON < OTHER_MIN_LEI:
+            elif rating < MIN_RATING or orders < MIN_ORDERS or price < min_eur or price * RON < min_lei:
                 continue
             smalls = p.get("product_small_image_urls") or []
             if isinstance(smalls, dict):
@@ -162,6 +185,19 @@ def candidates(tracking: str, used: set[str], log) -> list[dict]:
                 seen.add(g[i]["sig"])
                 out.append(g[i])
     out.sort(key=lambda c: not c["video"])   # produsele cu filmare (pin video HD) primele
+    if labels is not None:   # lot cu instalatii + figurine: alternez familiile; ziua pare/impare schimba cine e prima
+        def fam(c):
+            return "lights" if c["label"] in ("Instalație țurțuri luminoși", "Perdea luminoasă de Crăciun") else "figures"
+        lights = [c for c in out if fam(c) == "lights"]
+        lights.sort(key=lambda c: (c["label"].startswith("Perdea")) == (datetime.now().toordinal() % 2 == 0))   # alterneaza zilnic
+        figs = [c for c in out if fam(c) == "figures"]
+        mixed = []
+        while lights or figs:
+            if lights:
+                mixed.append(lights.pop(0))
+            if figs:
+                mixed.append(figs.pop(0))
+        out = mixed
     log(f"{sum(1 for c in out if c['video'])} din {len(out)} produse premium au filmare")
     return out
 
@@ -234,12 +270,27 @@ def main() -> None:
         if not board:
             return done()
 
+    sb.load_tr_cache()
+    global RON
+    rates = sb.get_rates()
+    ron = RON = rates.get("RON", 4.97)
     history = load_log()
     today = now.date().isoformat()
-    already = [h for h in history if h.get("when", "")[:10] == today]
-    slots = [datetime(now.year, now.month, now.day, h, m, tzinfo=pt.TZ) for h, m in XMAS_TIMES]
+    GROUPS = [("main", SEARCHES, XMAS_TIMES, PER_DAY, None, None),
+              ("decor", DECOR_SEARCHES, DECOR_TIMES, DECOR_PER_DAY, DECOR_MIN_LEI, DECOR_LABELS)]
+    for grp, searches, times, per_day, min_lei, labels in GROUPS:
+        run_group(grp, searches, times, per_day, min_lei, labels, now, acc, board, history, report, log, ron)
+    sb.save_tr_cache()
+    LOG_PATH.write_text(json.dumps(history, ensure_ascii=False, indent=1), encoding="utf-8")
+    done()
+
+
+def run_group(grp, searches, times, per_day, min_lei, labels, now, acc, board, history, report, log, ron) -> None:
+    today = now.date().isoformat()
+    already = [h for h in history if h.get("when", "")[:10] == today and h.get("grp", "main") == grp]
+    slots = [datetime(now.year, now.month, now.day, h, m, tzinfo=pt.TZ) for h, m in times]
     slots = [t for t in slots if t - now >= timedelta(minutes=15) and t.isoformat() not in {h["when"] for h in already}]
-    need = max(0, PER_DAY - len(already))
+    need = max(0, per_day - len(already))
     if need and len(slots) < need:   # pornit tarziu: completez cu prima ora libera la :15 sau :45 (intre pinurile obisnuite)
         taken_t = {h["when"] for h in already} | {t.isoformat() for t in slots}
         extra = [datetime(now.year, now.month, now.day, h, m, tzinfo=pt.TZ) for h in range(10, 23) for m in (15, 45)]
@@ -248,17 +299,13 @@ def main() -> None:
         slots = sorted(slots + extra[:need - len(slots)])
     slots = slots[:need]
     if not slots:
-        log(f"Azi sunt deja {len(already)} pinuri de Craciun programate.")
-        return done()
+        log(f"[{grp}] azi sunt deja {len(already)} pinuri de Craciun programate.")
+        return
 
     cutoff = (now - timedelta(days=REPEAT_DAYS)).date().isoformat()
     used = {h["id"] for h in history if h.get("when", "") >= cutoff} | \
            {h["sig"] for h in history if h.get("when", "") >= cutoff and h.get("sig")}
-    sb.load_tr_cache()
-    global RON
-    rates = sb.get_rates()
-    ron = RON = rates.get("RON", 4.97)
-    pool = candidates(os.environ["ALI_TRACKING_ID"].strip(), used, log)
+    pool = candidates(os.environ["ALI_TRACKING_ID"].strip(), used, log, searches, min_lei, labels)
     for when, c in zip(slots, pool):
         img = c["image"] or (c["images"] or [None])[0]
         if not img:
@@ -283,16 +330,13 @@ def main() -> None:
             log(f"Pinul de Craciun '{ro_title(c)}' a esuat: {resp.status_code} {resp.text[:300]}")
             continue
         post = resp.json().get("post", resp.json())
-        history.append({"id": c["id"], "sig": c["sig"], "when": when.isoformat(), "kw": c["kw"],
+        history.append({"grp": grp, "id": c["id"], "sig": c["sig"], "when": when.isoformat(), "kw": c["kw"],
                         "title": c["title"][:120], "price_eur": c["price"], "post": post.get("_id") or post.get("id")})
         report["scheduled"].append({"when": when.strftime("%H:%M"), "title": ro_title(c), "price_lei": round(c["price"] * ron),
                                     "rating": c["rating"], "orders": c["orders"]})
         log(f"Craciun {when.strftime('%d.%m %H:%M')} [{media['type']}]: {ro_title(c)} (~{c['price'] * ron:.0f} lei, "
             f"{c['rating']:.0f}%, {c['orders']} comenzi)")
         time.sleep(1.1)
-    sb.save_tr_cache()
-    LOG_PATH.write_text(json.dumps(history, ensure_ascii=False, indent=1), encoding="utf-8")
-    done()
 
 
 def requests_get(url: str):

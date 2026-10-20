@@ -33,6 +33,9 @@ Contul TikTok **@trendixeu**: produse AliExpress cu link de afiliere. Totul rule
 - **Produse scumpe = video HD**: de la `HD_REQUIRED_LEI` (300 lei) in sus, clipul se face DOAR cu filmarea reala a vanzatorului
   (>= 720p); fara filmare sau sub 720p produsul e sarit (nu se posteaza din poze). Pe Pinterest ele merg primele, la orele de
   varf, iar pinurile foto de Craciun (`christmas_pins.py`) devin pinuri video HD cand produsul are filmare.
+- **Pinterest, al doilea lot zilnic (2 pinuri, 13:15 si 18:45)**: instalatii turturi / perdele de lumini si figurini Mos Craciun / reni,
+  premium (minim `XMAS_DECOR_MIN_LEI`=150 lei, rating >= 92%), alternand lumini si figurine; video HD daca produsul are filmare, altfel colaj foto.
+  Cautarile sunt in `DECOR_SEARCHES` (`christmas_pins.py`). Nu se repeta produsele 60 de zile.
 - Clipurile obisnuite au pret minim `PREMIUM_MIN_LEI` (150 lei).
 
 ## Adrese
