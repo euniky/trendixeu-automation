@@ -1,0 +1,28 @@
+{
+ "checked": "2026-10-24T09:31:57+03:00",
+ "ok": true,
+ "scheduled": [],
+ "log": [
+  "Conturi Instagram conectate: niciunul",
+  "Conturi Pinterest conectate: nkmgrandetrade",
+  "Conturi TikTok conectate: @trendixeu",
+  "Niciun clip nou de programat."
+ ],
+ "accounts": [
+  {
+   "id": "6abf38c791fc8bcbb436a883",
+   "username": "trendixeu"
+  }
+ ],
+ "extra_accounts": {
+  "instagram": [],
+  "pinterest": [
+   {
+    "id": "6ad1b1934c4e8fa98187612f",
+    "username": "nkmgrandetrade"
+   }
+  ]
+ },
+ "drafts": [],
+ "pinterest_pins": 0
+}
