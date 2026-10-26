@@ -9486,7 +9486,14 @@
    "id": "6adedb39470300bf2c189b03",
    "account": "trendixeu",
    "carousel": true
-  }
+  },
+  "pins": [
+   {
+    "key": "collage",
+    "when": "2026-10-26T10:30:00+02:00",
+    "id": "6adef6cd3582b58db6fcb63b"
+   }
+  ]
  },
  {
   "id": "p1005009940557031",
@@ -9558,6 +9565,307 @@
    "id": "6adedb42470300bf2c189b21",
    "account": "trendixeu",
    "carousel": true
-  }
+  },
+  "pins": [
+   {
+    "key": "collage",
+    "when": "2026-10-26T14:00:00+02:00",
+    "id": "6adef6d1774fe005b359b0df"
+   }
+  ]
+ },
+ {
+  "id": "p1005006754551805",
+  "title": "Pure Sine Wave Inverter DC 12V to AC 220V 230V 1500W/2200W/2600W/3000W Voltage Transfer Co",
+  "titles": {
+   "en": "Pure Sine Wave Inverter DC 12V to AC 220V 230V",
+   "ro": "Invertor de undă sinusoidală pură DC 12V la AC 220V 230V",
+   "it": "Inverter Pure Sinusoidale DC 12V - AC 220V 230V",
+   "de": "Reiner Sinus-Wechselrichter DC 12V bis AC 220V 230V",
+   "fr": "Onduleur sinusoïdal pur DC 12V à AC 220V 230V",
+   "es": "Inversor de onda sinusoidal puro DC 12V a AC 220V 230V"
+  },
+  "cur": "EUR",
+  "amount": 45.89,
+  "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4kXu8PpBYvHhYO8CNTKp3EWz0nFufLNqL0ZI4iEiZmHZtHSEIwJt4dS9ZaoPaQzHJdCtbUWvYvTFScCeOWkvO9Y6e3GLErr0kMLl9Q10xHkgrJcIctcrEMfjtkX0QShRludeSf6Y8AuWVWjbagVn5yCajfW2aKGk1DVlLhXWmOxNv5VPLAbqzUGxs8bv5bmTql46Xqxqy6urfPqMbLAUdw6VGLaompwI6z6rWr4sgkHFsTOjagcaNsBB6pumXRaPprBIi2Cx3iL5qg5UmtpPgdRgx8KKmcqsDaUvPJStmTFIRYolYIOEbJoXd5J3DjkCOpOZDzqKh4CnlwwW34OsubmEQaXYVDBRgbRmdiG2Cem5HE51qlij3ZhPcFXGuIDltQEF0HXuvpHus2PDnQJZ3HoTEWg17kHuTDJe1eIZHw5mfLXXDnb8CNrvKP5Cna92LJZm9fzKLUcgqhn5j1LQ3aVGkd6qqxUr82nxgAqnppbNAf4aGEDSDNWYKSkZeS2IvsnCg5H1cc19SX1mZvNwVXmPXY6HpSmVy7EGBkAdD52ZqSpbCG2RWFnKnLhH08l72QturoYiaP50VClCXu8krK0trEuZSGrrsPI1upx9EsL84AYdCzOxtwUD2hXzlVIYtcQbhMOR1NqRvIsAgYCZHyYYuSm7KtMwKS3tR3YC5lrARcIvII9OHg8JuDquUaUPgblEXQtbO4qOrA",
+  "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sdb99cb4af3a545a0b5777da79028eccdK.jpg",
+  "images": [
+   "https://ae-pic-a1.aliexpress-media.com/kf/Sdb99cb4af3a545a0b5777da79028eccdK.jpg",
+   "https://ae-pic-a1.aliexpress-media.com/kf/S68f0da1e299140a88595bc16dfab347fy.jpg",
+   "https://ae-pic-a1.aliexpress-media.com/kf/S87538c2e9fd5492a9494432242cdf1c98.jpg",
+   "https://ae-pic-a1.aliexpress-media.com/kf/S54854fc81c154d3d86047d7e7094daaeL.jpg",
+   "https://ae-pic-a1.aliexpress-media.com/kf/S673a902ded8b47e39ea6463ca3cd0b60D.jpg"
+  ],
+  "video": "https://video.aliexpress-media.com/play/u/ae_sg_item/240350589/p/1/e/6/t/10301/1100212929074.mp4",
+  "orders": 331,
+  "rating": 92.5,
+  "kw": "4000W power inverter",
+  "num": 117,
+  "created": "2026-10-26",
+  "section": "clip",
+  "wow": 6.0,
+  "lei": 245,
+  "hd": true,
+  "clip": {
+   "hook": "Uite-l în acțiune",
+   "kicker": "DESCOPERIREA ZILEI",
+   "name": "Invertor de undă sinusoidală pură DC 12V",
+   "cards": [
+    "Putere 1500W"
+   ],
+   "orders": 331,
+   "rating": 92.5,
+   "price_text": "245 lei",
+   "num": 117,
+   "end_sub": "Linkul e în profilul meu",
+   "benefit": "",
+   "show_proof": true,
+   "description_ro": "Uite-l în acțiune 🔥\nInvertor de undă sinusoidală pură DC 12V\n✅ Putere 1500W\n⭐ 92% recenzii pozitive · 331+ comenzi\n💰 Preț: ~245 lei\n🔗 Linkul e în bio → produsul nr. 117\nMerită sau nu? 👇\n🎵 Ambiment – Kevin MacLeod (incompetech.com) · CC BY 4.0",
+   "description_en": "Watch what it does 😱\nPure Sine Wave Inverter DC 12V to AC\n✅ 1500W power\n⭐ 92% positive reviews · 331+ orders\n💰 Price: ~245 lei\n👉 Link in bio · find product #117\n🎵 Ambiment – Kevin MacLeod (incompetech.com) · CC BY 4.0",
+   "hashtags": [
+    "gadgets",
+    "homehacks",
+    "aliexpressfinds",
+    "reduceri",
+    "oferte",
+    "romania",
+    "fyp",
+    "tiktokmademebuyit"
+   ],
+   "bullets": [
+    "Putere 1500W"
+   ],
+   "duration": 19.0,
+   "used_seller_video": true,
+   "voiced": false,
+   "voice": null,
+   "voice_error": null,
+   "with_music": true,
+   "script": [
+    "Uite-l în acțiune!",
+    "Invertor de undă sinusoidală pură DC 12V.",
+    "Are o putere de 1500 de wați.",
+    "Peste 300 de oameni l-au comandat, cu 92 la sută recenzii pozitive.",
+    "Numărul 117, pe pagina din bio!"
+   ],
+   "music": "Ambiment",
+   "file": "clips/trendixeu-117.mp4",
+   "poster": "clips/trendixeu-117.jpg",
+   "created": "2026-10-26",
+   "id": "p1005006754551805",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4kXu8PpBYvHhYO8CNTKp3EWz0nFufLNqL0ZI4iEiZmHZtHSEIwJt4dS9ZaoPaQzHJdCtbUWvYvTFScCeOWkvO9Y6e3GLErr0kMLl9Q10xHkgrJcIctcrEMfjtkX0QShRludeSf6Y8AuWVWjbagVn5yCajfW2aKGk1DVlLhXWmOxNv5VPLAbqzUGxs8bv5bmTql46Xqxqy6urfPqMbLAUdw6VGLaompwI6z6rWr4sgkHFsTOjagcaNsBB6pumXRaPprBIi2Cx3iL5qg5UmtpPgdRgx8KKmcqsDaUvPJStmTFIRYolYIOEbJoXd5J3DjkCOpOZDzqKh4CnlwwW34OsubmEQaXYVDBRgbRmdiG2Cem5HE51qlij3ZhPcFXGuIDltQEF0HXuvpHus2PDnQJZ3HoTEWg17kHuTDJe1eIZHw5mfLXXDnb8CNrvKP5Cna92LJZm9fzKLUcgqhn5j1LQ3aVGkd6qqxUr82nxgAqnppbNAf4aGEDSDNWYKSkZeS2IvsnCg5H1cc19SX1mZvNwVXmPXY6HpSmVy7EGBkAdD52ZqSpbCG2RWFnKnLhH08l72QturoYiaP50VClCXu8krK0trEuZSGrrsPI1upx9EsL84AYdCzOxtwUD2hXzlVIYtcQbhMOR1NqRvIsAgYCZHyYYuSm7KtMwKS3tR3YC5lrARcIvII9OHg8JuDquUaUPgblEXQtbO4qOrA",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sdb99cb4af3a545a0b5777da79028eccdK.jpg",
+   "title_ro": "Invertor de undă sinusoidală pură DC 12V la AC 220V 230V"
+  },
+  "posted": {
+   "draft": true,
+   "remade": null,
+   "sent": "2026-10-26T08:43+02:00",
+   "id": "6adef69d774fe005b359b052",
+   "account": "trendixeu"
+  },
+  "pins": [
+   {
+    "key": "video",
+    "when": "2026-10-26T19:00:00+02:00",
+    "id": "6adef6c466aef74fdef4431f"
+   }
+  ]
+ },
+ {
+  "id": "p1005005104363534",
+  "title": "Inverter Pure Sine Wave  2500W/3500W/4500W/5000WDC 12V/24V to AC 220V 230V Voltage Transfe",
+  "titles": {
+   "en": "Inverter Pure Sine Wave 2500W/3500W/4500W/5000WDC 12V/24V to AC 220V",
+   "ro": "Invertor undă sinusoidală pură 2500W/3500W/4500W/5000WDC 12V/24V la AC 220V",
+   "it": "Inverter Pure Sine Wave 2500W/3500W/4500W/5000WDC 12V/24V a AC 220V",
+   "de": "Wechselrichter Pure Sinuswelle 2500W/3500W/4500W/5000WDC 12V/24V bis AC 220V",
+   "fr": "Onduleur onde sinusoïdale pure 2500W/3500W/4500W/5000WDC 12V/24V à AC 220V",
+   "es": "Inversor onda sinusoidal pura 2500W/3500W/4500W/5000WDC 12V/24V a CA 220V"
+  },
+  "cur": "EUR",
+  "amount": 51.12,
+  "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4oCfcM9MsFVsOIvpbFLxLeXWUPZdI1pfNZ187MmUHqnWS2AOZAhvh8lcqsFV493IdojovqQEXULuzp9OnpFm4xvN7d7vlVLZ7DlpZlGMUHo1S8iXlWUIt3d2MCPe3Dv9xcGMMtCbC3u3XjUhmRVbxwNubGpl7ztnYVQxNkCkrXO6M1ypLcWugzLqTkz4g3EuTKzWMExDTtSJOo9OPCjSghxU8GKBLojcNjKRhKGl0f9izriYK5fdIwsCje3zKYtoaighFEKgi2KiSdvoZ2Ght3sskJKOQPPZqKsFsLziMgOyn4gllpsFmvjpdFR0PC1YfCM4hLRzMgfm0R82qq2LunEBaTXvyJsETheOltilgFBfOr1u3nBsZS5Vo2R5kGx1iEolbfMgg95V2V7P7LopH0wo8W2BGHHsosrLpr8eFuNbW4Q1kTeAfkHdca8fMgBuu22dodFhhf0rJ59et2aX4TGhzsqpX0UGX4Bm7oNDcdjqDbXOTmH0QNEhUbIisTdANPdztxbTjYdhU3TsRhxEHyalEZVDRJpIDJMdKC0OqvxVaYXJtZE1tsxkZ2aMg6YareeSeKNsM56xzKFSQMsFFIndEQnufYpw9NRWBKfKsBHGhOEDxH6ODoXtlBEcIbnfg9gIxgUgNPkgHpGpurqI0ll4NGolNVplYRI9qmuyUyQAMO8WfLle2Z2In3b5NuqAxXzG71bBpU3Oo8",
+  "image": "https://ae-pic-a1.aliexpress-media.com/kf/S9e93bcbd1e1c451ba6c21429d97497e5y.jpg",
+  "images": [
+   "https://ae-pic-a1.aliexpress-media.com/kf/S9e93bcbd1e1c451ba6c21429d97497e5y.jpg",
+   "https://ae-pic-a1.aliexpress-media.com/kf/S46e72c9a9d654d39a6502dbe06d55470P.jpg",
+   "https://ae-pic-a1.aliexpress-media.com/kf/S6bf6886820b74a2c9544848b7f7a67bek.jpg",
+   "https://ae-pic-a1.aliexpress-media.com/kf/S03112d135dc34ee5b70d8fa72b007892n.jpg",
+   "https://ae-pic-a1.aliexpress-media.com/kf/S56cd18f705ce4016b63a0353331140e4O.jpg"
+  ],
+  "video": "",
+  "orders": 2551,
+  "rating": 94.8,
+  "kw": "4000W power inverter",
+  "num": 118,
+  "created": "2026-10-26",
+  "section": "clip",
+  "wow": 4.4,
+  "lei": 273,
+  "hd": false,
+  "clip": {
+   "hook": "Gadgetul pe care nu știai că-l vrei",
+   "kicker": "DESCOPERIREA ZILEI",
+   "name": "Invertor undă sinusoidală pură 2500w/3500w/4500w/5000wdc 12v/24v la AC",
+   "cards": [
+    "Putere 2500W"
+   ],
+   "orders": 2551,
+   "rating": 94.8,
+   "price_text": "273 lei",
+   "num": 118,
+   "end_sub": "Caută numărul pe pagina mea",
+   "benefit": "",
+   "show_proof": true,
+   "description_ro": "Gadgetul pe care nu știai că-l vrei 😱\nInvertor undă sinusoidală pură 2500w/3500w/4500w/5000wdc 12v/24v la AC\n✅ Putere 2500W\n⭐ 95% recenzii pozitive · 2.551+ comenzi\n💰 Preț: ~273 lei\n👉 Link în bio · caută produsul nr. 118\nAi nevoie de el? Scrie DA 👇\n🎵 Ascending the Vale – Kevin MacLeod (incompetech.com) · CC BY 4.0",
+   "description_en": "The gadget you didn't know you wanted 😱\nInverter Pure Sine Wave 2500w/3500w/4500w/5000wdc 12v/24v to AC\n✅ 2500W power\n⭐ 95% positive reviews · 2.551+ orders\n💰 Price: ~273 lei\n👉 Link in bio · find product #118\n🎵 Ascending the Vale – Kevin MacLeod (incompetech.com) · CC BY 4.0",
+   "hashtags": [
+    "gadgets",
+    "homehacks",
+    "reduceri",
+    "tiktokmademebuyit",
+    "aliexpressfinds",
+    "oferte",
+    "romania",
+    "fyp"
+   ],
+   "bullets": [
+    "Putere 2500W"
+   ],
+   "duration": 19.4,
+   "used_seller_video": false,
+   "voiced": false,
+   "voice": null,
+   "voice_error": null,
+   "with_music": true,
+   "script": [
+    "Gadgetul pe care nu știai că-l vrei!",
+    "Invertor undă sinusoidală pură 2500w/3500w/4500w/5000wdc 12v/24v la AC.",
+    "Are o putere de 2500 de wați.",
+    "Peste 2 mii de oameni l-au comandat, cu 95 la sută recenzii pozitive.",
+    "Linkul e în bio. Caută produsul numărul 118!"
+   ],
+   "music": "Ascending the Vale",
+   "file": "clips/trendixeu-118.mp4",
+   "poster": "clips/trendixeu-118.jpg",
+   "created": "2026-10-26",
+   "id": "p1005005104363534",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4oCfcM9MsFVsOIvpbFLxLeXWUPZdI1pfNZ187MmUHqnWS2AOZAhvh8lcqsFV493IdojovqQEXULuzp9OnpFm4xvN7d7vlVLZ7DlpZlGMUHo1S8iXlWUIt3d2MCPe3Dv9xcGMMtCbC3u3XjUhmRVbxwNubGpl7ztnYVQxNkCkrXO6M1ypLcWugzLqTkz4g3EuTKzWMExDTtSJOo9OPCjSghxU8GKBLojcNjKRhKGl0f9izriYK5fdIwsCje3zKYtoaighFEKgi2KiSdvoZ2Ght3sskJKOQPPZqKsFsLziMgOyn4gllpsFmvjpdFR0PC1YfCM4hLRzMgfm0R82qq2LunEBaTXvyJsETheOltilgFBfOr1u3nBsZS5Vo2R5kGx1iEolbfMgg95V2V7P7LopH0wo8W2BGHHsosrLpr8eFuNbW4Q1kTeAfkHdca8fMgBuu22dodFhhf0rJ59et2aX4TGhzsqpX0UGX4Bm7oNDcdjqDbXOTmH0QNEhUbIisTdANPdztxbTjYdhU3TsRhxEHyalEZVDRJpIDJMdKC0OqvxVaYXJtZE1tsxkZ2aMg6YareeSeKNsM56xzKFSQMsFFIndEQnufYpw9NRWBKfKsBHGhOEDxH6ODoXtlBEcIbnfg9gIxgUgNPkgHpGpurqI0ll4NGolNVplYRI9qmuyUyQAMO8WfLle2Z2In3b5NuqAxXzG71bBpU3Oo8",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S9e93bcbd1e1c451ba6c21429d97497e5y.jpg",
+   "title_ro": "Invertor undă sinusoidală pură 2500W/3500W/4500W/5000WDC 12V/24V la AC 220V"
+  },
+  "posted": {
+   "draft": true,
+   "remade": null,
+   "sent": "2026-10-26T08:44+02:00",
+   "id": "6adef6ac3582b58db6fcb623",
+   "account": "trendixeu"
+  },
+  "pins": [
+   {
+    "key": "video",
+    "when": "2026-10-26T20:30:00+02:00",
+    "id": "6adef6ca66aef74fdef44341"
+   }
+  ]
+ },
+ {
+  "id": "p1005012650087522",
+  "title": "LAUNCH X431 CRP919XBT OBD2 Scanner Automotive Diagnostic Tools Car CANFD DOIP ECU Coding P",
+  "titles": {
+   "en": "LAUNCH X431 CRP919XBT OBD2 Scanner Automotive Diagnostic Tools Car",
+   "ro": "LANSARE X431 CRP919XBT Scaner OBD2 Instrumente de diagnostic auto Mașină",
+   "it": "LANCIO X431 CRP919XBT Scanner OBD2 Automotive Diagnostic Tools Auto",
+   "de": "STARTEN SIE X431 CRP919XBT OBD2 Scanner Kfz-Diagnose-Tools Auto",
+   "fr": "LANCEMENT X431 CRP919XBT OBD2 Scanner Automobile Outils de Diagnostic Voiture",
+   "es": "LANZAMIENTO X431 CRP919XBT Escáner OBD2 Herramientas de diagnóstico automotriz Coche"
+  },
+  "cur": "EUR",
+  "amount": 510.99,
+  "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4EwKqNVvno6x7uxzkVDREWLdplVdUswoicWR5kuFsmwV7db9k0Il296KhB37lxz0cwh9qvEVJmGhCvTJfvE6eJXZBKHBs90fP36fzJynWev3d1725wxCarOPobIeAwwXrFfzjljKFVpFB7wpxnfQsuyENtCG1ZMcOGiVX9feUHrIOH4yvVnwTP7wyCU6KYF13rOrGFbUUlTppZGRSJsEdKjQ231cNOl9l9fWKcJl6fks2WvTP8eAENCuUgIoRbOyEDiqwSZky9ukSWzn92Ll6VhqosGlsXsJny6KJoviuGWx1HAuZxWAFscKCjc8BthHmKLOvUqQaHKeRDFpJEP72oLp9NK5ibvuRoEFLUDLZdw5ekURQopYj2dFyUHqmnO73StifXQF9VwaSa6OZomk8R4TwmnnvN7ckV7QoeU7PlBqlVLCsqg6TcOAlsvJkRklHsOrSRR9xFHOYHmHR6nEfPcfgvWXNhqGQbDgxVMTJuFCwaGPnHHuyS0CnjngQSPyFUPey7pRFhA5Aa1l8B7DauRrdTCkDWllmyepfvpSdbN902Ds3QIfqA3bKmpRZomz25kSeVuwDJhJWmFGg2QWSRTYbANWAkFWL0CmwJfXlocx6iWwyfGKQb086ppxRiXdnWW8Of1EegAR9yEPSc9BfIEIlf4LAqHKFtvD8awfo8oWSRSFLvZgpQ9lj3ICTIu6lVLDNzPASTJcvn",
+  "image": "https://ae-pic-a1.aliexpress-media.com/kf/S3f22b33c65394552a68d6ec3ee40403aC.jpg",
+  "images": [
+   "https://ae-pic-a1.aliexpress-media.com/kf/S3f22b33c65394552a68d6ec3ee40403aC.jpg",
+   "https://ae-pic-a1.aliexpress-media.com/kf/Sfdf3efca04eb49dcab754e5345c53f80y.jpg",
+   "https://ae-pic-a1.aliexpress-media.com/kf/S50fa0bedbeea4edb94d3baa880bd8e9aa.jpg",
+   "https://ae-pic-a1.aliexpress-media.com/kf/S3cb63cccaa4e4513a582acb1c4118194t.jpg",
+   "https://ae-pic-a1.aliexpress-media.com/kf/S78732a01ccc348f48016d1e6872764e38.jpg"
+  ],
+  "video": "https://video.aliexpress-media.com/play/u/ae_sg_item/200410976/p/1/e/6/t/10301/1100213501872.mp4",
+  "orders": 1018,
+  "rating": 98.5,
+  "kw": "professional OBD2 scanner",
+  "num": 119,
+  "created": "2026-10-26",
+  "section": "clip",
+  "wow": 3.0,
+  "lei": 2733,
+  "hd": true,
+  "clip": {
+   "hook": "Așa arată în realitate",
+   "kicker": "GADGETUL ZILEI",
+   "name": "Lansare X431 Crp919xbt Scaner Obd2 Instrumente de diagnostic",
+   "cards": [
+    "Livrare în România"
+   ],
+   "orders": 1018,
+   "rating": 98.5,
+   "price_text": "2733 lei",
+   "num": 119,
+   "end_sub": "Prețul poate crește oricând",
+   "benefit": "",
+   "show_proof": true,
+   "description_ro": "Așa arată în realitate 🔥\nLansare X431 Crp919xbt Scaner Obd2 Instrumente de diagnostic\n✅ Livrare în România\n⭐ 98% recenzii pozitive · 1.018+ comenzi\n💰 Preț: ~2733 lei\n👉 Îl găsești în bio la nr. 119\nAi nevoie de el? Scrie DA 👇\n🎵 Backed Vibes Clean – Kevin MacLeod (incompetech.com) · CC BY 4.0",
+   "description_en": "Watch what it does 😱\nLaunch X431 Crp919xbt Obd2 Scanner Automotive Diagnostic Tools\n⭐ 98% positive reviews · 1.018+ orders\n💰 Price: ~2733 lei\n👉 Link in bio · find product #119\n🎵 Backed Vibes Clean – Kevin MacLeod (incompetech.com) · CC BY 4.0",
+   "hashtags": [
+    "masina",
+    "caraccessories",
+    "cartok",
+    "romania",
+    "reduceri",
+    "tiktokmademebuyit",
+    "aliexpressfinds",
+    "oferte",
+    "fyp"
+   ],
+   "bullets": [
+    "Livrare în România"
+   ],
+   "duration": 15.1,
+   "used_seller_video": true,
+   "voiced": false,
+   "voice": null,
+   "voice_error": null,
+   "with_music": true,
+   "script": [
+    "Așa arată în realitate!",
+    "Lansare X431 Crp919xbt Scaner Obd2 Instrumente de diagnostic.",
+    "Peste 1000 de oameni l-au comandat, cu 98 la sută recenzii pozitive.",
+    "Intră pe linkul din bio și caută numărul 119!"
+   ],
+   "music": "Backed Vibes Clean",
+   "file": "clips/trendixeu-119.mp4",
+   "poster": "clips/trendixeu-119.jpg",
+   "created": "2026-10-26",
+   "id": "p1005012650087522",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4EwKqNVvno6x7uxzkVDREWLdplVdUswoicWR5kuFsmwV7db9k0Il296KhB37lxz0cwh9qvEVJmGhCvTJfvE6eJXZBKHBs90fP36fzJynWev3d1725wxCarOPobIeAwwXrFfzjljKFVpFB7wpxnfQsuyENtCG1ZMcOGiVX9feUHrIOH4yvVnwTP7wyCU6KYF13rOrGFbUUlTppZGRSJsEdKjQ231cNOl9l9fWKcJl6fks2WvTP8eAENCuUgIoRbOyEDiqwSZky9ukSWzn92Ll6VhqosGlsXsJny6KJoviuGWx1HAuZxWAFscKCjc8BthHmKLOvUqQaHKeRDFpJEP72oLp9NK5ibvuRoEFLUDLZdw5ekURQopYj2dFyUHqmnO73StifXQF9VwaSa6OZomk8R4TwmnnvN7ckV7QoeU7PlBqlVLCsqg6TcOAlsvJkRklHsOrSRR9xFHOYHmHR6nEfPcfgvWXNhqGQbDgxVMTJuFCwaGPnHHuyS0CnjngQSPyFUPey7pRFhA5Aa1l8B7DauRrdTCkDWllmyepfvpSdbN902Ds3QIfqA3bKmpRZomz25kSeVuwDJhJWmFGg2QWSRTYbANWAkFWL0CmwJfXlocx6iWwyfGKQb086ppxRiXdnWW8Of1EegAR9yEPSc9BfIEIlf4LAqHKFtvD8awfo8oWSRSFLvZgpQ9lj3ICTIu6lVLDNzPASTJcvn",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S3f22b33c65394552a68d6ec3ee40403aC.jpg",
+   "title_ro": "LANSARE X431 CRP919XBT Scaner OBD2 Instrumente de diagnostic auto Mașină"
+  },
+  "posted": {
+   "scheduledFor": "2026-10-26T19:00:00+02:00",
+   "id": "6adef6ba66aef74fdef442f0",
+   "account": "trendixeu",
+   "music": null,
+   "repost_day": null
+  },
+  "pins": [
+   {
+    "key": "video",
+    "when": "2026-10-26T12:00:00+02:00",
+    "id": "6adef6be66aef74fdef4430d"
+   }
+  ]
  }
 ]
