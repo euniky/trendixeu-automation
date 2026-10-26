@@ -343,6 +343,9 @@ def schedule_pinterest(video_log: list[dict], extra: dict, boards: dict, off: se
         for v in elig:
             if len(imgs_of[v["num"]]) > k:
                 queue.append((f"img{k + 1}", v, imgs_of[v["num"]][k]))
+    for v in video_log:   # produse premium fara filmare HD: pin foto (colaj 2:3), acelasi produs ca in caruselul TikTok
+        if v.get("carousel") and v.get("created") == today and v.get("id") not in off:
+            queue.append(("collage", v, ""))
     queue = [q for q in queue if q[0] not in {p.get("key") for p in q[1].get("pins", [])}]
     if not queue:
         return 0
@@ -353,7 +356,12 @@ def schedule_pinterest(video_log: list[dict], extra: dict, boards: dict, off: se
     slots = pin_slots(len(queue), taken)
     done = 0
     for (key, v, media), when in zip(queue, slots):
-        clip = v["clip"]
+        if key == "collage":
+            srcs = list(dict.fromkeys([u for u in [v.get("image")] + list(v.get("images") or []) if u]))
+            media = make_collage(srcs, v["carousel"]["title_ro"], v["carousel"]["price_text"], log)
+            if not media:
+                log(f"Pinterest: #{v['num']} sarit (colajul nu s-a putut face)")
+                continue
         if key == "video":   # fara muzica: Pinterest sterge sunetul cu drepturi inregistrate
             media = muted_video(media, log)
             if not media:
