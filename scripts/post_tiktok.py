@@ -784,7 +784,9 @@ def make_carousel_slides(v: dict, log) -> list[str]:
     def fit_text(d, text, font, maxw):
         while d.textlength(text, font=font) > maxw and len(text) > 10:
             text = text.rsplit(" ", 1)[0]
-        return re.sub(r"[\s,;:–-]+$|\s(cu|de|pentru|și|din|la)$", "", text)
+        for _ in range(3):
+            text = re.sub(r"[\s,;:–-]+$|\s(cu|de|pentru|și|din|la)$", "", text)
+        return text
 
     def photo_card(canvas, im, top, box=1000):
         k = box / max(im.size)
