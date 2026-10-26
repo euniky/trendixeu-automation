@@ -46,11 +46,16 @@ KEYWORDS = ["home gadget", "cleaning", "kitchen", "phone accessories",
             # aparate de casa de brand, cu specificatii concrete si filmari bune (ca Lubluelu V8)
             "carpet cleaner", "cordless vacuum cleaner", "window cleaning robot", "steam cleaner",
             "wet dry vacuum cleaner mop", "robot vacuum cleaner mop", "professional slingshot",
-            "motorcycle bike phone holder", "dash cam"]  # se rotesc zilnic, pentru varietate
+            "motorcycle bike phone holder", "dash cam",
+            # ce apare in ofertele AliExpress Affiliate (de brand, livrare din UE, peste 150 lei)
+            "electric pizza oven", "professional OBD2 scanner", "wall chaser slotting machine",
+            "4000W power inverter", "high pressure steam cleaner 2500W"]  # se rotesc zilnic, pentru varietate
 CATEGORY_OF = {"carpet cleaner": "cleaning", "cordless vacuum cleaner": "cleaning", "window cleaning robot": "cleaning",
                "steam cleaner": "cleaning", "wet dry vacuum cleaner mop": "cleaning",
                "robot vacuum cleaner mop": "cleaning", "professional slingshot": "outdoor",
-               "motorcycle bike phone holder": "moto", "dash cam": "car accessories"}
+               "motorcycle bike phone holder": "moto", "dash cam": "car accessories",
+               "electric pizza oven": "kitchen", "professional OBD2 scanner": "car accessories",
+               "high pressure steam cleaner 2500W": "cleaning"}
 # ---- Craciun (1 oct - 24 dec): produse premium, DOAR cu filmare, in clipurile zilnice (TikTok + Pinterest)
 XMAS_KEYWORDS = ["fiber optic christmas tree", "pre lit flocked christmas tree", "210cm pre lit artificial christmas tree",
                  "luxury full PE christmas tree with lights", "christmas curtain lights led outdoor",
