@@ -739,6 +739,149 @@ def tiktok_custom(spec: dict, account: dict, log) -> None:
         log(f"TikTok manual: HTTP {resp.status_code} {resp.text[:400]}")
 
 
+CAROUSEL_SLIDES = int(os.environ.get("CAROUSEL_SLIDES", "6"))
+
+
+def _upload_jpeg(im, name: str, log) -> str | None:
+    from io import BytesIO
+    buf = BytesIO()
+    im.save(buf, "JPEG", quality=90, optimize=True)
+    try:
+        pre = requests.post(f"{API}/media/presign", headers=headers(), timeout=30,
+                            json={"filename": name, "contentType": "image/jpeg", "size": buf.tell()})
+        pre.raise_for_status()
+        d = pre.json()
+        requests.put(d["uploadUrl"], data=buf.getvalue(), headers={"Content-Type": "image/jpeg"},
+                     timeout=120).raise_for_status()
+        return d["publicUrl"]
+    except Exception as exc:
+        log(f"Carusel: incarcarea {name} a esuat: {str(exc)[:150]}")
+        return None
+
+
+def make_carousel_slides(v: dict, log) -> list[str]:
+    """Slide-uri verticale 1080x1920 pentru caruselul TikTok: coperta (poza clara + titlu + pret), pozele produsului,
+    apoi un slide final cu trimiterea la link-ul din bio."""
+    from io import BytesIO
+    from PIL import Image, ImageDraw, ImageFont, ImageOps
+    c = v["carousel"]
+    W, H = 1080, 1920
+    try:
+        fb = ImageFont.truetype(str(FONT_DIR / "Poppins-Bold.ttf"), 56)
+        fs = ImageFont.truetype(str(FONT_DIR / "Poppins-Bold.ttf"), 70)
+        fm = ImageFont.truetype(str(FONT_DIR / "Poppins-Bold.ttf"), 44)
+    except Exception:
+        fb = fs = fm = ImageFont.load_default()
+
+    def background():
+        im = Image.new("RGB", (W, H))
+        d = ImageDraw.Draw(im)
+        for y in range(H):
+            t = y / H
+            d.line([(0, y), (W, y)], fill=(int(22 + 24 * t), int(20 + 10 * t), int(34 + 30 * t)))
+        return im, d
+
+    def fit_text(d, text, font, maxw):
+        while d.textlength(text, font=font) > maxw and len(text) > 10:
+            text = text.rsplit(" ", 1)[0]
+        return re.sub(r"[\s,;:–-]+$|\s(cu|de|pentru|și|din|la)$", "", text)
+
+    def photo_card(canvas, im, top, box=1000):
+        k = box / max(im.size)
+        big = im.resize((max(1, round(im.width * k)), max(1, round(im.height * k))), Image.LANCZOS)
+        card = Image.new("RGB", (big.width + 40, big.height + 40), (255, 255, 255))
+        card.paste(big, (20, 20))
+        canvas.paste(card, ((W - card.width) // 2, top + (box + 40 - card.height) // 2))
+        return top + box + 40
+
+    srcs = list(dict.fromkeys([u for u in [v.get("image")] + list(v.get("images") or []) if u]))
+    photos = []
+    for u in srcs:
+        if len(photos) >= CAROUSEL_SLIDES - 1:
+            break
+        try:
+            r = requests.get(u, timeout=40, headers={"User-Agent": "Mozilla/5.0"})
+            im = ImageOps.exif_transpose(Image.open(BytesIO(r.content))).convert("RGB")
+            if min(im.size) >= 300:
+                photos.append(im)
+        except Exception:
+            continue
+    if len(photos) < 3:
+        log(f"Carusel #{v['num']}: prea putine poze bune ({len(photos)})")
+        return []
+    name = (c.get("title_ro") or "").split("|")[0].strip()
+    urls = []
+    # 1) coperta
+    cv, d = background()
+    bottom = photo_card(cv, photos[0], 300)
+    d.text((W // 2, 150), "OFERTĂ PREMIUM", font=fm, fill=(255, 213, 74), anchor="mm")
+    d.text((W // 2, bottom + 70), fit_text(d, name, fb, W - 120), font=fb, fill=(255, 255, 255), anchor="mm")
+    pw = d.textlength(c["price_text"], font=fs) + 90
+    d.rounded_rectangle([W / 2 - pw / 2, bottom + 130, W / 2 + pw / 2, bottom + 240], radius=55, fill=(255, 213, 74))
+    d.text((W // 2, bottom + 185), c["price_text"], font=fs, fill=(20, 20, 26), anchor="mm")
+    d.text((W // 2, H - 110), "Glisează pentru detalii", font=fm, fill=(210, 210, 225), anchor="mm")
+    urls.append(_upload_jpeg(cv, "slide1.jpg", log))
+    # 2..n) pozele produsului
+    for i, im in enumerate(photos[1:], start=2):
+        cv, d = background()
+        photo_card(cv, im, 330)
+        d.text((W // 2, 170), fit_text(d, name, fm, W - 120), font=fm, fill=(255, 255, 255), anchor="mm")
+        d.text((W // 2, H - 110), f"{i}/{len(photos) + 1}", font=fm, fill=(210, 210, 225), anchor="mm")
+        urls.append(_upload_jpeg(cv, f"slide{i}.jpg", log))
+    # ultimul) trimitere la bio
+    cv, d = background()
+    d.text((W // 2, 520), "Vrei produsul?", font=fs, fill=(255, 255, 255), anchor="mm")
+    d.text((W // 2, 680), "Linkul e în profilul meu", font=fb, fill=(255, 213, 74), anchor="mm")
+    d.text((W // 2, 780), f"Caută produsul nr. {v['num']}", font=fb, fill=(255, 255, 255), anchor="mm")
+    photo_card(cv, photos[0], 900, box=700)
+    d.text((W // 2, H - 110), "Livrare în România · link afiliat", font=fm, fill=(210, 210, 225), anchor="mm")
+    urls.append(_upload_jpeg(cv, "slide-final.jpg", log))
+    return [u for u in urls if u]
+
+
+def post_carousels(video_log: list[dict], account: dict, tracks: list, off: set, report: dict, log) -> None:
+    """Caruseluri TikTok (poze) pentru produsele premium fara filmare, programate in sloturile libere."""
+    today = datetime.utcnow().date().isoformat()
+    todo = [v for v in video_log if v.get("section") == "carousel" and v.get("carousel") and not v.get("posted")
+            and v.get("created") == today and v.get("id") not in off]
+    if not todo:
+        return
+    taken = {v["posted"]["scheduledFor"] for v in video_log
+             if (v.get("posted") or {}).get("scheduledFor") and not v["posted"].get("cancelled")}
+    slots = next_slots(len(todo), taken)
+    for v, when in zip(todo, slots):
+        urls = make_carousel_slides(v, log)
+        if len(urls) < 4:
+            continue
+        track = tracks[(v["num"] + when.hour) % len(tracks)] if tracks else None
+        st = {k: x for k, x in settings().items() if k not in ("allow_duet", "allow_stitch")}
+        st.update({"media_type": "photo", "photo_cover_index": 0})
+        body = {"content": caption(v["carousel"], tiktok_music=True), "scheduledFor": when.isoformat(),
+                "timezone": "Europe/Bucharest", "mediaItems": [{"type": "image", "url": u} for u in urls],
+                "platforms": [{"platform": "tiktok", "accountId": account["id"]}],
+                "tiktokSettings": {**st, **({"musicSoundInfo": {"musicSoundId": str(track["id"])}} if track else {})}}
+        try:
+            r = requests.post(f"{API}/posts", headers=headers(), json=body, timeout=90)
+            if not r.ok and track:
+                log(f"Carusel #{v['num']}: melodia refuzata ({r.status_code} {r.text[:120]}), postez fara ea")
+                track = None
+                body["tiktokSettings"] = st
+                r = requests.post(f"{API}/posts", headers=headers(), json=body, timeout=90)
+            if not r.ok:
+                log(f"Carusel #{v['num']} a esuat: {r.status_code} {r.text[:250]}")
+                continue
+            post = r.json().get("post", r.json())
+            v["posted"] = {"scheduledFor": when.isoformat(), "id": post.get("_id") or post.get("id"),
+                           "account": account["username"], "carousel": True}
+            report["scheduled"].append({"num": v["num"], "when": when.isoformat(), "title": v["carousel"]["title_ro"],
+                                        "type": "carusel"})
+            log(f"Carusel #{v['num']} ({len(urls)} poze) programat pe TikTok pentru {when.strftime('%d.%m %H:%M')}"
+                + (f", cu melodia {track['name']}" if track else ""))
+        except Exception as exc:
+            log(f"Carusel #{v['num']} a esuat: {str(exc)[:200]}")
+        time.sleep(1.1)
+
+
 def main() -> None:
     check = "--check" in sys.argv
     report: dict = {"checked": datetime.now(TZ).isoformat(timespec="seconds"), "ok": False, "scheduled": [], "log": []}
@@ -995,6 +1138,10 @@ def main() -> None:
                 + (f", cu melodia {track['name']} ({track['artist']})" if track else ""))
         except Exception as exc:
             log(f"Programarea clipului #{v['num']} a esuat: {str(exc)[:200]}")
+    try:
+        post_carousels(video_log, account, tracks, off, report, log)
+    except Exception as exc:
+        log(f"Caruseluri: eroare {str(exc)[:200]}")
     if os.environ.get("RESCHEDULE_PINS") == "1" and extra["pinterest"]:
         # anulez pinurile de azi inca nepublicate; se reprogrameaza mai jos (de ex. in boardurile tematice)
         now_l = datetime.now(TZ)
@@ -1012,7 +1159,7 @@ def main() -> None:
     if EXTRA_ON and extra["pinterest"]:
         n_pins = schedule_pinterest(video_log, extra, boards, off, log)
         report["pinterest_pins"] = n_pins
-    if not todo:
+    if not todo and not any(x.get("posted", {}).get("carousel") and x.get("created") == today for x in video_log):
         log("Niciun clip nou de programat.")
     VIDEO_LOG.write_text(json.dumps(video_log, ensure_ascii=False, indent=1), encoding="utf-8")
     REPORT.parent.mkdir(parents=True, exist_ok=True)

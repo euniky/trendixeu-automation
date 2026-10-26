@@ -97,3 +97,8 @@ Contul TikTok **@trendixeu**: produse AliExpress cu link de afiliere. Totul rule
 Răspunsuri în română. Linkuri directe spre pagina exactă de setări. Hashtag-uri ca liste de cuvinte de
 ales din TikTok. Variante mai puțin cunoscute, dar practice. Sub 30 de minute pe zi de muncă manuală.
 Clipuri fără voce, cu produse „wow”, hook în primele 2 secunde.
+
+## Caruseluri TikTok (poze) pentru produse premium fara video
+- sync_bio.py (pasul 2b) alege CAROUSELS_PER_DAY=2 produse >= CAROUSEL_MIN_LEI=150 lei (rating >= 90, >= 30 comenzi, >= 3 poze), le pune in data/video_log.json cu section="carousel" (apar si in bio cu numar).
+- post_tiktok.py (post_carousels) randeaza 6 slide-uri 1080x1920 (coperta cu pret, poze, slide final "link in bio"), le incarca prin /media/presign si programeaza postarea TikTok photo (media_type=photo) in sloturile libere.
+- Reglaje: CAROUSELS_PER_DAY, CAROUSEL_MIN_LEI, CAROUSEL_MIN_ORDERS, CAROUSEL_SLIDES. 0 = oprit.

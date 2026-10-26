@@ -69,6 +69,9 @@ SPEC_RE = re.compile(r"\b\d+(?:[.,]\d+)?\s?(?:w|kpa|pa|mah|l|°c|min|m|db|v|rpm)
 PER_KEYWORD = 3                                       # max produse din aceeasi categorie
 VIDEO_LOG_PATH = ROOT / "data" / "video_log.json"     # produsele care au primit clip (salvat in repo)
 CLIPS_PER_DAY = int(os.environ.get("CLIPS_PER_DAY", "6"))
+CAROUSELS_PER_DAY = int(os.environ.get("CAROUSELS_PER_DAY", "2"))      # caruseluri de poze TikTok pentru produse premium fara video
+CAROUSEL_MIN_LEI = float(os.environ.get("CAROUSEL_MIN_LEI", "150"))
+CAROUSEL_MIN_ORDERS = int(os.environ.get("CAROUSEL_MIN_ORDERS", "30"))
 CLIP_PRODUCTS_DAYS = 30                               # cat timp raman pe pagina produsele din clipuri
 CLIP_VOICE = os.environ.get("CLIP_VOICE", "none")     # none = fara voce; edge = voce gratuita; elevenlabs = premium
 CLIP_MUSIC = os.environ.get("CLIP_MUSIC", "on") != "off"   # muzica de fundal in clipuri
@@ -721,7 +724,7 @@ def check_voice() -> None:
 def recover_clips(video_log: list[dict]) -> None:
     """Daca memoria GitHub s-a pierdut, recupereaza clipurile recente de pe site."""
     keep_from = (datetime.now(timezone.utc) - timedelta(days=CLIP_FILES_DAYS)).date().isoformat()
-    recent = [v for v in video_log if v.get("created", "") >= keep_from]
+    recent = [v for v in video_log if v.get("created", "") >= keep_from and v.get("section") != "carousel"]
     if not recent:
         return
     live = {}
@@ -1056,7 +1059,7 @@ def make_daily_clips(hot: list[dict], featured: list[dict], rates: dict, video_l
 
     # --- 1. recuperare: clipurile din ultimele zile trebuie sa ramana in consola
     recover_clips(video_log)
-    missing = {v["num"] for v in video_log if v.get("created", "") >= keep_from
+    missing = {v["num"] for v in video_log if v.get("created", "") >= keep_from and v.get("section") != "carousel"
                and not (CLIP_CACHE / f"trendixeu-{v['num']}.mp4").exists()}
     if missing and recover_from_artifacts(missing):
         log("[info] clipuri: recuperate din copiile de rezerva GitHub")
@@ -1229,6 +1232,42 @@ def make_daily_clips(hot: list[dict], featured: list[dict], rates: dict, video_l
                 log(f"[warn] clip pentru {p['id']} esuat: {str(exc)[:200]}")
     elif CLIPS_PER_DAY > 0:
         log("[warn] clipuri: ffmpeg lipseste")
+
+    # --- 2b. caruseluri de poze pentru TikTok: produse premium FARA filmare HD (se postaza de post_tiktok.py)
+    if CAROUSELS_PER_DAY > 0 and make_clips is not None and not any(
+            v.get("section") == "carousel" and v.get("created") == today for v in video_log):
+        try:
+            done = {v["id"] for v in video_log}
+            nxt = max([v.get("num", 0) for v in video_log] + [p.get("num", 0) for p in featured] + [0]) + 1
+            cand = []
+            for p in (CANDIDATES or hot):
+                imgs = [u for u in ([p.get("image")] + list(p.get("images") or [])) if u]
+                imgs = list(dict.fromkeys(imgs))
+                lei = to_lei(p, rates)
+                if (p["id"] in done or lei < CAROUSEL_MIN_LEI or len(imgs) < 3 or ACCESSORY_RE.search(p["title"])
+                        or float(p.get("rating") or 0) < 90 or int(p.get("orders") or 0) < CAROUSEL_MIN_ORDERS):
+                    continue
+                cand.append(p)
+            cand.sort(key=lambda p: -(int(p.get("orders") or 0) * (float(p.get("rating") or 0) / 100) ** 4))
+            chosen = pick_clips(cand, video_log, CAROUSELS_PER_DAY)
+            log(f"[info] caruseluri: {len(cand)} produse premium (>= {CAROUSEL_MIN_LEI:.0f} lei) cu poze, {len(chosen)} alese")
+            if chosen:
+                localize([p for p in chosen if not p.get("titles")], "en")
+                save_tr_cache()
+            for p in chosen:
+                lei = to_lei(p, rates)
+                entry = {k: p.get(k) for k in ("id", "title", "titles", "cur", "amount", "link", "image",
+                                               "images", "video", "orders", "rating", "kw")}
+                entry.update({"num": nxt, "created": today, "section": "carousel", "lei": round(lei), "hd": False})
+                copy = make_clips.build_copy(entry, nxt, lei)
+                copy.pop("sentences", None)
+                entry["carousel"] = {**copy, "num": nxt, "title_ro": (p.get("titles") or {}).get("ro") or p["title"],
+                                     "price_text": f"{lei:.0f} lei"}
+                video_log.append(entry)
+                log(f"[info] carusel #{nxt}: {entry['carousel']['title_ro'][:60]} ({lei:.0f} lei)")
+                nxt += 1
+        except Exception as exc:
+            log(f"[warn] caruseluri: {str(exc)[:200]}")
 
     # --- 3. publicare: clipurile din ultimele 7 zile
     keep = {v["num"] for v in video_log if v.get("created", "") >= keep_from}
