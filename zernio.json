@@ -1,0 +1,58 @@
+{
+ "checked": "2026-10-31T08:47:53+02:00",
+ "ok": true,
+ "scheduled": [
+  {
+   "num": 133,
+   "when": "2026-10-31T12:00:00+02:00",
+   "title": "Aparate de curățat cu abur multifuncționale de 2500 W Presiune ridicată la temperatură",
+   "type": "carusel"
+  },
+  {
+   "num": 134,
+   "when": "2026-10-31T14:00:00+02:00",
+   "title": "Invertor de putere 4000W DC 12V la transformator AC 220V 230V cu 4 USB EU",
+   "type": "carusel"
+  }
+ ],
+ "log": [
+  "Conturi Instagram conectate: niciunul",
+  "Conturi Pinterest conectate: nkmgrandetrade",
+  "Conturi TikTok conectate: @trendixeu",
+  "Clipul #132 trimis ca SCHITA in inboxul TikTok (pune-i un sunet trending si posteaza-l)",
+  "Clipul #131 trimis ca SCHITA in inboxul TikTok (pune-i un sunet trending si posteaza-l)",
+  "Melodii in trend disponibile: Hidden Truth Revealed (Adauto Assis), Time Back (Sinny & 7vvch), SSDD (goneafteraugust), Final Game Showdown (ProdByLucK), Prisoner (DIDKER), Flutter (かずち)",
+  "Carusel #133 (6 poze) programat pe TikTok pentru 31.10 12:00, cu melodia The Self-Aware Patient",
+  "Carusel #134 (6 poze) programat pe TikTok pentru 31.10 14:00, cu melodia Shows N Shit",
+  "Pinterest 31.10 12:00: #131 (video) -> board Auto & Moto",
+  "Pinterest 31.10 19:00: #132 (video) -> board Curățenie inteligentă",
+  "Pinterest 31.10 20:30: #133 (collage) -> board Curățenie inteligentă",
+  "Pinterest 31.10 10:30: #134 (collage) -> board AliExpress Deals"
+ ],
+ "accounts": [
+  {
+   "id": "6abf38c791fc8bcbb436a883",
+   "username": "trendixeu"
+  }
+ ],
+ "extra_accounts": {
+  "instagram": [],
+  "pinterest": [
+   {
+    "id": "6ad1b1934c4e8fa98187612f",
+    "username": "nkmgrandetrade"
+   }
+  ]
+ },
+ "drafts": [
+  {
+   "num": 132,
+   "title": "SucceBuy 2L 3L 6L 10L 22L 30L Curățător cu ultrasunete Oțel inoxidabil"
+  },
+  {
+   "num": 131,
+   "title": "E-ACE 2.5K Cameră cu oglindă pentru mașină Ecran tactil Video Recorder Vedere din spate"
+  }
+ ],
+ "pinterest_pins": 4
+}
