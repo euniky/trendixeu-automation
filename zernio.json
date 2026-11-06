@@ -1,0 +1,45 @@
+{
+ "checked": "2026-11-06T16:07:01+02:00",
+ "ok": true,
+ "scheduled": [
+  {
+   "num": 150,
+   "when": "2026-11-06T19:00:00+02:00",
+   "title": "Robot electric de curățare a geamurilor 5600Pa Control automat și la distanță",
+   "type": "carusel"
+  },
+  {
+   "num": 151,
+   "when": "2026-11-06T21:00:00+02:00",
+   "title": "Ceainic electric cu gât de lebădă 900 ML Ceainic inteligent pentru prepararea manuală a cafelei",
+   "type": "carusel"
+  }
+ ],
+ "log": [
+  "Conturi Instagram conectate: niciunul",
+  "Conturi Pinterest conectate: nkmgrandetrade",
+  "Conturi TikTok conectate: @trendixeu",
+  "Melodii in trend disponibile: Take Me (To The Moon) (Ian Asher & D A N N Y), Final Game Showdown (ProdByLucK), Prisoner (DIDKER), Time Back (Sinny & 7vvch), Hidden Truth Revealed (Adauto Assis), Copines (It's Just Ron)",
+  "Carusel #150 (6 poze) programat pe TikTok pentru 06.11 19:00, cu melodia Hidden Truth Revealed",
+  "Carusel #151 (6 poze) programat pe TikTok pentru 06.11 21:00, cu melodia [Loop compatible s] Bright and fun pop EDM(882107)",
+  "Pinterest 06.11 19:00: #150 (collage) -> board Curățenie inteligentă",
+  "Pinterest 06.11 20:30: #151 (collage) -> board Casă & Bucătărie"
+ ],
+ "accounts": [
+  {
+   "id": "6abf38c791fc8bcbb436a883",
+   "username": "trendixeu"
+  }
+ ],
+ "extra_accounts": {
+  "instagram": [],
+  "pinterest": [
+   {
+    "id": "6ad1b1934c4e8fa98187612f",
+    "username": "nkmgrandetrade"
+   }
+  ]
+ },
+ "drafts": [],
+ "pinterest_pins": 2
+}
