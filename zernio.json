@@ -1,0 +1,45 @@
+{
+ "checked": "2026-11-14T15:21:40+02:00",
+ "ok": true,
+ "scheduled": [
+  {
+   "num": 169,
+   "when": "2026-11-14T19:00:00+02:00",
+   "title": "Robot inteligent automat de curățare a geamurilor, ultra-subțire, puternic, 5600 Pa",
+   "type": "carusel"
+  },
+  {
+   "num": 170,
+   "when": "2026-11-14T21:00:00+02:00",
+   "title": "DVR auto K2 Pro 11,3\" Cameră 4K CarPlay wireless Android Auto IA",
+   "type": "carusel"
+  }
+ ],
+ "log": [
+  "Conturi Instagram conectate: niciunul",
+  "Conturi Pinterest conectate: nkmgrandetrade",
+  "Conturi TikTok conectate: @trendixeu",
+  "Melodii in trend disponibile: Take Me (To The Moon) (Ian Asher & D A N N Y), Time Back (Sinny & 7vvch), Prisoner (DIDKER), Final Game Showdown (ProdByLucK), Le Sable & Les Vagues (Tengo John), Too Self Aware (Star Slinger)",
+  "Carusel #169 (6 poze) programat pe TikTok pentru 14.11 19:00, cu melodia U R B an isolate",
+  "Carusel #170 (6 poze) programat pe TikTok pentru 14.11 21:00, cu melodia Ela Está Aceitando P I X",
+  "Pinterest 14.11 19:00: #169 (collage) -> board Curățenie inteligentă",
+  "Pinterest 14.11 20:30: #170 (collage) -> board Auto & Moto"
+ ],
+ "accounts": [
+  {
+   "id": "6abf38c791fc8bcbb436a883",
+   "username": "trendixeu"
+  }
+ ],
+ "extra_accounts": {
+  "instagram": [],
+  "pinterest": [
+   {
+    "id": "6ad1b1934c4e8fa98187612f",
+    "username": "nkmgrandetrade"
+   }
+  ]
+ },
+ "drafts": [],
+ "pinterest_pins": 2
+}
