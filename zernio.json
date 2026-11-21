@@ -1,0 +1,45 @@
+{
+ "checked": "2026-11-21T16:31:52+02:00",
+ "ok": true,
+ "scheduled": [
+  {
+   "num": 184,
+   "when": "2026-11-21T19:00:00+02:00",
+   "title": "Cameră auto cu vedere pe timp de noapte cu infraroșu, înregistrare în buclă și ecran IPS de 2\" 1080P 3",
+   "type": "carusel"
+  },
+  {
+   "num": 185,
+   "when": "2026-11-21T21:00:00+02:00",
+   "title": "Noul aparat de călcat cu abur portabil MIJIA 2 Aparat de curățat electric cu abur pentru uz casnic",
+   "type": "carusel"
+  }
+ ],
+ "log": [
+  "Conturi Instagram conectate: niciunul",
+  "Conturi Pinterest conectate: nkmgrandetrade",
+  "Conturi TikTok conectate: @trendixeu",
+  "Melodii in trend disponibile: Time Back (Sinny & 7vvch), Prisoner (DIDKER), Tribunal (soulecist.), A N Y W A Y - Megamix Version (Methodical Madness), SICK W/ IT (Jay Coast), sssss_nohook (Balam Acab)",
+  "Carusel #184 (6 poze) programat pe TikTok pentru 21.11 19:00, cu melodia Double O Sh!t",
+  "Carusel #185 (6 poze) programat pe TikTok pentru 21.11 21:00, cu melodia Double Apple",
+  "Pinterest 21.11 19:00: #184 (collage) -> board Auto & Moto",
+  "Pinterest 21.11 20:30: #185 (collage) -> board Curățenie inteligentă"
+ ],
+ "accounts": [
+  {
+   "id": "6abf38c791fc8bcbb436a883",
+   "username": "trendixeu"
+  }
+ ],
+ "extra_accounts": {
+  "instagram": [],
+  "pinterest": [
+   {
+    "id": "6ad1b1934c4e8fa98187612f",
+    "username": "nkmgrandetrade"
+   }
+  ]
+ },
+ "drafts": [],
+ "pinterest_pins": 2
+}
