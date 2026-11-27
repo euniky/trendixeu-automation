@@ -1,0 +1,1759 @@
+{
+ "updated": "2026-11-27T16:30:14+00:00",
+ "started": "2026-11-27T16:26:03+00:00",
+ "run_number": "134",
+ "run_id": "46033518768",
+ "commit": "829fc60",
+ "featured": 9,
+ "hot": 10,
+ "rates": {
+  "RON": 5.3437,
+  "USD": 1.0957,
+  "GBP": 0.83504,
+  "PLN": 4.4678
+ },
+ "filters": {
+  "min_rating_percent": 90,
+  "min_orders": 300,
+  "max_hot": 10,
+  "ship_to": "RO",
+  "keywords": [
+   "home gadget",
+   "cleaning",
+   "kitchen",
+   "phone accessories",
+   "car accessories",
+   "beauty tools",
+   "pet supplies",
+   "carpet cleaner",
+   "cordless vacuum cleaner",
+   "window cleaning robot",
+   "steam cleaner",
+   "wet dry vacuum cleaner mop",
+   "robot vacuum cleaner mop",
+   "professional slingshot",
+   "motorcycle bike phone holder",
+   "dash cam",
+   "electric pizza oven",
+   "professional OBD2 scanner",
+   "wall chaser slotting machine",
+   "4000W power inverter",
+   "high pressure steam cleaner 2500W"
+  ]
+ },
+ "featured_items": [
+  {
+   "id": "_EwLFEe2",
+   "num": 1,
+   "title": "Robot curățat geamuri PuRuiKai, cu telecomandă",
+   "titles": {
+    "ro": "Robot curățat geamuri PuRuiKai, cu telecomandă",
+    "en": "PuRuiKai window cleaning robot with remote control",
+    "it": "Robot lavavetri PuRuiKai con telecomando",
+    "de": "PuRuiKai Fensterputzroboter mit Fernbedienung",
+    "fr": "Robot laveur de vitres PuRuiKai avec télécommande",
+    "es": "Robot limpiacristales PuRuiKai con mando a distancia"
+   },
+   "cur": "EUR",
+   "amount": 72.39,
+   "link": "https://s.click.aliexpress.com/e/_EwLFEe2",
+   "image": "img/1.jpg"
+  },
+  {
+   "id": "_c3YrxXEV",
+   "num": 2,
+   "title": "Aparat spălat covoare Lubluelu V8, apă caldă 60°C",
+   "titles": {
+    "ro": "Aparat spălat covoare Lubluelu V8, apă caldă 60°C",
+    "en": "Lubluelu V8 carpet cleaner, 60°C hot water",
+    "it": "Lavatappeti Lubluelu V8, acqua calda a 60°C",
+    "de": "Lubluelu V8 Teppichreiniger, 60°C heißes Wasser",
+    "fr": "Nettoyeur de tapis Lubluelu V8, eau chaude 60°C",
+    "es": "Limpiador de alfombras Lubluelu V8, agua caliente a 60°C"
+   },
+   "cur": "EUR",
+   "amount": 104.39,
+   "link": "https://s.click.aliexpress.com/e/_c3YrxXEV",
+   "image": "img/2.jpg"
+  },
+  {
+   "id": "_c3SRksGz",
+   "num": 3,
+   "title": "Aspirator fără fir Laresar V7, 50.000Pa",
+   "titles": {
+    "ro": "Aspirator fără fir Laresar V7, 50.000Pa",
+    "en": "Laresar V7 cordless vacuum cleaner, 50,000 Pa",
+    "it": "Aspirapolvere senza filo Laresar V7, 50.000 Pa",
+    "de": "Laresar V7 Akku-Staubsauger, 50.000 Pa",
+    "fr": "Aspirateur sans fil Laresar V7, 50 000 Pa",
+    "es": "Aspiradora inalámbrica Laresar V7, 50.000 Pa"
+   },
+   "cur": "EUR",
+   "amount": 115.77,
+   "link": "https://s.click.aliexpress.com/e/_c3SRksGz",
+   "image": "img/3.jpg"
+  },
+  {
+   "id": "_c4r4L1Mh",
+   "num": 4,
+   "title": "Folie sticlă Joyroom iPhone 15–18 Pro Max",
+   "titles": {
+    "ro": "Folie sticlă Joyroom iPhone 15–18 Pro Max",
+    "en": "Joyroom tempered glass, iPhone 15–18 Pro Max",
+    "it": "Vetro temperato Joyroom per iPhone 15–18 Pro Max",
+    "de": "Joyroom Panzerglas für iPhone 15–18 Pro Max",
+    "fr": "Verre trempé Joyroom pour iPhone 15–18 Pro Max",
+    "es": "Cristal templado Joyroom para iPhone 15–18 Pro Max"
+   },
+   "cur": "EUR",
+   "amount": 8.01,
+   "link": "https://s.click.aliexpress.com/e/_c4r4L1Mh",
+   "image": "img/4.jpg"
+  },
+  {
+   "id": "_c4oBGiev",
+   "num": 5,
+   "title": "Încărcător rapid 65W GaN, USB-C + USB-A",
+   "titles": {
+    "ro": "Încărcător rapid 65W GaN, USB-C + USB-A",
+    "en": "65W GaN fast charger, USB-C + USB-A",
+    "it": "Caricatore rapido GaN 65W, USB-C + USB-A",
+    "de": "65W GaN Schnellladegerät, USB-C + USB-A",
+    "fr": "Chargeur rapide GaN 65W, USB-C + USB-A",
+    "es": "Cargador rápido GaN 65W, USB-C + USB-A"
+   },
+   "cur": "EUR",
+   "amount": 4.54,
+   "link": "https://s.click.aliexpress.com/e/_c4oBGiev",
+   "image": "img/5.jpg"
+  },
+  {
+   "id": "_c3XsG9WN",
+   "num": 6,
+   "title": "Lampă solară cu senzor de mișcare, impermeabilă",
+   "titles": {
+    "ro": "Lampă solară cu senzor de mișcare, impermeabilă",
+    "en": "Waterproof solar light with motion sensor",
+    "it": "Lampada solare impermeabile con sensore di movimento",
+    "de": "Wasserdichte Solarlampe mit Bewegungsmelder",
+    "fr": "Lampe solaire étanche avec détecteur de mouvement",
+    "es": "Lámpara solar impermeable con sensor de movimiento"
+   },
+   "cur": "EUR",
+   "amount": 6.44,
+   "link": "https://s.click.aliexpress.com/e/_c3XsG9WN",
+   "image": "img/6.jpg"
+  },
+  {
+   "id": "_c4433IYV",
+   "num": 7,
+   "title": "Mănuși nitril rezistente, grip texturat",
+   "titles": {
+    "ro": "Mănuși nitril rezistente, grip texturat",
+    "en": "Durable nitrile gloves with textured grip",
+    "it": "Guanti in nitrile resistenti con presa ruvida",
+    "de": "Robuste Nitrilhandschuhe mit strukturiertem Griff",
+    "fr": "Gants en nitrile résistants à prise texturée",
+    "es": "Guantes de nitrilo resistentes con agarre texturizado"
+   },
+   "cur": "EUR",
+   "amount": 5.54,
+   "link": "https://s.click.aliexpress.com/e/_c4433IYV",
+   "image": "img/7.jpg"
+  },
+  {
+   "id": "_c3Ax29Rf",
+   "num": 8,
+   "title": "Sac spălat încălțăminte în mașina de spălat",
+   "titles": {
+    "ro": "Sac spălat încălțăminte în mașina de spălat",
+    "en": "Shoe washing bag for the washing machine",
+    "it": "Sacchetto per lavare le scarpe in lavatrice",
+    "de": "Schuhwaschbeutel für die Waschmaschine",
+    "fr": "Sac de lavage pour chaussures en machine",
+    "es": "Bolsa para lavar zapatillas en la lavadora"
+   },
+   "cur": "EUR",
+   "amount": 9.39,
+   "link": "https://s.click.aliexpress.com/e/_c3Ax29Rf",
+   "image": "img/8.jpg"
+  },
+  {
+   "id": "pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLt",
+   "num": 95,
+   "title": "Praștie automată din aluminiu cu încărcător (G5+)",
+   "titles": {
+    "ro": "Praștie automată din aluminiu cu încărcător (G5+)",
+    "en": "Automatic aluminium slingshot with magazine (G5+)",
+    "it": "Fionda automatica in alluminio con caricatore (G5+)",
+    "de": "Automatische Aluminium-Schleuder mit Magazin (G5+)",
+    "fr": "Lance-pierre automatique en aluminium avec chargeur (G5+)",
+    "es": "Tirachinas automático de aluminio con cargador (G5+)"
+   },
+   "cur": "EUR",
+   "amount": 72.69,
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLe5mOF3ZxRkgXTxDel4NhdR1WLVYSoygR9Mm1fajL9UmwmCVRVHwLPp0N3CoftevA07nn6Mxoc6AsjNx5fAiuftToMUgcExdVL93bzv0BkzETIP8Ky5fmToFoXwSfcJ6qq9O2lCfUVrSA5xszTdu1UUN4IaoFlwkNvRHL3ONQyz5qsGeUUCsLWUuvFyETALWhMmC2fSAQufVsk3BfdqTZQSzxHcgADxWfBiYxZq6z1AolblaC7OEwgSTOI3zJ6xV55GHUoqSYptazmYWyGMobBzfGI6eoLPtCf0Io5vz33rhqZVTVKFdsOWehIws2lJpCoOOE7xuIbhyByDRyTQihmSKf7yC9TtWtAGLtmYJ20feergYeELiqUcTKCVMUmNLezmJHR867r5sP5aAUPMhwzMMaX3XdBlVIM3TSh2STqsGkEU9cnnzfniFdKASnUfPEPZvLTNapIMeq8ZhWsprqD6KcOvyQNfbLwYrrRjnE6hO6QhPFmoiIMtzTaZY2bWqAtUYQ85wNDrkBEejpezbiiWlRBQfPB4345irT8jokj2bXWMnZAENiHvOo3LxWo0ac28hCAhpb7bucUM95FOSInBWMOG43p1M1ucijM0I0jzKmYnnS9t7iwGTpZNMwZgDR2Fg4DWKSZVEKG7UXlNX5NQ3LAGRMG7kN7RPTzi9xGs2kif2531SYofWwfKJsedBCltqblsxmZa17THR5J81Bzp0f68A6wn1dBl2XvDLIeBPLZwfxxZrQ323o0fIBSOygFFgqCDS",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S765d6a3ad0e94c06a4f97e9f1dbd12fcL.jpg"
+  }
+ ],
+ "hot_items": [
+  {
+   "id": "p1005006153924382",
+   "title": "Main Side Brush Mop Hepa Filter Dust Bag Cleaning Rolling Brush Roborock S7 Maxv Ultra S7 ",
+   "titles": {
+    "en": "Main Side Brush Mop Hepa Filter Dust Bag Cleaning Rolling Brush",
+    "ro": "Perie laterală principală Mop Filtru Hepa Curățare sac de praf Perie de rulare",
+    "it": "Spazzola laterale principale Mop Hepa Filter Dust Bag Cleaning Rolling Brush",
+    "de": "Hauptseitenbürste Mop Hepa Filter Staubbeutel Reinigung Rollbürste",
+    "fr": "Brosse latérale principale Balai filtre à poussière Hepa Brosse roulante de nettoyage de sac à poussière",
+    "es": "Cepillo lateral principal Mopa Hepa Filtro Limpieza de bolsas de polvo Cepillo rodante"
+   },
+   "cur": "EUR",
+   "amount": 7.93,
+   "link": "https://s.click.aliexpress.com/s/NdpwztbAIgDMmxGbP8fFks7yUFfsHjzlImSYmA68h7xlMRgzueFsRgokQ9f9hcpVKttxtQE2VzIoqkXJXrpOr6uR3zv7mP4CDO9CddoFf4t0QE5DXPy8Pgjhz4irfQSEjEGUmy5yF3A5gJ9h3NYjLMgqIMqa3zcpq5E2BC3W5EbV40Dm9buQxWpZzw1lbX8Zm2kZtNIa4KyDieNjsH7IU6Yv8StELKVvT9r4eFAaXPGhwHsgaDqdNcmY116r3GC2YvsOopeiiZPhJrV0cwgOQDSkW93v7gVKDqPkXyZF1oSWa6wSAOeznMFVlVYRewaMUlL0PkBNkv5XrYGyEPlIKI1uF0TEqIhQngRADEdbjf4sTIl6Zzwsz0ZJPbUAdVRRxI90ag4O7Nqf6DTT5FqjL0hYIV2nJcesH3g4MmiEKKXepexsLyyxh6O4niaRI5497xYBUbHr0JTnidP5G6t7xGM7LASy7DwdLyd878DcQBZSEmJUfSRaib4qE5eSwNW8DpVVBpYdvl3jDEBY4WPHuRMR962E3GEvDmFIvCVDMRGuz0l79XJm0hxjCns8bjhzXPWpNQdYIDrJ1ObQwCHx8Qi4kkPwIDcqY6BTbvNpI74xdrJRhIXIMvRAYAJ00xURuLTY5KqTbgtpuDjAKnLi1vYe92rCn3vVhoJqdFPH2P2s8J6Lw3zYDEpEL9G7n5E3FTHwpV8XqZBIGEdarzCVxzKJH7NNUMQHLhmbnF7CqpbO11WZZ56H2jTgiJsNFZARPnZtUcn20hDVZzG0fsrc1eaTmilnW8bHKzDJ96X8N7hkXOKx9q3CaxVv4d9Pbvpcn9utQjFsWKEI8ttjfVMMf4FuLk6bohXx90YVl6XMLEcuIW7gq2j8LVjixb86fkW3I5FZJAQdtvEJzZnt35I6CKxtqmw1oiTmyF9ID5mGUkGCAS2OqtTSSMQnDetU8sTrOw1kMAoQskkZUm0o4So7XuL6QNVUKZY3Hx2njXBXJ6VVD",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S6d1851103128492888f81fb7bc4c24a1H.jpg",
+   "meta": "94% recenzii pozitive · 2365+ comenzi",
+   "orders": 2365,
+   "rating": 94.4
+  },
+  {
+   "id": "p1005005854325196",
+   "title": "Dreame L20 Ultra Robot Vacuum Spare Parts Dreame L30 Ultra Rubber Main Side Brushes Mop Cl",
+   "titles": {
+    "en": "Dreame L20 Ultra Robot Vacuum Spare Parts Dreame L30 Ultra Rubber",
+    "ro": "Piese de schimb pentru aspirator Dreame L20 Ultra Robot Dreame L30 Ultra Rubber",
+    "it": "Dreame L20 Ultra Robot Parti di ricambio per aspirapolvere Dreame L30 Ultra Rubber",
+    "de": "Dreame L20 Ultra Roboter Vakuum Ersatzteile Dreame L30 Ultra Gummi",
+    "fr": "Pièces de rechange pour aspirateur Dreame L20 Ultra Robot Dreame L30 Ultra Rubber",
+    "es": "Piezas de repuesto para aspiradora Dreame L20 Ultra Robot Dreame L30 Ultra Rubber"
+   },
+   "cur": "EUR",
+   "amount": 7.99,
+   "link": "https://s.click.aliexpress.com/s/NdpwztbAIgDMmxGbP8fFks7yUFfsHjzlImSYmA68h7xlMRgzueFsRgokQ9f9hcpVKttxtQE2VzIoqkXJXrpOr6uR3zv7mP4CDO9CddoFf4t0QE5DXPy8Pgjhz4irfQSEjEGUmy5yF3A5gJ9h3NYjLMgqIMqa3zcpq5E2BC3W5EbV40Dm9buQxWpZzw1lbX8Zm2kZtNIa4KyDieNjsH7IU6Yv8StELKVvT9r4eFAaXPGhwHsgaDqdNcmY116r3GC2YvsOopeiiZPhJrV0cwgOQDSkW93v7gVKDqPkXyZF1oSWa6wSAOeznMFVlVZbmlkxWV77eTzWaRQa6fhrmjdi52l01v5zTIGnqJzlteJ51ega8tJPtB0zP8FAYmQZNq2UDXN3bkMZdp9y9tCsAV9me4aE47JzDJENRtghSBgllbkCk4umr349a0NNGrkvmECTXxqNAsYF6UUnaEtaOeFhVOcal3DE2MqZZ797UjdbXTe6Ktr35Aw7uplGEe3Bnu3hdzTFOM9fSWetplZQZtHN6e14zlbCRQU0B0cEjvOYmKTGmhVqwERAF4aMUsIriMifb4s1VLABFRzUFS1kAjdLZToNXogqyMkiNx3lu4KGU3kAchh30MPGDFS8yy09Bd5aLzrF9Dnc8zofjGgT3oi4qV09SNEsYwqlJ41Trs2sdY9dexApbo4nU4WeG5EBZhtO9VSancTCmBKmKxQa3RgLxIXyRTwxw6HrkONAYy4S7539nh2PkuhwcCOfrThfZR2kNf6s8Yxv3yBEe8y0dw25RwPpmwBLB3tv6QfUsCMsDmOH3Dz8T8Gaw02971iDgCo1ulvlO7cs5kOkNuohdN4f12devb1agjJBgp9IlFF18zmDswpzbgY7ReC6xKplTXTyTOoSoIQtt09d9l1exOkCXz7PEklnfeWbjNY3CcXblIlYqv4t3GLMqMwoKLEtqw611sGqvjg0hqqcoB2sVnFBybmBEtkYSexP7MwQV8ThxbeLv",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/Se46c8fbb5de9436f9a20da098dbe64feV.jpg",
+   "meta": "95% recenzii pozitive · 1035+ comenzi",
+   "orders": 1035,
+   "rating": 95.0
+  },
+  {
+   "id": "p1005005658096616",
+   "title": "Dreame Bot L10s Ultra / L10 Ultra Robot Vacuum Cleaner Accessories Mop Dust Bag Main Brush",
+   "titles": {
+    "en": "Dreame Bot L10s Ultra / L10 Ultra Robot Vacuum Cleaner Accessories",
+    "ro": "Accesorii aspirator robot Dreame Bot L10s Ultra / L10 Ultra",
+    "it": "Dreame Bot L10s Ultra / L10 Ultra Robot Accessori Aspirapolvere",
+    "de": "Dreame Bot L10s Ultra / L10 Ultra Roboter Staubsauger Zubehör",
+    "fr": "Accessoires pour aspirateur robot Dreame Bot L10s Ultra / L10 Ultra",
+    "es": "Accesorios para aspiradora Dreame Bot L10s Ultra / L10 Ultra Robot"
+   },
+   "cur": "EUR",
+   "amount": 7.9,
+   "link": "https://s.click.aliexpress.com/s/NdpwztbAIgDMmxGbP8fFks7yUFfsHjzlImSYmA68h7xlMRgzueFsRgokQ9f9hcpVKttxtQE2VzIoqkXJXrpOr6uR3zv7mP4CDO9CddoFf4t0QE5DXPy8Pgjhz4irfQSEjEGUmy5yF3A5gJ9h3NYjLMgqIMqa3zcpq5E2BC3W5EbV40Dm9buQxWpZzw1lbX8Zm2kZtNIa4KyDieNjsH7IU6Yv8StELKVvT9r4eFAaXPGhwHsgaDqdNcmY116r3GC2YvsOopeiiZPhJrV0cwgOQDSkW93v7gVKDqPkXyZF1oSWa6wSAOeznMFVlVZehpQjz2B5MS8d7LEF5pY0iB599Er1a831u2LpjYTfjFhJw07xSNM6s30Ysla0cNf9gRxOW8ZWG89g02kc3757tZRtY9O37IWe4PCQptU424r6zb1JDEcJOWlZ2k18aGf3RQ9163B5My9URjhXAVEgvhTYHE6UWG2KPaoXxu2FWAmfvrb1oK3KwEzVVY7IbbHKFRAz3ZbKFnIIDIl5vxIzDToLdLKh7xNm90vtnOSFa4f9zfN7gy5CUjYsk5PtLeXvY4200tJgbkQ3J3RFWAb2Kc1cV15QfMaGDpyh8lXDXWkTB8achYhjbD6cj3tFeIXL6sRMexnzP3zFQIM9yfrZnT3Q2EuRNO9EM0SHMjkjsYyXVCR9IdjJ3rD5SRdsnJTFdG58BqO3gr70AZrm41jsDRWJAYb5xJd0m3ooPv7lrjweHgRJfSai2APw0bAYs9dSFb7Rnp71p2lMUmqIFdgdbHuRU84oAP6BA2pAn33QoAyIyIcVewEtYb8uab2PJlUl1EnajDCoz5tBryeBX5OTkUiWnZ9ZtJKsJYJKm51m8q4hvOPy8XXM8l5OdC7NKOCbpw6A7SD3sHLiJmBDjPhMLFc47lZy2HfuJwuKMqwWffHI7XFs091sYlvmnLACTeJI6oGb8WbTqw5pvuAoMCxrmMWvNkRm5l47KLahmuYYyI396L53z",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S8680787342d649f0bc181e29a9f92066Z.jpg",
+   "meta": "95% recenzii pozitive · 920+ comenzi",
+   "orders": 920,
+   "rating": 95.1
+  },
+  {
+   "id": "p1005005291722359",
+   "title": "Rubber Band Outdoor Hunting Slingshot Accessories 3pcs 1.5mm 2mm Wide Thick Rubber Band Hi",
+   "titles": {
+    "en": "Rubber Band Outdoor Hunting Slingshot Accessories 3pcs 1.5mm 2mm Wide",
+    "ro": "Bandă de cauciuc Accesorii praștie de vânătoare în aer liber 3 buc 1,5 mm 2 mm lățime",
+    "it": "Fascia in gomma per la caccia all'aperto, 3 pezzi, 1,5 mm, 2 mm di larghezza",
+    "de": "Gummiband Outdoor Jagdschleuder Zubehör 3 Stück 1,5 mm 2 mm breit",
+    "fr": "Accessoires de chasse à la fronde en plein air avec bande en caoutchouc 3 pièces 1,5 mm 2 mm de large",
+    "es": "Banda elástica para caza al aire libre Accesorios para tirachinas 3 piezas 1.5 mm 2 mm de ancho"
+   },
+   "cur": "EUR",
+   "amount": 6.6,
+   "link": "https://s.click.aliexpress.com/s/NdpwztbAIgDMmxGbP8fFks7yUFfsHjzlImSYmA68h7xlMRgzueFsRgokQ9f9hcpVKttxtQE2VzIoqkXJXrpOr6uR3zv7mP4CDO9CddoFf4t0QE5DXPy8Pgjhz4irfQSEjEGUmy5yF3A5gJ9h3NYjLMgqIMqa3zcpq5E2BC3W5EbV40Dm9buQxWpZzw1lbX8Zm2kZtNIa4KyDieNjsH7IU6Yv8StELKVvT9r4eFAaXPGhwHsgaDqdNcmY116r3GC2YvsOopeiiZPhJrV0cwgOQDSkW93v7gVKDqPkXyZF1oSWa6wSAOeznMFVlVZbJSCfzdMQHMcUNoZ9Cf2i5VOnYxQYxUHwtQtiIopFf3593eNZzSdSIZIyQJRDzAzi5DO5JHatnC2KFnwTNfWfOBUv8XuvFgRGKJK4JqV3EHfNMcdQ68sAq5SWVeGJI3Y8QtC2RVrxHwtFFIvGZ222AdXkGoP3h3cU2uZZbH9htNGw8A39UbziZMOqy6utvmoZzQ8LpCZ7q9r1123yAMmsr4UZJI2lI1E3osdtSrM1nL6TZbhGGsqIV8BBKHTZKOjlUlzFH0HYmGVPY7o7WKhA5svZ45qB3dQApHElStXEiO4nBGhjMzPgaVFTkXIeZ5bPtNObOYXiv04rd9sibInKqo4mPvnfjQ2HxknNwcLtC3XKbjxLFlyU6WmAVN1vVhhpKFXpNtlEvf20Afmx9g8bW4NIfN1mbkt1ew5Op5b81xbUhgoFjrOXAI7jynsJF8z6HcBErXfZ95ZhcwrZv79jKQuFtlygzYlRv9k9EJL5fVOguHzbolIwSKungeYsXfluFqjLWGiKkX8037WYTpIjdFRiYnOoF1qwSIin2AboUHeSAHNthH4Hc4mN2gbXXGDBAnTuHaDKDd2RusTOfolxWg3mjHqYTFbDV7ayZZkyhhvSc21SR5R9FfakGlFJdOm9fz5o410HTGd5NhgfgOtoJ04jpuk9NBDCBcNw51HVz3XRWSxK7",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/Se2c740e3cf0f4b369d55c788ec15c038x.jpg",
+   "meta": "96% recenzii pozitive · 1027+ comenzi",
+   "orders": 1027,
+   "rating": 96.1
+  },
+  {
+   "id": "p1005006253358332",
+   "title": "1/3/5Pcs 2.0mm Thickened Slingsshot Rubber Band High Elasticity High Precision Latex Rubbe",
+   "titles": {
+    "en": "1/3/5Pcs 2.0mm Thickened Slingsshot Rubber Band High Elasticity High",
+    "ro": "1/3/5 buc. elastic din cauciuc pentru praștie, grosime 2,0 mm, elasticitate ridicată",
+    "it": "1/3/5 pezzi Elastico per fionda ispessito da 2,0 mm ad alta elasticità",
+    "de": "1/3/5 Stk. 2,0 mm verstärktes Gummiband für Schleudern, hohe Elastizität",
+    "fr": "1/3/5 pièces Élastique de catapulte épaissi de 2,0 mm Haute élasticité",
+    "es": "1/3/5 uds. Goma elástica gruesa de 2,0 mm para tirachinas Alta elasticidad"
+   },
+   "cur": "EUR",
+   "amount": 5.83,
+   "link": "https://s.click.aliexpress.com/s/NdpwztbAIgDMmxGbP8fFks7yUFfsHjzlImSYmA68h7xlMRgzueFsRgokQ9f9hcpVKttxtQE2VzIoqkXJXrpOr6uR3zv7mP4CDO9CddoFf4t0QE5DXPy8Pgjhz4irfQSEjEGUmy5yF3A5gJ9h3NYjLMgqIMqa3zcpq5E2BC3W5EbV40Dm9buQxWpZzw1lbX8Zm2kZtNIa4KyDieNjsH7IU6Yv8StELKVvT9r4eFAaXPGhwHsgaDqdNcmY116r3GC2YvsOopeiiZPhJrV0cwgOQDSkW93v7gVKDqPkXyZF1oSWa6wSAOeznMFVlVZDCxOHPU0TnwbMJQ0iapUsOxNVDxyN0GyT0ahG9wu66ZOO2WP3DsSOMFoNMJxK1zlBKrW6spnaHUqnYvg6nlnlajSQxrxQb7LOtXcsBwxHJnM0DRZ3Ei8rM4W0iRQNqlDXxHyWh0qF4AEHVDuGj76Lj2ueAXRsBfmBHoVXHAsgaBubcMQEAlm4xskyKlbd5UQKEijWHKlsE6Ewi4zqTomeOBllWItkxzmzTSGZLrYk5iQJjCpBJlvoj9PHmY1vTwbQqawBtyGSpqKhCd6KZF8gcjc7Jiae2Xsa1i0CpujXfayvEHNyE26LwADLg9JZiL5pwSwK2TAB4VPHgA6AvW3LlxA2xM8wmelAathGQkuCroEraLym5by0O7P7FdK7LMBwDcIlIeXAnMf7v1cWmeVil4lLGDDDZeSVPLnE3r2QHEZnc4OhtUABYIXmv4VcH3jKvPYW4O9xdf9KUOPDuHi0z4xXzitrJXQkmR9y4PPUuSnfwmcMo7lFkrubnWDkZ4nr4ndt7nanaN3mZN57hNASalTxcMlXgdgQdFaYxDl9cmSxvOCwC43jAEsbZQ4R6qWGbKkDkApoo2FJZasZ9haY12fZN0LkdV5JnSI7pudfzT8OXA8UMJ0lH2M1umzqbulwozMhYFXA1B0KmGnDscVuEZEr4rMqUivMPuVZqZ6ncqGSpuxtD",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S28d0070ba88144fa922084b6393698aaH.jpg",
+   "meta": "95% recenzii pozitive · 1959+ comenzi",
+   "orders": 1959,
+   "rating": 95.1
+  },
+  {
+   "id": "p1005007348759235",
+   "title": "10PCS Powerful Catapult Latex Tape Flat Elastic Band Slingshot Hunting Replacement Accesso",
+   "titles": {
+    "en": "10PCS Powerful Catapult Latex Tape Flat Elastic Band Slingshot",
+    "ro": "10 buc. benzi puternice din latex pentru catapultă Bandă elastică plată pentru praștie",
+    "it": "10 pezzi di potente nastro in lattice per fionda, elastico piatto per fionda",
+    "de": "10 STK. leistungsstarkes Katapult-Latexband, flaches Gummiband, Steinschleuder",
+    "fr": "10 pièces de ruban en latex puissant pour catapulte, bande élastique plate pour lance-pierres",
+    "es": "10 unidades de potente cinta de látex para honda, banda elástica plana para tirachinas"
+   },
+   "cur": "EUR",
+   "amount": 8.09,
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4okVcN9EWc2lqsQIn98atJwh2nQWJ9vchrB9OsNOvftFISI4m0RBbiNwj51dzoQajtjcAlKpDeEZu4ecaK4xs4Y5YHBKfuLItqaI3hZlELlK1nNgGa75WYEXa2LWqbLcEwLlbbVfXp7QHiBcRJJold69eIHXijkZFoDI4ifuxIOc98yC4QON1cRVEVKiJn47ZMKP1NCnY5HbYiPl6OwVgcaLlm4u3WhAUASXlwEkkiICO4cxku1rpeRjQkaNYujGmIwMXe9weuebFtOquk34rEd5S4WJTXx3FfNNmGvvU4zU7AJAkI95xJK2HshuQ4Zw2RAL9jj28EJLx33X4I9slBIhLHrh6Wl2OAbxoY5QI7JjiROk51fTcSH7CIcdOZpAoplgEq8HcKn6EgfBNYdCcI6SVeVkjIhNMWYlOSDYRGlrBHDs3j3NmH4sHQLlUtLOAhbOCsNlt8H6xQEUVc5CGTUKbu86k6Any851i6elx5Udp3ybORoZ0HFO4eIldc1DkEF8qbf3vMIoVNu024Za0BCycYZ7SHvMjQievCuUFBkcCo6Kmd6FUyHLMBuEOHAkP8H3F23hF6JLJne8afSwTarc34yv4W8Aixy0cNCtwNwaznn3ClaLWsnPYQ7SYb2LwVJcyoImkuB3BvI2XLmufL8m5YIW6q8Zla0hQnNo9vKr5BgsdBvrdIrWmZRj4vYuQcfnCsFbTlFQUs",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S4ab178a6f76040aab864f8de21bb1b59U.jpg",
+   "meta": "94% recenzii pozitive · 1293+ comenzi",
+   "orders": 1293,
+   "rating": 93.6
+  },
+  {
+   "id": "p1005006995722390",
+   "title": "Joyroom Bike Phone Holder Universal One-hand Operation Bicycle Motorcycle Phone Holder For",
+   "titles": {
+    "en": "Joyroom Bike Phone Holder Universal One-hand Operation Bicycle",
+    "ro": "Suport de telefon pentru bicicletă Joyroom Universal Funcționare cu o singură mână Bicicletă",
+    "it": "Joyroom Bike Porta Telefono Bicicletta Funzionamento Universale a Una Mano",
+    "de": "Joyroom Fahrrad Handyhalter Universal Einhandbedienung Fahrrad",
+    "fr": "Porte-téléphone universel d'une seule main pour vélo Joyroom",
+    "es": "Joyroom Bike Phone Holder Bicicleta universal de una mano"
+   },
+   "cur": "EUR",
+   "amount": 31.99,
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4nwTiLoG6PEbDqEgPkg8OZIZ9vOOquVC8CEJr0ESaoOXaet6dolQGaEH383FnazPH79mEFQAAAKkUV0c865J5guzyNYJWJPoEDhYVwxR88uCl6cSnEyoWd5rN6CXKP9YlJzzIQfwsi7gMm4YMz4UI2f6yxY8Sd9M3IxjK1oBNw1kbWmJqCxG3NZSQ1LNuvacGqiK2PoW4pv9ynGJ0NKESz8CMRZNX0qvsBmhHxMFIMihLVQwMvUnvZfXiOHbJ0PWDG2Q2ENdFsnbMnnbQS7fat9uzdfS8pdPl79WX6m0DPSykoIRPK2HahTxlbqoPAv7Jui15cRmZHq288hAvSZeuuplGeMguqxzyL8QgySMbtDhyNM92fEZ2La3ZOmUAIG3qgvEutpioT6bcDrN9V9opfRVg0GEQkpSJRaDaUPhahM837Wm6kAJVrmUtEKpDQKUY86ysLmZtz21yFFQIaewboQiy9BZ0EUCx5RDZWZzxaZ2g3R0AWrJE7lN6Ue2biBWs8gV7dziSgW1XYyF5vI7o7Wm93IbdkJP7n4WL2uBo9yGS7cRCK3rx8jqWbSqHmkjsXsW7AQK9vELkV8eJT2GUt7hFku76j5I79rXf8qz0SPGlYed6xmNxQCnaKOEQ5WYyLtIMsluNFKNeEKRmwQUUHKtBjOqwUhkbcxsyNKtmRHcNmm9LV9rDrHytPPGFkJe5nHjX1xhcMdmwg",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sceb227e50c294f31b036439aacafc177O.jpg",
+   "meta": "98% recenzii pozitive · 2533+ comenzi",
+   "orders": 2533,
+   "rating": 98.0
+  },
+  {
+   "id": "p1005005292639616",
+   "title": "Joyroom 2024 Bike Phone Holder Universal One-hand Operation Bicycle Motorcycle Phone Holde",
+   "titles": {
+    "en": "Joyroom 2024 Bike Phone Holder Universal One-hand Operation Bicycle",
+    "ro": "Joyroom 2024 Suport telefon pentru bicicletă Universal Bicicletă cu operare cu o singură mână",
+    "it": "Joyroom 2024 Bike Phone Holder Bicicletta Funzionamento Universale a Una Mano",
+    "de": "Joyroom 2024 Fahrrad-Handyhalter Universal Einhandbedienung Fahrrad",
+    "fr": "Joyroom 2024 Porte-téléphone universel à une main Vélo",
+    "es": "Joyroom 2024 Soporte para teléfono de bicicleta universal Funcionamiento con una sola mano Bicicleta"
+   },
+   "cur": "EUR",
+   "amount": 19.09,
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4EJK6qlw1rcavAQqukvLhe9fUDDTZzeZo7uUZtuDyq5h5uP726FFwsI3fjJFXwqP41nYR8W1bcXGwI8a6CGIJm9Re74t3jlgL09j46Rb0XAv4M9ucHWEOTlN36Lnutx2i0JqDWgRRzdeh3WtPpvAj527MbWlt9WEjasyPAtYUGHaV5WnYDIGDqe0DrxWzGLDWZQ9oNXRtIgu5F1ac1jxV3oimPBBzZx0WDrDu2e9w6lJ4p3isRWi6RJOnT4URbapIqjpd1yf55XL5jYymVv9k2E68LT8QL3wJrnI6yMxkLqb4ME6dB9KVmcivCM81weTCeMdtGo8t95tDIbMocYngx4p774uzoXH2orLtityZQfdcvDGtFWZKOGcGn64s2V23P5sklsWQvw3UaaK3tF4kmTytu8NnQRYIH7EB6FnE1Scvsq8oT6ENfm18njDpkGH7dtNkZ2p276jr0pMO0rOL0Zwj4LvCo7oZMJmu6uMNOwqphHBcHmHWEKmxDLBsM45zAiPLFHFoiBoqI3itbe0wc1HsDX7z1IC3fZ2P4uFAQ3OGAtDa9KA1jYFbyLNvPNCwy65W2TxSmLQlEiu9iwVtGNU5tEBdRJcKDSFBr7iVmwr9wlghmhObL39CmDFB0lNOPGd6IX4f43m6nKI5PJlbhqM3XEX5U8LUDAIHFRvUzXuY2lRMDlFwc21nqfpvtdp3iBGePpe5yMBPX",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S1a1be2bb48494e7dade47e7821caccbcD.jpg",
+   "meta": "97% recenzii pozitive · 2236+ comenzi",
+   "orders": 2236,
+   "rating": 96.7
+  },
+  {
+   "id": "p1005004403254947",
+   "title": "Bicycle Motorcycle Phone Holder Aluminum Handlebar Bike Phone Mount Adjustable Non-Slip fo",
+   "titles": {
+    "en": "Bicycle Motorcycle Phone Holder Aluminum Handlebar Bike Phone Mount",
+    "ro": "Suport pentru telefon pentru bicicletă/motocicletă Suport pentru telefon pentru ghidonul bicicletei din aluminiu",
+    "it": "Supporto per telefono per bicicletta e motocicletta Supporto per telefono da manubrio in alluminio per bicicletta",
+    "de": "Fahrrad-Motorrad-Handyhalterung Aluminium Lenker Fahrrad-Handyhalterung",
+    "fr": "Support de téléphone pour vélo et moto en aluminium à fixer sur le guidon",
+    "es": "Soporte para teléfono de aluminio para manillar de bicicleta y motocicleta"
+   },
+   "cur": "EUR",
+   "amount": 12.16,
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4mUaaZtur4xzq72aIgIOUeVk0m6laTtVLoiAz4QYlN3an6acbAmwJzLpFTMUJEzwmBGiRKY7BpLjicjUViw7JyUM9cgyxQwWMkUEBuahBpsiAf3jGtGjEs14oyPZfQ4f2imIUH8sP9tJhbKdUZEd30SGhkhaAlL7jGq7zF7FvSNhwpycMSFF7nyf9JNSICP3ygCAFPisE7t1TWPShTqvX8vzjdGhP5BO8bJZlKFLRsXyGb3kVYLgHi0SAbsMgCLjVyn6mftAYgPljO46HeZy0QeHyz3hyZKiVAKKIsBxkVRCYJ3gjULbUAE6En5g7x3kAUgNWpk3Q7knT23xWU24bZK4Exi4sc4a50R2tPRwnuvJbjZNED9RyCWKdsiHQLGKEHznn2gEzlkXl4JgzoFxE2DLsa2WFBaPjraodjMgqjYaEhjMuo5gLGw9KP3H5RhH1OL8781G4komRHOQq7K3LKNdS6c7YoMhyJcdAlg78Dh1FHSu6DP0pzohhYcv8TVycaw9PLzlmOns3eo3NSUj04KeK8m2FTROFk6iykxOWGRqm3dPs7AvWhDz4TjpMC6vzRcm7AjIC3ZcL2NI68IRR1RiRGzq3TBNXRPRy3PY84rGASWBabylX3UrJfUzph4ymvc7LKfG6NF2MksWWqdYRYuzLY7nmeWYTmw7R3GWY1D2FYw9zMbfDJpEvlplxXGXzyPGRuEl3zMoo5",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S67b38dbc907d45658b38902b643896170.jpg",
+   "meta": "95% recenzii pozitive · 1755+ comenzi",
+   "orders": 1755,
+   "rating": 95.3
+  },
+  {
+   "id": "p1005006727685586",
+   "title": "Freedconn R1 Plus Motorcycle Intercom Helmet Dash Cam Bluetooth Headsets Handsfree Communi",
+   "titles": {
+    "en": "Freedconn R1 Plus Motorcycle Intercom Helmet Dash Cam Bluetooth",
+    "ro": "Freedconn R1 Plus Cască motocicletă Interfon Cască de bord Bluetooth",
+    "it": "Freedconn R1 Plus Citofono Moto Casco Dash Cam Bluetooth",
+    "de": "Freedconn R1 Plus Motorrad Intercom Helm Dashcam Bluetooth",
+    "fr": "Freedconn R1 Plus Casque Interphone Moto Dash Cam Bluetooth",
+    "es": "Freedconn R1 Plus Motocicleta Intercomunicador Casco Dash Cam Bluetooth"
+   },
+   "cur": "EUR",
+   "amount": 82.73,
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4EITDFAnxQzapaTEhVwdwgXwOksD193ntNapaxVPlRDQzwIt3wXBva3cqrRE2SiuppEeT2pfLffW3WaekxyVAPSxWSZRSyRz73ACrqbkKmxErArVyiGwszRWyj2puN7PFlWf5v1GIqWfmVnq8apaaGEmUxsxi3q8OrpAe0fMKBLeHkorvYp1NkL3xbT6KZBqfUQ95Xa5WvT0vKb4TkbRqILDu4Gv4tAhSsHM5eC9X5vPwznObCXTD7OJub9jgeF8ao7EClIAaQUcUm0ODIiUG6PwWk4ZbhKlANBiJfImbbgXhouSXW9i7WKqqmgI1XXjjloEa1R1uUdsBK1lS3zayj0noLbBf2trq3oEzV9xE7raPuRdkHxanIVgtE9fIQFo5GoOWf4w4TBCPltYA2FrUFLvaY4jLwCki9c6MoIeDi0eo6FnxV90HPbS3SEDDVrLeQsUiotYGXprRUxUtVbDHhBGHplpaqzwmp6nvGi6W1JQXB9QPm4DxZlQ3XURg9QLc9PAvNbvrsmPQ2PJN48xjH43lTqeiCoQeRbYAfnp4iu875qRugGrBcrvO9IrLLlDFL5HdKQw5XYUMTlwfYu2rjJJbUHD8bgUpMNtxNPDeKyMnqXRvQtsoniERFGOIaGdx2lUn2VpA3MQGNrV15zPiycMoCHHvQ2cW16i1K2OPROOnQxOEbBtwiKIHrtc2dgQZzRzo0a3w8JZ1S",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S44a5ec2d72f346d9bd593d4024fec7acP.jpg",
+   "meta": "98% recenzii pozitive · 998+ comenzi",
+   "orders": 998,
+   "rating": 98.0
+  }
+ ],
+ "orders": {
+  "days": 30,
+  "items": [],
+  "error": null
+ },
+ "clips": [
+  {
+   "hook": "Waze și Spotify pe un ecran mare, în orice mașină",
+   "kicker": "DESCOPERIREA ZILEI",
+   "name": "Adaptor CarPlay și Android Auto wireless",
+   "cards": [
+    "Fără fir"
+   ],
+   "orders": 4631,
+   "rating": 92.4,
+   "price_text": "160 lei",
+   "num": 189,
+   "end_sub": "Prețul poate crește oricând",
+   "benefit": "telefonul se conectează singur la mașină, fără cablu",
+   "show_proof": true,
+   "description_ro": "Waze și Spotify pe un ecran mare, în orice mașină 😱\nAdaptor CarPlay și Android Auto wireless – telefonul se conectează singur la mașină, fără cablu\n✅ Fără fir\n⭐ 92% recenzii pozitive · 4.631+ comenzi\n💰 Preț: ~160 lei\n👉 Link în bio · caută produsul nr. 189\nCui i-ar trebui? Dă-i tag 👇\n🎵 Ambiment – Kevin MacLeod (incompetech.com) · CC BY 4.0",
+   "description_en": "The gadget you didn't know you wanted 😱\n2026 Wireless CarPlay Adapter 2-in-1 Wired to Dongle\n✅ Cordless\n⭐ 92% positive reviews · 4.631+ orders\n💰 Price: ~160 lei\n👉 Link in bio · find product #189\n🎵 Ambiment – Kevin MacLeod (incompetech.com) · CC BY 4.0",
+   "hashtags": [
+    "masina",
+    "caraccessories",
+    "cartok",
+    "oferte",
+    "reduceri",
+    "romania",
+    "fyp",
+    "tiktokmademebuyit",
+    "aliexpressfinds"
+   ],
+   "bullets": [
+    "Fără fir"
+   ],
+   "duration": 19.0,
+   "used_seller_video": false,
+   "voiced": false,
+   "voice": null,
+   "voice_error": null,
+   "with_music": true,
+   "script": [
+    "Waze și Spotify pe un ecran mare, în orice mașină!",
+    "Adaptor CarPlay și Android Auto wireless. Telefonul se conectează singur la mașină, fără cablu.",
+    "Merge fără fir.",
+    "Peste 4 mii de oameni l-au comandat, cu 92 la sută recenzii pozitive.",
+    "Intră pe linkul din bio și caută numărul 189!"
+   ],
+   "music": "Ambiment",
+   "file": "clips/trendixeu-189.mp4",
+   "poster": "clips/trendixeu-189.jpg",
+   "created": "2026-11-26",
+   "id": "p1005010763999410",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4okwHDjjIRB5ikquIprazvZq2Re2tKiJh6pp0qafMLeZ1Bbxf9JCXZxq14SmPxJmKOMYNQNyzYBxrTkTifEyWVBEZE7ltFF9sBue0CUmQ9ERaewi3SwndriiMc96AxgSMGRgVjAJTjzgSLcWWhbTlNOHfJoB5sEPFcW4f9D9vkOa2T3wtodesW9JEAzhuKP5BknaTwkqEgvGkzGBKkPMADuPGKNfl2Thd0W3nnbgAp5eIlIkrG2xePPq4qs5kuH2IuV9d3IqQGwz4QSoCBvd6jyk8gnHIgdtPYYDKgnJoBBj5rWBEfnkC6MCzXpBbGLuXOhKKrmLhcbbddRNZLVG6DDAkDJXs7XsdgKF9xScQQFgx6FvX5lSBxbUuoQ2rqLBK2wW9FvPUxigSXlTDMiVZECFra7ZwDxTJG0EaOVmMAizCWJtg4djN7nhNarE1a1THlobQbF8FrBs2R92bzP6jUTbc5pNooc36a2zCsYMvuL2LV4Q9rFS85mpdOrUqcgLeZCIqWsZTfONwUt9SzfKSoGUkWPAWeYadsrLsnewZSt1x9Ip6gEQbNxoTZQkbomh3IkJi4F0S8PTGWqOkAENZ2s4uesq4OOammIxU0rB5bIQK5WYWfoVri1MLIxNerFkvqHBW2eYKelIn9zjL1UHTmFpnrrdhvslbcXbHM02DqvpUs5vHA9ObmzEk5VnVQeWXRajQUJpCTbnt6",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S195608e6909849968e6d93619fe9d106x.jpg",
+   "title_ro": "Adaptor CarPlay wireless 2026 2-în-1 Dongle cu fir la wireless pentru"
+  },
+  {
+   "hook": "98% recenzii pozitive",
+   "kicker": "GADGETUL ZILEI",
+   "name": "Convertor de putere 4000 W Invertor de CC",
+   "cards": [
+    "Putere 4000W"
+   ],
+   "orders": 1117,
+   "rating": 98.0,
+   "price_text": "256 lei",
+   "num": 186,
+   "end_sub": "Caută numărul pe pagina mea",
+   "benefit": "",
+   "show_proof": true,
+   "description_ro": "98% recenzii pozitive 🤯\nConvertor de putere 4000 W Invertor de CC\n✅ Putere 4000W\n⭐ 98% recenzii pozitive · 1.117+ comenzi\n💰 Preț: ~256 lei\n🛒 Link în bio, numărul 186\nCui i-ar trebui? Dă-i tag 👇\n🎵 AcidJazz – Kevin MacLeod (incompetech.com) · CC BY 4.0",
+   "description_en": "Nobody complained about it 😱\n4000w Power Converter Inverter DC 12V To AC\n✅ 4000W power\n⭐ 98% positive reviews · 1.117+ orders\n💰 Price: ~256 lei\n👉 Link in bio · find product #186\n🎵 AcidJazz – Kevin MacLeod (incompetech.com) · CC BY 4.0",
+   "hashtags": [
+    "gadgets",
+    "homehacks",
+    "oferte",
+    "reduceri",
+    "tiktokmademebuyit",
+    "fyp",
+    "aliexpressfinds",
+    "romania"
+   ],
+   "bullets": [
+    "Putere 4000W"
+   ],
+   "duration": 19.4,
+   "used_seller_video": false,
+   "voiced": false,
+   "voice": null,
+   "voice_error": null,
+   "with_music": true,
+   "script": [
+    "98% recenzii pozitive!",
+    "Convertor de putere 4000 W Invertor de CC.",
+    "Are o putere de 4000 de wați.",
+    "Peste 1100 de oameni l-au comandat, cu 98 la sută recenzii pozitive.",
+    "Linkul e în bio. Caută produsul numărul 186!"
+   ],
+   "music": "AcidJazz",
+   "file": "clips/trendixeu-186.mp4",
+   "poster": "clips/trendixeu-186.jpg",
+   "created": "2026-11-23",
+   "id": "p1005011941464155",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4kY2BI3vlZc7KRPBSpFSWKkm9sqO6Eb5tXPeHFyroUNCw67bwIoGDkplGfC0inwD1eDStrfStNGscaEl6S5f3yQaYLWM3EgCFLpTNXBqnhL1ojpKHuHxWArMJ5IipueHCtXZOmxRZvdPVbeE0H15VfF7tSQTNivYDfKVQHlkErhhi8aQWImxRD1HoyCU2DXuPzr9Z8NjfPASDF09zhja8ifHxWlw9jsA1MMbxQsDjAHUWNMQBbj0TSr0WUfCzhlX96kBY0Ge9TA6cP8p8LZcDgDwzhStKwhnYjZhvGgSf56SKNwzvssIkz7Guv3xEfLweqfAYajEnOSsD4h8bA9FZnlgTd2NDSiAlUj6IQe27vfpznhQaYpkPHBQqbbwXutaDeATxf1vvvQQjLhfqfK7UiQGt09dop3yQk2cAmAd9XTBlM5LqO5FUKcT4mt1FRYLCZqyWIJ85Wi6woIuxIbcQDAv8WFGTRm4OG3SOujIdVQ614Rf7a4RrtF3hp8C0FriLUOAk83U4hM0DAq5xHztZnYrInEu17H113T6Cit1iR9ZwbgJgCLtOCXtM8yAk5ir3DqTKtxxC3AuQ426fytqG5w5AmeIN671KuvDzoFgcoTLvHJ1dqaf2jxKhSh7RkJiY6AggZbUHdHZNuc3WwnZl2owsUCJVJgpmZaRQC2xzbtBqH6mm0Ro4tvh3arV6aUqVuMnZhM8qFCIfI",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/A8290c1cd2b034f5099387e30566f82b6E.jpg",
+   "title_ro": "Convertor de putere 4000 W Invertor de putere CC 12 V la CA 220 V 230 V"
+  },
+  {
+   "hook": "4.906+ oameni au luat ecranul CarPlay",
+   "kicker": "DESCOPERIREA ZILEI",
+   "name": "Adaptor CarPlay și Android Auto wireless",
+   "cards": [
+    "2 în 1",
+    "Fără fir"
+   ],
+   "orders": 4906,
+   "rating": 93.4,
+   "price_text": "154 lei",
+   "num": 181,
+   "end_sub": "Salvează clipul ca să nu-l pierzi",
+   "benefit": "telefonul se conectează singur la mașină, fără cablu",
+   "show_proof": true,
+   "description_ro": "4.906+ oameni au luat ecranul CarPlay 🔥\nAdaptor CarPlay și Android Auto wireless – telefonul se conectează singur la mașină, fără cablu\n✅ 2 în 1\n✅ Fără fir\n⭐ 93% recenzii pozitive · 4.906+ comenzi\n💰 Preț: ~154 lei\n👉 Îl găsești în bio la nr. 181\nTu l-ai lua? 👇\n🎵 Airport Lounge – Kevin MacLeod (incompetech.com) · CC BY 4.0",
+   "description_en": "The gadget you didn't know you wanted 😱\n2026 2in1 CarPlay/Android Auto Adapter Wired to Wireless\n✅ 2-in-1\n✅ Cordless\n⭐ 93% positive reviews · 4.906+ orders\n💰 Price: ~154 lei\n👉 Link in bio · find product #181\n🎵 Airport Lounge – Kevin MacLeod (incompetech.com) · CC BY 4.0",
+   "hashtags": [
+    "masina",
+    "caraccessories",
+    "cartok",
+    "reduceri",
+    "fyp",
+    "romania",
+    "tiktokmademebuyit",
+    "oferte",
+    "aliexpressfinds"
+   ],
+   "bullets": [
+    "2 în 1",
+    "Fără fir"
+   ],
+   "duration": 20.8,
+   "used_seller_video": false,
+   "voiced": false,
+   "voice": null,
+   "voice_error": null,
+   "with_music": true,
+   "script": [
+    "4.906+ oameni au luat ecranul CarPlay!",
+    "Adaptor CarPlay și Android Auto wireless. Telefonul se conectează singur la mașină, fără cablu.",
+    "E 2 în 1 și merge fără fir.",
+    "Peste 4 mii de oameni l-au comandat, cu 93 la sută recenzii pozitive.",
+    "Linkul e în bio. Caută produsul numărul 181!"
+   ],
+   "music": "Airport Lounge",
+   "file": "clips/trendixeu-181.mp4",
+   "poster": "clips/trendixeu-181.jpg",
+   "created": "2026-11-20",
+   "id": "p1005011643938292",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4otCw5mrPDtq5M3OMI5ec3815GUZ5ZgLuUmpuEBDgVltwSPHHBIqc06VN1AN6QfHstlXeM3EmCSmnu13Czgze82tmT4mqEFHN9iEkoT1G4Fy7wOKHYRQONXu1zzjaNrwMIvvaP50wwhHcKfVozPzHipSKVbu3QYcrZSxAxI0n9DrYTveSLjwfoXmeiCECZGS9JTeJiZgwHCxUUe6Vi8uIVjQDzPykx9N4K8adfvAQ80Ft52CI5J9KAB4d7x43jSnpFiwndxav5yuoQVNN2Q585mnJdywAgz10Po03l0DjUEzTpb2doLgyjSDnflw57MlyWeLE3Z41nJBsXA3ZlOjvb70Xq0MwXaEm1CCMpJ6ykxxyX4YHDf3BcmA439SRgtFj50wr1qneZ2jIDU5WDUnlqVerBmp1R4YmlhacCbb1CRHpkB4zwd3UwrxVTvzTgqspMSBHB8PMJBG6zGfKwQQnSyihDDrlmeQT3G24qi1p9W3zoWtfKTN1PUy2UesfgPepjLCPhxoSp38nt9RseHfJ6xnIBlyNSZA2oxJ275Zwh1Op94gzLwDXGp1L3Fz1O1vEdPNxNoUMAKimnAiJymXU5nIOq8cUYSZMQjwqz3Eg3sKw9NcoRUrSimn8YZqcU2UXQCRjJP9O2E2o33PKeXoXoorhuAbIg8Tovqp804rWloQmGAGZj7sTaONG5KxiRcw69rCrTdJFCW4rw",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sda6e651bdfbc4819a2d35c85fce6b500q.jpg",
+   "title_ro": "Adaptor CarPlay/Android Auto 2 în 1 2026 cu cablu la dongle wireless pentru"
+  }
+ ],
+ "voice_demo": null,
+ "clip_products": [
+  {
+   "num": 193,
+   "id": "p1005009330164374",
+   "title": "Laresar V10 Lite 38000Pa Cordless Vacuum Cleaner Handheld Strong Suction Button Smart Home",
+   "titles": {
+    "en": "Laresar V10 Lite 38000Pa Cordless Vacuum Cleaner Handheld Strong",
+    "ro": "Aspirator fără fir Laresar V10 Lite 38000Pa, portabil, puternic",
+    "it": "Laresar V10 Lite 38000Pa Aspirapolvere senza fili portatile potente",
+    "de": "Laresar V10 Lite 38000 Pa Kabelloser Handstaubsauger Stark",
+    "fr": "Aspirateur balai sans fil Laresar V10 Lite 38 000 Pa Puissant",
+    "es": "Aspiradora inalámbrica de mano Laresar V10 Lite 38 000 Pa potente"
+   },
+   "created": "2026-11-27",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4mlAzzu4zfhnc5qOgnHPuFKTxQKlD2NyhQILn4mZHG7EIl6Vmx4H2QDcsyx6zRSXgehiE3cI8yEfeNlZCoi0pfpjit04FtmAis0tX4xhadqgoralSCh7rhXrVf9jQvfUnKrwM6iHj7GPFdyELCSHaZ04fxJpNMGzjcJ7nJUk3fWL91jLs1CJ9Kz8rteHhmHH9y3gdve2m9DoaxXUZeEH2dx3ctCdd0kfLCRBeLdgsB7CRjWcbMN77lyKVdeISGuN15av5Xv4bo1fnupCpZ8ihkmF3q7q1wG2Fd7HXse7x8h0fhoAQiTkoiThFhJqB3gCmit3935VkaiyjExM9u4Tx4FWMXE629xBPePFt94gK45kQr7dhzw81AhHBp77uAKASHxdOfXeTBzJzaURBmKHgfNIY6moBq1K6H8ayvKK4yuvpMByOAZRs3pWEl8jyiR76e1sJqzJ8OVNojJxb0G71b5At7Ea53lurheGYFj3DRcTCyn1ZpQ13MowchU8zMAavmOyCwS5K7GERQYI2LEU9Ucms63R7r8qlmnafPKvzq2rO9CQRBuJpKiGevoEC1nT88XAKshA8mKBige3Cob51uLXM62r6a2sZpYxbVurjUVO3voEsE1vNbb4stWqmJSX7nBfyop1qGMAxQVk148T5SUa2ih9fAkq9VQU350TxQe67eqo8v3wso8HWNqRptRWGPmSGhQe9aSnnJ",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S256eac4634d14efbbf95858591fb0c85o.png"
+  },
+  {
+   "num": 192,
+   "id": "p1005012692919177",
+   "title": "450W High Power Wet Vacuum Cleaner with 15000Pa Strong Suction, Dry-Wet Mop Vacuum, 1.2L C",
+   "titles": {
+    "en": "450W High Power Wet Vacuum Cleaner with 15000Pa Strong Suction",
+    "ro": "Aspirator pentru murdărie umedă de mare putere, 450 W, cu putere mare de aspirare de 15000 Pa",
+    "it": "Aspirapolvere per liquidi ad alta potenza da 450 W con forte aspirazione da 15.000 Pa",
+    "de": "450 W Hochleistungs-Nasssauger mit 15.000 Pa starker Saugleistung",
+    "fr": "Aspirateur eau et poussière haute puissance 450 W avec une forte aspiration de 15 000 Pa",
+    "es": "Aspiradora para líquidos de alta potencia (450 W) con una gran capacidad de succión (15 000 Pa)"
+   },
+   "created": "2026-11-27",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4E9iKjnUVX7CJHRH1dKEaYFBNufl4QSTkNxzpKvnuOt95FhdIrfLA6VrJd9eo3Yx0cUftuGapnXjTW299NelFT42jVvzv3UjG6HgplqE0ijL2lvcsj8U5pRVHN381rCRVlPfsM91AXOQeXHAslgaEUza3Pz4fdL6pRBrR9pvAtkSfVqG9ZJQBEbl2XQ2m8QVLdWTJvJ4hMksiD31yVLaFaTPwtMq2uI4DifqwonUrIEm1vxwrvWVI2xGIfZAo2cpQMyTkFUudGRC0FnLmcpTw2KQbirssn2MRBZtMjEBwLQMT9p540ncJSjnx26cv8nkEPqsxhSlcERq4QIkPuITmCLwGE6nwNF8uuorWIu1iJtjFahjUIBXtUHlbg2fPlCYZGa7tv8eoGai0R2zxwU8al4IvJPrwYjFoCW4AkeWMkUWimRCFDC8hopPy2A3KHPZ7DvMoUhIGSH7NwB1sH8xQTfzJSUR8afUZQwaQ2qhrdyR1roYOvDus88c8IIDGn1l1FvXeogJaf2uW4brS81TxjeFGhNuRJkqM6ExgQLhdFFPMaJx9E2TniMyGontP4sNNXACHmMV6MLu8fZFIKsMX6HDxfoxlZih9SG0Ft9WGDY03ivhFhM8PmXgAVnbVlB79gABhKCt1yXmOjL8hBtG1EdvwYbamu8ZpWFK5JcsFMqc7danwMIANsOSVZwEwG0FnKpXJhiNup1dBQ",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/Aa69ada2448b54baa98ce1e6445d10186T.jpg"
+  },
+  {
+   "num": 191,
+   "id": "p1005010172124146",
+   "title": "Portable Carpet Cleaner 750W 15KPa Portable Spot Cleaner for Car Sofa Pet Hair, Spray Suct",
+   "titles": {
+    "en": "Portable Carpet Cleaner 750W 15KPa Portable Spot Cleaner for Car Sofa",
+    "ro": "Aparat portabil de curățat covoare 750 W 15 kPa Aparat portabil de curățat pete pentru mașină, canapea",
+    "it": "Pulitrice portatile per tappeti 750 W 15 KPa Pulitrice portatile per macchie per auto e divani",
+    "de": "Tragbarer Teppichreiniger 750 W 15 kPa Tragbarer Fleckenreiniger für Auto und Sofa",
+    "fr": "Nettoyeur de tapis portable 750 W 15 kPa Nettoyeur de taches portable pour voiture et canapé",
+    "es": "Limpiadora portátil de alfombras 750 W 15 kPa Limpiadora portátil de manchas para coche y sofá"
+   },
+   "created": "2026-11-26",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4EyGeKHgaCGkCwbf1V9GLNtHKS1MNkw3RsxR6t1s5xOPBQpBaGVsxdpOcVEeGmUqlmGPsO0s1vYWMyImFd1yxy4lTlyOkJTbJ7nn9WFnqYHNeuQV4VqfEStmk9KvR3NEfYc2DJyEBPquDfTkkTJ3Vw2YFO2djFtkya2PCLaJbGPnoIYfr6AOWCYhZA2KwQJdYQatY9mXx3ErBaLpg0Tz2xN5UJQuoBv9kjqnmGa9M4g47TrPON11i3reg1EJ7DXI8lTz7GT3WwvPrFwJZXs5NMKkVn0myIhGOjQGEyPuQBvbt427APqf5JCfrdq4oTOVlqLYtsW5G5AWmXpREeixFgTkXgoTbZm4nBZ4OwQPzseNpaO8sSoc80Pmn1VsvHWuGFqGfY9mWJSnW9DIJOnVBIEVcM1YrKV1ttGl8jbIwm1Fg49WNJ2ZkllZJZNP1z82oFQQnzHBslbTMl6gzvqJ1Kf4mQ7oR5gl1kXqdrdxYsA2meiXbOuCDLdSZoFzejnlu4Q18zXQgYedu1ALiABSAtfT5z8Phu4FZ8KMyCPT4mqVsUBh8l5t6W5BLfwo1eWnijfuWWrourPYz7LJRTcnBuV90DrVT1ZUSnva6LcL4k1J24KDC4oCtvVlDx185bWJEUcOg0pc2EkhMRvyC8qIN1ouAIaWWEcOxXcM3EedLMGc4BwFYD8kek037bS98HwUULE7GOseMHKPtq",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/Ab332cc6164ba417ea7c4c3d305d8f04aA.jpg"
+  },
+  {
+   "num": 190,
+   "id": "p1005011810877265",
+   "title": "70mai M310 Plus 2K Dash Cam 1440P 143° FOV Night Vision Smart Voice Control 24H Parking Gu",
+   "titles": {
+    "en": "70mai M310 Plus 2K Dash Cam 1440P 143° FOV Night Vision Smart Voice",
+    "ro": "70mai M310 Plus Cameră de bord 2K 1440P 143° FOV Night Vision Smart Voice",
+    "it": "70mai M310 Plus 2K Dash Cam 1440P 143° FOV Visione Notturna Smart Voice",
+    "de": "70mai M310 Plus 2K Dashcam 1440P 143° Sichtfeld Nachtsicht Smart Voice",
+    "fr": "Caméra embarquée 70mai M310 Plus 2K : résolution 1440p, champ de vision de 143°, vision nocturne, commande vocale intelligente.",
+    "es": "70mai M310 Plus 2K Dash Cam 1440P 143° FOV Visión Nocturna Voz Inteligente"
+   },
+   "created": "2026-11-26",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4Fc2FAayvxJXJzfsw6NldqcBD4KMo4pSoL13u4B5T2PbK0il2QhmotsXx2bCptjvwnGpiW9qvXs1EoXeZTmXbGjxe2FljBCAjqSQmEqyktKNpEL7Dhj4biDxme1ZgFpNDczRAR5XYz2QBtiKLXF7qjygpn9rVMa4OQOK7HMplosFAZNCs6HkXQ3Zzms2rVoSzOAq0QNpbQZGZnHesgAHH0YrUQmTsEzANfekU0CqQeezVkYPCEnOKjIxcskNxGLfmG2jaJoZZTPShuzcbbWMj6nXbq1D8tkA1gkrwYSjiNHCgEx1Xay90Qm7wWZlJ2eEX7GO6ZFt0VVQd2LdgDtqPNtQV492NATv9yFNwZbXY8w24bA7ebn5X6flKyf27wFhGbaqdHPeUTcIK0hY2Y7klx0FleU0Jk7vEINCxWxVsfPT1wkvcEAG3QT5Wl4hCarRtHewxUyBBwf6YyAIc0zDl0KVo4bwMgdaVxeyzxmmwGZLKU0RGmbK8uDDpYzieMlIMdIhIlSXkFKUQQnswPwwKYpMAGBaB3qfQrnzVcplu8VKZ6eCB8WYQDKtksb53ew1uK12tcqzTZEo50PYQq4jYtk4AmYOGaJnpkdQFM9dl71Fdq27iMgdbVaNEpiWJ1O8kSmMFtDVUkshWqx3Xu39AZ2AjpjCni2A2oycL79KVLuxQkBDGkvPZjYLqOorThOkDgdLZ9Tv9TdTmC",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S96e799044fbb473db0b100c66d80f395O.jpg"
+  },
+  {
+   "num": 189,
+   "id": "p1005010763999410",
+   "title": "2026 Wireless CarPlay Adapter 2-in-1 Wired to Wireless Dongle for Apple & Android Phone Pl",
+   "titles": {
+    "en": "2026 Wireless CarPlay Adapter 2-in-1 Wired to Wireless Dongle for",
+    "ro": "Adaptor CarPlay wireless 2026 2-în-1 Dongle cu fir la wireless pentru",
+    "it": "2026 Adattatore CarPlay wireless 2 in 1 da cablato a wireless per",
+    "de": "2026 Kabelloser CarPlay-Adapter 2-in-1 Kabelgebundener zu kabelloser Dongle für",
+    "fr": "Adaptateur CarPlay sans fil 2026 2-en-1 Dongle filaire vers sans fil pour",
+    "es": "Adaptador CarPlay inalámbrico 2026 2 en 1 Dongle de cable a inalámbrico para"
+   },
+   "created": "2026-11-26",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4okwHDjjIRB5ikquIprazvZq2Re2tKiJh6pp0qafMLeZ1Bbxf9JCXZxq14SmPxJmKOMYNQNyzYBxrTkTifEyWVBEZE7ltFF9sBue0CUmQ9ERaewi3SwndriiMc96AxgSMGRgVjAJTjzgSLcWWhbTlNOHfJoB5sEPFcW4f9D9vkOa2T3wtodesW9JEAzhuKP5BknaTwkqEgvGkzGBKkPMADuPGKNfl2Thd0W3nnbgAp5eIlIkrG2xePPq4qs5kuH2IuV9d3IqQGwz4QSoCBvd6jyk8gnHIgdtPYYDKgnJoBBj5rWBEfnkC6MCzXpBbGLuXOhKKrmLhcbbddRNZLVG6DDAkDJXs7XsdgKF9xScQQFgx6FvX5lSBxbUuoQ2rqLBK2wW9FvPUxigSXlTDMiVZECFra7ZwDxTJG0EaOVmMAizCWJtg4djN7nhNarE1a1THlobQbF8FrBs2R92bzP6jUTbc5pNooc36a2zCsYMvuL2LV4Q9rFS85mpdOrUqcgLeZCIqWsZTfONwUt9SzfKSoGUkWPAWeYadsrLsnewZSt1x9Ip6gEQbNxoTZQkbomh3IkJi4F0S8PTGWqOkAENZ2s4uesq4OOammIxU0rB5bIQK5WYWfoVri1MLIxNerFkvqHBW2eYKelIn9zjL1UHTmFpnrrdhvslbcXbHM02DqvpUs5vHA9ObmzEk5VnVQeWXRajQUJpCTbnt6",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S195608e6909849968e6d93619fe9d106x.jpg"
+  },
+  {
+   "num": 188,
+   "id": "p1005012471340417",
+   "title": "5600PA Ultra Thin Window Cleaning Robot Remote Control Automatic Household Electric Glass ",
+   "titles": {
+    "en": "5600PA Ultra Thin Window Cleaning Robot Remote Control Automatic",
+    "ro": "Robot de curățare a ferestrelor ultra-subțire 5600 PA cu telecomandă automat",
+    "it": "Robot per la pulizia delle finestre ultra sottile 5600PA con telecomando automatico",
+    "de": "Ultraflacher Fensterreinigungsroboter mit 5600 Pa und Fernbedienung, automatisch",
+    "fr": "Robot nettoyeur de vitres ultra-mince 5 600 Pa avec télécommande automatique",
+    "es": "Robot limpiacristales ultrafino de 5600 Pa con control remoto automático"
+   },
+   "created": "2026-11-23",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4ExDg0yHcPS2ZArorORC2YunhwZC8Y6ys2BWvRa4auqfuCv0f8lyinQ9fGQf0mKeb8W7C7g5knYTH9C2ZgSADylW02LvwwkE6fr2gZzHWazsnKA4fha5VnWQpVn2M64V4dLzNRGLzmqB12XQwJd212uHLaQ4GMjsQvHNtS9PHUvfKmvJiA3IvocwTb2bwsQU9lKEyykRYWO67OVoDaTTDlWJ6rI5gopx3ajKOlRWcyXwVjHzvznsq8VeT9BiOal9L0LSMrBhQI4G3B0MoFADVjpwglsl9bOmhhKwRLxwjzx6UXEPhiR70wdDzhwvi9LkWJOvDPUmJBWTcUVPBNYmy0Wfc6MxajGQHMh4MsB4C577WZcjIvSukkKTfn10bhNW0GbBHuUnQYDx96Gxvv85xLwSU57BAyefInyWuFLyRE6ihoKJqCBth99s8AkwCWeQzwVJ0urvdr4UsKgSk8LZnUb7atVGCiAfnZ4p6n85zfHfEaeDg4ATsXry0lrILjeGql03ypdssiUhDogkC7VfzhUyBXnaOjcz42sv7h4vXdwYps3o0Cg69Y7EoPU1gYIwHfdH72BLtKRnb5gXHqebaPZDHRhKDWlfHc5tOxJFFF3ZYmVkVi0HqATrtEybIjDSypB1NxTaw7Za2Gc5dmwzzcUGqbXLbZQNOGxLVIgXYYTmpQ9CxrXM6Wot1D8MgMTqvSn3blaCgTgd6g",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S231526d065b84c5bb62d10a5a49d1343V.jpg"
+  },
+  {
+   "num": 187,
+   "id": "p1005012471408075",
+   "title": "Erabros EV2 450W Cordless Vacuum Cleaner, 55Kpa Powerful Suction Vertical Vacuum, LED Disp",
+   "titles": {
+    "en": "Erabros EV2 450W Cordless Vacuum Cleaner",
+    "ro": "Aspirator fără fir Erabros EV2 450 W",
+    "it": "Aspirapolvere senza fili Erabros EV2 450W",
+    "de": "Erabros EV2 450 W Akku-Staubsauger",
+    "fr": "Aspirateur sans fil Erabros EV2 450 W",
+    "es": "Aspiradora inalámbrica Erabros EV2 450 W"
+   },
+   "created": "2026-11-23",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4kWmySriULaDzmkjIHC76leehmuTcsLi0Q40njh8hSGKUHF6kIjdL2AoK3osM697xODwURKaXhZU4sTNRvOS0jpNV3ZQ5VvAaUlOcBZFB6FdqN8DWAcDwvuVAugS6PrZ9at6GWcHNrFJWmVnteojHkjUDJV2hfpNtCiEoUtaAiaXOQWiksiUnMe8T4ZyzVTJUDQoIwGRzWiCJnzy57fTXNMNIugQQmUUfFS4RIiM3f1ZNOGp76axAhIG4pifQWiqFiGM8SUQwyZfWswUZDi60eqkWRMKbfucE6FHhxfzskzWm5UYsWKYDX4r2n4dHnP4nh8WiNE5KCpDFbHYU9cyH4KcgsGgNPiPFHcikj5ir9JYirHd9v2c3SMrMzOD0WLeQQwAOVc5dK6VE0nRWaRoDEP6yikXIaBXhTWTQR1n7qyCOxoCmGZZ5hdOQDIxQBGlCNvQcUbstycmAJjzOK4uyF4y6lyBrz90p17aXJAhPribvF2KDDJ4wzA2P6bvCorlg4LcGQdnBDmzhKrf2pbX5JaJhvOKuUetDmJC6ljk7Q0vq4zAVmFfli8lFjh01ZZHfY4dVtH2BM7wxPB0caXAyPFvjnEWEXRC2Htiyt4TWLHwhVSK2kuGC3x2QMJ0fjgdpEF6Vd7kIeMw8bNSLAZLsmQ4nRWOJ2guJ50O3wwaNdvwdaxKb7iazul3y4nZ19095FtIs9M3ItPZog",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S7f2a50e14c5c4b3990058b7f250c36300.jpg"
+  },
+  {
+   "num": 186,
+   "id": "p1005011941464155",
+   "title": "4000W Power Converter Power Inverter DC 12V To AC 220V 230V Transformer With 4 USB EU Char",
+   "titles": {
+    "en": "4000W Power Converter Power Inverter DC 12V To AC 220V 230V",
+    "ro": "Convertor de putere 4000 W Invertor de putere CC 12 V la CA 220 V 230 V",
+    "it": "Convertitore di potenza da 4000 W Inverter di potenza da 12 V CC a 220 V CA 230 V",
+    "de": "4000 W Spannungswandler Wechselrichter DC 12 V auf AC 220 V/230 V",
+    "fr": "Convertisseur de puissance 4 000 W Onduleur CC 12 V vers CA 220 V 230 V",
+    "es": "Convertidor de corriente de 4000 W Inversor de corriente de 12 V CC a 220 V/230 V CA"
+   },
+   "created": "2026-11-23",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4kY2BI3vlZc7KRPBSpFSWKkm9sqO6Eb5tXPeHFyroUNCw67bwIoGDkplGfC0inwD1eDStrfStNGscaEl6S5f3yQaYLWM3EgCFLpTNXBqnhL1ojpKHuHxWArMJ5IipueHCtXZOmxRZvdPVbeE0H15VfF7tSQTNivYDfKVQHlkErhhi8aQWImxRD1HoyCU2DXuPzr9Z8NjfPASDF09zhja8ifHxWlw9jsA1MMbxQsDjAHUWNMQBbj0TSr0WUfCzhlX96kBY0Ge9TA6cP8p8LZcDgDwzhStKwhnYjZhvGgSf56SKNwzvssIkz7Guv3xEfLweqfAYajEnOSsD4h8bA9FZnlgTd2NDSiAlUj6IQe27vfpznhQaYpkPHBQqbbwXutaDeATxf1vvvQQjLhfqfK7UiQGt09dop3yQk2cAmAd9XTBlM5LqO5FUKcT4mt1FRYLCZqyWIJ85Wi6woIuxIbcQDAv8WFGTRm4OG3SOujIdVQ614Rf7a4RrtF3hp8C0FriLUOAk83U4hM0DAq5xHztZnYrInEu17H113T6Cit1iR9ZwbgJgCLtOCXtM8yAk5ir3DqTKtxxC3AuQ426fytqG5w5AmeIN671KuvDzoFgcoTLvHJ1dqaf2jxKhSh7RkJiY6AggZbUHdHZNuc3WwnZl2owsUCJVJgpmZaRQC2xzbtBqH6mm0Ro4tvh3arV6aUqVuMnZhM8qFCIfI",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/A8290c1cd2b034f5099387e30566f82b6E.jpg"
+  },
+  {
+   "num": 185,
+   "id": "p1005006641990725",
+   "title": "New MIJIA Handheld Garment Steamer 2 Iron Home Electric Steam Cleaner Portable Foldable Mi",
+   "titles": {
+    "en": "New MIJIA Handheld Garment Steamer 2 Iron Home Electric Steam Cleaner",
+    "ro": "Noul aparat de călcat cu abur portabil MIJIA 2 Aparat de curățat electric cu abur pentru uz casnic",
+    "it": "Nuovo ferro da stiro a vapore portatile MIJIA 2 Pulitore a vapore elettrico per la casa",
+    "de": "Neuer MIJIA Hand-Kleidungsdämpfer 2 Bügeleisen Elektrischer Dampfreiniger für den Haushalt",
+    "fr": "Nouveau défroisseur vapeur portatif MIJIA 2 Fer à repasser Nettoyeur vapeur électrique domestique",
+    "es": "Nueva plancha vertical de mano MIJIA 2 Limpiadora eléctrica de vapor para el hogar"
+   },
+   "created": "2026-11-21",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4k7WuFhIe9lAcsyahv27l4BQ9A8geV7XRNZcGJ0GtdiLckubYsbKQFS6od8HgT0YLmBY3wK9YGXlZfDyGGIoG6lSvEL2qR6u16TolFXHbvuFc79GuxqVcaEsMGFgVt6Ff7vZoqkC2mUXGCACH5gZ1Qd4jVKAWf4rmY0Qd3SFpxsWkcGzeFqq1hA8YcUtYoeHepUpUMZuBWTogSGBBCfaJMeZD3o2lOWwktqWKE3qHWC4jChaXpen5ONHlHxhoJXG4N0OoMg8mO1t2aW7GyzfZqKmhj7BcBa7jNB7lF92HPFP75pZ98NfIWtU70HxVtR5Fc2vNa31rgVjwk0Ys4yK6Q4Gtai1lFDT7JbsC1WEXmMPETQlYHLGffyTl8m47oGA5aiVZfaUbBwPxUoPhJiX9tZ6zfEIy1yJm4mc35RAdppx6pweLxat6YZLbeZMhflYWpN9fyfUgU0aO2AqgeJHEoDBfZUoiHInznQXo4hHuUwKESB6BqlQRPSf9NBdnOOK5no7Yj8To6UY9wSFfGSTiA8MuojacVDJuWKMacsZrgjpigOP2H4YyGQ3l0ruh0Us503qlduoV1DPPNlZjxC3GRNHIpWzpPjQEnY1ziz0ee9RTYa6g4PD75aNMEjJGHa6sU06jsOu4K6XBvy6wkuFaFenqRl1W9gSMMPnCRmpixQylx1S3U6t7U3oT5BoOFvgQ7UT550sSkBoqZ",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/Se6c5d9fd0ad14e888a47ffc6209e7135a.jpg"
+  },
+  {
+   "num": 184,
+   "id": "p1005007097042501",
+   "title": "Dash Cam W/ IR Night Vision Loop Recording & 2\" IPS Screen 1080P 3 Camera ， DVR recorder, ",
+   "titles": {
+    "en": "Dash Cam W/ IR Night Vision Loop Recording & 2\" IPS Screen 1080P 3",
+    "ro": "Cameră auto cu vedere pe timp de noapte cu infraroșu, înregistrare în buclă și ecran IPS de 2\" 1080P 3",
+    "it": "Dash Cam con visione notturna a infrarossi, registrazione in loop e schermo IPS da 2\" 1080P 3",
+    "de": "Dashcam mit IR-Nachtsicht, Loop-Aufnahme und 2-Zoll-IPS-Bildschirm, 1080p 3",
+    "fr": "Caméra embarquée avec vision nocturne infrarouge, enregistrement en boucle et écran IPS 2 po 1080P 3",
+    "es": "Cámara de salpicadero con visión nocturna por infrarrojos, grabación en bucle y pantalla IPS de 2 pulgadas 1080P 3"
+   },
+   "created": "2026-11-21",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4mqmFl0bLJasOljr9fjRcUvpB9ombTzHbfpxDyWoyyJBDplq5CLFRtlz62oKS5L9gWJ8RpQXtBP8EJX5xg0IonvawXEnowS2binkE6rKRdQfZgE5ZarPjilJAn2m6ghGhFq97pNqEvyhRPVyi91iTE3H1hPi7bet95KVjKptwZcHe9zr4AbFCr6BM0AD3ezsz4slVyIa9swNjMdyhjYIo9VHYXqRX1cIeitqrHBHcSXLt9R30ZFiO1gsAHJPHyo4b7G1Qs62f2pWgBGtjNtDE4AVTDD255B3tSDm7TPP01hNztDXxvB1jVKPxcffF1baeXvlQ939FmPMLsel21VX6cgVVXPdvShXO8NMl3IhM0VwWOgOBDhywl1WXoOmk15mbVWq7OCZ8tITT6kIhYfI3E1QKOo2DWThKGXEHTah2huHvexHtKuOH2ibsFLU8WR4SrxOFUgJWqwKz0VBNweD4b3dCvAl5mPTHg7QH1uK56lWCGacEGOrza5AWoLYUiGvNynEZjnlh9MULmSo7cogVoqR5KBHq3jxcGhGilEP4fy0A7Ovc5zdMLGyyYi1qf80ClX91bFunbtmTQDYn0ceYyqjACTlHDMF0ZuwV4AB1ZvYQmQVSofW19d6Qn27OsF2GNd2pZfgHlVGH2kpxnGf1gHHcI1fYVhErP8a5yIohMiVkgSggGw5nwiAofV1OMAe9wqUsxl80mC2oc",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S0e0009f3417048408a5dea6d7309f102T.jpg"
+  },
+  {
+   "num": 183,
+   "id": "p1005008563413122",
+   "title": "For Tesla Model Y Juniper Trunk Organizer Side Storage Box Boot Organizer Flocked TPE Mat ",
+   "titles": {
+    "en": "For Tesla Model Y Juniper Trunk Organizer Side Storage Box Boot",
+    "ro": "Pentru Tesla Model Y Juniper Organizator portbagaj Cutie de depozitare laterală Portbagaj",
+    "it": "Organizer per bagagliaio con vano portaoggetti laterale per Tesla Model Y Juniper",
+    "de": "Seitenablagefach für den Kofferraum des Tesla Model Y Juniper",
+    "fr": "Organisateur de coffre pour Tesla Model Y Juniper Boîte de rangement latérale Coffre",
+    "es": "Caja de almacenamiento lateral para el maletero del Tesla Model Y Juniper"
+   },
+   "created": "2026-11-20",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4EQvR8fiN64sgpliUacANt2t6FglLa58mzHFkCjExSZlpsjIUEFjE6hYXedFGoryO8EtiQ4rE0sUIyVbOTlV1xfk3veeN48EzuZX6jDha2cva7T0e2PSVfxGYBtyYMS4nkpNzayu1Mcn06Zic61k0v99ozwZW9ytNnhQlb5Fm1snfu7dXcg0EepH4uhtdVK5NpLb0liGKrvCuWkpFA7OdE5jecN8Dlw1SwkMoDuXs8do9ezZQ5HSzbptcgpOkh33F8orIpLFU4WO3rnkqOVta0iuwNX3SEXjb74p3NqXCboyvjoqHMC8qrTjfCdO744L0d3y1oP2jmCY8kb8KcHtuvZO3nVYoIHfuRqbHjkat73THOwkCYinGssPVWdE70O68wV8wH66lMwPe67f8bJqOGoKZ5fmPn52cxZewLmiEtYco0wAj2m3IEQAoEUt5hwMvuvdQmgBcHtDImWFKNe4CsvVGuHBeN3fxNku3TNYcDGjMLp7FGXhZoKIWyy6lvLZwJNm990YsT95P9dtV1acit4fnIafSPdOo1YJRiwacgQMTN4dFbrrnSe0IEMypQgCZTBL1hVhyr0g4Hrxj7Kvc9sqz5Xgf7u1ieUXwgtUoIm9INhEgGBtlqsYjpPCstGd7Z5FhKvmNwF427M7GKh3YLlqbOcq3I6qLfSwkXbRbS9Iy9L2symjbfeeFEwrC9jnQUNVZR84q15wXT",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S7147364ee2844813aa5540f86a2c0d63j.jpg"
+  },
+  {
+   "num": 182,
+   "id": "p1005005685261013",
+   "title": "HiBREW G5 48mm Conical Burr Electric Coffee Grinder Compact Portable Coffee Bean Mill Kitc",
+   "titles": {
+    "en": "HiBREW G5 48mm Conical Burr Electric Coffee Grinder Compact Portable",
+    "ro": "Râșniță electrică de cafea HiBREW G5 48 mm cu discuri conice, compactă, portabilă",
+    "it": "Macinacaffè elettrico compatto e portatile HiBREW G5 con macine coniche da 48 mm",
+    "de": "HiBREW G5 48 mm Kegelmahlwerk Elektrische Kaffeemühle Kompakt Tragbar",
+    "fr": "Moulin à café électrique compact et portable HiBREW G5 à meules coniques de 48 mm",
+    "es": "Molinillo de café eléctrico compacto y portátil HiBREW G5 con muelas cónicas de 48 mm"
+   },
+   "created": "2026-11-20",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4k0ZzYKBWM7AFeMEkME2WLqhXC8lj1iRBu0IePl292YpqaF5WmmpV6didXbY3piwolXltiLirxm8oBD0uX5hUeXNSjMBq1TBMFnuEFGh6ZdMdSgFVVlaR2sNGeiGuVIqOE7wUQ1C1orW83iXG9WOR899DDfIrjbHYrTqwdh8a7214s1R0q79QJ8cSlcbHCSNsLxc9RvlCBzrM8LQyyibu3DnrLuvbwOGC2TiViJqnwRN74hyOTyln73s23qAzWqFmyngmfyzBJIjRnL5zYD4SHlNKg9OIwzoTUu4eF9NXRgHma2NPFIFFWkVXNuvyKSWVU4E2QOIdbMQxe65vxmW3MVlmBSHjIQ8rpmJiXgXLiesjCEu6i9mszcTiHsfwP4Q6BCeSLLfK1RzqbBAMJEjcElJJcsbz2cgvPRWYfE9LfjaIVtTkPlzn1O3kAC4gPf9xMJE9K4kqCr7mUWS6QpwOIAGKIi5hHShXfvECv7vfXlWMq3TjPiZxr3t5fOpfxeV4ItYlrk4ZPtdHeONZolFjZD5o3rKXiGWj428tJ7GIfIBV59ZBZmw00XnsVjsWZiYHt3hyVA8RyZVuVyzg2Z5wbdRPkokwRdZZfTalRj41JEMeFD1CxrNPzKpYJzq1JqD8ynFjgdjkAwdBMtvhWvZ7DsrBw9qKtFTuEQR60bWk4eqAnR2GYAP6TwTvZzTlBteiJOLNVNPtVfVjh",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/A107958c1fb794582bb78a6f04cb68399G.jpg"
+  },
+  {
+   "num": 181,
+   "id": "p1005011643938292",
+   "title": "2026 2in1 CarPlay/Android Auto Adapter Wired to Wireless Dongle for Apple & Android Plug a",
+   "titles": {
+    "en": "2026 2in1 CarPlay/Android Auto Adapter Wired to Wireless Dongle for",
+    "ro": "Adaptor CarPlay/Android Auto 2 în 1 2026 cu cablu la dongle wireless pentru",
+    "it": "Adattatore 2 in 1 CarPlay/Android Auto 2026 da cablato a wireless Dongle per",
+    "de": "2026 2-in-1-Adapter für CarPlay/Android Auto – Dongle für die Umwandlung von kabelgebundener auf kabellose Verbindung für",
+    "fr": "Adaptateur CarPlay/Android Auto 2-en-1 2026 Dongle filaire vers sans fil pour",
+    "es": "Adaptador 2 en 1 CarPlay/Android Auto con dongle de conexión por cable a inalámbrica para"
+   },
+   "created": "2026-11-20",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4otCw5mrPDtq5M3OMI5ec3815GUZ5ZgLuUmpuEBDgVltwSPHHBIqc06VN1AN6QfHstlXeM3EmCSmnu13Czgze82tmT4mqEFHN9iEkoT1G4Fy7wOKHYRQONXu1zzjaNrwMIvvaP50wwhHcKfVozPzHipSKVbu3QYcrZSxAxI0n9DrYTveSLjwfoXmeiCECZGS9JTeJiZgwHCxUUe6Vi8uIVjQDzPykx9N4K8adfvAQ80Ft52CI5J9KAB4d7x43jSnpFiwndxav5yuoQVNN2Q585mnJdywAgz10Po03l0DjUEzTpb2doLgyjSDnflw57MlyWeLE3Z41nJBsXA3ZlOjvb70Xq0MwXaEm1CCMpJ6ykxxyX4YHDf3BcmA439SRgtFj50wr1qneZ2jIDU5WDUnlqVerBmp1R4YmlhacCbb1CRHpkB4zwd3UwrxVTvzTgqspMSBHB8PMJBG6zGfKwQQnSyihDDrlmeQT3G24qi1p9W3zoWtfKTN1PUy2UesfgPepjLCPhxoSp38nt9RseHfJ6xnIBlyNSZA2oxJ275Zwh1Op94gzLwDXGp1L3Fz1O1vEdPNxNoUMAKimnAiJymXU5nIOq8cUYSZMQjwqz3Eg3sKw9NcoRUrSimn8YZqcU2UXQCRjJP9O2E2o33PKeXoXoorhuAbIg8Tovqp804rWloQmGAGZj7sTaONG5KxiRcw69rCrTdJFCW4rw",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sda6e651bdfbc4819a2d35c85fce6b500q.jpg"
+  },
+  {
+   "num": 180,
+   "id": "p1005012914172329",
+   "title": "UWANT D500 Wet Dry Vacuum Cleaner 17000Pa Suction 180°Lay-Flat Cordless Mop AI Self-Cleani",
+   "titles": {
+    "en": "UWANT D500 Wet Dry Vacuum Cleaner 17000Pa Suction 180°Lay-Flat",
+    "ro": "Aspirator uscat-umed UWANT D500, putere de aspirare 17000 Pa, poziție de depozitare plată la 180°",
+    "it": "Aspirapolvere per solidi e liquidi UWANT D500 con aspirazione da 17.000 Pa e inclinazione a 180°",
+    "de": "UWANT D500 Nass-Trocken-Staubsauger 17.000 Pa Saugleistung 180°-Flachlage",
+    "fr": "Aspirateur eau et poussière UWANT D500, aspiration 17 000 Pa, position allongée à 180°",
+    "es": "Aspiradora en seco y húmedo UWANT D500 con succión de 17 000 Pa y posición plana de 180°"
+   },
+   "created": "2026-11-19",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4mnGNkRjrLxkkDiWBAKNUseAfhmLgSg1C8gqIVwZTkFocEfSGgL6ZPjltePdhk69w35a3tsftVDW5yUQvtPSbQ7s23QgGOFfCqMd8ronk9n77FoQgkFoxodDjeYwRpmXArC1te4MF0xFbG0d7CrL9ltRy8wZwmVphtkZ6VDxv7D03GjfQQlUNGHmIerkRqxDcc6Iov1wZecMIRXGMRFVUtN0zir1PwyrCDcV6bdlcnCpbMMXmLnrkoqYws7fgNdw34R78tqYSmoqza0YIuanaTEPkgv8SXIr5IFa6FOs1w7FUYbx66hdMQmFO1VdYWIObpyEYx86u8N9MMCqaprKD9rQ6mUp4W5jLZdGc789bzGM6Pucx2YH3Qoc9xCb9nzFzVuU3ZluSjdvKSMmwkPDT0FjQMWXejkUxZzYH1dxwoWM2EseBIrmwG8dAraJ6iYzq8UMCQHpQvnLt8biCL8x4xmSyOgjvhbqEqIHEHhkE6AtzwHpGVA2VPN3Pbsrleo4wXKbnGRjJeKRRUiOBIXjKVhBwrbuK4X4o80nDJ94zOn1673cbB3qQZPhdWeuwDeERPHIUAgUkmXZFm74zFYuK4vS8TqIETUv1nXfBpcu1DZ4Lg5gP9nDM3HzyR5PnKLfDJf9g9PdIAIG26TSoob8O2o9PE6f1Zi9YWUXPBWEcqrvnDWVx1PwRnmNfovFtlimqxHLVYYfCVHXid",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S7fad0a59b2924fe5a73639500986f65b4.png"
+  },
+  {
+   "num": 179,
+   "id": "p1005010171800902",
+   "title": "Cotiar 650W 60kPa Vertical Vacuum Cleaner Handheld Home Appliance Cordless Vacuum Cleaner ",
+   "titles": {
+    "en": "Cotiar 650W 60kPa Vertical Vacuum Cleaner Handheld Home Appliance",
+    "ro": "Aspirator vertical Cotiar 650 W 60 kPa Aparat electrocasnic portabil",
+    "it": "Aspirapolvere verticale portatile Cotiar 650W 60kPa Elettrodomestico per la casa",
+    "de": "Cotiar 650 W 60 kPa Vertikaler Staubsauger Handgerät Haushaltsgerät",
+    "fr": "Aspirateur vertical portatif Cotiar 650 W 60 kPa Appareil électroménager",
+    "es": "Aspiradora vertical de mano Cotiar 650 W 60 kPa Electrodoméstico para el hogar"
+   },
+   "created": "2026-11-19",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4kjTW0CUl7pSe8o2caBdRtCtavMoGdgmLDmvytvDvwsXp1ICNYAjvmtQyZAaX4eAgkNxR6p1f0GkK4X8so9BdG3p9vqNzIedD7ZssYsgt0p7r8I0cVxbHYLvCU2YNqsWEKnND6cW4EEkiVIcn2BPtHcm19U4L5uUPmIo2fhQIYVAPHr2zUfRM1BTkU0mwdPTBAA631biDaRLxIsFbP8vqRNmtpTmbk5shDqWuWMZUEdHh8tEU4Svc4K8JL9v0MHtKOipeDx2sb6JpfpCpCDixKaNyKpHTUHA5HTprC8gRhDdMFktWyx81PKiy668QIpJpizOqY0Igr6qccEHL2UdSCmtbOmdGo58ibauJSg6Cq5PXyIcqqG8atWEyi3OTAkiW6mQMOH82zqiz2QFOijkvBPIwTyQQKNqvqy32eQX11pDwK2hUunV8vreQqJ0StdGoj4gpq8AEgt3GYgGBMCwcEOvbt41IKJP1u01cDhvcigb0YLodX87JJZw2sgwdF0Gk3CwlY4AAhCg3PixfONZHg5iuZ4WmMnZ9eV3GsLA1E8IFbbSimYi9DEak0dkCseyTehUZsXXJZsUnQ0VA1BiMotBMteKtHhi3lXNiuVOvFYNkS6Mu2LtGHnCKcw4PCPLyszVVkSzejrtziRfWH8erKUKxZbVzI2bO7FaMPE6HGs0sFBEiXGwYuZSDOtbRXdHnstT7eeDHWffg1",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sa06d612aae9b4904ab3c589539c528e2n.jpg"
+  },
+  {
+   "num": 178,
+   "id": "p1005007476907279",
+   "title": "ANCEL VD700 Professional OBD2 Scanner for VW for Audi for Seat for Skoda Oil EPB SAS TPMS ",
+   "titles": {
+    "en": "ANCEL VD700 Professional OBD2 Scanner for VW for Audi for Seat for",
+    "ro": "Scaner OBD2 profesional ANCEL VD700 pentru VW, pentru Audi, pentru Seat, pentru",
+    "it": "Scanner OBD2 professionale ANCEL VD700 per VW, Audi, Seat,",
+    "de": "ANCEL VD700 Professionelles OBD2-Diagnosegerät für VW, Audi, Seat,",
+    "fr": "Scanner OBD2 professionnel ANCEL VD700 pour VW, Audi, Seat",
+    "es": "Escáner OBD2 profesional ANCEL VD700 para VW, Audi y Seat para"
+   },
+   "created": "2026-11-18",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4okxgqciQHiRlAH9hKCnju0sn4xUj4fhrUqxMhl3YhibeDnykX7lSnJ4t0oQhppSOy7fB4tc1U5uggRAhKKgqKwvszDQ3bbgQ3YJX0CG1Pw8hH0fupQRevDOachM71GgsPHTWJp8bOo1XqApq12A9UmlAhtJL4BjjLmPQEr4TWKeYRaZiAbhJ2iKqeq25DqhonTpaIDszlz4aJvwdWGkrQaChz4cSonlO5WXZyL54fjLnuObxvlsUmhmdOZfqzCAV5WxYgZKIgfsWLYWEsf6aHhDiyUjRMDf3SrbXPB3xBrrAnJaPrwgkwPKa92ar0yE0Uup3beMHlSKZUSQDqDjlnFu8VPjJiWFtrcus14voPyUDMDPwdF6i2bnJdhLrcpRtllvgeM8yx1bXCsgV27rZ19JxhDCeT8eyjGhYffGGtYA2Z2OfLlkSLZEcjNfZGd09NCZpeeUasYTeY6mB5xnpyKMByTPYRy7HmnEfzYHFhuUvQgzOur8b0dMuGUiTIzU6eWrWSXKoNVKbt6sIbMtq6U0bnt6budWYkPsTmwFmzoS4z71lzcxTc1qP0CX5V3hZ1nF6MX8FdYJIpEEv9ef5JQrA8ZRUW8f5pFmdQ7ZDSzcsV0gQ7FR9TxaVz7J6Ru1CHlyGA7eWdKZGAz88A4JL2xMx7uCUpYUy6ildQTICbcq3C1uq5sgXk1SRIaQjX63rzwFtYEmI3iJFP",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S45def040096e435ebbe69c2140704bd19.png"
+  },
+  {
+   "num": 177,
+   "id": "p1005012743088445",
+   "title": "Window Cleaning Robot，Window Cleaning Robot, Ultra-Thin Cleaning Robot, Window Cleaning Ro",
+   "titles": {
+    "en": "Window Cleaning Robot，Window Cleaning Robot",
+    "ro": "Robot pentru curățarea geamurilor, Robot pentru curățarea geamurilor",
+    "it": "Robot lava-vetri, Robot lava-vetri",
+    "de": "Fensterreinigungsroboter, Fensterreinigungsroboter",
+    "fr": "Robot nettoyeur de vitres, robot nettoyeur de vitres",
+    "es": "Robot limpiacristales, robot limpiacristales"
+   },
+   "created": "2026-11-18",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4ocSEcnThtZFkaATP9fWCfsEOf2n9SoXSYWc4Xqq4n0C7Eqscs34AADR7t8iKDQ0qxoanYLhQXq8q4013wlMHPM1iRVeznKZu756oNDGexywLAC02xe91IeGT80wb5EQCDXmzshrvRt8v5Dtt7S5U6naDqst4xONkPTYtXmVLslZUr3ND9sSnHKbkAEAio0xp8ejwb2AB2Nwd5oUtQ5niPO1enJwBpnPIEFjiSr9sdfGGU71ABC3LrZSVOnzDmSwwZ7M8ytbZEEz42bh2CPma1QzHX6asCUyDgfeEhMQ9GU1TALGwGkY9qgGj01HnlfPSrLfTTJzOiczwzsDhKNpeQ4NiKfGaXqbwoTWEt7ErldXXPb6FectOnJBOvhuSZoWAQrkheSc2i6girswDLIgh1w4clXTNYNRpLEuPYJ4hokvlx5YuGazzrJoju4G7bVfLNd5I1vdBl16bVleBK18dCZnnOslj0T8Ljrst1tkAAK7j2c9d2UUxQHKjWNs9fP2UGG5pnK5eujnDN0Qhq58qwe5KKgvkN7afgqNUCJ20F8sJwlwVPMvGrLNnDDolkhUwZxktqR9DGxJN2joiQ8nz8iZO1mUuedBYapm6mtVoqXrrlskJ35yMKywsOz3QMIyCxsfn02caqr5e4L1EvweqAXKrNgT0ZVJcwCkGjIuENPOlQ8QQ0JT482Y87JjqEJtXvFJ2nI0S3bzxE",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S19c557a639294e14979375debcfef019j.jpg"
+  },
+  {
+   "num": 176,
+   "id": "p1005011812638007",
+   "title": "Fully Automatic Induction Smart Handheld Carpet Cleaner 750W 15KPa Portable Spot Cleaner f",
+   "titles": {
+    "en": "Fully Automatic Induction Smart Handheld Carpet Cleaner 750W 15KPa",
+    "ro": "Aspirator portabil inteligent complet automat cu inducție pentru covoare 750 W 15 KPa",
+    "it": "Pulitore per tappeti portatile intelligente a induzione completamente automatico 750 W 15 KPa",
+    "de": "Vollautomatischer, intelligenter Hand-Teppichreiniger mit Induktion 750 W 15 kPa",
+    "fr": "Nettoyeur de tapis portatif intelligent à induction entièrement automatique 750 W 15 kPa",
+    "es": "Limpiador de alfombras portátil inteligente de inducción totalmente automático 750 W 15 kPa"
+   },
+   "created": "2026-11-17",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4okQw3irI7ZUYGFo1jx0PQR1gfFB3HQ3ZR9D5cJXe3DyC9Yak2O6q9xylZnRGGo0VmCmDpy6EUE3NQ3pGGbnW7sx9Y43uplNSkR0qhtrhgRNKmLNwVjp6t75YTvwRTBEkamS1nru1kI6Ipwbwoj6vSXBoEB8VrHeydkBtz5nQWkD7l81u4X4W6kS0m9ng6bYvANdtvXxlDlogQIXbn5gWPI5RxBqQyUl3lQUFNiE28xyOrpfy9EjJ2CqwQDO7KUeMwuKevdVAwE1IifTSMlEN2v4mVdqW8mCIV8Kc4mwT9jeUqTtIzn6s3WCYF5dsG9vxnsGiJiXR7tDURnBRMjRJ5UQI8O61tqT69hRe7cuUtbKvceIUlPn8BkSEAaX86Wr16Ar553r8tEBYLCAOcM6tSaA6vBhIFtjkT9pCFweuO7UpNJ1RUzHmj1bosEzbbK4KKYGe7SbnREXBs5aRxfmOTHtmRDbX2EDuCtmvRI9MkwXt2u1iPbyg82Td8osjqStXqT6Zh0R3t0P9mOOSwvurniiabzT3aSI6OksVbIf46PnSf9oAds9olPQlqWnK6E66bNbNQPwQazg09Ebo1Tnv47mzeUZ6GCmCvJKaVYqlGa9mFR1raEt3DyiOyrMjEMNHVqzjv5Lf7M47AuWuXQB18A3iRTaRupu53tjSAMa30rsGMS8rTf6j4UPSfQyOhMZfYGymYh8Wwf4zB",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/Ade9ddeaee92c4d2ab545a4a278fd8356b.jpg"
+  },
+  {
+   "num": 175,
+   "id": "p1005011941564020",
+   "title": "Podofo 2500W Portable Handheld Steam Cleaner 1.2L Water Tank 6 Adjustable Steam Gears 15S ",
+   "titles": {
+    "en": "Podofo 2500W Portable Handheld Steam Cleaner 1.2L Water Tank 6",
+    "ro": "Aparat de curățat cu abur portabil Podofo 2500 W, rezervor de apă de 1,2 l 6",
+    "it": "Pulitore a vapore portatile Podofo 2500W con serbatoio dell'acqua da 1,2 litri 6",
+    "de": "Podofo 2.500 W tragbarer Handdampfreiniger mit 1,2 l Wassertank 6",
+    "fr": "Nettoyeur vapeur portable Podofo 2 500 W avec réservoir d’eau de 1,2 L 6",
+    "es": "Limpiador de vapor portátil Podofo de 2500 W con depósito de agua de 1,2 l 6"
+   },
+   "created": "2026-11-17",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4mmY64lajqeRb3a56TPpUMDGmi4gLoHSJhZ0uqAq9XodQpoQtG8CJQdHO2AZIP2ZMX2IraRp3PJ5485SSzMrWcPhoXCbU2NH1NaZXlU94jThibWPw7lYhnBeDNJFkuRb6GJO1rsn667XnCgPP5BZe84KbkWrjwWNpJRer01tygVoaolXI9qNJ1PH174CZfWR6uFupNvFbhoCVE2Kr2pOBjrNgqVciLhSMGheWTIcF9EfUDL9lVXIr8leGonb9Tt31nkKk8OMR3WigvZZnFhsOTgUjx5BEvtFeZcwEhrGJKKv6n02LxXOHPztmmqevTZ04HtgHb3Rh9wmgs91tE4bHOb3EU0oLSPcqWhAoNIsUoRjAruh5NfT84g2xHe8y9TTThVMXVuxXJUmfzI0RzrweovlSJFJ8j3MxDpH3BT3T54RI9pXHxT3IZGFiT2FyBO10qB4I6kaD45n6Ygcf3wiBIJIg53Q6sblXMgUxcuBOvjyf8YQbcSOC18YP7og0bCKr80gOYK0Dlovtdyuqw9RECVKp3Z67D5OAjTMUJAiFuTtPd6mou3l9yzCjLrJ7H8EPz9infnX5pK2K27LJclZmoUx3I7aTG94x41WToTQBOrOlh9H9202nwiB2iBG4WNW0cBa4vMIOEsji4rPhV2l0Vg1SMyR8bRkhWbpQA46urU9JemQN62OFMHf9WPhR7540SgqjGbBd3egyu",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S6381db57af7f4f78b34013e3ede9b835o.jpg"
+  },
+  {
+   "num": 174,
+   "id": "p1005011559507555",
+   "title": "DDPAI N1 Dual Dash Cam 1296P UHD F1.8 Aperture WiFi NightVIS APP Control Parking Monitor C",
+   "titles": {
+    "en": "DDPAI N1 Dual Dash Cam 1296P UHD F1.8 Aperture WiFi NightVIS APP",
+    "ro": "Cameră auto duală DDPAI N1 1296P UHD Diafragmă F1.8 WiFi NightVIS APLICAȚIE",
+    "it": "Dash Cam DDPAI N1 Dual 1296P UHD Apertura F1.8 WiFi NightVIS APP",
+    "de": "DDPAI N1 Dual-Dashcam 1296P UHD F1.8 Blende WLAN Nachtsicht APP",
+    "fr": "Caméra embarquée double DDPAI N1 1296P UHD Ouverture F1.8 WiFi Vision nocturne APPLICATION",
+    "es": "Cámara de salpicadero doble DDPAI N1 1296P UHD Apertura F1.8 WiFi NightVIS APP"
+   },
+   "created": "2026-11-16",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4kv0H6qknFzglUSNZVn2fV8jrHFmPx7dapEmTuodqp8lV1Msv7xR8LNyuB4OTIaCXvZsAMOMMvA8lORlR6bl01HQvnADPIp8QOTccIBz5M3UYWYcJB7EMmpdHnGvFcNki3cQLbACTNGkSvFil9PoXftYUWRwKKYN04K64fhmvaEQvUtrZ8qgKxHhEQboqCfJY5r605Uj13wIdk7kJL4uD2RU9hT4ri6p7OCwVXm1XDVcrqXKLglp2S8qYEguCu5ZdaKsYm8aEDPbnCMvKj3I5nTaKY2yeQ4ZCzmReMRos6xFV9pxEP8QtCAWKHFooAKD4LeoJ6Pm17XvvIc8Fn5FdtoFWP5uarGyD0guaSSoT6fTloZtSwIUhH6Y7fvXe04hFTIiWVqwfT6DCaGVwjh0izMACJZmLDCrR16JTNKAExO7VxWPsZCqrlwTariHIFQfbathQHZOU7d57BViqfyRFvDKU8XGXIsquqkFGds7WpQtx18Ghfu9sTy5NANh26M3lKnvbJQUhFzV6g2gGEA4siQFVrDjs3CkwG52304uVkOPI560t33wpOpZRVoisbNhTEL9y5gVpxUD3sotHp9b0uInhShozU9HHIc3Bke2NaYAp6FHNYN7kYPN8eEPkTd5hhkgwnJ0FmqmlpsCsBlC1wmlLJfFJu7UXTBqs6TMg5lJc9f5NGmm2wHbP2A1GH7nP8VpEtkRpPhk0Y",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S44cd7ba113c94801b49e159f4c4cffb2D.jpg"
+  },
+  {
+   "num": 173,
+   "id": "p1005010157020393",
+   "title": "Mijia Car Vacuum Cleaner 21kPa Suction Type-C Charging 5-Stage Filtration 2400mAh Home Wir",
+   "titles": {
+    "en": "Mijia Car Vacuum Cleaner 21kPa Suction Type-C Charging 5-Stage",
+    "ro": "Aspirator auto Mijia cu putere de aspirare de 21 kPa, încărcare prin port Type-C, 5 trepte",
+    "it": "Aspirapolvere per auto Mijia 21 kPa Aspirazione Ricarica Type-C 5 fasi",
+    "de": "Mijia Staubsauger für das Auto mit 21 kPa Saugkraft, USB-C-Ladeanschluss und 5-stufiger Filterung",
+    "fr": "Aspirateur de voiture Mijia 21 kPa Aspiration Chargement Type-C 5 niveaux",
+    "es": "Aspiradora para coche Mijia con succión de 21 kPa, carga USB-C y 5 niveles"
+   },
+   "created": "2026-11-16",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4FlT6KLSoDAMpf2hTR1uvhfRKF0SiJ7i0wyQJDofByJfB91Tsf6o6N3kx7RZ66yJz9KhfxkHpSplJTOLugn5Wq5w6Kohkq4zLeA8iazaWTK3e6sVMwuTvBl0d5rLoUPooEGD3x7enklisaQoP9XyjHIO8ro9KcAPukO6XbtAnPnha4L3pzxeQZzOI9npCRQCvHV9mryMr0VVAs1TORNWJe6Y7obhRKMsHKIG1x9n3qXEbxUg4n98GDeOvodjHPyVuTx0wjZ7OOvniDPE6HV57iXABZriQpIzJkSKPilSzbm2J69XikMlKcUrybkSjMo4L2Hjr9Jrm6dXmg7xgbbRCZs3gWUyWbIhlcVnS4TV8U0Eb6x2UOaqo4qh84yLd9r9in6r69UfZXlaclqG6Qvf6tPCTqJl1549F1V4btX2MFkLI59HK7crbW6y3nt3ebEklMWZIIcqKC1oru1VouSDiaPa7u3gEPxnp6eGcjNTqM40ZMUchSmIsf3vIdoo0oDFyPFUpbGPl5jNaiYacpWkWKCX1zr0a35FrcKsqTFE2z7NLKSU56JMuBzUqkXPYlrj94hI8n3YbKVrJJ9ECeqBSe5i3yold9EoTQ7f4GEyfH1vQFCozmy0Xf5vJCTHn0O59CM3sauXi7JqCTWlVjfggj9tub553OBn4liw34Bzqb8h19dXzyP2CbeVlYhin0YuvhpvR3SZMnWoA1",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/Se77e6daaf43149008f715b6817c69944l.jpg"
+  },
+  {
+   "num": 172,
+   "id": "p1005012028579406",
+   "title": "ILIFE V30 Robot Vacuum Cleaner, Laser Navigation, 10000Pa Suction, Up to 150min Runtime, A",
+   "titles": {
+    "en": "ILIFE V30 Robot Vacuum Cleaner",
+    "ro": "Aspirator robot ILIFE V30",
+    "it": "Aspirapolvere Robot ILIFE V30",
+    "de": "ILIFE V30 Saugroboter",
+    "fr": "Robot aspirateur ILife V30",
+    "es": "Aspiradora robot ILIFE V30"
+   },
+   "created": "2026-11-15",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4kjEEaHVPL3yS4511FlbqRuJCJvbGqVhUkFQDs1KZluWLM68rucv4CYEruOEigPt3MRijgwuJC4dc5VzZZISrhYIcmP7hkpUSFbjhtrOJyyCXtPiBSEbPSLHSn7BGmMWryJV6z2NSb8qM1WmTq9LuKL1Or36z9C09wxXYvXMqKZrlX4yViG1EDW7WIqS679rGw2ofQR7Ytg18uwSZ79cbkcwjNJ1TLeuSYQSFMNR5mOmsBqW3IeCHWKEJFvLhwpPczASkhCVP6PXT4mpZtiQDZk1c9aIO5knCfwJ6BPXTuz06Lv8mCxChr66gjmxW25hZlSS2A0bWxUaaM6aH6PUvUgFvJAFKmyxZ22rOgEX5C8uegXbdapUNsPtlZ0wOX65qNQnF1zsXi5sktZDUeA52d3OiFgTiaw4YNciY5gwtew3lSqcMC0UbsIHP5fFOl7pcgcU9KRD47TH9KGlYYhna6yutmBXybKBDVzZz8sik91S0FFmHMYdJwbfdEj8NCT6IGdztWXsZAxc2EciMVFyQxSQSd2Utar3TGLc2tUKNiTXGFPM6M012HnPlSOSAOK34Zy2l9BvFaecpqm5Xenld7cMrWSQRHp0ESFnCeXOGIDDNqPSpljKXZWVoBMVuB6sPlRva6iU99cKa5fo7dz69nNgAc0nh1xKSl09SqsBLSwsaaz2LstI8innXLLKxfB3cGDvcRHjnRdhCZ",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sb2a1d8a812c54dfab1ccc51b0a3c657f4.jpg"
+  },
+  {
+   "num": 171,
+   "id": "p1005009040909817",
+   "title": "BUTURE VC90 600W 65KPA Suction Power Cordless Vacuum Cleaner Handheld smart Home Appliance",
+   "titles": {
+    "en": "BUTURE VC90 600W 65KPA Suction Power Cordless Vacuum Cleaner Handheld",
+    "ro": "Aspirator fără fir portabil BUTURE VC90 600 W, putere de aspirare 65 KPA",
+    "it": "BUTURE VC90 600W 65KPA Aspirapolvere portatile senza fili con potenza di aspirazione",
+    "de": "BUTURE VC90 600 W 65 KPA Saugleistung Akku-Staubsauger Handstaubsauger",
+    "fr": "Aspirateur balai sans fil BUTURE VC90 600 W 65 kPa",
+    "es": "Aspiradora de mano inalámbrica BUTURE VC90 600 W 65 kPa de potencia de succión"
+   },
+   "created": "2026-11-15",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4kI0bZKeZoke2Vu1E1XBtf07IpIHN8j43b95rkn3nikGQvgLtwQ2v7NkMc7ChonOYgPvlSBz6MPoXZ37MaU0wHFxg1T1M8pk2OLPmKsMFATllAQ1Di3fFxrU0URDhIp5bvgtx1pNVka3T9NoJ5jd7tsaFc6RG8QQpQDl3e5Ad3lGvXNQEUz8VqR1L7ReLwfKDWKxoR4EEHn51EEFqv37bMycwGCSSx3lOSCbFB9xeyOJWamLLY68CDwHzUZTvsozAfX0qfokxIoZhSeyiUWrGlbkoqNINJMdkPEtu6XzbZXymKZkveuSRK2moycYFGEPfZevMzKfkRzwxDYrA27XjUWKSKh6czZ49FZscEIGtCBnuoa2SaOCUkowDfiHtPV3eFkn5jLklf7IFgh2eOqr8MrTBHKtPUzGE69ybHQgl9tXKuovFGeEj1V8KvbiqyydqM3mz4IaUHofZ7cvUz5GlV0AjiAN6lNV9s9FRVVPQftFSLgDzzl5RpAkzW65gpxpuXFJjdvTNjKvebKusIr9RkOGLcWgi1IcHckxiTk9WbM5pZ2LXAXxdK7U8oDZqpdZfA3G39aiKy3bHb8efx1sKwAiWiuSLc1SRivyupcwXr8kCNv5Mn79OV0HfGaDJ1pIGJlZlQlQ6SYWlizrZiW4V97MTah9vQeLWBb0FdsTFPlgU8waw4gRITZFl9vJZeFlCZkJXAm6PJweFb",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S06adcd926c1f495296a9b613375f046eQ.jpg"
+  },
+  {
+   "num": 170,
+   "id": "p1005007476831436",
+   "title": "K2 Pro 11.3\" Car DVR 4K Camera Wireless Carplay Android auto Ai Screen Dash Cam Dual Len V",
+   "titles": {
+    "en": "K2 Pro 11.3\" Car DVR 4K Camera Wireless Carplay Android auto Ai",
+    "ro": "DVR auto K2 Pro 11,3\" Cameră 4K CarPlay wireless Android Auto IA",
+    "it": "K2 Pro Dashcam per auto da 11,3\" con fotocamera 4K, Carplay wireless, Android Auto e IA",
+    "de": "K2 Pro 11,3 Zoll Auto-DVR 4K-Kamera Wireless CarPlay Android Auto AI",
+    "fr": "DVR de voiture K2 Pro 11,3 po Caméra 4K CarPlay sans fil Android Auto IA",
+    "es": "DVR para coche K2 Pro de 11,3\" con cámara 4K, CarPlay inalámbrico y Android Auto con IA"
+   },
+   "created": "2026-11-14",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4mlGUs7YMLIOIjeJyTx9Wa5fiK6WeE3b816RKSG6PLjeLFYP56FfvmC4MydssVcrtuRWMaaBPHVGsknzCUnmjCxjn4fk36dJeu56UdHs7UzxCA09VWcgVeQntCO1oy3IUretU1MpYeEo6GQlY1xVUgSfbb0ToWO4PMKGJcFbWO5oJmKcnc9yQPsLKPXAlWPU3xO7s7spnu53zbBS1T2x1o4HCVSBzatfqHnfF12KG1MCMreyZgWWMuhsUdFXPRH4i0z5br8vUVqF7L6syQbtUqvgl1LmZCPQRcB2gkSXpHcSbG3VYPk0PPdh0OVTiKRyvSQIVUIdMRE6xYxp8XQd0E3ToaSjMVaBa0BuR9UKtWOGePWm1hsCrCYrpf233K1UoHeXWVIWR63reEV0tKlEztn5pcp143VUcDzLOsVIAqbJfux1Zekl1YCv6HSl5pxA0vv691O7J2tURKZe1UNZ8553F1foLgipCnMzYRJoH84kMiEzI8PWDFBghyGniBhG5O0UEFFMYMaFqyHMty6viWvpOAhQMomP4t0ymN7IJdHPp5bUwYY16qWXZRcxYYS06UjzQEAlRNIdEfY7hK5AdkQFdjBs2PpCgOOzAo0b9hHRJY0eSoKBfYAD9jdYaFIPPQILiV3RJHijgibebTGZGmMRr8hl4g1shTxzqXYeS5nuwFiUL3XFyM0Xocqu6HJykRUC0XNOs144Ih",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sf246247c4b854278abe2d3be6987ef440.jpg"
+  },
+  {
+   "num": 169,
+   "id": "p1005012540940895",
+   "title": "5600PaUltra Thin Smart Automatic Window Cleaner Robot  Powerful Adsorption Electric Glass ",
+   "titles": {
+    "en": "5600PaUltra Thin Smart Automatic Window Cleaner Robot Powerful",
+    "ro": "Robot inteligent automat de curățare a geamurilor, ultra-subțire, puternic, 5600 Pa",
+    "it": "Robot lavavetri automatico intelligente ultra sottile da 5600 Pa Potente",
+    "de": "5600 Pa – Ultradünner, intelligenter, automatischer Fensterreinigungsroboter mit hoher Leistung",
+    "fr": "Robot nettoyeur de vitres automatique intelligent ultra-mince puissant 5 600 Pa",
+    "es": "Robot limpiacristales inteligente automático ultrafino de 5600 Pa de gran potencia"
+   },
+   "created": "2026-11-14",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4k6sYxw8E9y8W0FBYPwL0lYUzvxtXUaXhGo8yy4kg6x4zP39Vam2tqRYRITzDPoEAlpB3OkPTIcIwPIFWJElwWDynIZ6FNSombrbaB5VN2E6nwGeMAcwPIWsXw1Dh0AEz2ZDPRhmuUs8p5XhewfdORtgL6PyV87Av2yVp7L3h6d1kygjMPE8P95wNeJDku91YPMxz4ddOplfoBl6ZaLG1aoMYTtaatKkQJ4XWsspMEuLiNfirqxrCOpAvNFvXSFZU1MrlwKmpQqKFD98pOfUCtSorq8nuU9NWrNFhp22C91Ho00Os4qXYNQn4tYaPAchfoRjYpRUH9LG3yEjBiCpHcQHkZp9UiN793ZigBH0oUbe6vI7EUS56FmRPcgMyJFnfFC6BN0dJ1afDDrx6Is4uphgPSfLRrgM2GnQ2vcQ87kxMpcq77XOUI3kpuF1lKNgPsbshfhmvzuY7HIM7sLchbDm85f56RcmzONja4zonoXQLKPoQ9CbWnmoeWkLjbAEL3HFwTVoO5GPKukm5oa2r5G9gx7SsL7ScvfZCcHplqJxPAzgPSOkuyBuASHB8kW3AJjworiIyd3BZKM3Wt5ulGugOQzZVdIYXJcvHb4BV1HGjVR59b8MhLhATRbixYvB3lDAy60Z1S0nr4nbMPpYOXLhHYcU2ix0IefgTZtJyhbRmIGYyXIfyaQzrfivIkDqNoxLwyy4XFvnM4",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/Ad48369dc35fc4c868f3c5241949e9b74U.png"
+  },
+  {
+   "num": 168,
+   "id": "p1005011740118452",
+   "title": "Gisam Electric Vacuum Cleaner 12Kpa Cordless Multi-function Cleaner Handheld Cleaning Snow",
+   "titles": {
+    "en": "Gisam Electric Vacuum Cleaner 12Kpa Cordless Multi-function Cleaner",
+    "ro": "Aspirator electric Gisam 12Kpa Aspirator multifuncțional fără fir",
+    "it": "Aspirapolvere elettrico Gisam 12Kpa Aspirapolvere multifunzione senza fili",
+    "de": "Gisam Elektro-Staubsauger 12 kPa Akku-Multifunktionsreiniger",
+    "fr": "Aspirateur électrique Gisam 12 kPa Aspirateur multifonction sans fil",
+    "es": "Aspiradora eléctrica Gisam 12 kPa Aspiradora multifunción sin cable"
+   },
+   "created": "2026-11-13",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4mUcc2zwIXSfAgbYOplqiu7euQg69b0WaUQZQaG3DZAvo0VdgnwDA3fwKUPe8fDqj0yLohIuwCtrW0GVLYsTxvLwmySwIHEudsfO0I8DDvLq00NRBUXOwXUYN80YnKzfsmw8cw5adp5KhlDCa4nAiEwvfwmbn0j1lhi4gVLAPSGuhylKmXAslfvyKxDjDtvP51Rur2HjZrRy9TQrQghSfsjj1VIp6dER2cOU39P8wsuVCLN8bCcadkAw6YQmEQFq1kinsGIkWayLDcE7CehguxG9VSM0mvIVmdLGtet4Q6334BwaHVYF3G2PbgAEpBtc9khD53VglGD9nbGFecVK3M0MHPXWVgcUUMU4jTMl3ZqHzvHzhGgN0isEjotnSAc5MhoIuha4QNYd20ltCzdUFtrjX0YAs02rbjR45d8dYah1W88DONw62ECxHfgftttU5dZO9qx76DR3pCIRpHvt7aWUYlAFHlpfRddN0e2g2XUQpCS5uWgLirXWBpI2xIZXPByrYYaBI2EFItUGNmz44TX2STdzd0dybtdYiUKGGb1ogresnjLLuRW8x7fACUBZHtTRPkogvRBJoCm2fq86xzX7tkMbyKzoGW2lh1dC3dIDty4qi0c3fheiDExGUMTd1O7cZEfSprIOfrQ3Lg5iB2qLmAWQiHtQAx6TrxyCNP8AqC0gqsJV9958Di4tewaDIUqBTGUmQ3Qi7K",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sdc7ecf4d46d748b6b71c13407c652946L.jpg"
+  },
+  {
+   "num": 167,
+   "id": "p1005013336230450",
+   "title": "Lubluelu V1 16kPa Portable Carpet Upholstery Spot Cleaner Vacuum Powerful Carpet Cleaning ",
+   "titles": {
+    "en": "Lubluelu V1 16kPa Portable Carpet Upholstery Spot Cleaner Vacuum",
+    "ro": "Aspirator portabil pentru pete de pe covoare și tapițerie Lubluelu V1 16 kPa",
+    "it": "Lubluelu V1 16kPa Aspirapolvere portatile per tappeti e tappezzeria",
+    "de": "Lubluelu V1 16 kPa Tragbarer Fleckenreiniger für Teppiche und Polster",
+    "fr": "Aspirateur portable Lubluelu V1 16 kPa pour tapis, meubles et taches",
+    "es": "Aspiradora portátil Lubluelu V1 de 16 kPa para manchas en alfombras y tapicerías"
+   },
+   "created": "2026-11-13",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4oBHIgPlsCwCGjK0HwRCwXUNnEAXlYyuMCqcG0yZRAkMkz1dfB4dKv3jmrGPq7sfb2C3VxTQ8JwaH51HjjjglS6ffiHav1hcgBOWkgkqiaT22ZAmKE9VuK2Ue2EtsUpfhWB9L1MKerRQXY3jtkhh2VJuvCWv7ftBjF6lUbHLw6kzhqNs9SF74Bri3zov8nQGcr1MRHqK9iUKrHFyOQfxYK8cVjn2eR87Ls7LrIJq9fC4zE7GQ3aWcinJZzQJrEdxJ136hCAndpRSfKwtQz8nhMIJfqtLkgHy1vXaDzLZRcqRcvjT71Iynyn9BUJEBBsjtGBk5rRnsLqugJhUQ5KKjEkowUCV8id8c4XVH5z00s1cmCC34FkdWMTtLOpBxY9V4JK2EvEeVTB0I3CdeglHGZypueoXXVh6E6CF1sBw6BwDvbpIadSlvjW6xESiffi8Ckpk0YjiSCVm4WI7mY73MC04nUfMaZbUCAqdsWqAufDWt2VL5pbHIsVogepYCwGSDJFACyEAkeUVyNFu3pkxzB88djJMofGw4h4Zl8r6RADsqjKShRtu7lykRONe4QOqFbNo0lldWrljefqsvToaJrFWSoXeoENjoAeFoeS8Xx1yvfaYlEEawsSi61sr1EeWYpnqCHOf18rRgCE3HzMS62GkRLfzTPJSsgS9iouGBSFILRcq5ISqRQbalUYe406NFPlKQVAhSeW7JO",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S26d4a4c148284317b8854a24c6f7710bk.jpg"
+  },
+  {
+   "num": 166,
+   "id": "p1005010217812985",
+   "title": "2500W High Pressure Steam Cleaner High Temperature Washing Machine for Home Air Conditione",
+   "titles": {
+    "en": "2500W High Pressure Steam Cleaner High Temperature Washing Machine",
+    "ro": "Aparat de curățat cu abur de înaltă presiune de 2500 W Mașină de spălat cu temperatură ridicată",
+    "it": "Lavatrice a vapore ad alta pressione da 2500 W",
+    "de": "2500 W Hochdruck-Dampfreiniger Hochtemperatur-Waschmaschine",
+    "fr": "Nettoyeur vapeur haute pression 2 500 W Machine à laver haute température",
+    "es": "2500 W Limpiador a vapor de alta presión Lavadora de alta temperatura"
+   },
+   "created": "2026-11-12",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4EhTScH4tyXqCmfimbfV7BcAVqM0BwQTR4yZh4uNiis8s89xzc0cH0751i9qNvGRIZ73zcrPh0GC4U7vlovvH5cVGb9hvTyp4OtD4MOU2AzRyGMIMTaygQPW927Z3i5xvJaKBaRs9ZGfNLpZnxNYEiYa0nf2JMceQuzErkU5uVK2QF4W5a48NqZP4yYGs3ztEHwj92jLccNhWSbBAs5lU0Edctz6ep46z2o1ydDiUMXrgFr3rtdBMXYystMQSUjJ4gYD4unt3RCAagP3gzuCII6WqQYAhM2YQyEXYFzaGjzq2DW1RJ63h9JvxuRIMAc8j8mdH6PD7dnay4wV3KGJ3t9u5olC0PahJMSqteokJmvwcGljwNNaeYYxyhMEItFvqz2FerrVLVnlke3EECZd7jzaQJEgRWBO0rm5uSbpk3lKGfkbrweXnpIOv0rfZd0HWixvPlB4AhfsMWytnhxm0yGatygkMnfhwFjudm81jXOxACaKAu1VvtZd9C38CYaQzHoLpn8JniqjvyVjodxUOun55voPy8BOSYGCiktJVH4vrdPswITg03F3hzWdCeimv534P9DVGPi77gk7Gv8ouq3g8UYZDgOMwRVBcRzvOZL3f2XUkjfk3WNh2xxfW21b1TpM6B3c5bu6fCj6qANYNKzO40eeiT3RLOfQMXvOpmTgPXUZwzFuSWORELxXDwE1cRMBuhAPRHmZr6",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/A54c7749786e14858907ee36b113cf19b8.jpg"
+  },
+  {
+   "num": 165,
+   "id": "p1005007010437525",
+   "title": "Dash Cam 4K UHD Recording Car Camera DVR Night Vision Video Recorder Built-In Wi-Fi Suppor",
+   "titles": {
+    "en": "Dash Cam 4K UHD Recording Car Camera DVR Night Vision Video Recorder",
+    "ro": "Cameră auto 4K UHD Cameră auto DVR cu vedere pe timp de noapte Cameră video",
+    "it": "Dash Cam 4K UHD Registrazione Telecamera per auto DVR Visione notturna Videoregistratore",
+    "de": "Dashcam 4K-UHD-Aufnahme Autokamera DVR Nachtsicht Videorecorder",
+    "fr": "Caméra embarquée 4K UHD Enregistrement Caméra de voiture DVR Enregistreur vidéo Vision nocturne",
+    "es": "Cámara de salpicadero con grabación 4K UHD, cámara para coche, DVR, grabadora de vídeo con visión nocturna"
+   },
+   "created": "2026-11-12",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4oBNyxsPoxVwE1nmfZOwjcqeuhujLwQBcYEHSBoGI72tsJp4UEMTcpWlSjmjZyUuJEWlhtmZ4yY0YjmAdropcrwev9yU4SaCQJxfZqiKflDJqtPwcCPWDwDJGphLj7Eei7QKeYeLcvTWU4YGpOSA6KtTYKFq7RVCmpEe2QvKM2QMCh2JongN11Q2w6VWnLYjOGMOzaP3x2uRKDQqAA2kqu7Rufp7Tr48l5ix1BKyqgsppTdpnQ9lY05jRhRFcBVoz3DdWmI8HqSoTj7S8rNgYxBottlNi9HXJvw9ye32GCMPPke8IG1nR74zRqvgIojW11tI5QLOC1WaWJKnA5PbbAnmnxqiVmPTtOoFGzarQZTje4sroxzTgnFPpRdQAKgKapjWibLAoShV5ATyTbVuzqRPHjXePO9z33dD1R4XORxhkPlY5yOyFAkJQISX1rKfyg5iQcyct1WpLZu8U3KNHMwRE8acG1Wnez4QoWKcSLIor7ULsj4sCV7flkn2C9jZWizxNpF1sotXABoW4olW8WjsQPHFyDXu9QcPbt5pAdQGttLrhXqYuWMzTQ6sL4XPDEoCX6WZ0ahh8DkdMZ27P7VsmxwvjAZON0OW7rG0JVwJYbE2C8kFn1EUfbXXA3HMcOp5ULpPWarKhAFa2b45vom2WsI3pidpEHiAtJvGmXbEgyJaWMb9VgnKXtutGoMmY5rgkasD9t7ozv",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sf474f5895edf44db9d2034bb31e3ea92I.jpg"
+  },
+  {
+   "num": 164,
+   "id": "p1005009042870574",
+   "title": "XTOOL D5S Car Diagnostic Tools ABS SRS Engine Transmission Systems OBD2 Scanner 16+ Servic",
+   "titles": {
+    "en": "XTOOL D5S Car Diagnostic Tools ABS SRS Engine Transmission Systems",
+    "ro": "Instrumente de diagnosticare auto XTOOL D5S Sisteme de transmisie a motorului ABS SRS",
+    "it": "Strumenti diagnostici per auto XTOOL D5S Sistemi di trasmissione motore ABS SRS",
+    "de": "XTOOL D5S Auto-Diagnose-Tools Abs SRS Motor-Getriebesysteme",
+    "fr": "Outils de diagnostic de voiture XTOOL D5S Systèmes de transmission de moteur ABS SRS",
+    "es": "Herramientas de diagnóstico para automóviles XTOOL D5S Sistemas de transmisión del motor ABS SRS"
+   },
+   "created": "2026-11-11",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4oLoTAiw6c9fMiO670utU2NQW1f335qKKDjXESeDJfJxXrgrwTBu0uHm76kg1abQILVkRUlXpO4MjTo00t32s2t9xrWsgjAH52BTGNjPpPUme9onjewM5JKzkWVLoKObe56raOENEDg1ZOFNaaNanN8ldGGCgBR0aA73RCSFe0LbttxnnKVMHI87vYnsL6XggtZUnpSjUTY6s1Hf2wYNvnt7NQffbPxsHpTpvMX71uRJapYiR0L8o4CzjEAmrAa4Lbp2kpZEjj0Rdg2McRkyi57uqiBH5oF43WRyjSzQw6gd9RHJTDxC0jV4oOezC6dCsklMNVgicOLbpLddFqbKXyfddirQPxALYZdNV3KtEFQm5TerA6HT7dzTMyYx4K2JXkCO4QEI90lVhUI7OzlN85F3MleJ9cHkv5aCsnf6oFhsBGPPJsHUQlO4TGvlXTCcoYY4ki8QxqmTRfwNzBe8qbK3gA2ah6eSJNkr44902wGh52KBUSF6uLXMZzy3pWmt483BeLzjIqDxsgdfyoHyTNMLuO8KUB7eg9h10VqUkpCd7822n2udRz3rwjL7cw0qrMGYARYa0jYYJjfAtfp2t5TeJOdjjl68MnUWj0yZFJKn81Um68FkLGXFKZfFTyh6rlmmC473EVk8MCZxezRQ96iDYn3qGIykhGRPT9qeECzEGbn77zmLHXiLu59XpyuwI3YVAj0Wj356n3",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sfe9f084b65624443aefc46023771524dF.jpg"
+  },
+  {
+   "num": 163,
+   "id": "p1005012204172603",
+   "title": "Erabros EV5 550W Cordless Vacuum Cleaner, 70kPa Powerful Suction, 80Mins Runtime, Removabl",
+   "titles": {
+    "en": "Erabros EV5 550W Cordless Vacuum Cleaner",
+    "ro": "Aspirator fără fir Erabros EV5 550W",
+    "it": "Erabros EV5 Aspirapolvere a Batteria 550W",
+    "de": "Erabros EV5 550W Akku-Staubsauger",
+    "fr": "Aspirateur sans fil Erabros EV5 550 W",
+    "es": "Aspiradora inalámbrica Erabros EV5 550W"
+   },
+   "created": "2026-11-11",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4EJbg7eYjfHVK3qHrLuE259eKHHhVJPJ7BFqPLMWWU8k4Fj6LuFwQXzHHefsgorgisz4G7ziHJx0PRHFSDCjXbNzk6yDwzE7G5nfMh1Wb6eRXSCe1AQDbtGwJg4MNHUXOsmwMkOhXQXKagywJGaioKsQWqYWUljgeZ8UpU6v8VsFNDx0mazgK6XOR6OvGoq04gsWGmMDEHh8anjjYDmTzzPG8a6c1kADBsAntfCr99JFLpHO6rwOyjQF9QQpufdYsZ1VHENn5l3fgPE0uFlrx9iBkdgrOQTU4jZUtv3PAtMKq7a0bniHVCL8CcOcJpRw6pRLsYt5jLezChdjyOlq3GNNUGwBazQMc8RVrldJppjv0cUUIObFs5Lq7tZEAcpvJKMDZJJthui72pMnAmk3gNDhBIbNmTKv8IsR5siL6JSgFylehUw3dyYwWvpeyGTxvAnpnZ0HThSL4hzXAevH9wUkPttlw3lGuGLW4vMB1NzVz69WrHCMjSjQIYACxLMtUlKAdtLR3DP00Xa75LXjTXch6B5Bltxud17ovwKPJ3CG8AgBniK8eZu5eIzMfJsItuwnCsiwK7RoTBpq2RpixBMNyF2MIxKssJ9Vjv0aZLucYzt2aIdqKZzRPY5AmDvMBh4ieXTMjQuO24CVmaeGM35pVDLrpU1Qij1vJN3o4ZvVjGojRGc90GTMd86VX8bwBztDjXdyPYkDIl",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S0a38bd577a03480b84021de94661467ej.jpg"
+  },
+  {
+   "num": 162,
+   "id": "p1005012655710336",
+   "title": "5600PA Window Automatic Water Spray Cleaning Robot Vacuum Cleaner Remote Control Electric ",
+   "titles": {
+    "en": "5600PA Window Automatic Water Spray Cleaning Robot Vacuum Cleaner",
+    "ro": "Aspirator automat cu pulverizator de apă pentru geamuri 5600PA",
+    "it": "5600PA Aspirapolvere Automatico Robot Pulizia Acqua a Spruzzo Finestra",
+    "de": "5600PA Fenster Automatischer Wassersprüh-Reinigungsroboter Staubsauger",
+    "fr": "Robot Aspirateur Pulvérisateur d'Eau Automatique pour Fenêtre 5600PA",
+    "es": "5600PA Limpiador automático por aspersión de agua Robot Aspirador"
+   },
+   "created": "2026-11-10",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4nzSrtvLpKi3ZWLxE8wb2atNh9yUogxjG6DlAn0s2lTPLD1gv7XvgpQo8P1BFd70tO96LnbsVWxAICd69Em6e4A2ScI3g5qSv3yNXp8IqdFqOn6Truv913NOBinqFL1GIiNqFHiFcK7gnMVoB6DFW2f8cMGnHfkQOFXWkGWJQHJDJKa1OeMFYUJJf8n5SUupw02c31G9B3Vgeydvacj3qhOLr1zf9M2I02RVyiSReUf1HVJg4IFSs4fgoqCP3MD2rHWKddtQ2CUtXH8LGXnFicQlxePAMXVDhqaZJED8uJGMySVzDS8FoNqiqkBANLXDB7g9LDFzo0WAbGJ6Moc8m3sXujVwuRuiprSFURpFx6G2fTuamw0eZNkE69vVl57fw2x5nmQhKFvuRVdw0gEnBzLcWRy5DfocUhhi2S6NJJoHbDysFlgJpjv8nNpt2efbUbxpx4vLkLecpGW4iOFEDNHNJGSZUbL0WgSygSPXsQ0bhhiS3FDBNSTryjY15HD8QDZHxqpV3Qhosn1VzuL21Sdo7XHA7H6urvl2BmY9N5x4UJesVJMno0kCQiexdkN9YkacPsqr6owPUR7CKSW8SEq3FsFgYvFaSryUEXB2YJNuVEJafzuUR5cAJznUuUshY3AcLXi8bNuTnXmoGQopApTzPu1cLesPQUrVAdaCXUkkbeHqpweOdiGd6qa6u7gcpNPYETmF9tNY8o",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/A28570492a45944fb869751acbe146296y.jpg"
+  },
+  {
+   "num": 161,
+   "id": "p1005012262932919",
+   "title": "Window Cleaning Robot ABIR WD10,Dual Roller Brushes, 4 Corner Brushes,6-Way Water Spary,10",
+   "titles": {
+    "en": "Window Cleaning Robot ABIR WD10",
+    "ro": "Robot de curățare a ferestrelor ABIR WD10",
+    "it": "Robot per la pulizia delle finestre ABIR WD10",
+    "de": "Fensterreinigungsroboter ABIR WD10",
+    "fr": "Robot de nettoyage de vitres ABIR WD10",
+    "es": "Robot de limpieza de ventanas ABIR WD10"
+   },
+   "created": "2026-11-10",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4mN3DnyFGJdr62kqlfIvj0XYiegNIHUlxHkC4xpAjutMa4HrfzChpTEWtggeMxQLwjwHdOqRmQnm0slVzapOXq4vStlDgAuPy1mrjcOXGaD3eURDvAhpmPl0wHlGAKPbUAoU2Ad9vPIQO9EW8UG7mYm4aIwgTwZupykLMy0mNZ2TjVggofL8lSckbgEd7LuYlBZDjm6X94Z9jL31s86n61veP3oNIxpOy8Br2gErDd43KRRyJlW869JiEuI11tGHSeaRjCZGH2HBBxY7sQYAnng6vVev4nCt9WlpTCGYNkkIOBJk2CKl9UQHHjZeE347T9S8vUV4xnMwgvzXa8emboaRlNYLUCvAaoxcyxAdIHHm8s2j25J49Cn8QizgtmgXXc5uLLxbKIpcyB6q5UMNoDStAx7Mtnm7Hjfm2cD9MumrY7epLZHTE3pcL2eQoXlkHegwoJ5XU0c35t0V0GHKjTBupGFEhAfQ3IN0p6egxqaEBoc6g2pPOu5aX1kiccAMlJaqWXDVg2dLbEY6DY9RIje65LGDpNnYAJIJMtjNLNDoGBv7Ep0RZ9q4Iraue4YeLeypgVYWBgPYkp0nMCGRt416auHB8IHR1mByVNutrWIBFlcmS556deIIqSwDpVmsOjwpKAR51QaOkPpkVG6typWwav35u0zHbW13NYmYNBbPeR6u3m5Ce4sSBE4hKHSriuEQ1xPhpVVFQl",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sba851e07646f4fb8b4493fce1974d5077.jpg"
+  },
+  {
+   "num": 160,
+   "id": "p1005007570258250",
+   "title": "OTOFIX D1 LITE OBD2 Scanner Car Diagnostic Tool Bluetooth Wireless Bi-Directional Control ",
+   "titles": {
+    "en": "OTOFIX D1 LITE OBD2 Scanner Car Diagnostic Tool Bluetooth Wireless",
+    "ro": "Instrument de diagnosticare a mașinii scanerului OTOFIX D1 LITE OBD2 Bluetooth Wireless",
+    "it": "Scanner OTOFIX D1 LITE OBD2 Strumento diagnostico per auto Bluetooth Wireless",
+    "de": "OTOFIX D1 LITE OBD2 Scanner Auto-Diagnose-Tool Bluetooth Wireless",
+    "fr": "OTOFIX D1 LITE Scanner OBD2 Outil de diagnostic de voiture Bluetooth sans fil",
+    "es": "Escáner OTOFIX D1 LITE OBD2 Herramienta de diagnóstico de coche Bluetooth inalámbrico"
+   },
+   "created": "2026-11-10",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4mKjGGuZOvHawADRKCzyjTmn7hlkieLDWJLFJuMZxne3iYbRtE5zLoA6mor6JFTYghs7CpQgjRXkzqOwn5B6j7N8ejXsb6tCH8TIeKeZ9SXDxHWbzg7ptB5flgSb7x3tNaHRDFJbr9DGFJpHXH6fBBREXBTnN76wOlvejPykTXShSrhEGTypzGOGMFrv7t3ekiJfPfIEFeLr3NEeZaZobXFzVpacLxdeK7osVJ8tyeLuhv6aHxwAZ5MvQeQKqrER0T9WDUYR0PcsIphgo8DIGUMi82azBPGGxnjJcrn0XwqiHkDt8fie1r9KEB3f4gD0DY02hJOxQU4f5dfzYTMJv1BgTwGYDZHfVVk86hJlf4Ahek0taZ9ZIxriBonjixUBd7yRTnLOCaqTF3OdGyIvwkFQ0bs3KnUCpxMmzhNM81p5SswkEgbPWxnFbkP3mubGV3bTYQ7YtNtwPL7UfKyI6YIlZuzkwLkGdQhMLFMnI9xnkMGHCOwqZoFRiYXEp72ZEI6uVfBP6dREeabjuO3RQyQ6i0V0ValH6isGTqnBBSHFHOYteODkeKK7xzuqT3EApjVXynystcRM2P6FIaoktGYggF9m5Z8cjMMwrAp54eNPBoiuDdNCwK1RV4YymVutZo5uv9FeLtRrVZLF33QXVtOZlbeIUCd12oo32EUTO3YmK7c2B6oCWESZFpQyT1wIsRnDsVwGeSwVYh",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sdffd53164a9f49eebf5ac9fef5893925i.jpg"
+  },
+  {
+   "num": 159,
+   "id": "p1005010653534196",
+   "title": "OTTOCAST Play2Video Express Wireless CarPlay Android Auto Adapter for Youtube Netflix for ",
+   "titles": {
+    "en": "OTTOCAST Play2Video Express Wireless CarPlay Android Auto Adapter for",
+    "ro": "OTTOCAST Play2Video Express Wireless CarPlay Adaptor auto Android pentru",
+    "it": "OTTOCAST Play2Video Express Wireless CarPlay Adattatore Android Auto per",
+    "de": "OTTOCAST Play2Video Express Wireless CarPlay Android Auto Adapter für",
+    "fr": "Adaptateur Auto Android OTTOCAST Play2Video Express Wireless CarPlay pour",
+    "es": "Adaptador automático para Android OTTOCAST Play2Video Express inalámbrico CarPlay para"
+   },
+   "created": "2026-11-10",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4kv0ngYMWFSKcxobrHbfteOwRSL9afKQLYLh0bosZqN6Dsxmdb2J8sBKtIiNUCDfItLgfi4kCfltdzb9znA1NWCXrfRYeNp85cjTPrpzVvUyc3SeWcZHdPoKe9Bv0sNNJ6bXlO0oQNlUFIBazVFDH77K7v4tE5so7UHSkzvXlxEElSvwN6rN7k7psehvJs3g2tEkNXyzc37YMVKoXbpdafvp6Q7dEGWF5WJQr2Dos6GERqSer9Fj8Rb5BeOW7BdEG69JHII7W915IE3y2xVzN4kbw26EJ83GEBOaRhjjrzWglqS27T1lGOcGdMqBCwNPiiDX2xAqEq14uri7G3wjuntVLpkEQhYbXIvdU9zPE3ynM1TTDzLsaC2cJ2NK7n0Edcl9F2Oj7zcagFnSJ4Sd4wMTijKSiUEgZpeL4GREyykmxqFr18dQgjl7Nlr2UF0RxloZiwlBwKGDBB7AwDaxAMmSAPyWWsJp63ZXe16l9SN3aLBlPfDmYleP9XhP372TOi31MqypwHWpdEunvtMjzH4v2Wl7wCZzuUrXIvkB4TMEO3Yg2Xdqlfg7qjbXXGMVmXetLe41xLXbDcL6A2jawdMlSK3vQVe51ImlikYD2vpwdEWQvnSvA7gJFgvIl7v0r9D2UMU6VaPIqsCU8ZGmSMQ1zXm0bXEZSUi3RAIU2CRJqJOAP7VtxGfINSHvj1A4l8PKneyP2ocG5e",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S5b4e4bd63ac641a3a248790edbab0f996.jpg"
+  },
+  {
+   "num": 158,
+   "id": "p1005012940083066",
+   "title": "Spot Cleaner 750W 11/15KPa Handheld Carpet Cleaner for Sofa Curtain Spray Suction Integrat",
+   "titles": {
+    "en": "Spot Cleaner 750W 11/15KPa Handheld Carpet Cleaner for Sofa Curtain",
+    "ro": "Spot Cleaner 750W 11/15KPa Handheld Carpet Cleaner pentru perdeaua canapelei",
+    "it": "Detergente Spot 750W 11/15KPa Detergente per Moquette Portatile per Tenda Divano",
+    "de": "Fleckenreiniger 750W 11/15KPa Handteppichreiniger für Sofa-Vorhang",
+    "fr": "Nettoyant pour Tapis Portatif Spot 750W 11/15KPa pour Rideau de Canapé",
+    "es": "Limpiador de manchas 750W 11/15KPa Limpiador de alfombras de mano para cortina de sofá"
+   },
+   "created": "2026-11-08",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4kvuIDGcXxvLn5HfuQiw3nRe0TpBXFVkYxuFRXXrhYoZjE6lxVLomXIHx2rAZcqzrT07S0VlDlFO84fe5htixzDmv1oavsMuvbsDvr1fSpjnoja53K7wigLGBT0Xd9y8FSMhA6xQhd4Zs9NL85Gs1lUSqn3ByCkTPCHffoYkr8h9rDNlpdV2tIYDgZv2jJmfVc2XcFZ7DcwVSkMLyqoWh7NEiRRpbzlc0VgT28RyePCoJ5kLqzjDnfgWLiI8rEJwRxKveIoH2g6twc5wJDFX1jHAA8b7A4OKysNQuAfFVqYofB4Xb0HUrzrbfik6k1AQrS9RgedFZBa0784T3cmZ6c0xtHfk15k3vEMehda1lfBRtS9xN268vVWkn9YytQxw7jmsaZM2pKIRVt6byYbLmCGkyS5JjeRzeUVJyflfANbarj78BDAjvc4Ls7l6ppAaYfKrRVBYe7bMaUzDuVgu4pybcKyv6pS7pvAgK8uMv6PeyNRIdGzlwvyPgf3EVVe8Dfllty98P6g2HajuTCo2BfOODMKIFDgiqnHPYd0kV4lqGmVVpClWDm6lpeYU97wexqcJXKgIpfD2WJ4IxXija78dHz4LBAx8v6TyZBNH9FzbWpds4B0MUOZ6NW0eVB7sbPdLb17oE1DeFynyGvfZC6WOT3nDtZHKRt6LALY6OTw4SYB79AdciAR0z71UdXnHVTrSBcqBDQK7uG",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S2058a8413a8c462fbfe6476a8ecc2a44l.jpg"
+  },
+  {
+   "num": 157,
+   "id": "p1005011806187790",
+   "title": "Laresar M5 Cordless Wet Dry Vacuum Cleaner, Brush Air Drying & Self-Cleaning Station, 48-M",
+   "titles": {
+    "en": "Laresar M5 Cordless Wet Dry Vacuum Cleaner",
+    "ro": "Laresar M5 Aspirator umed uscat fără fir",
+    "it": "Aspirapolvere a secco a batteria Laresar M5",
+    "de": "Laresar M5 Akku-Nass-Trockensauger",
+    "fr": "Aspirateur sec humide sans fil Laresar M5",
+    "es": "Aspiradora en seco sin cable Laresar M5"
+   },
+   "created": "2026-11-08",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4o346ib3LQLjESDHid10D4dTj959rSs2uCVi3UEKhAA7P01t6FqVoUAUbhI4pgw72fl5iaVBbE9HXfrbb66UDJBPHi5zMuFZv1ynC9GMSuQkWFAKMeNwNmA6CCoSGQbsXhweYkcq0co9xc0n9zLDxhahcaF2X6nUSZKPaXB279BcW7LfocphuGsRD3AURayVtgGYKXg4lUJ5mhGxUtnrshv5eN3ZUPL3JvR6Pi9bMTvCvAVOHvj7RFrxcU3QvoC0h8DciPmpN9hOrcBNWCiu17viNvJaK0QLqe0XnOvJSYOL0HJa3ipYgfkWsKcYskhh5EQdBZuT60y2elbOj9WkzYvmZTNyAZbCNYR2JLLqHLelVd5vgo1VesjUUBsODtkUZWQ5FRMXSN1AdnCD6P8n8cHs2szaCki8aQUFWwuIz6MOM06a0WLVtruXnTJkcdIl1HbyihHz7fLkb1VZB0TaJiUligCFpa4g3y8DpU4M6S6Z87GoWkO1msGSd9ldb8l51KMA9vRLgtSPsSDEG2Z4EwrT4hFRg5MbwlKycTZCUs2L35r8kObxHnMnd3dXKgl9WDV4yRddbCMzA3UTe38XKb7ESwJJ53qhVeX670M2BvXz8NNbfmXzZujyUfRl7froPUnLo2JOLSDDrxl9UJwisO7qywyGQ33vxykEUc4HrJLLA8FDtNDVJj1CYKCmf1YzL3RQZNhZti2esl",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S78cb333c99d442fb8b843f43146f3d1fM.jpg"
+  },
+  {
+   "num": 156,
+   "id": "p1005009695617830",
+   "title": "1L 0.75L Car Brake Bleeder Hydraulic Pumping Fluid Pump Kit Oil Change Purge Tank Tubes Re",
+   "titles": {
+    "en": "1L 0.75L Car Brake Bleeder Hydraulic Pumping Fluid Pump Kit Oil",
+    "ro": "1L 0.75L Sistem de aerisire frână de mașină Pompă hidraulică Pompă hidraulică ulei Kit",
+    "it": "1L 0,75L Car Brake Bleeder Hydraulic Pumping Fluid Pump Kit Oil",
+    "de": "1L 0,75L Auto-Bremsentlüfter Hydraulik-Pumpflüssigkeitspumpe Kit Öl",
+    "fr": "1 L 0,75L Huile de kit de pompe à fluide de pompage hydraulique de purgeur de frein de voiture",
+    "es": "1L 0.75L Kit de bomba de fluido de bombeo hidráulico del purgador de freno del coche Aceite"
+   },
+   "created": "2026-11-08",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4EhChCEj01ibJaChDa9iEcVsJYzFUYO7EjOzA0wMMMVrvhMZeoZlSOuvvDTkmAEc2AN3YpA9zFYBvsK4dvMmX2rejgGARYmH6Iv36LSPK28ooD3PVBfNeCnjlOuGOkmQqmpZav5TukVxSOcwBWPjXDQOOrZuRlQtZGydtsaiOYQ5dqEXccR7NDrgHRJsoGi9v1aaCe3hfbktsWB1d5oHsznR8mv3wM0MAJWfvBeDw7Fgi33tjCbZc1X9tCaxYKpfHB4X7lit2OhiqOqW2hS83NAdHEHuM2cWZast5u01RzyKtVrQIcZMv7lhy81LBxkOIdqqQBg7MN2V04Hb9zHDubbIQSyrRq9sFc4adQ0WDbHE0iyt11kuU5RRN04zkX5U06P5QZFDLaT96sRMJclyTomhRo51vP6dZyCf2Z9jCa6SeRZcO8faR3qblljcyOPXdChcTYoQ7QL21zDDn6DdiDMaRVnnJ1JCzlelW0nKz6aynAujabWOvZbxCbti3K80QnVgLmcTIaTICqWigUoczQsLwRiabTkDiHCOsxqayKNweKW6CXgJ0eCMpJ1dK99DPID5hJgZgxtcBItsB1RuxXQroL7X9d9AtRQTOgjbfFBF04lxqaesStS6Ocp37x2KrX7gFLarF6BkxnyveIFxcOqwYLoSh14PhOWFKbZxfeBnJLNO2a6Jq8w5gxlLfKu5GTm0kl78LkmoTS",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S83a601a6cd6c473ebf02560226048ad6o.jpeg"
+  },
+  {
+   "num": 155,
+   "id": "p1005006863767866",
+   "title": "3000W High Pressure And Temperature Steam Cleaner Handheld Alkaline Disinfection Kitchen A",
+   "titles": {
+    "en": "3000W High Pressure And Temperature Steam Cleaner Handheld Alkaline",
+    "ro": "Aparat de curățat cu abur de înaltă presiune și temperatură de 3000 W, alcalin",
+    "it": "Pulitore a vapore ad alta pressione e temperatura da 3000 W alcalino portatile",
+    "de": "3000 W Hochdruck- und Temperaturdampfreiniger Handlauge",
+    "fr": "Nettoyeur à vapeur alcalin portatif à haute pression et température 3000 W",
+    "es": "Limpiador de vapor alcalino de mano de alta presión y temperatura de 3000 W"
+   },
+   "created": "2026-11-08",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4FlWAS8srTEpU46SukryOtSmb7LkTRh8m8mUCmYj0adAyVEg6rWcmx0iqrFh7PUKDx5qBWezhAdMRYJsTxj2uaHPN65ifxyVNKE3EoUF7SBppYzm7JwtB14LVwKKDd3sySuoCwO4BifIjDwzL5X8CSxZluR4uyqv3n5xOlNbBKhG4kPAeMWx5IwrxdVm5RL7t0IBpQ7xYzTWsjOw1iF4cgkVhI0JesSiwhF7EXwZQwrf2Z2WiJW9bbpZlcTYmAeUYbxx1fx6XFXV4Uwkj1yxYQwmJkXNo4ULlSGYHJHyrsjL8J3skklEzm47vXcPQHULmwWB0aIeEiOEmTgQprg7wjA5IPv5ODpl7RpE0eCFY4Fa8UGt1bwu3ShSNCuGFGchHi5YXtcr0mD0ymkWBSKYIof9VyKsj2yYP23a6IqyLFBFAmsndXO84FkuhgTFKe0wOj2323Aq0W4efEDVUbIuJ7xiafqkaC11ZQxxK763n3JQhHOoY8FD0KnQvxwVOtYFldDEmEIdA7XTrbSa9D51SDEB1918amoFbk8qDKzjCVodGdk9KiQtYCAUrcyLZ6kOYQ1Dq8LkD2I3Y8w6skGb51aCaeICfEvFXnkcKcLxi54NIhrbS0PPEWHCWwzeeHNx0HbNpx6wTu6NHbXedwpBmcjQgHIJ5p3EX3CfSC3shnbYHpPnAbsVmkX2NncXgeZGV0mW93EgmcSSpn",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S9ccbd075b55c4d589530c3357aae19bbF.jpg"
+  },
+  {
+   "num": 154,
+   "id": "p1005006783101193",
+   "title": "KAWA Dash Cam D5 2K Voice Control 24H Parking Guard 360° Rotation WiFi Monitor WDR G-Senso",
+   "titles": {
+    "en": "KAWA Dash Cam D5 2K Voice Control 24H Parking Guard 360° Rotation",
+    "ro": "Cameră de bord KAWA D5 2K Comandă vocală Protecție parcare 24H Rotire 360°",
+    "it": "KAWA Dash Cam D5 2K Controllo vocale 24H Parking Guard Rotazione a 360°",
+    "de": "KAWA Dashcam D5 2K Sprachsteuerung 24H Parkschutz 360° Drehung",
+    "fr": "KAWA Dash Cam D5 2K Commande vocale Protection de stationnement 24H Rotation 360 °",
+    "es": "KAWA Dash Cam D5 2K Control por voz 24H Protector de estacionamiento rotación 360°"
+   },
+   "created": "2026-11-08",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4oKbb4oKfGnjNsNlUWks1QEO74zTYWWtyhiSTqNd5kQamEWepwQFUQByjQtB05xqN1ese2Bxx5j5lkefc7fo12i3AHjzst02LNUDzVaZnBAXEEYx8are7b3S6QtvyYWdhxtflJJiMmpkakkBIxb6jC2G20O6Kq6t2yRF5BLbIhOLWXlzs44nuc0QuX4iaAQMUDQAU7xPfAzJX2CJYRE7URGhzEFYfIppEg6I2V28ntyI9MCzfPUOAtLHhDSSruUz2ulQzYn66rIA3kcXp1qCLg9vbyJW1vjeoV5gerPnnwsVMyCU5QDnl67ZGjulynO18xT3XCNuZbNTDLhJY6dwOiwBLxRVS24bMdq6nYYeehZTTEoSjxxujkoO4ICEWGPQqkB0MRrMqoxCJWdJxhLWPswiIiuSnPILgBZV6WlmZtcdSV38TCllVPFxFGRrKQfohTvXRHOmKLBxydiyCwnD0U6ADPACSg6jOIE3K9P0u3clfdiOWYoDtGTst2HEzP17Ju1QiftgEN6yXnZJvvpLMwhkf4qiUeSgSCNLh2P4SW0RfMOnD1JkoCR0iNfU5EFPOoQIoQm3cnH1vl7ze3t7bkhy3qD7tPzBMjRYa0TIeuO6ZdCVF3UhhlFFpN8CRDFZssBMsdkiT3DcJqSkjdXpjRWA6LS3HXyT6jomzqbxHNla2Laj87KVhLIVkLk1BqQxcqSqxOTEVoushX",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S3c20ebd84e7b49e4b16aa08eca578114T.jpg"
+  },
+  {
+   "num": 153,
+   "id": "p1005013336198635",
+   "title": "USB Hub Docking Station For Tesla Model 3 Highland Y Juniper YL Center Console Fast Chargi",
+   "titles": {
+    "en": "USB Hub Docking Station For Tesla Model 3 Highland Y Juniper YL",
+    "ro": "Stație de andocare hub USB pentru Tesla Model 3 Highland Y Juniper YL",
+    "it": "Docking station hub USB per Tesla Model 3 Highland Y Juniper YL",
+    "de": "USB-Hub-Dockingstation für Tesla Model 3 Highland Y Juniper YL",
+    "fr": "Station d'accueil Hub USB pour Tesla Model 3 Highland Y Juniper YL",
+    "es": "Estación de acoplamiento USB Hub para Tesla Model 3 Highland Y Juniper YL"
+   },
+   "created": "2026-11-07",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4kxFfg03wWBJcs0EKemfiP3hnkTuXlg4dZtcy0Hbhv3rJlcNgEEd7aN408ytYmsH4X9TGJXhSzmoa77555MAwp9c2zQIfj3Je79qOqp2iBDC71r9gQP1s4EPIp7wxyLRm7anlnOyNGjcnmnb42htgHkx2YR1mACTf5Wt7UkTT6FDLTRw65JOartzy1Aa0gcSXDFEwgnDhGonBD2ekNAxsxUYwUBjMHfKj84ewh4v0miz2vMqrHJGObeNwHFAhOECwG7gCqNDB52Lr4yc2QCvLtUIhGwjTob1ZTAyezdXQXDJMB7X6Gl1hsMa0rKqNqybyq34mmUXgrNqMeqDC8JK2T0LCrSObzbjgX7CC3FpEo78ejkZukWtIu6WKOk5fexvUcTyKhpiOMyVKam5oqmlabkTjxc54lIxcitzd3LqiRgcVNDVncikfiCcd8qGA5FiL3pI4Mi55xHaOSca40QkKQebuAsEyJbWrSxAOBLmnt57FNuY47tB6OdBRN1ygUuqjlFU2T499IsfDKFkOfTftVLv3IM8cK254DfWQjSryIBH7iCaiNhFaAejtkhK5ChToPSE6VywtWe3gJ2ujvRfQv9GgZtH6RJPUPe9ihhq7dJjC5VJy4SQaHfnQaYfhU1WeKTEq61a3BT6Rk9jY4BK9uZsTkTwTlo3NdibasMrZ16HSFwKvlD7lSFR4jItdz8RjRzhkrM5MoGmZe",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sd23a97dccf744263bce458a3141a130a5.jpg"
+  },
+  {
+   "num": 152,
+   "id": "p1005012177126898",
+   "title": "90 Minut Laresar V7S 75000PA 650W Cordless Vacuum Cleaner Handheld Long Runtime Removable ",
+   "titles": {
+    "en": "90 Minut Laresar V7S 75000PA 650W Cordless Vacuum Cleaner Handheld",
+    "ro": "90 Minut Laresar V7S 75000PA Aspirator portabil fără fir 650W",
+    "it": "Aspirapolvere portatile a batteria 90 Minut Laresar V7S 75000PA 650W",
+    "de": "90 Minut Laresar V7S 75000PA 650W Akku-Staubsauger Handheld",
+    "fr": "Aspirateur sans fil portable Laresar V7S 75000PA 650W 90 minutes",
+    "es": "Aspiradora de mano inalámbrica 90 Minut Laresar V7S 75000PA 650W"
+   },
+   "created": "2026-11-07",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4Ev0q8t5dwj4tSfAaqaBh4LnrloMe6eFCNqjxESQhSLZclRcGNxysJM9loMEky8aNTTJLQGPhrPOM9vwV7fXuDmNFHpqhooOr6A8WDVfb3uwYJD6TZ2qit3NrYVexXRFoBka5ficbxJWI7GBRJII9tIsve5Qo0EdwGQSHeS9OLsUtY6BbxrNHjZt2WuS7j6qIgcFtAIHsZipg4FGnErSSoxMLeNRuxKVDalLfVnq4wgIzHuAhwQarcVupGTJXcLhTqgYoehH2ehBTmiNCtEaovFGfmVu3UaBZiPrL2KuTIKN6JZyvuLgt2dHOnEJTe939N25dvBHMduhKBHQT0doW6uhhB3wz4znG7OYGtqUSTjdD4UHED3xa8xTRAIuglhTma1pnmvIdF4c0KOfV0Fa9HDuGwA6tCY2qDhF5tRDxQblzPP1g15ZJ4v5nnsIC989NXkqb16lBQOd7pssLRUg6RLANbtFpDwDb9qv3a9cPc1F8DgjkkB1ofOwWbE1z3MvzlCSFgJltCfCyQf04hMNLTwKnJrgtflDLSOQXL8StQVTXC5cRisfUzg5KycXDUGoSeiIUdEFh3NIRaO9J8SsZP4Ee1PuPDAk60LFUK9Dczk3oBI7RHO6EtJDX2i3OTDohdwgyK3cJjUP5fEFmfUzwpeaUNd63EP5S3VJ0R5DMD4efTTxjsxsj0K9Fbr4OoGSJ1vs0HzJkiohZJ",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S3401e3f651dc4bf6862e3f3cace9dea9t.jpg"
+  },
+  {
+   "num": 151,
+   "id": "p1005007128139480",
+   "title": "Electric Gooseneck Kettle 900ML Hand Brew Coffee Pot Smart Teapot Temperature Control Pot ",
+   "titles": {
+    "en": "Electric Gooseneck Kettle 900ML Hand Brew Coffee Pot Smart Teapot",
+    "ro": "Ceainic electric cu gât de lebădă 900 ML Ceainic inteligent pentru prepararea manuală a cafelei",
+    "it": "Bollitore elettrico a collo d'oca 900 ML teiera intelligente per caffè fatto a mano",
+    "de": "Elektrischer Schwanenhalskessel 900 ML Handbraukaffeekanne Smart Teekanne",
+    "fr": "Bouilloire électrique à col de cygne Théière intelligente de 900 ML infusée à la main",
+    "es": "Hervidor de agua de cuello de cisne eléctrico Olla de café de 900 ML preparada a mano Tetera inteligente"
+   },
+   "created": "2026-11-06",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4mnIvngmlm1NAgSYKhP99KVZuWuUNchFvetvAwh4YbENiDq4Z49srtDmSAXNAlJz5Gwzsgkbui9XlsyAwod2TcfxCMjVN0rRSv7UEdtlaR4fhT4WxVMbxFvuZIt6Va54ud46tIOWCruxJIB02SguydeTp97qRlq0Wmh6pgZYU33HVsTwmSs8TzDJal6D2t1ZapK9Sji6AspeJ84f5EQTa9NXEd8ETIUkkYrXorGUOrpNWWwNTJDTcFwPZRMcCMyW4ldNduUOXzW45zxZymSdQdAmAHouC1QZre3FdVNHJy2Of1f08JPcr4KisPVUWFECATnDLsEwVzUdfxoLUyJFo2U9nQ1zkp5DdNGv7ydgKkhFj13nuJnjUi3j1xxMxeE7IHYLO9PzTW403f4wwdLu6VYsjo1XLgUV4tOYWTspT1V7PZ1yqV1UjNRly3PnrIoTIiojkZ9lkcv1es6PhD5PuKYvgXUj1kY3314KQcaK6W2o01R4UHf37ZGCgmABNcKcuBLxksy9DLBEG1AL1hA9eHzXRK6v5el1zGkOBibhBdqvAUjER2mgsAPlckrEVb51qvvRTg4GrSUG9WKPcFeCcYdoU5LfTESJgliL7IV3TverxlqrsZIbKkX27JzI2sCkoTc8i4d5qEgxLMDE87L8Uxafv6mHC4bXNEwWShM2vT3Bfd3h6dJQJdcs8R3uk8CEpjNUMMHYqOjTyg",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S04253a0da26a4916b8c19fb8557b5b3bu.jpg"
+  },
+  {
+   "num": 150,
+   "id": "p1005010264262081",
+   "title": "Electric Window Cleaning Robot 5600Pa Automatic & Remot Control Limpiacristales Vacuum Gla",
+   "titles": {
+    "en": "Electric Window Cleaning Robot 5600Pa Automatic & Remot Control",
+    "ro": "Robot electric de curățare a geamurilor 5600Pa Control automat și la distanță",
+    "it": "Robot elettrico per la pulizia dei vetri 5600Pa Controllo automatico e remoto",
+    "de": "Elektrischer Fensterheber-Reinigungsroboter 5600Pa Automatik & Fernsteuerung",
+    "fr": "Robot de nettoyage de vitres électriques 5600Pa Contrôle automatique et à distance",
+    "es": "Robot eléctrico de limpieza de ventanas 5600Pa Control automático y remoto"
+   },
+   "created": "2026-11-06",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4oCqw6Xj68kkLgHvB7iU5MGCYOsmSYeZYZ77nc5noLuzmi1gH2Gn37SI1gwvcgOxz2h5EebwA3kODCDJV2MM3rqLKld2L954HbIodsCAcS5QeCYLj4npvHLK6faFLEnwudzlbfqFSF2YAtBt501UswYj2m9BgF6fYs3aKsI8lK2ARuknrufGeSGTT7TKHkRd0GyAWuv9igYTFIH3lukaZTNopJt3L10WhfEdpraPmMO6hG9UnHkXYevO8rhz9hrzKIJu1eLcVdFVXhz3uRJVCVmRlfgjUdIhJrU3ryPlzLQi6OTEQlPXTYDkGFkx2yk8pm8YI2fsAnBTZaFgMxh4YfOWQLJPGiFJAWMCwhFWjK7zIBj2CIT6Vg2u9VTIrfABBAk4XDua6pbIk0dBR0GlrjsOkRzrWki93P05M78Wak9lcmTpWjfexe5VFdPrXPaj6PYfhUbM8NX9EcfjCVdSZ1yt1TthFZx5Ung3UMKwCwOegDKSNikmq9XokWDtTU6oBKn2nYkjXiNNRqNkQ7qF33B741esOyZwqvhq3mtb2yVjycvrHFfl6aZ7WHAFkJUocCitp4TMVWHL1a5qPVPTfESNctYV4xBOv1CDjLUK46Y14lJ3lLlfBP0XzPBCRg7qnI4xvV31NF1zZt3jOFV9J3rRHO4lmjplQRlQ2YjaIfrLwQp4BpOQajn6c2EUzwCN2evYy2FOrkj43K",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sb7021815812f4e1a8fe706657e607fa6G.jpg"
+  },
+  {
+   "num": 149,
+   "id": "p1005008144822705",
+   "title": "FANAUE Motorcycle Bike Phone Holder Mount Aluminum Alloy with Vibration Dampener ATV/ UTV ",
+   "titles": {
+    "en": "FANAUE Motorcycle Bike Phone Holder Mount Aluminum Alloy with",
+    "ro": "Suport de telefon pentru motocicletă FANAUE Montură din aliaj de aluminiu cu",
+    "it": "FANAUE Supporto per telefono moto in lega di alluminio con",
+    "de": "FANAUE Motorrad Fahrrad-Handyhalterung Aluminiumlegierung mit",
+    "fr": "Support de téléphone de moto FANAUE en alliage d'aluminium avec",
+    "es": "FANAUE Motocicleta Soporte Teléfono Soporte Aluminio Aleación con"
+   },
+   "created": "2026-11-05",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4kHqN89fj48S8OyvwERB4iBmg5o4D2IGguTaBeHH0arOSJU8dD9cGTWnZNB8D81GptYlkgFk6SeJPZMNMsGQAxd6JoXeLMAB9PSutvEvkyoUnwrkjoIz66lcPwKQpMff9xhLNcxKMDnVWaPnILX1NXmeK5EPIxa7EU4Gc7WSm38pF36Y0Em9MHGJ4iMpvzkdQAtFbFVDR9eM64WdF5kxRKIEyZvDw0BYgXH4HxpCrzSw4U58tZ6iAu2IO2z9BEoevDAzlKK5MMr1KnTyc0bdMFYmLVst9ZwS7JjGeKSUxk0m7xCfGbIN7S5aHfUwg5LGZ48uT3nQ1LVL7QYBRTL9scH4WHXNPLSRyGEniRpO9E5erIKj02DWGgQbmDL2n15LeqNT3ZCjSO04lKR9nX6ormgIenKBp9eg8DI9tMS2K9h6zOSjGpr3IKltiYofyAezDSHw6dio8IZB1EissqgHDZY9J7jcVl8fAuboelCmMECQdoy8jLuHda6doanYGJiWfH3qsGnSmUbZ2MF7BxcNPdTRqycKq5k77apov3kVW500yw4ai9587TfoHls1tLiugI8S4CmGLEKnzzkYt1DDl96rNWT6i1ytyHD0dQJbX9vCLRdEdghyarPDVpsxvGIrrLC37voskq89Pd4HT4o5R0WBSGXTP4O0YPFyPdqXUvriwPIDyX0ghMgYVShDppYv1pzi21DHqLwI76",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sfaa0e4e4334d4b4ebcbf978c290b7ccfh.jpg"
+  },
+  {
+   "num": 148,
+   "id": "p1005012939953611",
+   "title": "Podofo 5''Motorcycle Dash Cam Monitor Carplay Android Auto IP68 Waterproof BT Smart Screen",
+   "titles": {
+    "en": "Podofo 5''Motorcycle Dash Cam Monitor Carplay Android Auto IP68",
+    "ro": "Podofo 5''Motorcycle Dash Cam Monitor Carplay Android Auto IP68",
+    "it": "Podofo 5''Motorcycle Dash Cam Monitor Carplay Android Auto IP68",
+    "de": "Podofo 5''Motorrad Dashcam Monitor Carplay Android Auto IP68",
+    "fr": "Moniteur de caméra de tableau de bord de moto 5'' Podofo Carplay Android Auto IP68",
+    "es": "Podofo 5''Motorcycle Dash Cam Monitor Carplay Android Auto IP68"
+   },
+   "created": "2026-11-05",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4k1dXSJEw0DGL5rnnuaKPuaCFjbqxkujqIhmbN2UoagdrkygvfZudEqEaGvjpJobQkz1GoHHLk9GN5AySPrqOJP7gAqDnHmbfmgFHyYW3Hpvlo3eB5AYDWtCHLwK1aeVAPSbMvDxFc5OWj36NKCc9AgVK20Ziwjs2UKqla0c0PocpQBozqCdXTEpbM8A3ptb1uzK9ZyRhCtpQyeVbyRZUWzPjqY0GHDZC1Kz6qYuXTxsC9YnpXtrqVXQFhlOhw0f1oEr4r3OIw7RWI3Xc8Sr02wD432fvNggulRMerAJ95kXOIMeVovlFjbSx1yqyVB0NJBZ0fjLhwx3IwskpW51PhoMroDRmh4QHnJAntnrTNB6gK5Zq8cgb63CMDP1T8opJ9IBkiRTU7458YUomRrbvYXMLGYD2pz1e80hXW7DKFyuL80ZVBvgEp565YdGJIFoDC9D7enAMHC9K1UYWvR8yGnrPjkQ5b4fvpwkigEkIVRIBTFvneUjh7KLC14WLkE7gRKP4MzHa5kwawsaNfyDWubZwC4UzlcxhfPxzxcNj3jHV2BBEVfvuiOznyAct6UwDkns0XPi9KZppDYAB9TlrbL1GxbxdWLHDSpYf32gvzSp4gADRgdx2w1u74N81ijwcdPf0FAzl02nvGoQ6nbDRMfWDIMA0JLBC9sB28neY2uarYSt7eZcS8FtKcMLpGwFFmqGDXKsRMvaVE",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S740e155515c3451189d9b08bd3c0739fb.jpg"
+  },
+  {
+   "num": 147,
+   "id": "p1005011739069741",
+   "title": "750W 15KPa Cleaning Machine, Sofa Cleaner, Home-Use Fully Automatic Smart Cleaning Machine",
+   "titles": {
+    "en": "750W 15KPa Cleaning Machine",
+    "ro": "Mașină de curățare 750W 15KPa",
+    "it": "Macchina per la pulizia 750W 15KPa",
+    "de": "750W 15KPa Reinigungsmaschine",
+    "fr": "Machine de nettoyage 750W 15KPa",
+    "es": "Máquina de limpieza de 750 W y 15 kPa"
+   },
+   "created": "2026-11-04",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4ocylw5Q2Wcsa1D6VI7wlJHifpNwMAcxaFdJQSs3pS76YHE0jJCykZgYsEEPNoJ1APuB0oChh2tHp9OnOFsdKG6Lj1MgscR763QjiXnLdM09knok9EGQdFx0sdXMmG4e2nwfhHnYrNyfSdiQudpvx1D7K1ntIcA2BbP01bo92KCjY1elxKEkgQyadx7Bq8Sr9DawL1aDiu6MXOHsyIcPHjzXOnwWBfAfb5VIkt7jbAYeFXrDtABdb2tjDvOEGnU7OSuDixCYRU4MCvbwMo7AWr36VL56beeZ8s5b47HuPVhgLJTeKDF0ygtQJ0pcWrZOOO9po3cy9Ka2Ms9DGC4pxDAVmMA8Qvrq5UtNHEmVItXLfAk635waskdF2KF7YHCA8q2wmpBkvW7Ydq7WqMrQbjrxc6hyV66FFbCfeJkzbbxVKohQujYXzDZBzkFgzLlE5LHTbvI3rksCewpIyJN594Ilu4zQOCWgtYMEMlGAHGQ95Hr3BxFeCM9dN6v7wt3EyVSQxBvr8vqRWnFjRLKXDzrbpks7ARk7sQKZnZaRFc9JUpcCK2v4EZvfGyJFgzaYSs7it0oRzrQq7Sr2T9Tj9jwgoLRPy3g4ZeXeL9HKxRPaoKvZNkmRAFfP7g8GQbBwqTloSZimUU9MuusHoCgjt7TT4fQqwIBinbHQVBGqYYsIMFzkRJ64DLzOLBmlVJOvTEsSLlss3sCqvK",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/A5f9b67a8ad9442f48b28e0ecf074d6d5G.png"
+  },
+  {
+   "num": 146,
+   "id": "p1005011681764902",
+   "title": "Handheld Steam Cleaner High and Temperature Air Conditioner Kitchen Hood Car Steam Clean M",
+   "titles": {
+    "en": "Handheld Steam Cleaner High and Temperature Air Conditioner Kitchen",
+    "ro": "Aparat de curățat cu abur portabil Aparat de aer condiționat cu temperatură și temperatură ridicate Bucătărie",
+    "it": "Pulitore a vapore portatile per cucina con condizionatore d'aria ad alta e temperatura",
+    "de": "Hand-Dampfreiniger Hoch- und Temperatur-Klimaanlage Küche",
+    "fr": "Nettoyeur à vapeur portable Haute température Climatiseur Cuisine",
+    "es": "Limpiador de vapor de mano Aire acondicionado de alta temperatura Cocina"
+   },
+   "created": "2026-11-04",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4ocF58cVs1QH9kom7M1W3o1H1gxLFWtwfiM2BhGyybPWo4XWSYkmQFcYP6IvgL5ylHoCVOTabuj2eFs96xl1vf0mqfnAB8NEplofvoPpHJg0xy0LUqHGlTqUOgTdMAptCm7Rlzop1h9zBfCjbnaDIfwHTrkyJfOajexoh1eRQnac7lhOkkD2OCwamNqgEY6aU1R4H0OGvjNobflCLFnhBVOYHxvhRMBUbO5EJkkZvpWXjuoIqzrnwobFX2ED9vDEOrDie85DNioE7mXcV3x7vQdcFCRrinLlvVYydyiBFwMiRu5qSBJKN3nBTEKCDdRAiM5StEPZTnnVUbUtG5qFgyviFHg6eaFDg7pviwwePA8WtwtWSKV6L2lcWgQyteeJausmmVrXYVMuvf19wbQmLSl5n3sgGOOm73WtIpuQR2pHKHRdfziR6BCbDsOndA31GM3KIV9XFVI5qMZR56bS9RzFS8d3VhoJAQpwFAJCcDsdUaRqSKuiZi0j6QU2bwGuaJ2tOgmBegCHuUy29Fx1SJAOVyMnDCzgfKMZnQ1rW9UZDBbPtytuWWDLJk5bnamCt2Ut5FZVwhyEJu9YupskVsgaUYkR0XzIKIo1GeLLzxP5GV09yATYgi1pbuANy5576K7H8mN9jXrbBMeBDxRM5WNkKvlYLmKwQRjtYEPntm73rIG8iSzrejhla8Ktni58EdjMFWh6M4k27m",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/A4ca2af556b974fadb8830adc601c6572M.jpg"
+  },
+  {
+   "num": 145,
+   "id": "p1005006024098184",
+   "title": "AZDOME M550 Pro Dash Cam Car DVR 5.8Ghz WiFi 3.19\" IPS 2 or 3 Channel Dash Camera GPS Nigh",
+   "titles": {
+    "en": "AZDOME M550 Pro Dash Cam Car DVR 5.8Ghz WiFi 3.19\" IPS 2 or 3 Channel",
+    "ro": "AZDOME M550 Pro DVR auto cu cameră de bord 5,8 GHz WiFi 3,19\" IPS 2 sau 3 canale",
+    "it": "AZDOME M550 Pro Dash Cam DVR per auto 5,8 GHz WiFi 3,19\" IPS 2 o 3 canali",
+    "de": "AZDOME M550 Pro Dashcam Auto DVR 5,8 GHz WiFi 3,19\" IPS 2- oder 3-Kanal",
+    "fr": "AZDOME M550 Pro Dash Cam Voiture DVR 5,8 GHz WiFi 3,19\" IPS 2 ou 3 canaux",
+    "es": "AZDOME M550 Pro Dash Cam Car DVR 5.8Ghz WiFi 3.19\" IPS 2 o 3 canales"
+   },
+   "created": "2026-11-04",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4kIliqACotetlgx9akUXR6CUvzCdKRf1ki3pqZa8MfN17ERtlApYqQsnGZZzD197p6gwkUtwhhT08RRb259gBfcNJYIZ20Engd5yFqujiNfi3AZTVnOKMJajs2IFESMvb0Y7Ys1bAVVjcX8zNJGnKgg417352qTptVmJ2WvkTQIPpUPHODloc51uth6EBSJIZ877x1w8k25L68c3QjxraeI2RItpNJhrEUV65xb1B1Sbln5DS7oyqzaSwaJfC9uNVViI9CW9lGmTgaEhuMlvQnwe7eu8LvNE08PuJDYkxxVtaMyUQ1EcQWHXD04fESeslijnCjkpZ7kT1UhYG7CYWaQEiTKkRoCv9bzMzXZgN0VpqTdi5yle1et7HO18O6VySKnIpXyWjycXT70OXFgEMHGYwNI3AN7TW5TDxKpJ9Cexx9NCurGiql9NpPUCIYSsxo6sjdTNqXuRkeCrMlG3CwOOApBjVzfBrx7T9ahYKCtlIQ2sfRQYowGZoFQoe4wd8Ld4fFuwvvnKD2Y4k7IZhj9Acdlpr50n1OkvQ8ojtrqVJVx6HT60PhmmS2G5ex3hn8tkeEXtpEXUxTQwsoyamgf1BAYi2ZQLNLmSuOZGfMv1YHte0cmEJrhhUtAxcuuqJyrJOdjHwgXXW2PuDrZDIBKoQv9QR0OcgWOic9ojohVUHbj0WR4A5OZHjN9vyts4pyXrEkHBNYuu0d",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S1afe209422fa49efb8e9a4be02ab2291t.png"
+  },
+  {
+   "num": 144,
+   "id": "p1005012536285744",
+   "title": "Teendow C6 MAX 3-in-1 Carpet Cleaner - 12000Pa Suction, 1250ML Water Tank, 950ML Sewage Ta",
+   "titles": {
+    "en": "Teendow C6 MAX 3-in-1 Carpet Cleaner - 12000Pa Suction",
+    "ro": "Aparat de curățat covoare Teendow C6 MAX 3-în-1 - Aspirație 12000Pa",
+    "it": "Teendow C6 MAX 3-in-1 Detergente per Moquette - Aspirazione 12000Pa",
+    "de": "Teendow C6 MAX 3-in-1 Teppichreiniger - 12000Pa Absaugung",
+    "fr": "Teendow C6 MAX 3-en-1 Nettoyant Tapis - Aspiration 12000Pa",
+    "es": "Limpiador de alfombras TEENDOW C6 MAX 3 en 1 - Succión 12000Pa"
+   },
+   "created": "2026-11-03",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4mNGDCUN4YjJkEFnI5mMQ5tiMfF2CX2uKY9M8jyLlAFX7hylHG1S4NmVizo1PMxaDv7qSKKbAiaZJhiTcseCh5jccSjgYFdsq9FXK4COl4aLiU6EAF1saai6UAtG9W3WIyQLJR8roMFfbfeB3iODHvh00IQQyjxg6oMFyLs7Ut4q7lMKvdlYmu51qYX3tO1NaaYrOnyhnCNOgfVcS7hyKYuel6Xcvw5RCY8fhFZirEgXWc8Jpwyw6BxbnLqRKre1bRhK3a7jYz5Gk0FtxxAb7NZTzM8rbnZAlR7zKbJbopcyF9dxMkZxrJbufE3xYhaYGPQimvLG6RKigQ2SbwaaAYoM4bDHl0c0wOUBRX82YqfG8ApFjTexDQ6kXX7wpwVDYUXcHA9RGTggrF5eoFpqWuf70f5YZUXhGjEnqmE2Q0gZ8XbFHMqOWDClyBCgh3FqLrxoVHw5EWQPVxMsQgUxdEP64csQ0SbKKmr6Wu0hLr5Jo8fOBDfreXYfqD55jcpmEt0Apotuisp3GjMVuNhy047X5xzKWtQoLkyNZFsRAIoyE1kog9mMDECp1I9uaXJvqwwJ2eoRwylZ5EqmPaviKxqsaxgopI3tk6bVGM8Em8LfxYbNRMnfD8KbEIwoP36hibgY8BXTTgtHq03ufMbDpRk7GYzSZDHewHAgxNNZqBGPCz16z0bYN0P5A3Cuiz2Xnyv4uz2ZMMpNYc",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S04970f0e1b2e425391e0b8249958b766r.jpg"
+  },
+  {
+   "num": 143,
+   "id": "p1005009253195328",
+   "title": "Laresar X11 Cordless Vacuum Cleaner 550W 55KPA Suction Power  Handheld Smart Home Dust Cup",
+   "titles": {
+    "en": "Laresar X11 Cordless Vacuum Cleaner 550W 55KPA Suction Power Handheld",
+    "ro": "Laresar X11 Aspirator cu acumulator 550W 55KPA Aspirator portabil",
+    "it": "Aspirapolvere a Batteria Laresar X11 550W 55KPA Potenza di Aspirazione Palmare",
+    "de": "Laresar X11 Akku-Staubsauger 550W 55KPA Saugmotor Handheld",
+    "fr": "Aspirateur sans fil Laresar X11 550W 55KPA Puissance d'aspiration portable",
+    "es": "Aspiradora inalámbrica Laresar X11 550W 55KPA de mano con potencia de succión"
+   },
+   "created": "2026-11-03",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4ocvfPol8GVEBUgYRFtZU8Q7GBEHW2ULqzu0Aat6ZnMiyODCm86Z7SGtsJtlIs6Fwx3YF8Qvv3jLhkBCfU8IpPV00L9KLxRunHqLUxMVrlNQ9iQo087nMCpmWAEE78SzM9TpiJYSXtLJrJckv7zEeCLbfzPBQAW9l1KxJJJYZs7XJhtgQcfyVCNCyGOB0IrGEwm3nkQhiTswUi7YNkR1H6Zip0Vns9vE6TMxnf17gzzSfNxuV6VUbojvtFJeTX631gEgFwZp6EPsOudEEPxjvOY2XcugWZRSxqPoT6sHxAz9Tk3fkGgD6HASJ1RtNPoKSCUI6KNq3SZNNoSbZ8j0QzW7V3QqaRcKV1GucO0T2enIXnrtm3FoasuKtNeMKD2INST6YhL8g67Dy44cdOC8mQaqCl16YLvocDofPQxmXCkcrg6405D5FfALRl95MLyVuPo6pzJbsJXfQqOzXbpad5GttToSmq6pRYwzFerXDoIETd1qFS6qroNutXhz9M7keAFm5BXP0h3uoG0GUqNiGw5dyFfQtDQJuE0F42PhlqgdbLzv4FBq5MxE3VPwXmisEcCNyli9PVpmtU9HAcwXon9geOaWQx6Q3ozgRpudGirXEgMb3eFhrb1qdKLDI8YVZa5i59CXqIYIwRJXWOX9v56KRqwoywt8HlMSextkzbUkqNho94mxuT9K4jP0UdTP1bWSn9eIZmCd0h",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S16189ae9b0e4429babf9671565c13cf5W.jpg"
+  },
+  {
+   "num": 142,
+   "id": "p1005012269588429",
+   "title": "Portable Vacuum Sealer for Food Kitchen Gadgets Degasser Home Appliance Compressor Plastic",
+   "titles": {
+    "en": "Portable Vacuum Sealer for Food Kitchen Gadgets Degasser Home",
+    "ro": "Aparat de sigilare cu vid portabil pentru gadgeturi de bucătărie alimentară Degazor Acasă",
+    "it": "Sottovuoto Portatile per Gadget Cucina Alimentare Degasatore Casa",
+    "de": "Tragbarer Vakuumierer für Lebensmittelküchengeräte Degasser Home",
+    "fr": "Scelleuse sous vide portable pour les aliments Gadgets de cuisine Dégazeur Accueil",
+    "es": "Sellador de vacío portátil para alimentos Gadgets de cocina Desgasificador para el hogar"
+   },
+   "created": "2026-11-03",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4mTlGbte4uYesJtmMnAPuIgvJp53Um6lv6zzxw4F6Vv1FaK5Dd7RT9QOsNLakz4H5m5J8RkiP1EVoeFIRR40RA2AIZpMw8YfuSKgpwFtypzRIYWWYtiNS8G46mDcWFL8FshT48BzAthObxQQf8xIu59040aeLpgxZsIBQit1RGxG1OcfeutOCoRAhUoVyFxSJpif7jQJr8SYKIZhJcCtIk9sn3OPOJYQuVIYcI3M8xdPmErnIeBmXydMdAaaBmq0xkrglcI0btvuL65VH0M1SHuVn7lHShoaLwJbcx8HD8yJ62knMsAwGdA5z9yLnUIy6fMv6RAVlwCXl8mX4uMTuFFNhhVpA7vy9ikOOUgsnyq1REHiuawxpTbsbQpSlJW1XnVEnO4Xs4D1wATfk3737SrC1KcXs7coRuFun9NLV0BnLDaHficb3p1JbaACER7NbqSSXYYX0dsiVeCHPAKXw0qIUddYD50qSQ8wq57YQzoJFSRSC7pReOHFOn8Nzd9Nx2pbQRdniDorRsIyzGXW3zMJxGcBXphabY2UZkIeTQjRZRqDAM2XSQuSIhm9TmdcLiRGNCH0bkODfVpSmN13vWeaHCs8XkuD6sU1LhR3EqtXeqXbr9cqgbzFjCy2d6VtHuwvLH37qaiwF5sDPpIqWsY2wngloV1buIjiKNY1TaKRfzPWG89AVhyhtFIkKhZi9HSuPg4fRfSe2s",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sc4c8afe39b2d416c96099022fb663634P.png"
+  },
+  {
+   "num": 141,
+   "id": "p1005011822957428",
+   "title": "2800000RPM Jet Blower Super Powerful  Wind Pressure Electric Compressed Air Cordless Vacuu",
+   "titles": {
+    "en": "2800000RPM Jet Blower Super Powerful Wind Pressure Electric",
+    "ro": "2800000RPM Suflantă cu jet Presiune eoliană foarte puternică Electrică",
+    "it": "2800000RPM Soffiatore Super Potente Pressione del Vento Elettrico",
+    "de": "2800000 U/min Jet-Gebläse Super Leistungsstarker Winddruck Elektrisch",
+    "fr": "Soufflante à jet super puissante de 2800000 tr/min Pression du vent électrique",
+    "es": "2800000RPM Jet Soplador Super Potente Presión de Viento Eléctrico"
+   },
+   "created": "2026-11-02",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4kjoEj82kDkJbMuKZG7NIcPjUOnYhTk9xqG6h56sYs4IzjtEjunqL78Ma0olrZE5otjqSfJK9L7q1JTHFm56VZFs6iEVgybj8CYFoVhfEVv9NuqpcKYd0j01fXuHCeFxmYCaTXQy1YEMaDs33xf1xpJuAO9jUW7oOKQVzkM05fIqrZHCpdPV2sKU7yGhHEYEzKJ1yvENK1k0Y3AT6ZpIrDX0wzH8c32ACZxAUYIpInbvqkT7FJXnozoyn8tyzllsxAUZZEhTTaoXbVLGytIxw0ghEu1pHxlrUIpJgNzINB3SbI5fDqU5lvMJj2s81LRl6lXo0oVlvYTo9VfiLqmW6xJCpc6DF997oBCmrBjuRyngeihSjOczkS19WqXVcC243BhaMbJaNr0hbJ46TTBWWMP2e3M0RNt2riZ08hr5IXxxobcjtbhMCgYEPSrGQQg8d7NMS13ToDP1ZfLpltq7zyzF1NZTL7W3hOHNvgUmRXG9s9ytMmLmdtlSEvSN3Hs6smqHn0AbWVRxhWmCOs1ztOINXArSBogs7ZGUsYIlmi4CkOss0lizPM4ZDcO5u1X9Kcf7XrAeaq094I0duWDfhKJc0X0VlGzPTsnrLvAszJYF22z7Ug98TL34vZq5XYlIDr26Irb9Rw3I3JYZuAFcvHx75Pl4P13TJaL5ONhWdFUlbdd3eucLRN5F65VjalMozhF5562ukxaUTS",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S6a07476f72974ee6ad13848208431ce9X.png"
+  },
+  {
+   "num": 140,
+   "id": "p1005006631693266",
+   "title": "PuRuiKai Ultra Thin Robot Vacuum Cleaner Window Cleaning Robot Window Electric Glass Limpi",
+   "titles": {
+    "en": "PuRuiKai Ultra Thin Robot Vacuum Cleaner Window Cleaning Robot Window",
+    "ro": "Robotul PuRuiKai Ultra Thin Aspirator Fereastra robotului de curățare a ferestrelor",
+    "it": "PuRuiKai Robot Ultra Sottile Aspirapolvere Finestra Robot Pulizia Finestra",
+    "de": "PuRuiKai Ultra Thin Roboter Staubsauger Fenster Reinigung Roboter Fenster",
+    "fr": "Robot Aspirateur Robot Ultra Mince PuRuiKai Nettoyage Fenêtre Robot Fenêtre",
+    "es": "Robot aspirador ultrafino PuRuiKai Robot limpiador de ventanas"
+   },
+   "created": "2026-11-02",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4mUeuUA4iZaD4z2EFXVjiAo7M0T2ZDvs4M2FFdhwlcIZ3mAiQLcwOPVcKPfmraBbBH1VBoUJssvJU7ei7JAwY6FwgFLlmblWt0xh4wnw0fQPeLtZ3jOxn33HqDzpZwvkwRzi8zIL9UsDMseNMAtrqisgzv54lxT9rlv9xCQggHxaXvRfAfm4F8wg2dyzLMofYf8IzD6BqhUbglGdbyYHoex2ZOQyYfhAOS10RjgFv0pl3u27EzwhydCt5DwcjiowVySumOIHknncPIDyHotJMQw2Gho6bUxRHYoRuVxwYFJBERLnW8mR4AJ9ZdhfLScnUWSmkHteslgaLl2e9SlxQKOh6hxgkOzDPLVZLDsFeQo1sGqw7CAelavnHPDVt84mltJ7ekJslvmdKKnrCct3Y0vBA2ckg1WZvB8TP9ETV7txUsoTLr0qrKbeA0W5h8ozDbM0gDdhprYiZZMcCyK7xK2lXc86XM3FeWC04ZBKytzM9tcv2QnOemuv9RH7awVyuPC1QfhiT27b6QYGniQQr0zoI61xUPCCMXyHmErB18weE1wfgvCV7N1Vke9G7jqYCkKyFSCAPWBZxbAmTnYhsSzkGtwGS234nCvoqsTWTTyCVGNX5vqRoxDs5jTnwQASEDlKgMt08adLxBAsnqjQXsbmWIrC2ll6DLzY4rfCNgtKQyO2qy0jBkiIyth59xpWWxPDkHxqDtT7AU",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S9066ab15988d45c5a9ecce67159447159.jpg"
+  },
+  {
+   "num": 139,
+   "id": "p1005008997124265",
+   "title": "6000W Solar Inverter Kit Complete Power Generation 600W Solar Panel 110V/220V System 12V S",
+   "titles": {
+    "en": "6000W Solar Inverter Kit Complete Power Generation 600W Solar Panel",
+    "ro": "Kit invertor solar 6000W Generator complet de energie electrică Panou solar 600W",
+    "it": "Kit inverter solare da 6000 W Generazione di energia completa Pannello solare da 600 W",
+    "de": "6000W Solar-Wechselrichter-Kit Komplette Stromerzeugung 600W Solarmodul",
+    "fr": "Kit d'onduleur solaire 6000W Génération d'énergie complète Panneau solaire 600W",
+    "es": "Kit inversor solar de 6000 W Generación de energía completa Panel solar de 600 W"
+   },
+   "created": "2026-11-02",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4mSMRqeBBsBMUJTee1Dp7ClPHNNGpeLwlrb0NJ9ibHxmQ149eBMfF6iPVXBiq8XrIsFftxXy7zKsyxEjnEBkwDMMmPRXGraQiu2bMAg41ryGmoJE6Li64vBxU4IqeFmyboLjAGS5TdXTVRH6XEaNo87TPU0bx4zteLwDQW8Cx9399TrYiR1uGJ83i3lPFyDgeMAhQrZH8fFDz1Qk1GrBMN1pPjmwPLbTbfqtJqrHCktHFGge5i9m8nFn5HwmQO3U0nUXPWUQwhSfekYHN6PfoiXw1n3yuGUFHi3LNABEPj2FZ8mSiHE80fJWjhIfGnGXdXbVG42flB82YHy68S1NBnyM0gUEQhaiFsBdq6y6SMtNExKHHmuNJSwOsJ3wZN8ouPsJDifyFwSKy8awCFPQ7KXsqHGb4xc1VZkZ3AQ8tmFhafkpFhwChyyItUNKrh4LZNKqdlzTksOvtie8vBXEuCLnDYiZ62wTdWAQZLe2eEYi9lL33V7ae09LdNzGDXrH5fDREb0AGT67bA8bRRK68jPB9jOKl1sFb0MFwOJumIVnjcBAv7p6C6gzn5iQqwVCxQSxah50vpA9biZoDkvhb9yWwxxemJJhy1oEGwD0rHQG2tOw5H6BGkOYcXSzXaEdf44HadsNO1qGtVgqP1j7l3FVj3HUwU8lLTlRgyJIqtMLHNXRRXyHnjgSjuq8oon9RWuzNgFbRsOTBK",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S14daf59abaa640efad8d1c2c3e7725b8c.jpg"
+  },
+  {
+   "num": 138,
+   "id": "p1005009977849151",
+   "title": "GIOIO portable electric oil transfer pump for fast DIY oil change & fluid extraction. Vehi",
+   "titles": {
+    "en": "GIOIO portable electric oil transfer pump for fast DIY oil change &",
+    "ro": "Pompă electrică portabilă de transfer ulei GIOIO pentru schimbarea rapidă a uleiului și",
+    "it": "Pompa di trasferimento olio elettrica portatile Gioio per un rapido cambio dell'olio fai-da-te e",
+    "de": "GIOIO tragbare elektrische Ölförderpumpe für schnellen DIY-Ölwechsel &",
+    "fr": "Pompe de transfert d'huile électrique portable GIOIO pour un changement d'huile rapide et",
+    "es": "Bomba de transferencia de aceite eléctrica portátil GIOIO para un rápido cambio de aceite de bricolaje y"
+   },
+   "created": "2026-11-02",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4EyJdsVIZYo0HVH31mAjAkOiBSiaUxku24If3VVxJ08ajYYb2Ti8BA6s92Gkveg6t7mAwniAC8lUOjzCjV5tk6D2T8PcoszRmVFtS2NSFC6h0AhLMkRYrdZyrKx6cSlkaNX3IUP9MAXuDdFgniy1XCygAkzU3pzBREys6ln2jLcah66qYXp5Zf8jAYNnJ0anUxBEastdBiCjEnPDHhRRGZBfNSmLp6ZyINJulgE85QwCzKJc7Ezep3eoF8hXLNhT5ZrnRLbPXq9h7Vq1vFADGZpm3TA2TWVxJCyL2jFZK9T97LOOqQTWdYq5xUeXmq0fdQg44HSv4Y26zUAW2PB6R7tQhWOJH0OaUYuWVDJvT1pClbuVAaMLzqcNBZaiFqi8w0o5Ar2l4og8Mc8A6aJvP5z1H5fXqTGXG2oFcbjN8CYefzARcTecmtLIGp1vVJ9d1dE95ihV49RoZBerMXyHUFXxJziRfu2Z2cXzRe50iI21XGunyvd4xylRCZoKlyz5Trt97O1sfvU0Aa7jNhmeAGoLE699OLS4V6id0lDDiWZRuIHVvyPiu8r9sA1g0Jb1oqIw3FodT75D1We48J1rYuwoTVgl0TNTIuR9e03qR1ySo1h4IcRHS1HUpzbxCFGDiIj5YZFVi2OKrteJF1riHAsZSsS913HyCde6qPoWjPHHFVcYVRMlPHEl3KEgKIAiPqVAbuaYz5RCEC",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S80ec89013f73468092282110ee4e4e76q.jpg"
+  },
+  {
+   "num": 137,
+   "id": "p1005011741480226",
+   "title": "Podofo 9.3\" Wireless Apple Carplay Android Auto Carplay Screen Car radio, Car Dashcam DVR ",
+   "titles": {
+    "en": "Podofo 9.3\" Wireless Apple Carplay Android Auto Carplay Screen Car",
+    "ro": "Podofo 9.3\" Wireless Apple Carplay Android Auto Carplay Screen Car",
+    "it": "Podofo 9,3\" Wireless Apple Carplay Android Auto Carplay schermo auto",
+    "de": "Podofo 9,3\" Wireless Apple Carplay Android Auto Carplay Bildschirm Auto",
+    "fr": "Podofo 9,3\" sans fil Apple Carplay Android Auto Carplay Screen Car",
+    "es": "Podofo 9.3\" Wireless Apple Carplay Android Auto Carplay Screen Car"
+   },
+   "created": "2026-11-01",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4kXc2nlawDb2Y69l00TmZHfRzJ5a24LV2qOhY3wjiKTY2lAGwL2bH7agLDNK9cKeToTpMFafPUVqGxMKyrlHJEVVo6c9T3LXiRX4GdCR2T81RtXorl9Fgz1LWlwLXe8Yh2AoU4qo8trfENUExUGbsvMQVGyjxikogCxQFCNDxC17Qe6zWHtAaqBMilOJSUuxMOBi3rmWQlrEQnLY0qbgn6B1qoPYTQ56OLHKkg0mfeRGq2fXaMn5LtkKjFw2CtSb7CIZ6s4IC1SZ0Lx7QDrA3NMU0kz4t09kxVNWdl2kGOKU2TUKuxCSy9rSY0kYko7hZbbz2D8CI4Qa2MCFByvbd9V4TOO9LfyuMSrDhnqLXZnefUjd9lYI4nJkoNYB1V0AbUKPhxXglRdE89apd39oK1mdbJN5pSoYmpd5KRfZPiODc1J4eOdrKgT67UKEcpWH5CqWnQsvFlQYS8qVbyXfWuRctwIWMxVNriO0jgnbiq98NpFYnkCPReGpIoLcYVxvO0R8ybh9g5E6DqOulQFvuSwwCbBhrQ4IVJVCjhCp7iAcOyeiO0dEmb8LReVkwXbKu9bjZzHC6BahOjjClQWC8Tj0xIE8kmfiNyHI4UecNh8oZr3pW0fQrsXwzCaoGV6mZIqi8w6J2np0vbNUcL7xW4C1XRGl4qVcpWqw1KZzzCOTyIjCtp2OfJ6Qgp3vH050rm2G3YXMhB0Wyg",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S00c574755972497ab068b36ddb026723X.jpg"
+  },
+  {
+   "num": 136,
+   "id": "p1005007805694170",
+   "title": "Baseus Car Vacuum Cleaner Wireless Air Dust Blower Gun for Car Powerful Portable Car Clean",
+   "titles": {
+    "en": "Baseus Car Vacuum Cleaner Wireless Air Dust Blower Gun for Car",
+    "ro": "Aspirator auto Baseus Pistol de suflat aer fără fir pentru mașină",
+    "it": "Aspirapolvere per auto Baseus Pistola per aspirapolvere wireless per auto",
+    "de": "Baseus Auto-Staubsauger Kabellose Luftgebläsepistole für Auto",
+    "fr": "Aspirateur de voiture Baseus Pistolet souffleur de poussière d'air sans fil pour voiture",
+    "es": "Aspirador de coche Baseus Pistola sopladora de polvo inalámbrica para coche"
+   },
+   "created": "2026-11-01",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4m7mBx1ercLKVXmzficSLSn8lZHfcxlgugGOq7CHJIkZhE9ApjouR6KB0gQqQ1ZBAbYfhuknLBZa3uEw0THiC6nBPpoTd10DghHhjejwrQpqp2hzu91MER8kLc0veiSeqo0ySEEdgX67WtR9zYry86VrrnIdXKOmRk9IsgNtpCwjxzxwEIIgCRuAafdg4crPt0ps95TiPYSFlptXstlWYiuIPEqmLEyQUAOoeLldafAfJQEUG2zdZPvRHzmk8HvT2DXf7tlX9R0Ehk1XGZ5x9U0VkNlHwO3UYjKN5ALrXG3NBwOzjORfYFRAsH9ejM6exE6LFhgfZvdVP3jgjZQWaagfvjgI0vnRNZjQyuMRUUlCfKqe8NQPsnxV2P918wCWvNqPZ50Fr06SQmyVMl3e5Sznea0YDxyB7O3Zuuom03Y4umEAnm3mgJMjW6qfy8rFFQSc5uwHLWSH99ZzGyEzvX7xJUw9Y7LZCzzWSiyZD8eX53FsbefOzqB4ZqnmWVtQki5wgPDuMiGhgYmC4BXzAt07k0TJ3WpFGtzXSJWjG341VbzMC0G2UkBsUlfRS5enfKkOYGkGhAgrdtM8GF9aBJOFfjaPViDfRPiL04mnBKCBegzScU4hVVLaS7GmLOWofm2Zn7Z0PfCDzDgKGkN3DpYsCs2NrvIbRU6Zlh1Nn9NdlpueM1qyid0RkDs1PnqCdebS1vAs5aMkOu",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sd5df92ed835a48e584a4dac324d9e48fi.png"
+  },
+  {
+   "num": 135,
+   "id": "p1005007252144239",
+   "title": "LMETJMA 3 in 1 Rotary Cheese Grater Versatile Manual Vegetable Slicer Peanut Nuts Grinder ",
+   "titles": {
+    "en": "LMETJMA 3 in 1 Rotary Cheese Grater Versatile Manual Vegetable Slicer",
+    "ro": "LMETJMA Râșniță de brânză rotativă 3 în 1 Mașină de feliat legume manuală versatilă",
+    "it": "LMETJMA Grattugia Rotante 3 in 1 Affettatrice Manuale Versatile per Verdure",
+    "de": "LMETJMA 3 in 1 rotierende Käsereibe Vielseitiger manueller Gemüseschneider",
+    "fr": "LMETJMA Râpe à fromage rotative 3 en 1 Trancheuse à légumes manuelle polyvalente",
+    "es": "Rallador de queso giratorio 3 en 1 LMETJMA Rebanadora manual de verduras versátil"
+   },
+   "created": "2026-11-01",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4EfL40sFd9EmF9EQSXoLCIvW6uFwxrXM6XzuUSiaaEEcwcWQCa90TOatj6XKYI3EHsIUldh3UADHje7PuyUGpFWVP218V5B60insgTdYfSjy1XListe6Bc9TQJQPvQ2fh8tZAyX2ACwBjw9R6Dh5oHazJubWjEauIT9oXtDjXwZWXgWVM9mnzlFEoc7EZj1wSiLubAbzK8NLy0uAO7SE0rW3yTLRCZTHrA7u6G9b0ugtHvoIEU7bVuAcF2uJdRK8ZHw1js1i8DxJsjwdaCSqLvMZDHh1gjhxW5PAfS5uK7BM2pYzXg24Wu0dPJsWTCy1qVIs3zjPsrCd26gDpJnQF1lqhcvvtVhs4giLvAn6dGd9CbWUKxEmHJu3wtljcWEWO2Uc7vPFBTPnnnlgZgV0A1ruOKYsUici3VPlpGfJH7OL5SR9opU7FyOyGKhUoBf2ZxMHYkwsaucXoGVLOEBhYFaGttPdvqyKjGrMbtOkroqcqnVbmo03zoK07A6EeYGd7J9MtJp1v646hCU2ejqjT5xrZl5f1beZPIxAchE4bPwWQtX1ya6xJZRE0VZwcHX21Jjc4JSeHCnSCtVlF6jnCcwdhFdszDgQVVAj0kwcVba8z3wwLUNLPF7aetnxhhnBOkFqsymDVhQsuukJChAivmZArX6xibPz2Vrs715TIP3uPiqIMhIG14Cxj9dWdPJJwloMtU1US3Suc4",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/Se029fefc1d8a4048aa9f1d3ea217e319Y.jpg"
+  },
+  {
+   "num": 134,
+   "id": "p1005009976075675",
+   "title": "4000W Power Inverter DC 12V to AC 220V 230V Transformer with 4 USB EU Sockets Charging wit",
+   "titles": {
+    "en": "4000W Power Inverter DC 12V to AC 220V 230V Transformer with 4 USB EU",
+    "ro": "Invertor de putere 4000W DC 12V la transformator AC 220V 230V cu 4 USB EU",
+    "it": "4000W Power Inverter DC 12V a AC 220V 230V Trasformatore con 4 USB EU",
+    "de": "4000W Wechselrichter DC 12V zu AC 220V 230V Transformator mit 4 USB EU",
+    "fr": "Onduleur DC 4000W 12V à AC 220V 230V Transformateur avec 4 USB EU",
+    "es": "Convertidor de potencia 4000W DC 12V a AC 220V 230V Transformador con 4 USB EU"
+   },
+   "created": "2026-10-31",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4EAVOF5svyKHJcWY6aUzISdbd4RH1fRw5TP3qo3F4dtqDBzBO3nSXOpkc3ucnkb0uD3zYT5Z0iVLeDMV90iWOehYci7v6DJoE97xZSICztOesSArBHMNpV98BI9N1Ruft0GKueypq4piawcQ3mNlzN9Q32k5ttNdtzm2Rslij2VsGZHNIlTyxkmMjpGcGvAPBh3fs0I5JiSvw3UttfEDeeITfdtjp6vPQjsIZOh6AKWtBQUL9sVzDVW53KsMA5yu2RQHYs5xSCrmU0xHA2jV8i9B4xoaKgqI7rm7JhxsNoMIsqHFS3wB16zpV1CTHiAynOSRaTx37FV6I0yUDHAD7o7nklUmMH896vfR1QBnPZZJq7Cw8CwEUcZoLDZxHAODJyPgYDpMne03RJ8hbllUfoMjxXeZUpzz9NW7yh6vyVIYtFdQlLuknXFrAZckFRDVnYMpvMPEEfp54rRr3c7cj5QxULXov9rKcpD3WY8fyXJS9BZg5ztx70SC73yweNldWO0JJCeUZVbkzIRORiFAQ7cROdxCMdrX7NDnBIjLBwkmwIcL9suQdHz81U7hi2Ma57KCPqQrOADi4Ak1gszFOY7vxTIbF0vB8Vnz5Xu64DgWmlcIbuGaeoQ9BDxUWxmJuTiMEzxt4dUkaVN2NOEasl4rMCEPl6veW6AunOZ2JR5MF8yF8iZwvX91LhY7hW3xuurPpGBQHDrA5K",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/A23f814c91b7d42f783824caec4a5a8aa6.jpg"
+  },
+  {
+   "num": 133,
+   "id": "p1005012536315778",
+   "title": "2500W Multi Function Steam Cleaners High Temperature Pressure Handhold Steam Cleaners Easy",
+   "titles": {
+    "en": "2500W Multi Function Steam Cleaners High Temperature Pressure",
+    "ro": "Aparate de curățat cu abur multifuncționale de 2500 W Presiune ridicată la temperatură",
+    "it": "Pulitori a vapore multifunzione ad alta temperatura da 2500 W",
+    "de": "2500 W Multifunktions-Dampfreiniger Hochdruck",
+    "fr": "Nettoyeurs à vapeur multifonctions 2500 W Pression de température élevée",
+    "es": "Limpiadores a vapor multifunción a alta temperatura y presión de 2500 W"
+   },
+   "created": "2026-10-31",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4oeoG9zYXXHBvLCGcGeIet6oTHXDWYJHfIQsspvtg815YkRijRgatonx4luO3TSsnCRI7GubYDgsMWz3b4gZxt8heovByhCWgOO9gDe96iKx7ZQgOs7DnMTj1nLA4TwINo1OcoNaHpHiI0HNL2EucWHcWXTrjcopnRxea6rm4ZxG6U43quhxnQ4i6MJucad1ioOIstzTgvkK7CMmhx7D3iayg4Q493GFuXRiPSmvTZ6alS3aTw92AJbJ4RlLNOGx4cD8ECYGtBwPEH1a0NdJs6kD5VByxRzv1QegcoaQL4Zxk0jjQ2ctaHLROoHtDNci4EJPN2aR0iwrjjudFPoWXOUMLa6xK9LHoa22z8RpIo3WInxOXZlzCroD55Di73zo6PRjxW176D0edop2h4YaZ5AWRIurF6UzXOvsP0nNoyj5ZzmyqPOCAGl6eKYw5sqW2a4TngiJf8XOjDK2U8EbTukxhbqcseRsFUf4vgv03fHWUVfDt7Q1zaxeToQPloAERSM2dL0sYnqpbb3RlSCc0SuDU0reTBjyZ8S4MslUCHeTpLdvjFxXx1Hv0W6tI0XyqtxAWRgD1Is3Uxt1dmrf9VpOkW5PqTTj14wEOxCm06xWskvARYLqH7Sf7KNeqwTSmCGtiwnYG1LNXwNOVGvVToENCUdWdJyqj796jph8boD6HtTljW1EMK9ej4dkbJBtPBtQsRBTMciaF6",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sba22965318974ca0bc6c992cb1559a53Y.jpg"
+  },
+  {
+   "num": 132,
+   "id": "p1005010170657893",
+   "title": "SucceBuy 2L 3L 6L 10L 22L 30L Ultrasonic Cleaner Stainless Steel Portable Cleaning Washing",
+   "titles": {
+    "en": "SucceBuy 2L 3L 6L 10L 22L 30L Ultrasonic Cleaner Stainless Steel",
+    "ro": "SucceBuy 2L 3L 6L 10L 22L 30L Curățător cu ultrasunete Oțel inoxidabil",
+    "it": "SucceBuy 2L 3L 6L 10L 22L 30L Detergente Ultrasonico Acciaio Inox",
+    "de": "SucceBuy 2L 3L 6L 10L 22L 30L Ultraschallreiniger Edelstahl",
+    "fr": "SucceBuy 2L 3L 6L 10L 22L 30L Nettoyant à ultrasons Acier inoxydable",
+    "es": "SucceBuy 2L 3L 6L 10L 22L 30L Limpiador ultrasónico de acero inoxidable"
+   },
+   "created": "2026-10-31",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4mMwDk6bxm2Bu4xcVBxKMpCYjUt5AdKEigo0oPZiL1zDeoOynE8uZFWjDZILyfnFD22ZeRfYjC8fqAenkv0llEUa1sCf7tXYaxBx032VUXKitoaWKGML0qWdENZq9H8HVIJ1r04Vc4aqWVxUVea4uo4Ez9kBh5NvWZ2JIZmb2hMB3lJ8gEYX7HMC9iIBcdWXMPdW9jCEmaAyd00ye6H898A8ds9Ej0TrffUTJjso5aghN4sEoO8gbyi4t27miN8F6b6toNHFZnNtKIVVrzkpctFjBDhbC4MIG1e5yttZwaULb2PPi0K0gyDLf3mEwXZ06kQ0yNCwjrzIkr2Qko09eK9UIjsuKGaWNhhTGehW5TV5dYSYR3wMV1aIcFuJtrP2ayzGEM6VXEiLQn9IgzdLab74YMSTeHn0vIDpU0wsZJP5iVwXKtQ3FJNrVICwc1PHxy9kerqmYKgE9ZIraPlA43YHQ7jQNiOrEPI2fSxtehHBjVSnW8A5doJgFhUMrzs1vCzYmGaFv2cFEkGqEGdPMqSXpy8COpQeC3yhoW1EepQ7m556n54726wW9n9VQQx4OuyYVZCR9FUDvndxjBtyuVgd7pGqT0vtWkFjQDOMPBdUZq1bJ8fN4T2gWNMPXalrAQWVs1isJ96SJ2c50coL6RuxvhEZ4ZQmAlYx3lIQVoPz5bmPI0PcnSWvJz7WjtK5CyjluX9ek1938c",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sadd3bde1be684c5f93c40c88229ab952R.jpg"
+  },
+  {
+   "num": 131,
+   "id": "p1005005049972517",
+   "title": "E-ACE 2.5K Mirror Camera For Car Touch Screen Video Recorder Rearview Mirror Dashcam 1440P",
+   "titles": {
+    "en": "E-ACE 2.5K Mirror Camera For Car Touch Screen Video Recorder Rearview",
+    "ro": "E-ACE 2.5K Cameră cu oglindă pentru mașină Ecran tactil Video Recorder Vedere din spate",
+    "it": "E-ACE Telecamera a specchio 2.5K per retrovisore per videoregistratore touch screen auto",
+    "de": "E-ACE 2,5K Spiegelkamera für Auto-Touchscreen-Videorecorder Rückansicht",
+    "fr": "Caméra miroir E-ACE 2.5K pour l'enregistreur vidéo à écran tactile de voiture",
+    "es": "Cámara de espejo E-ACE 2.5K para pantalla táctil de coche Videograbadora Vista trasera"
+   },
+   "created": "2026-10-31",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4mSMFjLIRzz5nX4Y6bDpkztc6FiwDolLgdAzwoq2jXKz67NfEWAKqZsUKxgHpPVbftW2zxw3frQxTpLBcQLOsOZeIU1WZf817sbkOMw9nYVszjwy3GifZrOYQI1YzIlVfb1R43x5Rk1HjHBdPFf4aH3rxTNw42dlkG2l4EJkHds6ITtadRbpPNIE6wkh6FFDpNh8T5bufPgsU2F5yoHcjs3Wp9JiPJkm1yo9pcbIVGSIhEGubtS0ZEuEt18TtgQV2KE0UFh9IiOTSaUohqQbQKnIGE2Ds8P6WWd9IcINWQaNKUn9oeHj1gZMoHTb1oejYpQkqOhu2JuIco8gWuPbW20pX7yVbg9d1xTIkXYpC9vkxBVhiO1PujIollJ3KfrJHrqLAki4xEShNFFXIe86PZp4VOzaFyZTis9Tx8TqBasCOi17wJosoTUZYJe3k5Inicz6sOBG7QbHR9rgXfyxfnLLPQnIam8gY8vTub6iugl6gka5ZDYjscqILkq9VZvTV1BmsKjD4VetrRu1TMMLrdsC57aHaP3o2WfnPPsEqMlXRXOUxV421UAAVoyGMPbesQ068JLuyv20LUlHcpWoXN4pqrxHRGIkSWnfNc68G0gbR16KaRk6kffx8xau5wOiyoqaQiBrf1jPhl0v3ldb6fggzIvwDRGoNojisD3ZMPCUz971jcQasSSwRHhQKkIcmMrzpBz4PBLnm9",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S388d2da720c64d1891dd7f048b69e0a3B.jpg"
+  },
+  {
+   "num": 130,
+   "id": "p1005006117250437",
+   "title": "Pure Sine Wave Inverter 1000W-4000W DC 12V and 24V to AC 220V 50hz Power Inverter Charger ",
+   "titles": {
+    "en": "Pure Sine Wave Inverter 1000W-4000W DC 12V and 24V to AC 220V 50hz",
+    "ro": "Invertor cu undă sinusoidală pură 1000W-4000W DC 12V și 24V la AC 220V 50hz",
+    "it": "Inverter Pure Sine Wave 1000W-4000W DC 12V e da 24V a AC 220V 50hz",
+    "de": "Reiner Sinus-Wechselrichter 1000W-4000W DC 12V und 24V bis AC 220V 50hz",
+    "fr": "Onduleur sinusoïdal pur 1000W-4000W DC 12V et 24V à AC 220V 50hz",
+    "es": "Inversor de onda sinusoidal puro 1000 W-4000 W CC 12 V y 24 V a CA 220 V 50 Hz"
+   },
+   "created": "2026-10-30",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4mMPdbFmqwcdSYTHd1IcuxfyHglrRw4vUCdjG0Zd7q7kG9WtYoeDR7E8ENZCou5SbZxQUIBYpSTzQTLUndn0VPYJzSfEkwQSbsGABqpn9smSjDq12z2X5Seasuw8Y47WcVHE3ZdJ4rYjndJ0NwZIz1sVULFf4KNjsESEVSEwMhJTUss7GLn3YS1BUT76qFtuS2wQSGJA7qGRk87ZNE0ZsNh996NG6UyHBAosalKLlru1C01w4RQqVrETMKcXb3gl4EQjzLy67UQ7z1nqdQbwINwKbBHw5SPnVLTLVw1cWRuoTXzZKz0Ovz3n9iAE5kVdgFf6sI54PvE46gvqaii35SSKKvzBVpvapICAlVO4TjTY8Nz5M2RW58Ycf3fLlvIegmkSzrUwtXSzu0ma2CoDnTj8BHeIHSPAKEyjy1srLB2fZqtp6Ix3uduO4Dow5rAP6ZlKIqMekzkN07dEwLw6zVbu5YobKyNKXzMbyNr57OCS5eevqqtfgeZbdePlCF0SR4gii5sLOuPZlEhFoTifFVm2GqZHJeZOml8FzxV4EJc8hGUhyHppDKb2nO4YyIfEAsZ0mLqmTDwGggnUm5Q9FUYwmHhQtvBv1uYiN4EILGgCxOA9Mhdyp8FlW0OUj8Aq9Wjg36ZTju96zYJvdAqXEB8fRqVLY4upI0hdpdGWVjbShlRc68bsyRdgxt6wHx62nAJZV8BELheB8C",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sa74ed44a039e4b9797ada36ae9cdb06eM.jpg"
+  },
+  {
+   "num": 129,
+   "id": "p1005013063032338",
+   "title": "Laresar V11 NEW 650W 75000PA Ultra-Strong Cordless Vacuum Cleaner,90 Min Long Runtime,Remo",
+   "titles": {
+    "en": "Laresar V11 NEW 650W 75000PA Ultra-Strong Cordless Vacuum Cleaner",
+    "ro": "Aspirator fără fir Laresar V11 NOU 650W 75000PA Ultra-Strong",
+    "it": "Laresar V11 NUOVO 650W 75000PA Aspirapolvere senza fili ultraresistente",
+    "de": "Laresar V11 NEUER 650W 75000PA Ultra-starker Akku-Staubsauger",
+    "fr": "Aspirateur sans fil Laresar V11 NEUF 650W 75000PA ultra-résistant",
+    "es": "Aspiradora inalámbrica ultrafuerte Laresar v11 NUEVA 650W 75000PA"
+   },
+   "created": "2026-10-30",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4oe2ywY1f1CvATr1pMOoiLSSrr2FUZUiQZqfSjqzcQaso1uNl3PdyleEiU50CDHJ0lbuCzhWOTihX1SwnaKfyPEyMkgHePms7dvWw0HAEtbevtXZ35KIBCK6zn90cDsWPnLwKWgKWxC6yisBEuEJhXcnUzDEdYuwpaNgqEkvn4WlO5oE857LTVlvyF3yNnODhFuIL9lcliMqC7BuvDybggtCYyspwbe8zjYPKJb15i8Jo2Ul2HKWgVcsKXcQEluNEaDtP2pGbdvS9iJhJAdIZvAwAKIEEsPFYd4NIdVT16qSqSxgcM38SWHMh5y5it4540SkJwHyT5xzWlyWzmCI4dxIVgSK94olDmpyUMxcHstkJDWPAlalJIRjxG7nHqXQVJCTeSAr30lFBVwh7yqplTaZkit1FtCzDkLCzvQeOxfeJbu6i3IpQB1EhMjYMJvzGGxhZjL8ErlCbLS0qLLEzoeGdPHl52Jp3DixDFbnzJxjCVPthSQ3wSdb3BqE3j7NftrSFOOFBQM3R045YsEFSr6uWtQnHd3URgRhgujYOpfUuhUM6RJDRh9Wy9dJOY9suJb09W6vgvCu5n3KUh3Ucc59cuerX57b7mMr0RTZiGtx54Yd5SEaPFA3RRhrMMJ7iJF8TOgjDPJAdBWFYjLv1jnGFjegluyQ0CitDw1xu1TzydgbB7amOXWLV6FJgzNDpRh4TxwmYrQos5",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sf5dbf03fc3d946c7a2cc2a65ce3c8c148.png"
+  },
+  {
+   "num": 128,
+   "id": "p1005011942128579",
+   "title": "Window Cleaning Robot ABIR WD9, 4-Way Water Spray,Floating Scraping Tech, Laser Sensor,900",
+   "titles": {
+    "en": "Window Cleaning Robot ABIR WD9",
+    "ro": "Robot de curățare ferestre ABIR WD9",
+    "it": "Robot per la pulizia delle finestre ABIR WD9",
+    "de": "Fensterreinigungsroboter ABIR WD9",
+    "fr": "Robot de nettoyage de vitres ABIR WD9",
+    "es": "Robot de limpieza de ventanas ABIR WD9"
+   },
+   "created": "2026-10-29",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4Eyw1HR6BdnloIgc0JWRmkuM9owdof6hBkT3UhnFpumWj95lfOoBgnV283tIKjgZ5xDX9VxrVlMYyJ6p6TvdCrzsUzORlscIVqQrUMeLF9uUNVj3KNoXMjM5ELoptYjkCjItBZ0MYy7aNtAoh6D0q0jNwgtOWvdLYU25tu6AFiKfhW4vdwUxu4Vd8wz470w4FkC6HC0fC4gnPe6WDSIFp6F5J1iVtuKf3XN9xZUkSHF3heq4VMdLrJ9U20IRXVvzfPk8UCa66C36uHbhF18hM9EvLWvPB3Iz6q9GjxI8Y4a94CGKQmSzHEycdg2SzZGBohyDoPpasbFvLQ1VGYsuphHzBW8exswZxBRvbXAFwdevnyMyG159ZBmT6RQgHgFyMbTMpRulpaVQS3GIePiuAF10OZ9NxwK75JiQSJmoIjTaMeGst63FpDXiTJjGiAWIwHmf4YvMv2c24Xkg1UrB41WB6N4ArjfBQhQVpjNZNIur68NaRy2jg95MeyD8bjkUByzeIKlR4gv9O4TmEPI4Yl3zib5c708ReEZ7BqVwcyAjTBl9c8QofiAglpXhzKwi8EGOBgcSk20M0ojc5oOESiUz3bEISNjGV1nePJqHCy28aIzmXTVMEHnjshSeCky4yGhb9zSvttpb2Z6krHB1JfDs84wVdpqchkKS6Mi4Ac5FPJ7NFnAXW1ongYDfyupQWNgFFnh3rAS0W1",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sa95c6b3cde9943e3846aa9c642f7d082q.jpg"
+  },
+  {
+   "num": 127,
+   "id": "p1005009582323637",
+   "title": "Stainless Steel 3pcs Cutting Boards - BPA-Free Dishwasher Safe Non-Slip Kitchen Boards w/J",
+   "titles": {
+    "en": "Stainless Steel 3pcs Cutting Boards - BPA-Free Dishwasher Safe",
+    "ro": "Tablouri de tăiere din oțel inoxidabil 3 buc - Se poate spăla în mașina de spălat vase fără BPA",
+    "it": "Taglieri in acciaio inox 3 pezzi - lavabili in lavastoviglie senza BPA",
+    "de": "Edelstahl 3-tlg. Schneidebretter - BPA-frei spülmaschinenfest",
+    "fr": "Planches à découper en acier inoxydable 3 pièces - Sans BPA pour lave-vaisselle",
+    "es": "Tablas de corte de acero inoxidable de 3 piezas - Aptas para lavavajillas sin BPA"
+   },
+   "created": "2026-10-29",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4kJI1nP9n74KwqxqPqB6Nld5FUpQYUOUkvZNukAPTtM9Iwuqgy4wNWtnDlbsdS1xPVpfiiQJc9s2E8o7lzvQKiMKUZVrKQ4yAots80ZVc6HyWHNQnpvFa6CpXBn8Hml4Bc7OqBk8jxwZLFrcmSbpRpX2iHyKfvqq0jhybaRoPaSwH8hYlPKDylwyqpGbvo0xipoo3mrR0c7e5gWw0zo4jVSQRnW5PPzS1AWnljxYdEXXDOFJDSWJSXGuX7oHiMiWTk27PI08DdpwkJjib51LSEQK0FZfqS64OPsbE2W4auME8s8EyqzN7eti7fLKyhjjegPYcPAufpzARQzGAORyG1Pd32ILlVWUKPgC4EfKVKq040omQ6m9VCKBEV93T9gOYzaN8FuSserY5ryG0JSLWsrvQVWNGmplZlCHt3gJOWISVqjbNaKxdckJf7dbWf0Wu7yurEH8e74luiVvdYbxyXuNeSGRVe5L3EIQPtpVst8SWjnwy0ivJlIfHX3bP3JVee10VNaStMmS2lV7DqAuvz9z5enb5d9ZqkgKOuzu9qsXvEdtJqoJYRQtgMncReC9nAKSLEE03WoLe01MLblGe07gq0ePSCGfKacyrzCsKxvTAbgfLAmKRqgZQF2JHu3xkCGPJajPxgISHC4ba4FHAcq9LqmRPLs2UsVjhuYc65bXVRdwas0ndJqrxC0nyaRvMSHGjDMyGP5bfq",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S2974e529b33749ccb0b6f5ae90972d13R.jpg"
+  },
+  {
+   "num": 126,
+   "id": "p1005004320428285",
+   "title": "THINKCAR THINKDIAG MINI Obd2 Scanner For Auto Full Obd 2 Function System Diagnostic Tool C",
+   "titles": {
+    "en": "THINKCAR THINKDIAG MINI Obd2 Scanner For Auto Full Obd 2 Function",
+    "ro": "Scaner THINKCAR THINKDIAG MINI Obd2 pentru funcția Auto Full Obd 2",
+    "it": "Scanner THINKCAR THINKDIAG MINI Obd2 per funzione Auto Full Obd 2",
+    "de": "THINKCAR THINKDIAG MINI OBD2 Scanner für Auto Full OBD 2 Funktion",
+    "fr": "THINKCAR THINKDIAG MINI Scanner Obd2 Pour Fonction Auto Full Obd 2",
+    "es": "Escáner THINKCAR THINKDIAG MINI Obd2 para función Auto Full Obd 2"
+   },
+   "created": "2026-10-29",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4kIWSXKxQCj36ozXX7sd40puqAGifWyLydps8sNic1HTyId01MatCXSaCsVZRM21uqa7UofUW4YgupVpJpDqmtLGBwMOSQtFbTpyp5wokerJ5dEhWffhEWOKBqZGs669aCErFSv89bLOy1fgyHx5Zzd8ba5mZaNc8UNHK8sq4y58d0VEjsLHD6zX30O1NMBDpUCbUMBsjUxmhhNjDeq7MJGDnIJrUwFLTog16KBXS4g7bVnrKutXfo98yfRnJkoLabzyrrgGIs0Xo3VWosMNwMmOf2aT8hAJEtqc2hGz9T0i7cjlJatojWObT52dw7TBMqeBr6nR0jziylT9JQpxyfYYlgzIWpD7dUUpDvjoQURgfFebGxMGTQuk97NSXWqplfIYvx6QnsTmsr7t1p47ycNAFTu2WuVz6cze7LSHwmbcyOAaNXkcBREGvrjUlQOOFRwbZ3eNv0KH7L6MGUHb3HEsaxg0QD67GT5VIYMeu4l3Yays5Xjqe7RHdWlCGnIGwtKPwcLzzfLvJImMeiEp5rJZZ1X86nYAef82JZb512AxhK8tTuIkgaICUTMuM70E2moQZmzliKeLAyPYh5W85QZKJWPDFoTIYoiUczOa4L0kCDks1papKBwelEo3v6xzzVQVFO0kl75u54EsKh7DYVjIv50PfLVEeqpoiP5Y7MzkPBNasa9FOAlPNL5wiUe1GpMzFwkucdiHAo",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S5458b6a128e2434ea5fcb7594cf69939g.jpg"
+  },
+  {
+   "num": 125,
+   "id": "p1005008728260691",
+   "title": "Klaif Electric Pizza Maker, 420℃, 1200 Watt, 5 Separate Temperature Levels, Flame Resistan",
+   "titles": {
+    "en": "Klaif Electric Pizza Maker",
+    "ro": "Aparat de făcut pizza Klaif Electric",
+    "it": "Pizzaiolo Elettrico Klaif",
+    "de": "Elektrischer Pizzabäcker Klaif",
+    "fr": "Machine à pizza électrique Klaif",
+    "es": "Pizzería eléctrica Klaif"
+   },
+   "created": "2026-10-28",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4mrIVFWu4Tdv8cBAY5gvVtF6cmbLYwe1RCfWezAivYdIXEOT0qKeDsde8vvJ0aD0KoJIgR1m2c8BuwfglfWzR1bXfTtOUAA4WcMf1DARTXzz7yHIVhxD0laSY2NMCKwgWBK83hHUWaD32k27sCfc5LTQ1UONzd835srz2PX0ylTY6bfF7UX7r3Wa2R9fncZ42GoJQNNgbpL2eKiKudBEP35YLBaeNdviDcjcsb5DW6kToMCvofYe4iI1I4jSa3LXtvZTjH1XLkGrzHBPSYrIp4xpWpEYObC84Mh61x6Yfv3942M7BsCwjRy0KBBIcUu1hp6YKffOWre2Qdla0b2tyXLDysgYyiDEwMbqcfpUV7qKJFh6qeySDdV4UUsFg4JNdmKZjV5VDyUkKE3gweqm2TDc1DpWPmGSyZOoc2vbhSRWTpbiDwEMN3Xm51hrGMpWSyoH3mf9vtLAK4d5Z6T0YJzH9Vqa0eorqHRCN61CUfuQpOvKJXV1NH89o83cMl4UMrED060Bps3uzaA2CVWuAVlaeMhO1hW4btlphGHWQyxWoVRJTRjimqWZxdnn8fwxKajhVmMw3RTvr1cP5MskYxCuJh11skuLiVfHBL388FOtoD1urHnf2CjUglzyXM9BVmPFLvsogKHjR9ZGFy1BNPqzUe4Ya2pbrfWZWfSzXhuhZFGCKZX35ED0ktwqsAgF6IOiGfni9LgRRJ",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S427984c08de242e98b0d8256206c6953K.jpg"
+  },
+  {
+   "num": 124,
+   "id": "p1005012541028521",
+   "title": "Lubluelu V8 800W Instant Heated Function Carpet Cleaner Machine 15Kpa Powerful Suction Hot",
+   "titles": {
+    "en": "Lubluelu V8 800W Instant Heated Function Carpet Cleaner Machine 15Kpa",
+    "ro": "Mașină de curățat covoare Lubluelu V8 800W cu funcție de încălzire instantanee 15Kpa",
+    "it": "Lubluelu V8 800W Funzione riscaldata istantanea Macchina per la pulizia dei tappeti 15Kpa",
+    "de": "Lubluelu V8 800W Instant-Heizfunktion Teppichreiniger Maschine 15Kpa",
+    "fr": "Lubluelu V8 800W Fonction Chauffage Instantané Machine de Nettoyage de Tapis 15Kpa",
+    "es": "Máquina limpiadora de alfombras con función de calefacción instantánea Lubluelu V8 800W 15Kpa"
+   },
+   "created": "2026-10-28",
+   "link": "https://s.click.aliexpress.com/s/pyFri10M6ltAv61YZY9TfrxiDaaFXRreuZWJMeLtD8jig1wPxn51K2eq59ds8iT5Wl5L3w5KJyrl7SjOO3B0oJ0Xjwnc7n8AQA7gf5qnT4sCyU05LNms9JvyWQNFHNKtzBcoBpSguMg3UBR1FOODkmGTloXosMhqhnKgzzuJPYPxewVvzupiAiKSJA5SK0iQRxmaQ7UPG0AP2HC7uLitVpvXIfjMl7RnsnN7B8FrGfP9TWP7emQeaXV90Bp9fLEiLeKHsRf9R2jgKD32Axm5na4bRJdkhGVyv3GcDgMjmYrrZWinWctR9gnPwA4EJJdQw2Mf1C5xn0iaRmK0EYZtvUzTASVwLGxSKORhfANgTUSK26gKdyM9EIdXonO6NXF6xRM5Xn2wv7EBPl3Wrz6pXYmgaY9EgzPlP74m7HwLMDItpvLTTlAd0MSjGovTrUvHCxKjcesPnFeOmLZAbmHcs8GTNlMobgIBckUnUGIhr9cTC4sar95WyJSIUanuZiDG4r073sUYJhC55NSY6sf5swZ0dJZNw3ySUmEq5nUeZnJj2hRXKTP7wzcDpjoAobyCFoqlXEOFvKHA0AKqn0JCDeu6q4pLt63Wj4fFzB7stMEst0DCDPYVyJrmUXym1XpBzuplMKzN7tM7ikV0NKgAKUA36afIxSvYy3CYk7hNtjgadYZZgqy4KFf9dAjp6hPrABcIFl8FApPr3OZBnkZOCjB44PInKB8AS2d9kzIGbR2j0Zwt9Iv59HdsZ4GsFFEGfkuuwg1SdlWTIR05bfoWFwmoi9moU9uNMdLcGg9BZeqfl5Q5oThwkjFUcy7Sxa9VFdV6YTm9uTXOVAX8RvL0QIOCInGluVeBEzNpRFaWZ3NLiqUjHCKytN6CSx32GJDR7Sa3NfqG0vXOAg7G7V7RWhJNr8O48mBTSBrsjDI1dalRN2d3LZQwnbyEhfkBzX3hyUie83NvxlUQvYuX6amWPHx2fl2Pfoi65SKIGohObPe8MKAy9zhscrx2onEtR1erGlf6TaHR",
+   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S07d896992f4d4aa189c6c6002767611eA.jpg"
+  }
+ ],
+ "log": [
+  "[info] curs BCE: 1 EUR = 5.3437 RON",
+  "[info] comenzi (Payment Completed): nicio comanda in ultimele 30 zile",
+  "[info] comenzi (Buyer Confirmed Receipt): nicio comanda in ultimele 30 zile",
+  "[info] 'robot vacuum cleaner mop' via product: 50 produse primite",
+  "[info] 'robot vacuum cleaner mop' via product: 50 produse primite",
+  "[info] 'robot vacuum cleaner mop' via product: 50 produse primite",
+  "[info] 'professional slingshot' via product: 47 produse primite",
+  "[info] 'professional slingshot' via product: 45 produse primite",
+  "[info] 'motorcycle bike phone holder' via product: 49 produse primite",
+  "[info] 'motorcycle bike phone holder' via product: 49 produse primite",
+  "[info] 'dash cam' via product: 50 produse primite",
+  "[info] 'dash cam' via product: 50 produse primite",
+  "[info] 'dash cam' via product: 50 produse primite",
+  "[info] 'electric pizza oven' via product: 50 produse primite",
+  "[info] 'electric pizza oven' via product: 50 produse primite",
+  "[info] 'electric pizza oven' via product: 50 produse primite",
+  "[info] 'professional OBD2 scanner' via product: 50 produse primite",
+  "[info] 'professional OBD2 scanner' via product: 50 produse primite",
+  "[info] 'professional OBD2 scanner' via product: 50 produse primite",
+  "[info] 'wall chaser slotting machine' via product: 50 produse primite",
+  "[info] '4000W power inverter' via product: 50 produse primite",
+  "[info] 'high pressure steam cleaner 2500W' via product: 50 produse primite",
+  "[info] 'high pressure steam cleaner 2500W' via product: 50 produse primite",
+  "[info] 'high pressure steam cleaner 2500W' via product: 50 produse primite",
+  "[info] 'home gadget' via product: 49 produse primite",
+  "[info] 'cleaning' via product: 49 produse primite",
+  "[info] 'kitchen' via product: 49 produse primite",
+  "[info] 'phone accessories' via product: 49 produse primite",
+  "[info] 'car accessories' via product: 49 produse primite",
+  "[info] 'beauty tools' via product: 49 produse primite",
+  "[info] 'pet supplies' via product: 49 produse primite",
+  "[info] 'carpet cleaner' via product: 49 produse primite",
+  "[info] 'carpet cleaner' via product: 49 produse primite",
+  "[info] 'cordless vacuum cleaner' via product: 49 produse primite",
+  "[info] 'cordless vacuum cleaner' via product: 49 produse primite",
+  "[info] 'window cleaning robot' via product: 50 produse primite",
+  "[info] 'window cleaning robot' via product: 48 produse primite",
+  "[info] 'steam cleaner' via product: 50 produse primite",
+  "[info] 'steam cleaner' via product: 50 produse primite",
+  "[info] 'steam cleaner' via product: 50 produse primite",
+  "[info] 'wet dry vacuum cleaner mop' via product: 50 produse primite",
+  "[info] 'wet dry vacuum cleaner mop' via product: 50 produse primite",
+  "[info] 'wet dry vacuum cleaner mop' via product: 49 produse primite",
+  "[info] 'fiber optic christmas tree' via product: 50 produse primite",
+  "[info] 'fiber optic christmas tree' via product: 49 produse primite",
+  "[info] 'pre lit flocked christmas tree' via product: 48 produse primite",
+  "[info] '210cm pre lit artificial christmas tree' via product: 30 produse primite",
+  "[warn] 'luxury full PE christmas tree with lights' (aliexpress.affiliate.product.query): 405 The result is empty",
+  "[info] 'christmas curtain lights led outdoor' via product: 50 produse primite",
+  "[info] 'christmas curtain lights led outdoor' via product: 50 produse primite",
+  "[info] 'christmas curtain lights led outdoor' via product: 50 produse primite",
+  "[info] 'outdoor christmas lights waterproof led string' via product: 50 produse primite",
+  "[info] 'outdoor christmas lights waterproof led string' via product: 50 produse primite",
+  "[info] 'outdoor christmas lights waterproof led string' via product: 50 produse primite",
+  "[info] 'light up reindeer christmas decoration' via product: 50 produse primite",
+  "[info] 'light up reindeer christmas decoration' via product: 48 produse primite",
+  "[info] Craciun: 575 anunturi verificate, 46 cu filmare, 0 produse premium cu filmare retinute",
+  "[info] trend: +1762 comenzi/saptamana (+27.4%) 360° Rotatable Mobile Phone Bicycle Motorcycle Hol",
+  "[info] trend: +1658 comenzi/saptamana (+11.8%) Eyebrow Tweezer Colorful Hair Beauty Fine Hairs Pu",
+  "[info] trend: +1359 comenzi/saptamana (+6.3%) 5/50PCS Melamine Sponge Magic Sponge Eraser Melami",
+  "[info] trend: +1350 comenzi/saptamana (+15.0%) Cute Cat Phone Stand Lazy Tablet Support Stand Hom",
+  "[info] trend: +1322 comenzi/saptamana (+3.1%) Toocki Cable Organizer Wire Winder USB Cable Manag",
+  "[info] consola: 0 produse ascunse, 5 sterse",
+  "[info] preturi produse fixe actualizate: 9/9 (#1 RON 386.51 -> EUR 72.39; #2 RON 395.86 -> EUR 104.39; #3 RON 615.21 -> EUR 115.77; #4 RON 44.47 -> EUR 8.01; #5 RON 23.2 -> EUR 4.54; #6 RON 32.77 -> EUR 6.44; #7 RON 26.28 -> EUR 5.54; #8 RON 46.95 -> EUR 9.39; #95 EUR 72.39 -> EUR 72.69)",
+  "[info] traduceri: 10 noi, 40 din memorie",
+  "[info] premium (>= 150 lei): 29 din 178 produse raman",
+  "[info] HD: 25 produse de peste 300 lei sarite (fara filmare)",
+  "[info] Craciun: 0 clipuri azi din 0 produse premium cu filmare",
+  "[info] clipuri: 715 produse verificate, 26 cu filmare, 298 peste pragul de interes (5)",
+  "[info] scor 14.0: 5600PA Ultra-Thin Smart Window Cleaning Robot Au (robot+4, automatic+3, smart+2, electric+2, spray+1)",
+  "[info] scor 13.2: Wireless Handheld Vacuum Cleaner 120W High Power (auto+2, vacuum+2, wireless+2, cordless+2, portable+1)",
+  "[info] scor 12.1: 5600Pa Window Cleaning Robot Automatic Water Spr (robot+4, automatic+3, spray+1, comenzi+1.1, rating+1)",
+  "[info] scor 12.0: Model Sweeping Robot Automatic Home Mini Cleanin (robot+4, automatic+3, smart+2, mop+1, mini+1)",
+  "[info] scor 11.6: Smart Laser Cat-teasing Collar Laser Rechargeabl (auto+2, smart+2, laser+2, rechargeable+2, comenzi+1.6)",
+  "[info] clipuri: niciun produs destul de interesant azi, nu generez clipuri slabe",
+  "[info] caruseluri: 229 produse premium (>= 150 lei) cu poze, 2 alese",
+  "[info] carusel #192: Aspirator pentru murdărie umedă de mare putere, 450 W, cu pu (341 lei)",
+  "[info] carusel #193: Aspirator fără fir Laresar V10 Lite 38000Pa, portabil, puter (451 lei)",
+  "[info] adrese scurte /go/<nr>: 193 produse"
+ ]
+}
